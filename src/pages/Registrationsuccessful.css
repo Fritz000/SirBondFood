@@ -1,241 +1,114 @@
-.signup-overlay{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 70vh;
+.signup-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70vh;
 }
 
 .signup-modal2 {
-    background: white;
-    width: 800px;
-    margin-top: 150px;
-    max-height: 300vh;
-    padding: 20px;
-    border-radius: 10px;
-    position: relative;
-    text-align: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
+  background: white;
+  width: 800px;
+  margin-top: 150px;
+  max-height: 300vh;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
 }
 
 h2 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  p {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 15px;
-  }
-  
-  small {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 15px;
-  }
-  
-  
-  
-  /* Close Button */
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-  }
-  
-  /* Input Fields */
-  form input,
-  .phone-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 20px; /* Rounded corners */
-    outline: none;
-  }
-  
-  /* Phone Input - Select + Number */
-  .phone-input {
-    display: flex;
-    align-items: center;
-  }
-  .phone-input select {
-    width: 30%;
-    padding: 10px;
-  }
-  .phone-input input {
-    width: 70%;
-  }
-  
-  /* Continue Button */
-  .signup-btn1 {
-    background: #DAF0C6;
-    color: white;
-    padding: 20px;
-    width: 100%;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  .signup-btn1:hover{
-    background-color: #008000;
-  }
-  
-  .social-signup {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
 }
 
-.terms{
-    font-size: 13px;
-    margin-top: 20px;
+p, small {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 15px;
 }
 
-.highlight {
-    color: green;
-    font-weight: bold; /* Optional: Makes it stand out */
+.signin1l {
+  font-size: 15px;
+  font-weight: 900px;
+  margin-top: 20px;
 }
 
-.separator {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 300px; /* Adjust width as needed */
-    margin: 20px 0;
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
-.line {
-    flex: 1;
-    height: 1px;
-    background-color: #ccc;
+form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
 }
 
-.text {
-    margin: 0 10px;
-    font-size: 14px;
-    color: #666;
+.signup-btn1 {
+  background: #DAF0C6;
+  color: white;
+  padding: 20px;
+  width: 100%;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-.social-icons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px; /* Space between icons */
-    margin-top: 15px;
+.signup-btn1:hover {
+  background-color: #008000;
 }
 
-.icon {
-    font-size: 32px;
-    color: #333; /* Adjust color */
-    transition: transform 0.2s ease-in-out;
-    cursor: pointer;
+.password-hints {
+  list-style: none;
+  padding: 0;
+  margin: 15px 40px;
+  font-size: 14px;
+  color: #777;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.icon:hover {
-    transform: scale(1.2);
-    color: #555; /* Adjust hover effect */
+.password-hints li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-  
-  /* Sign-in Link */
-  .signin1 {
-    font-size: 20px;
-    font-weight: 400px;
-    margin-top: 10px;
-  }
-  
-  .input-group {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Adds space between select & input */
-  }
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 
-  .curved-input {
-    padding: 12px 15px; /* Adds space inside input */
-    border-radius: 20px; /* Makes the input curved */
-    border: 1px solid #ccc; /* Light border */
-    font-size: 16px;
-    outline: none; /* Removes focus outline */
-  }
-  
-  /* Adjust placeholder text spacing */
-  .curved-input::placeholder {
-    padding-left: 10px; /* Moves placeholder text more to the right */
-    color: #888; /* Light gray placeholder */
-  }
-  
-  /* Curved select dropdown */
-  .input-group select {
-    padding: 10px;
-    border-radius: 20px; /* Makes the select dropdown curved */
-    border: 1px solid #ccc;
-    font-size: 16px;
-    outline: none;
-  }
-  
-  /* Adjust phone input */
-  .input-group input[type="tel"] {
-    flex-grow: 1; /* Ensures input expands properly */
-    padding: 12px 15px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    outline: none;
-  }
-  
-  /* Add hover and focus styles for better UX */
-  .input-group select:focus, 
-  .input-group input:focus {
-    outline: none;
-    border-color: #4CAF50; /* Highlight on focus */
-  }
+.toggle-password{
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
 
-  .password-hints {
-    list-style: none;
-    padding: 0;
-    margin: 15px 40px;
-    font-size: 14px;
-    color: #777;
-  }
-  
-  .password-hints li {
-    display: flex;
-    align-items: center;
-  }
+}
 
-  .fourth{
-    margin-bottom: 1px;
-  }
-
-  .bullet1{
-    color: #BFBFBF;
-    font-size: 30px;
-    margin-right: 15px;
-  }
-
-  .toggle-password {
-    position: absolute;
-    top: 50%;
-    right: 60px;
-    transform: translateY(-190%);
-    cursor: pointer;
-  }
-
-  .toggle-password1 {
-    position: absolute;
-    top: 60%;
-    right: 60px;
-    transform: translateY(-190%);
-    cursor: pointer;
-  }
+.toggle-password1 {
+  position: absolute;
+  right: 50px;
+  top: 10%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+}

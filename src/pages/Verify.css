@@ -115,3 +115,28 @@ h2 {
     border: 1px solid #ccc;
     border-radius: 5px;
   }
+
+  .error-message {
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .resend-code {
+    color: blue;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .code-input.error-border {
+    border: 2px solid red;
+    animation: shake 0.2s ease-in-out 2;
+  }
+  
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+    75% { transform: translateX(-2px); }
+    100% { transform: translateX(0); }
+  }
