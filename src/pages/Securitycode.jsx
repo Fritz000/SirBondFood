@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { X, ShieldBan } from "lucide-react";
-import '../pages/Verify.css';
+import '../pages/Securitycode.css';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from "../assets/logo.png";
 
-const Verify = ({ onClose }) => {
+const Securitycode = ({ onClose }) => {
   const navigate = useNavigate(); 
   const [timeLeft, setTimeLeft] = useState(60);
   const [canRequestNewCode, setCanRequestNewCode] = useState(false);
@@ -25,15 +25,15 @@ const Verify = ({ onClose }) => {
 
   return (
     <div className="signup-overlay">
-      <div className="signup-modal1">
+      <div className="signup-modal1l">
         <button 
           className="close-btn" 
           onClick={onClose ? onClose : () => navigate("/")}>  
           <X size={24} />
         </button>
         <img src={logo} alt="Feed the Nation Logo" style={{ width: "70px", height: "70px", display: "block", margin: "auto", marginBottom: "30px" }} />
-        <h2>Verify your email address</h2>
-        <p>Please enter the 4-digit verification code sent to your email address.</p>
+        <h2>Enter security code</h2>
+        <p>Enter the security code that was sent to your email address</p>
         <small><ShieldBan size={24} style={{ position: "relative", top: "5px" }} /> Your information is 100% secured</small>
         
         <div className="verification-code">
@@ -43,19 +43,22 @@ const Verify = ({ onClose }) => {
           <input type="text" maxLength="1" className="code-input" />
         </div>
 
-        <Link to="/Registrationsuccessful"><button type="submit" className="signup-btn">
+        <Link to="/Reset"><button type="submit" className="signup-btn">
           Continue
         </button></Link>
 
+        {/* Dynamic text logic */}
         <p className="terms">
-          Didn't receive any code? {canRequestNewCode ? (
-            <span className="highlight" onClick={handleRequestNewCode} style={{ cursor: "pointer", color: "blue" }}>Request a new code</span>
+          {canRequestNewCode ? (
+            <span className="highlight" onClick={handleRequestNewCode} style={{ cursor: "pointer", color: "green" }}>
+              Request a new code
+            </span>
           ) : (
-            <>Request a new code in <span className="highlight">{timeLeft}s</span></>
+            <>Didn't receive any code? It could take a bit of time, request a new code in <span className="highlight">{timeLeft}s</span></>
           )}
         </p>
 
-        <p className="signin">
+        <p className="signinn">
           For further support, you may visit the Help Center or contact our support team.
         </p>
       </div>
@@ -63,4 +66,4 @@ const Verify = ({ onClose }) => {
   );
 };
 
-export default Verify;
+export default Securitycode;

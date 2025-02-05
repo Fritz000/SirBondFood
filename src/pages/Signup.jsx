@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { X, ShieldBan } from "lucide-react"; // Close button icon
 import '../pages/Signup.css'
-
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import { FaGoogle } from "react-icons/fa";
 import { FaApple } from "react-icons/fa";
@@ -9,6 +9,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 const Signup = ({ onClose }) => {
+  const navigate = useNavigate(); 
   const [formData, setFormData] = useState({
     firstName: "",
     surname: "",
@@ -31,7 +32,9 @@ const Signup = ({ onClose }) => {
     <div className="signup-overlay">
       <div className="signup-modal">
         {/* Close button */}
-        <button className="close-btn" onClick={onClose}>
+        <button 
+          className="close-btn" 
+          onClick={onClose ? onClose : () => navigate("/")}>  
           <X size={24} />
         </button>
 
@@ -90,9 +93,7 @@ const Signup = ({ onClose }) => {
           />
 
           {/* Submit Button */}
-          <button type="submit" className="signup-btn">
-            Continue
-          </button>
+          <Link to="/Verify"><button type="submit" className="signup-btn">Continue</button></Link>
         </form>
 
         <p className="terms">
@@ -116,7 +117,7 @@ const Signup = ({ onClose }) => {
 
         {/* Already have an account */}
         <p className="signin">
-          Already have an account? <span className="highlight">Sign in</span>
+          Already have an account? <span className="highlight"><Link to="/Signin">Sign in</Link></span>
         </p>
         <p className="signin">
         For further support, you may visit the Help Center or contact our support team.

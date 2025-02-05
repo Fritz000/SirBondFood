@@ -7,6 +7,13 @@ import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } 
 import RootLayout from './layout/RootLayout'
 import Signup from './pages/Signup'
 import Verify from './pages/Verify'
+import Registrationsuccessful from './pages/Registrationsuccessful'
+import Signin from './pages/Signin'
+import Resetpassword from './pages/Resetpassword'
+import Securitycode from './pages/Securitycode'
+import Reset from './pages/Reset'
+import Passwordresetsuccesfully from './pages/Passwordresetsuccesfully'
+import EmptyCart from './pages/Emptycart'
 
 const App = () => {
 
@@ -19,6 +26,13 @@ const App = () => {
       <Route path='Contacts' element={<Contacts />} />
       <Route path='Signup' element={<Signup />} />
       <Route path='Verify' element={<Verify />} />
+      <Route path='Registrationsuccessful' element={<Registrationsuccessful />} />
+      <Route path='Signin' element={<Signin />} />
+      <Route path='Resetpassword' element={<Resetpassword />} />
+      <Route path='Securitycode' element={<Securitycode />} /> 
+      <Route path='Reset' element={<Reset />} />  
+      <Route path='Passwordresetsuccesfully' element={<Passwordresetsuccesfully />} />
+      <Route path='Emptycart' element={<EmptyCart />} />
   
       </Route>
     )

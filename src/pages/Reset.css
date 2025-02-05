@@ -1,0 +1,155 @@
+.signup-overlay{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 70vh;
+}
+
+.signup-modal2n {
+    background: white;
+    width: 800px;
+    margin-top: 300px;
+    max-height: 300vh;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+  
+p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+  
+small {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+  
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+  
+/* Input Fields */
+form input,
+.phone-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Rounded corners */
+    outline: none;
+}
+
+/* Continue Button */
+.signup-btn1 {
+    background: #DAF0C6;
+    color: white;
+    padding: 20px;
+    width: 100%;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.signup-btn1:hover{
+    background-color: #008000;
+}
+
+/* Input Group for Password */
+.password-container {
+    position: relative;
+}
+
+.toggle-password2 {
+    position: absolute;
+    top: 95%;
+    right: 30px;
+    transform: translateY(-190%);
+    cursor: pointer;
+  }
+
+.toggle-password3 {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.password-hints {
+    list-style: none;
+    padding: 0;
+    margin: 15px 40px;
+    font-size: 14px;
+    color: #777;
+}
+
+.password-hints li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Consistent space between list items */
+    justify-content: flex-start; /* Ensure left-aligned content */
+}
+
+.password-hints li span,
+.password-hints li svg {
+    margin-right: 10px; /* Ensures consistent spacing between the icon and the text */
+}
+
+/* Style for bullet point */
+.bullet1 {
+    color: #BFBFBF;
+    font-size: 30px;
+    margin-right: 10px; /* Same as above, keeps the spacing */
+}
+
+/* Adjust the checkmark size for consistent alignment */
+.password-hints li svg {
+    font-size: 18px; /* Controls the size of the checkmark */
+    margin-right: 10px; /* Ensures space between the icon and the text */
+}
+
+/* Make sure checkmarks are aligned vertically */
+.password-hints li svg,
+.password-hints li span {
+    vertical-align: middle;
+}
+
+.curved-input {
+    padding: 12px 15px; /* Adds space inside input */
+    border-radius: 20px; /* Makes the input curved */
+    border: 1px solid #ccc; /* Light border */
+    font-size: 16px;
+    outline: none; /* Removes focus outline */
+}
+
+/* Adjust placeholder text spacing */
+.curved-input::placeholder {
+    padding-left: 10px; /* Moves placeholder text more to the right */
+    color: #888; /* Light gray placeholder */
+}
+
+.signin1n {
+    font-size: 15px;
+    font-weight: 400px;
+    margin-top: 100px;
+}

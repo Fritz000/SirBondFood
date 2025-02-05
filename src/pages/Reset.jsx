@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { X, ShieldBan } from "lucide-react";
-import "../pages/Registrationsuccessful.css";
+import { X, ShieldBan, CheckCircle } from "lucide-react"; // Add the checkmark icon
+import "../pages/Reset.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 
-const Registrationsuccessful = ({ onClose }) => {
+const Reset = ({ onClose }) => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
+    email: "",
     password: "",
     confirmpassword: "",
   });
@@ -14,22 +15,37 @@ const Registrationsuccessful = ({ onClose }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
 
+  const [isPasswordValid, setIsPasswordValid] = useState(false);
+  const [doPasswordsMatch, setDoPasswordsMatch] = useState(false);
+
+  // Password validation regex
   const validatePassword = (password) => {
     const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,20}$/;
     return regex.test(password);
   };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+
+    if (name === "password") {
+      // Check password validity
+      setIsPasswordValid(validatePassword(value));
+    }
+
+    if (name === "confirmpassword") {
+      // Check if passwords match
+      setDoPasswordsMatch(formData.password === value);
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!validatePassword(formData.password)) {
+    if (!isPasswordValid) {
       setErrorMessage("Password must be 6-20 characters and include letters, numbers, and symbols.");
       return;
     }
-    if (formData.password !== formData.confirmpassword) {
+    if (!doPasswordsMatch) {
       setErrorMessage("Passwords do not match.");
       return;
     }
@@ -39,7 +55,7 @@ const Registrationsuccessful = ({ onClose }) => {
 
   return (
     <div className="signup-overlay">
-      <div className="signup-modal2">
+      <div className="signup-modal2n">
         <button 
           className="close-btn" 
           onClick={onClose ? onClose : () => navigate("/")}>  
@@ -50,14 +66,23 @@ const Registrationsuccessful = ({ onClose }) => {
           alt="Feed the Nation Logo"
           style={{ width: "70px", height: "70px", display: "block", margin: "auto", marginBottom: "30px" }}
         />
-        <h2>Registration successful</h2>
-        <p>Create a password to secure your account. You can use it when you log in next time.</p>
+        <h2>Reset your password</h2>
+        <p>Enter your new password</p>
         <small>
           <ShieldBan size={24} style={{ position: "relative", top: "5px", color: "black" }} /> Your information is 100% secured
         </small>
 
         <form onSubmit={handleSubmit}>
           <div className="password-container">
+            <input
+              className="curved-input"
+              type="email"
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
             <input
               className="curved-input"
               type={isPasswordVisible ? "text" : "password"}
@@ -67,7 +92,7 @@ const Registrationsuccessful = ({ onClose }) => {
               onChange={handleChange}
               required
             />
-            <span className="toggle-password" onClick={() => setIsPasswordVisible((prev) => !prev)}>
+            <span className="toggle-password2" onClick={() => setIsPasswordVisible((prev) => !prev)}>
               &#128065;
             </span>
           </div>
@@ -81,21 +106,45 @@ const Registrationsuccessful = ({ onClose }) => {
               onChange={handleChange}
               required
             />
-            <span className="toggle-password1" onClick={() => setIsConfirmPasswordVisible((prev) => !prev)}>
+            <span className="toggle-password3" onClick={() => setIsConfirmPasswordVisible((prev) => !prev)}>
               &#128065;
             </span>
           </div>
           {errorMessage && <p className="error-message" style={{ color: "red" }}>{errorMessage}</p>}
           <ul className="password-hints">
-            <li><span className="bullet1">&bull;</span> 6 - 20 characters</li>
-            <li><span className="bullet1">&bull;</span> Contains numbers, letters, and symbols</li>
+            <li>
+              {isPasswordValid ? (
+                <CheckCircle size={20} color="green" />
+              ) : (
+                <span className="bullet1">&bull;</span>
+              )}{" "}
+              6 - 20 characters
+            </li>
+            <li>
+              {isPasswordValid ? (
+                <CheckCircle size={20} color="green" />
+              ) : (
+                <span className="bullet1">&bull;</span>
+              )}{" "}
+              Contains numbers, letters, and symbols
+            </li>
+            <li>
+              {doPasswordsMatch ? (
+                <CheckCircle size={20} color="green" />
+              ) : (
+                <span className="bullet1">&bull;</span>
+              )}{" "}
+              Passwords match
+            </li>
           </ul>
-          <Link to="/Signin"><button type="submit" className="signup-btn1">
-            Submit
-          </button></Link>
+          <Link to="/Passwordresetsuccesfully">
+            <button type="submit" className="signup-btn1">
+              Change Password
+            </button>
+          </Link>
         </form>
 
-        <p className="signin1">
+        <p className="signin1n">
           For further support, you may visit the Help Center or contact our support team.
         </p>
       </div>
@@ -103,4 +152,4 @@ const Registrationsuccessful = ({ onClose }) => {
   );
 };
 
-export default Registrationsuccessful;
+export default Reset;
