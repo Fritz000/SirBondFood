@@ -6,6 +6,13 @@ import logo from "../assets/logo.png";
 
 const Verify = ({ onClose }) => {
   const navigate = useNavigate();
+  const handleClose = () => {
+    if (onClose) {
+      onClose();
+    } else {
+      navigate("/"); 
+    }
+  };
   const [timeLeft, setTimeLeft] = useState(60);
   const [canRequestNewCode, setCanRequestNewCode] = useState(false);
   const [otp, setOtp] = useState(["", "", "", ""]);
