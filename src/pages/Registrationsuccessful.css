@@ -6,10 +6,10 @@
   height: 70vh;
 }
 
-.signup-modal2 {
+.signup-modal21 {
   background: white;
   width: 800px;
-  margin-top: 20px;
+  margin-top: 250px;
   max-height: 300vh;
   padding: 20px;
   border-radius: 10px;
@@ -32,10 +32,10 @@ p, small {
   margin-bottom: 15px;
 }
 
-.signin1l {
+.signin1 {
   font-size: 15px;
-  font-weight: 900px;
-  margin-top: 20px;
+  font-weight: 700px;
+  margin-top: 60px;
 }
 
 .close-btn {

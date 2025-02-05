@@ -55,7 +55,7 @@ const Registrationsuccessful = () => {
 
   return (
     <div className="signup-overlay">
-      <div className="signup-modal2">
+      <div className="signup-modal21">
         {/* Close button */}
         <button className="close-btn" onClick={handleClose}>
           <X size={24} />
