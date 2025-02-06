@@ -128,13 +128,13 @@ h2 {
   }
 
   .error-message {
-    color: red;
+    color: black;
     margin-top: 10px;
     font-size: 14px;
   }
   
   .resend-code {
-    color: blue;
+    color: green;
     cursor: pointer;
     font-weight: bold;
   }

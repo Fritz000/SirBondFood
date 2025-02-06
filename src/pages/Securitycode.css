@@ -60,6 +60,18 @@ h2 {
     background: transparent;
     cursor: pointer;
   }
+
+  .error-message1 {
+    color: black;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .resend-code1 {
+    color: green;
+    cursor: pointer;
+    font-weight: bold;
+  }
   
   /* Input Fields */
   form input,

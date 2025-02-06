@@ -1,15 +1,36 @@
-import React from 'react'
-import { Link } from "react-router-dom";
-import '../pages/Home.css'
-import { Gift, ShoppingCart, Package, Soup } from "lucide-react";
+import React, { useEffect } from 'react';
+import { Link, useLocation } from "react-router-dom";
+import '../pages/Home.css';
+import { Gift, ShoppingCart, Package, Soup, Copy } from "lucide-react";
 
-const Home = () => {
+const Home = ({ user }) => {
+  const location = useLocation();
+  const referralCode = user?.referralCode || "XY6NM82W"; 
+  const referralLink = `https://sirbond.page.link/${referralCode}`;
+
+  // Function to copy referral link to clipboard
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(referralLink);
+    alert("Referral link copied!");
+  };
+
+  // Capture referral code from URL if present
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const refCode = queryParams.get('ref');
+
+    if (refCode) {
+      console.log(`Referred by: ${refCode}`);
+      // Here you can store refCode in state or send to backend
+    }
+  }, [location]);
+
   return (
     <div className="container">
-      <section class="ads">Mini Ads</section>
+      <section className="ads">Mini Ads</section>
       <h1 className="heading">What services would you like to access</h1>
+
       <div className="services-grid">
-        {/* Service Cards */}
         <div className="card card-green">
           <Soup size={80} className="icon icon-green" />
           <p className="card-title">Order meals</p>
@@ -36,29 +57,38 @@ const Home = () => {
             Earn residual income as people eat all over Nigeria
           </p>
         </div>
-        <Link to="/Signup"><button className="register-button">Register</button></Link>
+        <Link to="/Signup">
+          <button className="register-button">Register</button>
+        </Link>
       </div>
 
+      {/* Profile Section */}
       <div className="profile-card">
         <h2>Profile & Notifications</h2>
         <div className="profile-details">
           <div className="profile-left">
-            <p>Rank: <strong>[Mastermind]</strong></p>
-            <p>Connection Code: <strong>[XY6NM82W]</strong></p>
-            <a href="https://sirbond.page.link/XY6NM82W">https://sirbond.page.link/XY6NM82W</a>
-            <p>Level 1 connections: <strong>[250]</strong></p>
-            <p>Level 2 connections: <strong>[115]</strong></p>
-            <p>Level 3 connections: <strong>[100]</strong></p>
+            <p>Rank: <strong>Mastermind</strong></p>
+            <p>Connection Code: <strong>{referralCode}</strong></p>
+            <div className="referral-section">
+              <a href={referralLink}>{referralLink}</a>
+              <button onClick={copyToClipboard} className="copy-button">
+                <Copy size={16} /> Copy Link
+              </button>
+            </div>
+            <p>Level 1 connections: <strong>250</strong></p>
+            <p>Level 2 connections: <strong>115</strong></p>
+            <p>Level 3 connections: <strong>100</strong></p>
           </div>
           <div className="profile-right">
-            <p>Total Residual Earnings: <strong>[4,000,000]</strong></p>
+            <p>Total Residual Earnings: <strong>4,000,000</strong></p>
             <p>Breakdown of Earnings</p>
-            <p>Available Balance: <strong>[12,000,000]</strong></p>
+            <p>Available Balance: <strong>12,000,000</strong></p>
             <button className="withdraw-button">Withdraw</button>
           </div>
         </div>
       </div>
 
+      {/* Activity Section */}
       <div className="activity-card">
         <h2>Activity</h2>
         <ul>
@@ -67,9 +97,8 @@ const Home = () => {
           <li>Enter your bank account in your wallet to encash your earnings.</li>
         </ul>
       </div>
-    
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;

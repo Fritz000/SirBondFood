@@ -85,7 +85,7 @@ const Registrationsuccessful = () => {
               onChange={handleChange}
               required
             />
-            <span className="toggle-password2" onClick={() => setIsPasswordVisible((prev) => !prev)}>
+            <span className="toggle-password12" onClick={() => setIsPasswordVisible((prev) => !prev)}>
               &#128065;
             </span>
           </div>
@@ -99,7 +99,7 @@ const Registrationsuccessful = () => {
               onChange={handleChange}
               required
             />
-            <span className="toggle-password3" onClick={() => setIsConfirmPasswordVisible((prev) => !prev)}>
+            <span className="toggle-password13" onClick={() => setIsConfirmPasswordVisible((prev) => !prev)}>
               &#128065;
             </span>
           </div>
@@ -121,7 +121,7 @@ const Registrationsuccessful = () => {
 </button>
         </form>
 
-        <p className="signin1l">For further support, you may visit the Help Center or contact our support team.</p>
+        <p className="signin1ll">For further support, you may visit the Help Center or contact our support team.</p>
       </div>
     </div>
   );

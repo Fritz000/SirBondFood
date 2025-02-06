@@ -32,7 +32,7 @@ p, small {
   margin-bottom: 15px;
 }
 
-.signin1 {
+.signin1ll {
   font-size: 15px;
   font-weight: 700px;
   margin-top: 60px;
@@ -94,7 +94,7 @@ form input {
   align-items: center;
 }
 
-.toggle-password{
+.toggle-password12{
   position: absolute;
   right: 50px;
   top: 50%;
@@ -104,10 +104,10 @@ form input {
 
 }
 
-.toggle-password1 {
+.toggle-password13 {
   position: absolute;
   right: 50px;
-  top: 10%;
+  top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
   font-size: 18px;

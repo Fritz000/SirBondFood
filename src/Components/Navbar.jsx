@@ -27,18 +27,18 @@ const Navbar = () => {
         <div className={`dropdown-menu ${menuOpen ? "show" : ""}`}>
           <h3 className="menu-title">
             <button className="hamburger-menu" onClick={toggleMenu}>
-              <IoMenu style={{marginRight: "10px"}} size={24} /> Menu
+              <IoMenu style={{marginRight: "2px"}} size={24} />Menu
             </button>
           </h3>
           <ul>
             <li className="menu-item">
               <Link to="/" onClick={closeMenu}>
-              <RiHome2Line style={{marginRight: "10px"}} size={15}/>Home
+              <RiHome2Line style={{marginRight: "10px"}} size={15}/> Home
               </Link>
             </li>
             <li className="menu-item">
               <Link to="/orders" onClick={closeMenu}>
-              <Briefcase style={{marginRight: "10px"}} size={15}/>Orders
+              <Briefcase style={{marginRight: "10px"}} size={15}/> Orders
               </Link>
             </li>
             <li className="menu-item">
@@ -48,22 +48,22 @@ const Navbar = () => {
             </li>
             <li className="menu-item">
               <Link to="/settings" onClick={closeMenu}>
-              <Wallet style={{marginRight: "10px"}} size={15}/>Wallet
+              <Wallet style={{marginRight: "10px"}} size={15}/> Wallet
               </Link>
             </li>
             <li className="menu-item">
               <Link to="/settings" onClick={closeMenu}>
-              <Bell style={{marginRight: "7px"}} size={15}/>Notifications
+              <Bell style={{marginRight: "7px"}} size={15}/> Notifications
               </Link>
             </li>
             <li className="menu-item">
               <Link to="/settings" onClick={closeMenu}>
-              <Settings style={{marginRight: "7px"}} size={15}/>Settings
+              <Settings style={{marginRight: "7px"}} size={15}/> Settings
               </Link>
             </li>
             <li className="menu-item">
               <Link to="/logout" onClick={closeMenu}>
-              <RiLogoutCircleRLine style={{marginRight: "7px"}} size={15}/>Logout
+              <RiLogoutCircleRLine style={{marginRight: "7px"}} size={15}/> Logout
               </Link>
             </li>
           </ul>
@@ -99,19 +99,20 @@ const Navbar = () => {
               <Link to="/profile"> <UserRound style={{ marginRight: '10px' }} size={15}/> My Account</Link>
             </li>
             <li>
-              <Link to="/orders"><Briefcase style={{marginRight: "10px"}} size={15}/>My Orders</Link>
+              <Link to="/orders"><Briefcase style={{marginRight: "10px"}} size={15}/> My Orders</Link>
             </li>
             <li>
-              <Link to="/logout"><Wallet style={{marginRight: "10px"}} size={15}/>Wallet</Link>
+              <Link to="/logout"><Wallet style={{marginRight: "10px"}} size={15}/> Wallet</Link>
             </li>
             <li>
-              <Link to="/"><Settings style={{marginRight: "10px"}} size={15}/>Settings</Link>
+              <Link to="/"><Settings style={{marginRight: "10px"}} size={15}/> Settings</Link>
             </li>
           </ul>
         </div>
         <button className="icon-button">
           <FaRegBell size={24} />
         </button>
+        
         <button className="icon-button">
           <FaShoppingCart size={24} />
         </button>

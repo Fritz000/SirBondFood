@@ -1,168 +1,256 @@
-.signup-overlay{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 70vh;
+.signup-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 70vh;
 }
 
-.signup-modal2n {
-    background: white;
-    width: 800px;
-    margin-top: 300px;
-    max-height: 300vh;
-    padding: 20px;
-    border-radius: 10px;
-    position: relative;
-    text-align: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
+.signup-modal20 {
+  background: white;
+  width: 800px;
+  margin-top: 300px;
+  max-height: 300vh;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
 }
 
 h2 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
 }
-  
+
 p {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 15px;
 }
-  
+
 small {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 15px;
 }
-  
-.top-icons {
-    position: relative;
-    width: 100%;
-  }
-  
-  .back-btn {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-  }
-  
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-  }
-  
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
 /* Input Fields */
 form input,
 .phone-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 20px; /* Rounded corners */
-    outline: none;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Rounded corners */
+  outline: none;
+}
+
+/* Phone Input - Select + Number */
+.phone-input {
+  display: flex;
+  align-items: center;
+}
+.phone-input select {
+  width: 30%;
+  padding: 10px;
+}
+.phone-input input {
+  width: 70%;
 }
 
 /* Continue Button */
 .signup-btn1 {
-    background: #DAF0C6;
-    color: white;
-    padding: 20px;
-    width: 100%;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: bold;
+  background: #DAF0C6;
+  color: white;
+  padding: 20px;
+  width: 100%;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
 }
-.signup-btn1:hover{
-    background-color: #008000;
-}
-
-/* Input Group for Password */
-.password-container {
-    position: relative;
+.signup-btn1:hover {
+  background-color: #008000;
 }
 
-.toggle-password2 {
-    position: absolute;
-    top: 95%;
-    right: 30px;
-    transform: translateY(-190%);
-    cursor: pointer;
-  }
-
-.toggle-password3 {
-    position: absolute;
-    top: 50%;
-    right: 30px;
-    transform: translateY(-50%);
-    cursor: pointer;
+.social-signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
-.password-hints {
-    list-style: none;
-    padding: 0;
-    margin: 15px 40px;
-    font-size: 14px;
-    color: #777;
+.terms {
+  font-size: 13px;
+  margin-top: 20px;
 }
 
-.password-hints li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; /* Consistent space between list items */
-    justify-content: flex-start; /* Ensure left-aligned content */
+.highlight {
+  color: green;
+  font-weight: bold; /* Optional: Makes it stand out */
 }
 
-.password-hints li span,
-.password-hints li svg {
-    margin-right: 10px; /* Ensures consistent spacing between the icon and the text */
+.separator {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 300px; /* Adjust width as needed */
+  margin: 20px 0;
 }
 
-/* Style for bullet point */
-.bullet1 {
-    color: #BFBFBF;
-    font-size: 30px;
-    margin-right: 10px; /* Same as above, keeps the spacing */
+.line {
+  flex: 1;
+  height: 1px;
+  background-color: #ccc;
 }
 
-/* Adjust the checkmark size for consistent alignment */
-.password-hints li svg {
-    font-size: 18px; /* Controls the size of the checkmark */
-    margin-right: 10px; /* Ensures space between the icon and the text */
+.text {
+  margin: 0 10px;
+  font-size: 14px;
+  color: #666;
 }
 
-/* Make sure checkmarks are aligned vertically */
-.password-hints li svg,
-.password-hints li span {
-    vertical-align: middle;
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Space between icons */
+  margin-top: 15px;
 }
 
+.icon {
+  font-size: 32px;
+  color: #333; /* Adjust color */
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+  color: #555; /* Adjust hover effect */
+}
+
+/* Sign-in Link */
+.signin1l9 {
+  font-size: 16px;
+  font-weight: 400px;
+  color: #000;
+  margin-top: 50px;
+}
+
+.signup1 {
+  color: #6cc51d;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Adds space between select & input */
+}
+
+/* Adjust for curved input */
 .curved-input {
-    padding: 12px 15px; /* Adds space inside input */
-    border-radius: 20px; /* Makes the input curved */
-    border: 1px solid #ccc; /* Light border */
-    font-size: 16px;
-    outline: none; /* Removes focus outline */
+  padding: 12px 15px;
+  padding-right: 40px; /* Add extra padding for space for the icons */
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  position: relative; /* Make the input relative to position the icon inside it */
 }
 
 /* Adjust placeholder text spacing */
 .curved-input::placeholder {
-    padding-left: 10px; /* Moves placeholder text more to the right */
-    color: #888; /* Light gray placeholder */
+  padding-left: 10px; /* Moves placeholder text more to the right */
+  color: #888; /* Light gray placeholder */
 }
 
-.signin1n {
-    font-size: 15px;
-    font-weight: 400px;
-    margin-top: 100px;
+/* Curved select dropdown */
+.input-group select {
+  padding: 10px;
+  border-radius: 20px; /* Makes the select dropdown curved */
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Adjust phone input */
+.input-group input[type="tel"] {
+  flex-grow: 1; /* Ensures input expands properly */
+  padding: 12px 15px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Add hover and focus styles for better UX */
+.input-group select:focus,
+.input-group input:focus {
+  outline: none;
+  border-color: #4CAF50; /* Highlight on focus */
+}
+
+/* Password hints */
+.password-hints {
+  list-style: none;
+  padding: 0;
+  margin: 15px 40px;
+  font-size: 14px;
+  color: #777;
+}
+
+.password-hints li {
+  display: flex;
+  align-items: center;
+}
+
+.fourth {
+  margin-bottom: 1px;
+}
+
+.bullet1 {
+  color: #BFBFBF;
+  font-size: 30px;
+  margin-right: 15px;
+}
+
+/* Toggle Password Icons */
+.toggle-password5{
+  position: absolute;
+  top: 54.5%; /* Center vertically */
+  right: 50px; /* Position from the right side */
+  transform: translateY(-50%); /* Adjust for perfect vertical alignment */
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.toggle-password4 {
+  position: absolute;
+  top: 45.5%; /* Center vertically */
+  right: 50px; /* Position from the right side */
+  transform: translateY(-50%); /* Adjust for perfect vertical alignment */
+  cursor: pointer;
+  font-size: 18px; /* Adjust icon size if needed */
+}
+
+/* Hover effect for the icons */
+.toggle-password4:hover,
+.toggle-password5:hover {
+  color: #333; /* Optional: Change color on hover */
 }

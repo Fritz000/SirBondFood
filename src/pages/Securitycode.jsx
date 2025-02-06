@@ -8,6 +8,9 @@ const Securitycode = ({ onClose }) => {
   const navigate = useNavigate(); 
   const [timeLeft, setTimeLeft] = useState(60);
   const [canRequestNewCode, setCanRequestNewCode] = useState(false);
+  const [otp, setOtp] = useState(["", "", "", ""]);
+  const [error, setError] = useState(false);
+  const expectedOtp = "1234"; // backend OTP
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -21,6 +24,25 @@ const Securitycode = ({ onClose }) => {
   const handleRequestNewCode = () => {
     setTimeLeft(60);
     setCanRequestNewCode(false);
+    setError(false);
+    setOtp(["", "", "", ""]); // Clear OTP inputs
+  };
+
+  const handleChange = (index, value) => {
+    if (/^\d?$/.test(value)) {
+      const newOtp = [...otp];
+      newOtp[index] = value;
+      setOtp(newOtp);
+    }
+  };
+
+  const handleSubmit = () => {
+    const enteredOtp = otp.join("");
+    if (enteredOtp === expectedOtp) {
+      navigate("/Reset");
+    } else {
+      setError(true);
+    }
   };
 
   return (
@@ -41,15 +63,23 @@ const Securitycode = ({ onClose }) => {
         <small><ShieldBan size={24} style={{ position: "relative", top: "5px" }} /> Your information is 100% secured</small>
         
         <div className="verification-code">
-          <input type="text" maxLength="1" className="code-input" />
-          <input type="text" maxLength="1" className="code-input" />
-          <input type="text" maxLength="1" className="code-input" />
-          <input type="text" maxLength="1" className="code-input" />
+          {otp.map((digit, index) => (
+            <input
+              key={index}
+              type="text"
+              maxLength="1"
+              className={`code-input ${error ? "error-border" : ""}`}
+              value={digit}
+              onChange={(e) => handleChange(index, e.target.value)}
+            />
+          ))}
         </div>
 
-        <Link to="/Reset"><button type="submit" className="signup-btn">
+        {error && <p className="error-message1">The code is incorrect, please try again. <span className="resend-code1" onClick={handleRequestNewCode}>Resend code</span></p>}
+
+        <button type="submit" onClick={handleSubmit} className="signup-btn">
           Continue
-        </button></Link>
+        </button>
 
         {/* Dynamic text logic */}
         <p className="terms">
