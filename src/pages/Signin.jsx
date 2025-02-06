@@ -52,7 +52,7 @@ const Signin = ({ setUser }) => {
           <button type="submit" className="signup-btn1">Submit</button>
         </form>
 
-        <p className="signin2">Forgot password?</p>
+        <Link to="/resetpassword"><p className="signin2">Forgot password?</p></Link>
         <p className="signin3">Don't have an account? <span className="signup1"><Link to="/Signup">Sign up</Link></span></p>
       </div>
     </div>

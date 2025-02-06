@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { X, ShieldBan, CheckCircle } from "lucide-react"; // Add the checkmark icon
+import { X, ChevronLeft, ShieldBan, CheckCircle } from "lucide-react"; // Add the checkmark icon
 import "../pages/Reset.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
@@ -56,11 +56,15 @@ const Reset = ({ onClose }) => {
   return (
     <div className="signup-overlay">
       <div className="signup-modal2n">
-        <button 
-          className="close-btn" 
-          onClick={onClose ? onClose : () => navigate("/")}>  
-          <X size={24} />
-        </button>
+        {/* Back and Close Icons */}
+        <div className="top-icons">
+              <button className="back-btn" onClick={() => navigate(-1)}>  
+                  <ChevronLeft size={24} />
+              </button>
+              <button className="close-btn" onClick={onClose ? onClose : () => navigate("/")}>
+                  <X size={24} />
+              </button>
+          </div>
         <img
           src={logo}
           alt="Feed the Nation Logo"

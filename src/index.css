@@ -1,3 +1,4 @@
+/* General Styles */
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +11,7 @@ a {
   color: inherit;
 }
 
+/* Navbar */
 .navbar {
   width: 100%;
   display: flex;
@@ -83,6 +85,7 @@ a {
   background-color: #fff;
   border-radius: 20px;
   padding: 5px 10px;
+  cursor: pointer;
 }
 
 .user-avatar {
@@ -102,13 +105,17 @@ a {
 }
 
 .user-welcome {
-  font-size: 12px;
+  font-size: 14px;
   color: gray;
+  margin: 0; /* Remove default margin */
+  line-height: 1.2; /* Adjust line height to reduce space */
 }
 
-.user-name {
+.sign-in {
   font-size: 14px;
   font-weight: bold;
+  margin: 0; /* Remove default margin */
+  line-height: 1.2; /* Adjust line height to match the welcome text */
 }
 
 .icon-button {
@@ -123,15 +130,18 @@ a {
   color: black;
 }
 
+
+/* Dropdown Menu */
 .dropdown-menu {
   position: absolute;
-  top: 60px;
-  left: 15px;
+  top: 100%;
+  left: 100px;
   background-color: white;
-  border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 16px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: none;
+  padding: 10px;
+  width: 180px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: none;
   z-index: 1000;
 }
@@ -141,21 +151,97 @@ a {
 }
 
 .menu-title {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .menu-item {
+  font-size: 15px;
   padding: 8px 0;
   cursor: pointer;
   color: #333;
-  text-decoration: none;
+  list-style: none;
+  line-height: 20px;
 }
 
 .menu-item:hover {
   background-color: #f9f9f9;
   border-radius: 4px;
+}
+
+/* User Dropdown */
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 120px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: none;
+  width: 350px;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.user-dropdown.show {
+  display: block;
+}
+
+.user-dropdown button {
+  width: 90%;
+  margin-left: 6%;
+  background-color: #6cc51d;
+  color: white;
+  padding: 10px;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.user-dropdown button:hover {
+  background-color: #276749;
+}
+
+.user-dropdown .register1 {
+  width: 90%;
+  margin-left: 6%;
+  background-color: #FFFFFF;
+  color: black;
+  padding: 10px;
+  border-radius: 7px;
+  border: 2px solid black; /* Adds a black border */
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.register1 button:hover {
+  background-color: #FFFFFF;
+}
+
+
+.user-dropdown ul {
+  list-style: none;
+  padding: 0;
+}
+
+.user-dropdown ul li {
+  padding: 10px;
+  text-align: left;
+}
+
+.user-dropdown ul li:last-child {
+  border-bottom: none;
+}
+
+.user-dropdown ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.user-dropdown ul li a:hover {
+  color: #2f855a;
 }
 
 /* Services Page Styles */
@@ -255,4 +341,3 @@ a {
 .register-button:hover {
   background-color: #276749;
 }
-

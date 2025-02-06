@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { X, ShieldBan } from "lucide-react";
+import { X, ChevronLeft, ShieldBan } from "lucide-react";
 import "../pages/Verify.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
@@ -55,9 +55,15 @@ const Verify = ({ onClose }) => {
   return (
     <div className="signup-overlay">
       <div className="signup-modal1">
-        <button className="close-btn" onClick={onClose ? onClose : () => navigate("/")}>
-          <X size={24} />
-        </button>
+        {/* Back and Close Icons */}
+          <div className="top-icons">
+              <button className="back-btn" onClick={() => navigate(-1)}>  
+                  <ChevronLeft size={24} />
+              </button>
+              <button className="close-btn" onClick={onClose ? onClose : () => navigate("/")}>
+                  <X size={24} />
+              </button>
+          </div>
         <img src={logo} alt="Feed the Nation Logo" style={{ width: "70px", height: "70px", display: "block", margin: "auto", marginBottom: "30px" }} />
         <h2>Verify your email address</h2>
         <p>Please enter the 4-digit verification code sent to your email address.</p>

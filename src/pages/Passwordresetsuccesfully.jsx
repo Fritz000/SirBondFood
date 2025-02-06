@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { X, BadgeCheck } from "lucide-react"; // Add the checkmark icon
+import { X, ChevronLeft, BadgeCheck } from "lucide-react"; // Add the checkmark icon
 import "../pages/Passwordresetsuccessfulyy.css";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -50,11 +50,15 @@ const Passwordresetsuccesfully = ({ onClose }) => {
   return (
     <div className="signup-overlay">
       <div className="signup-modal2n1">
-        <button 
-          className="close-btn" 
-          onClick={onClose ? onClose : () => navigate("/")}>  
-          <X size={24} />
-        </button>
+        {/* Back and Close Icons */}
+        <div className="top-icons">
+              <button className="back-btn" onClick={() => navigate(-1)}>  
+                  <ChevronLeft size={24} />
+              </button>
+              <button className="close-btn" onClick={onClose ? onClose : () => navigate("/")}>
+                  <X size={24} />
+              </button>
+          </div>
         <div className="password1">
             <button className="icon-button"><BadgeCheck size={100}/></button>
                 <h2 className="password-title">Password reset successful</h2>

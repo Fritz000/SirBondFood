@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import '../pages/Home.css'
 import { Gift, ShoppingCart, Package, Soup } from "lucide-react";
 
@@ -35,7 +36,7 @@ const Home = () => {
             Earn residual income as people eat all over Nigeria
           </p>
         </div>
-        <button className="register-button">Register</button>
+        <Link to="/Signup"><button className="register-button">Register</button></Link>
       </div>
 
       <div className="profile-card">

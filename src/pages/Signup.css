@@ -1,4 +1,4 @@
-.signup-overlay{
+.signup-overlay {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -9,7 +9,7 @@
 .signup-modal {
     background: white;
     width: 800px;
-    margin-top: 500px;
+    margin-top: 550px;
     max-height: 300vh;
     padding: 20px;
     border-radius: 10px;
@@ -20,62 +20,94 @@
     flex-direction: column;
 }
 
-h2 {
-    font-size: 1.5rem;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  
-  p {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 15px;
-  }
-  
-  small {
-    font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 15px;
-  }
-  
-  
-  
-  /* Close Button */
-  .close-btn {
+/* Top Icons (Back and Close) */
+.top-icons {
+    position: relative;
+    width: 100%;
+}
+
+.back-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.close-btn {
     position: absolute;
     top: 10px;
     right: 10px;
     border: none;
     background: transparent;
     cursor: pointer;
-  }
-  
-  /* Input Fields */
-  form input,
-  .phone-input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
+}
+
+/* Logo */
+.logo {
+    width: 70px;
+    height: 70px;
+    display: block;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+/* Text Styling */
+h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+p, small {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.secure-icon {
+    position: relative;
+    top: 5px;
+    color: black;
+}
+
+/* Form Inputs */
+.curved-input {
+    padding: 12px 15px;
+    border-radius: 20px;
     border: 1px solid #ccc;
-    border-radius: 20px; /* Rounded corners */
+    font-size: 16px;
     outline: none;
-  }
-  
-  /* Phone Input - Select + Number */
-  .phone-input {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.input-group {
     display: flex;
     align-items: center;
-  }
-  .phone-input select {
-    width: 30%;
+    gap: 10px;
+}
+
+.input-group select,
+.input-group input {
     padding: 10px;
-  }
-  .phone-input input {
-    width: 70%;
-  }
-  
-  /* Continue Button */
-  .signup-btn {
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    outline: none;
+}
+
+.input-group select {
+    width: 30%;
+}
+
+.input-group input {
+    flex-grow: 1;
+}
+
+/* Submit Button */
+.signup-btn {
     background: #DAF0C6;
     color: white;
     padding: 10px;
@@ -84,12 +116,14 @@ h2 {
     border-radius: 20px;
     cursor: pointer;
     font-weight: bold;
-  }
-  .signup-btn:hover{
+}
+
+.signup-btn:hover {
     background-color: #008000;
-  }
-  
-  .social-signup {
+}
+
+/* Social Signup */
+.social-signup {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -97,21 +131,11 @@ h2 {
     width: 100%;
 }
 
-.terms{
-    font-size: 13px;
-    margin-top: 20px;
-}
-
-.highlight {
-    color: green;
-    font-weight: bold; /* Optional: Makes it stand out */
-}
-
 .separator {
     display: flex;
     align-items: center;
     width: 100%;
-    max-width: 300px; /* Adjust width as needed */
+    max-width: 300px;
     margin: 20px 0;
 }
 
@@ -127,75 +151,20 @@ h2 {
     color: #666;
 }
 
+/* Social Icons */
 .social-icons {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 20px; /* Space between icons */
-    margin-top: 15px;
+    gap: 20px;
 }
 
 .icon {
     font-size: 32px;
-    color: #333; /* Adjust color */
-    transition: transform 0.2s ease-in-out;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
 
 .icon:hover {
     transform: scale(1.2);
-    color: #555; /* Adjust hover effect */
+    color: #555;
 }
-
-  
-  /* Sign-in Link */
-  .signin {
-    font-size: 14px;
-    margin-top: 10px;
-  }
-  
-  .input-group {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* Adds space between select & input */
-  }
-
-  .curved-input {
-    padding: 12px 15px; /* Adds space inside input */
-    border-radius: 20px; /* Makes the input curved */
-    border: 1px solid #ccc; /* Light border */
-    font-size: 16px;
-    outline: none; /* Removes focus outline */
-  }
-  
-  /* Adjust placeholder text spacing */
-  .curved-input::placeholder {
-    padding-left: 10px; /* Moves placeholder text more to the right */
-    color: #888; /* Light gray placeholder */
-  }
-  
-  /* Curved select dropdown */
-  .input-group select {
-    padding: 10px;
-    border-radius: 20px; /* Makes the select dropdown curved */
-    border: 1px solid #ccc;
-    font-size: 16px;
-    outline: none;
-  }
-  
-  /* Adjust phone input */
-  .input-group input[type="tel"] {
-    flex-grow: 1; /* Ensures input expands properly */
-    padding: 12px 15px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    outline: none;
-  }
-  
-  /* Add hover and focus styles for better UX */
-  .input-group select:focus, 
-  .input-group input:focus {
-    outline: none;
-    border-color: #4CAF50; /* Highlight on focus */
-  }
