@@ -13,6 +13,8 @@ import Resetpassword from './pages/Resetpassword';
 import Securitycode from './pages/Securitycode';
 import Reset from './pages/Reset';
 import Passwordresetsuccesfully from './pages/Passwordresetsuccesfully';
+import NotificationList from './pages/NotificationList';
+import Populatedcart from './pages/Populatedcart';
 import EmptyCart from './pages/Emptycart';
 
 const App = () => {
@@ -30,7 +32,7 @@ const App = () => {
   // Router setup
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<RootLayout />}>
+      <Route path="/" element={<RootLayout />}> 
         <Route index element={<Home user={user} />} />
         <Route path="Products" element={<Products />} />
         <Route path="About" element={<About />} />
@@ -43,7 +45,10 @@ const App = () => {
         <Route path="Securitycode" element={<Securitycode />} />
         <Route path="Reset" element={<Reset />} />
         <Route path="Passwordresetsuccesfully" element={<Passwordresetsuccesfully />} />
+        <Route path="NotificationList" element={<NotificationList />} />
         <Route path="Emptycart" element={<EmptyCart />} />
+        <Route path="Populatedcart" element={<Populatedcart />} />
+
       </Route>
     )
   );

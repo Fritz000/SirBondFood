@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import '../pages/Home.css';
+import { BsBag } from "react-icons/bs";
 import { Gift, ShoppingCart, Package, Soup, Copy } from "lucide-react";
 
 const Home = ({ user }) => {
@@ -40,7 +41,7 @@ const Home = ({ user }) => {
           <p className="card-title">Market runs</p>
         </div>
         <div className="card card-teal">
-          <Package size={80} className="icon icon-teal" />
+          <BsBag size={80} className="icon icon-teal" />
           <p className="card-title">Bulk foodstuffs order</p>
         </div>
         <div className="card card-pink">

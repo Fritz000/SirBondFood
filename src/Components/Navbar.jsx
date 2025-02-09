@@ -112,10 +112,11 @@ const Navbar = () => {
         <button className="icon-button">
           <FaRegBell size={24} />
         </button>
-        
+        <Link to="/Emptycart">
         <button className="icon-button">
           <FaShoppingCart size={24} />
         </button>
+        </Link>
       </div>
     </div>
   );

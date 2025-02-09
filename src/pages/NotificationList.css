@@ -1,0 +1,100 @@
+.notifications-container {
+    width: 1232px;
+    padding: 16px;
+    background-color: white;
+  }
+  
+  .notifications-header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .notifications-header {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  
+  .notifications-count {
+    color: gray;
+    margin-left: 8px;
+  }
+  
+  .settings-icon {
+    width: 25px;
+    height: 25px;
+    color: gray;
+    cursor: pointer;
+  }
+  
+  .notifications-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .notification-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 12px 0;
+  }
+  
+  .notification-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .notification-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    margin-right: 12px;
+    margin-top: -9px;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+  .notification-dot::before {
+    content: "";
+    position: absolute;
+    top: -5%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the circle */
+    margin-top: 5px;
+    width: 20px; /* Outer circle size */
+    height: 20px;
+    background-color: rgba(0, 255, 0, 0.2); /* Semi-transparent green */
+    border-radius: 50%; /* Make it a circle */
+    z-index: 1; /* Keep it below the bullet */
+  }
+  
+  .notification-id {
+    font-weight: bold;
+  }
+  
+  .notification-meta {
+    text-align: right;
+  }
+  
+  .notification-type {
+    color: #22c55e;
+    font-size: 0.875rem;
+    margin-right: 10px;
+  }
+  
+  .notification-time {
+    color: #868889;
+    font-size: 0.875rem;
+  }
+
+  .notification-time::before{
+    content: "•";  
+  color: #868889;  
+  font-size: 1rem; 
+  margin-right: 10px; 
+  }
+  
