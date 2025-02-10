@@ -32,6 +32,55 @@ export default function NotificationList() {
       type: "Meal Order",
       time: "3 hours ago",
     },
+    {
+      id: "#0037188",
+      description: "Party jollof rice and stewed chicken",
+      text: "has been delivered.",
+      type: "Meal Order",
+      time: "3 hours ago",
+    },
+    {
+      id: "#0037188",
+      description: "Party jollof rice and stewed chicken",
+      text: "has been delivered.",
+      type: "Meal Order",
+      time: "3 hours ago",
+    },
+    {
+      id: "#0037188",
+      description: "Party jollof rice and stewed chicken",
+      text: "has been delivered.",
+      type: "Meal Order",
+      time: "3 hours ago",
+    },
+    {
+      id: "#0037188",
+      description: "Party jollof rice and stewed chicken",
+      text: "has been delivered.",
+      type: "Meal Order",
+      time: "3 hours ago",
+    },
+    {
+      id: "#0037188",
+      description: "Party jollof rice and stewed chicken",
+      text: "has been delivered.",
+      type: "Meal Order",
+      time: "3 hours ago",
+    },
+    {
+      id: "#0037188",
+      description: "Party jollof rice and stewed chicken",
+      text: "has been delivered.",
+      type: "Meal Order",
+      time: "3 hours ago",
+    },
+    {
+      id: "#0037188",
+      description: "Party jollof rice and stewed chicken",
+      text: "has been delivered.",
+      type: "Meal Order",
+      time: "3 hours ago",
+    },
   ]);
 
   useEffect(() => {
@@ -52,16 +101,16 @@ export default function NotificationList() {
     fetchNotifications();
   }, []);
 
+  // Dynamically display the count while following a structured format
+  const notificationCount = notifications.length > 99 ? "99+" : notifications.length;
+
   return (
     <div className="notifications-container">
       <div className="notifications-header-container">
         <h2 className="notifications-header">
-          {notifications.length === 1 ? (
-            <>Notifications<span className="notifications-count">1</span></>
-          ) : notifications.length === 4 ? (
-            <>Notifications<span className="notifications-count">4</span></>
-          ) : (
-            <>Notifications <span className="notifications-count">{notifications.length}</span></>
+          Notifications{" "}
+          {notifications.length > 0 && (
+            <span className="notifications-count">{notificationCount}</span>
           )}
         </h2>
         <Settings className="settings-icon" />
