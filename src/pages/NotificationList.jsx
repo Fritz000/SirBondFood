@@ -101,7 +101,6 @@ export default function NotificationList() {
     fetchNotifications();
   }, []);
 
-  // Dynamically display the count while following a structured format
   const notificationCount = notifications.length > 99 ? "99+" : notifications.length;
 
   return (

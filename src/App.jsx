@@ -16,6 +16,7 @@ import Passwordresetsuccesfully from './pages/Passwordresetsuccesfully';
 import NotificationList from './pages/NotificationList';
 import Populatedcart from './pages/Populatedcart';
 import EmptyCart from './pages/Emptycart';
+import Order from './pages/Order';
 
 const App = () => {
   // State to manage user login data
@@ -48,6 +49,7 @@ const App = () => {
         <Route path="NotificationList" element={<NotificationList />} />
         <Route path="Emptycart" element={<EmptyCart />} />
         <Route path="Populatedcart" element={<Populatedcart />} />
+        <Route path="Order" element={<Order />} />
 
       </Route>
     )
