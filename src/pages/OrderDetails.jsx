@@ -3,7 +3,7 @@ import { X, ChevronLeft, ShieldBan } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import "../pages/OrderDetails.css";
 import logo from "../assets/logo.png";
-import Rectangle4205 from "../assets/rectangle4205.png";
+import Rectangle4205 from "../assets/Rectangle4205.png";
 
 const OrderDetails = ({ onClose }) => {
   const navigate = useNavigate(); // Define navigate
