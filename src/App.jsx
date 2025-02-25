@@ -17,6 +17,7 @@ import NotificationList from './pages/NotificationList';
 import Populatedcart from './pages/Populatedcart';
 import EmptyCart from './pages/Emptycart';
 import Order from './pages/Order';
+import OrderDetails from './pages/OrderDetails';
 
 const App = () => {
   // State to manage user login data
@@ -50,6 +51,7 @@ const App = () => {
         <Route path="Emptycart" element={<EmptyCart />} />
         <Route path="Populatedcart" element={<Populatedcart />} />
         <Route path="Order" element={<Order />} />
+        <Route path="OrderDetails" element={<OrderDetails />} />
 
       </Route>
     )

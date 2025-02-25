@@ -71,7 +71,7 @@ const Navbar = () => {
           </ul>
         </div>
 
-        <img src={logo} alt="Logo" style={{ width: "70px", height: "70px" }} />
+        <img src={logo} alt="Logo" style={{ width: "100px", height: "100px"}} />
       </div>
 
       {/* Center Section: Search Bar */}
