@@ -18,6 +18,8 @@ import Populatedcart from './pages/Populatedcart';
 import EmptyCart from './pages/Emptycart';
 import Order from './pages/Order';
 import OrderDetails from './pages/OrderDetails';
+import HelpCenter from './pages/HelpCenter';
+import Wallet from './pages/Wallet';
 
 const App = () => {
   // State to manage user login data
@@ -52,6 +54,8 @@ const App = () => {
         <Route path="Populatedcart" element={<Populatedcart />} />
         <Route path="Order" element={<Order />} />
         <Route path="OrderDetails" element={<OrderDetails />} />
+        <Route path="HelpCenter" element={<HelpCenter />} />
+        <Route path="Wallet" element={<Wallet />} />
 
       </Route>
     )
