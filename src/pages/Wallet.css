@@ -60,17 +60,17 @@ body {
   
   .wallet-content {
     display: flex;
-    flex-direction: row; /* Change from column to row */
+    flex-direction: row;
     align-items: center;
-    justify-content: flex-start; /* Align content to the left */
+    justify-content: flex-start;
     margin-top: 10px;
-    padding-left: 20px; /* Add some spacing from the left */
+    padding-left: 20px;
 }
 
 .wallet-image2 {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Align image to the left */
+    justify-content: flex-start;
     width: 422px;
     height: 165px;
 }
@@ -97,26 +97,26 @@ body {
 
 .wallet-content1 {
     display: flex;
-    flex-direction: row; /* Change from column to row */
+    flex-direction: row;
     align-items: center;
-    justify-content: flex-start; /* Align content to the left */
+    justify-content: flex-start;
     margin-top: 10px;
-    padding-left: 20px; /* Add some spacing from the left */
+    padding-left: 20px;
 }
 
 .wallet-content3 {
     display: flex;
-    flex-direction: row; /* Change from column to row */
+    flex-direction: row;
     align-items: center;
-    justify-content: flex-start; /* Align content to the left */
+    justify-content: flex-start;
     margin-top: 10px;
-    padding-left: 20px; /* Add some spacing from the left */
+    padding-left: 20px;
 }
 
 .wallet-image3 {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Align image to the left */
+    justify-content: flex-start;
     width: 105px;
     height: 105px;
     margin-bottom: 50px;
@@ -149,11 +149,10 @@ body {
 
 .transaction-header {
     display: flex;
-    justify-content: space-between; /* Aligns elements to both ends */
-    align-items: center; /* Centers them vertically */
-    width: 100%; /* Ensures it takes full width */
-    border-bottom: 1px solid #ccc; /* Optional underline */
-    padding: 8px 16px; /* Adds spacing */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 8px 16px;
   }
   
   .title {
@@ -186,7 +185,7 @@ body {
     gap: 20px;
     border-bottom: 2px solid #EEEEEE;
     margin-bottom: 20px;
-    width: 95%; /* Reduces the width to half */
+    width: 95%;
 }
 
 .wallet-tab {
@@ -197,11 +196,11 @@ body {
     font-size: 16px;
     color: #868889;
     position: relative;
-    transition: color 0.3s ease; /* Smooth color transition */
+    transition: color 0.3s ease;
 }
 
 .wallet-tab:hover {
-    color: #6cc51d; /* Turns green on hover */
+    color: #6cc51d;
 }
 
 .wallet-tab.active {
@@ -209,7 +208,7 @@ body {
     font-weight: 600;
 }
 
-/* Green underline only when active */
+
 .wallet-tab.active::after {
     content: '';
     display: block;
@@ -219,4 +218,92 @@ body {
     position: absolute;
     bottom: 0;
     left: 0;
+}
+
+.transactions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+.transaction-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5px;
+    background: #fff;
+    gap: 15px;
+}
+
+.transaction-description{
+    font-size: 20px;
+    font-weight: 400;
+    color: #000;
+}
+
+
+.transaction-reference {
+    font-weight: 400;
+    color: #000;
+    flex: 1;
+    font-size: 20px;
+    min-width: 150px;
+}
+
+.transaction-amount {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    min-width: 120px;
+}
+
+.transaction-amount.credit {
+    color: green;
+}
+.transaction-amount.debit {
+    color: red;
+}
+.transaction-description {
+    flex: 3;
+    color: #555;
+    font-size: 18px;
+    min-width: 250px;
+}
+
+.transaction-type {
+    flex: 0.5;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+}
+
+.transaction-download {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    border: none;
+    background: #ffffff;
+    color: #000;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.MdOutlineFileDownload {
+    width: 18px;
+    height: 18px;
+    color: #000;
+}
+
+.transaction-type.credit {
+    background: #6CC51D;
+}
+.transaction-type.debit {
+    background: #FF2A23;
 }

@@ -7,6 +7,7 @@ import { CiSearch } from "react-icons/ci";
 import { UserRound, Briefcase, Wallet, Settings } from "lucide-react";
 import { RiHome2Line, RiLogoutCircleRLine } from "react-icons/ri";
 import { MdOutlineSupportAgent } from "react-icons/md";
+import { HiMenuAlt2 } from "react-icons/hi";
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -27,14 +28,14 @@ const Navbar = () => {
       <div className="navbar-left">
         {/* Menu Button */}
         <button className="hamburger-menu" onClick={(e) => { e.stopPropagation(); toggleDropdown("menu"); }}>
-          <IoMenu size={24} />
+          <HiMenuAlt2 size={24} />
         </button>
 
         {/* Menu Dropdown */}
         <div className={`dropdown-menu ${activeDropdown === "menu" ? "show" : ""}`} onClick={(e) => e.stopPropagation()}>
           <h3 className="menu-title">
             <button className="hamburger-menu" onClick={() => toggleDropdown("menu")}>
-              <IoMenu style={{ marginRight: "2px" }} size={24} /> Menu
+              <HiMenuAlt2 style={{ marginRight: "2px" }} size={24} /> Menu
             </button>
           </h3>
           <ul>
