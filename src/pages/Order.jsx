@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Order.css';
 import Group18205 from "../assets/Group18205.png"
 
-const OrderPage = () => {
+const Order = () => {
   const [activeTab, setActiveTab] = useState('Ongoing');
 
   const tabs = ['Ongoing', 'Processed', 'Delivered', 'Completed'];
@@ -41,4 +41,4 @@ const OrderPage = () => {
   );
 };
 
-export default OrderPage;
+export default Order;

@@ -23,6 +23,8 @@ import Wallet from './pages/Wallet';
 import EmptyWallet from './pages/EmptyWallet';
 import Settings from './pages/Settings';
 import Orders from './pages/Orders';
+import Message from './pages/Message';
+import MessagePopup from './pages/MessagePopup';
 
 const App = () => {
   // State to manage user login data
@@ -62,6 +64,8 @@ const App = () => {
         <Route path="EmptyWallet" element={<EmptyWallet />} />
         <Route path="Settings" element={<Settings />} />
         <Route path="Orders" element={<Orders />}/>
+        <Route path="Message" element={<Message />} />
+        <Route path="MessagePopup" element={<MessagePopup />} />
 
       </Route>
     )

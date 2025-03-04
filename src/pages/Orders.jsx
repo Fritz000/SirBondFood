@@ -6,7 +6,7 @@ import Rectangle4305 from "../assets/Rectangle4305.png";
 import Rectangle4405 from "../assets/Rectangle4405.png";
 import Rectangle4505 from "../assets/Rectangle4505.png";
 
-const OrderPage = () => {
+const Orders = () => {
   const [activeTab, setActiveTab] = useState('Ongoing');
 
   const tabs = ['Ongoing', 'Processed', 'Delivered', 'Completed'];
@@ -87,4 +87,4 @@ const OrderPage = () => {
   );
 };
 
-export default OrderPage;
+export default Orders;
