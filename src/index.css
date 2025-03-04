@@ -271,19 +271,27 @@ a {
 }
 
 .card-green {
-  background-color: #e6f4ea;
+  background-color: #ddeece;
+  width: 293px;
+  height: 208px;
 }
 
 .card-yellow {
-  background-color: #fef7e6;
+  background-color: #efddc3;
+  width: 293px;
+  height: 208px;
 }
 
 .card-teal {
-  background-color: #e6fffa;
+  background-color: #dcf9f2;
+  width: 293px;
+  height: 208px;
 }
 
 .card-pink {
-  background-color: #fff5f5;
+  background-color: #f6d5d5;
+  width: 293px;
+  height: 208px;
 }
 
 .icon {

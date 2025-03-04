@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Order.css';
+import Group18205 from "../assets/Group18205.png"
 
 const OrderPage = () => {
   const [activeTab, setActiveTab] = useState('Ongoing');
@@ -28,7 +29,7 @@ const OrderPage = () => {
       <div className="order-content">
         <div className="order-empty">
           <img
-            src="https://via.placeholder.com/150"
+            src={Group18205}
             alt="Empty Orders"
             className="order-image"
           />

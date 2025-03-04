@@ -22,6 +22,7 @@ import HelpCenter from './pages/HelpCenter';
 import Wallet from './pages/Wallet';
 import EmptyWallet from './pages/EmptyWallet';
 import Settings from './pages/Settings';
+import Orders from './pages/Orders';
 
 const App = () => {
   // State to manage user login data
@@ -60,6 +61,7 @@ const App = () => {
         <Route path="Wallet" element={<Wallet />} />
         <Route path="EmptyWallet" element={<EmptyWallet />} />
         <Route path="Settings" element={<Settings />} />
+        <Route path="Orders" element={<Orders />}/>
 
       </Route>
     )

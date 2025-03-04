@@ -2,6 +2,12 @@ import React, { useEffect } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import '../pages/Home.css';
 import { BsBag } from "react-icons/bs";
+import emojionepotoffood from "../assets/emojionepotoffood.png";
+import fluentemojiflatpackage from "../assets/fluentemojiflatpackage.png";
+import notoshoppingbags from "../assets/notoshoppingbags.png";
+import twemojishoppingcart from "../assets/twemojishoppingcart.png";
+import notowrappedgift from "../assets/notowrappedgift.png";
+
 import { Gift, ShoppingCart, Package, Soup, Copy } from "lucide-react";
 
 const Home = ({ user }) => {
@@ -32,28 +38,32 @@ const Home = ({ user }) => {
       <h1 className="heading">What services would you like to access</h1>
 
       <div className="services-grid">
-        <div className="card card-green">
-          <Soup size={80} className="icon icon-green" />
-          <p className="card-title">Order meals</p>
-        </div>
-        <div className="card card-yellow">
-          <ShoppingCart size={80} className="icon icon-yellow" />
-          <p className="card-title">Market runs</p>
-        </div>
-        <div className="card card-teal">
-          <BsBag size={80} className="icon icon-teal" />
-          <p className="card-title">Bulk foodstuffs order</p>
-        </div>
-        <div className="card card-pink">
-          <Package size={80} className="icon icon-pink" />
-          <p className="card-title">Diaspora orders</p>
-        </div>
+      <div className="card card-green">
+        <img src={emojionepotoffood} alt="Order meals" className="icon icon-green" />
+        <p className="card-title">Order meals</p>
+      </div>
+
+      <div className="card card-yellow">
+        <img src={twemojishoppingcart} alt="Market runs" className="icon icon-yellow" />
+        <p className="card-title">Market runs</p>
+      </div>
+
+      <div className="card card-teal">
+        <img src={notoshoppingbags} alt="Bulk foodstuffs order" className="icon icon-teal" />
+        <p className="card-title">Bulk foodstuffs order</p>
+      </div>
+
+      <div className="card card-pink">
+        <img src={fluentemojiflatpackage} alt="Diaspora orders" className="icon icon-pink" />
+        <p className="card-title">Diaspora orders</p>
+      </div>
+
       </div>
 
       {/* Promo Section */}
       <div className="promo">
         <div className="promo-content">
-          <Gift size={40} className="icon icon-red" />
+          <img src={notowrappedgift} className="icon icon-red" alt="" />
           <p className="promo-text">
             Earn residual income as people eat all over Nigeria
           </p>

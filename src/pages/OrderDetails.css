@@ -10,6 +10,7 @@ body {
     justify-content: center;
     width: 100%;
     height: 70vh;
+    font-family: 'DM Sans', sans-serif;
 }
 
 .orderdetails {
@@ -25,10 +26,28 @@ body {
     flex-direction: column;
 }
 
+.orderdetailsicons {
+  width: 24px;
+  height: 24px;
+  color: #000;
+}
+
+.orderdetails-back-btn1 {
+  position: absolute;
+  transform: translateY(110%);
+  left: 45px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  color: #000;
+  background: transparent;
+  cursor: pointer;
+}
+
 .order100{
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+    color: #000;
     margin-bottom: 10px;
     margin-left: 70px;
   }
@@ -69,6 +88,7 @@ body {
     font-size: 20px;
     text-align: left;
     margin-bottom: 20px;
+    color: #000;
     font-weight: 600;
 }
 
@@ -76,12 +96,14 @@ body {
     color: #868889;
     font-size: 15px;
     font-weight: 400;
+    margin-bottom: 5px;
   }
 
   .order-container .order2 {
     color: #868889;
     font-size: 15px;
     font-weight: 400;
+    margin-bottom: 5px;
   }
 
   .order-container .total-amount{
@@ -116,12 +138,13 @@ body {
     display: flex;
     align-items: center;
     gap: 15px;
+    margin-left: 30px;
   }
   
   .item-image {
     width: 120px;
     height: 120px;
-    margin-top: 70px;
+    margin-top: 30px;
     border-radius: 5px;
     object-fit: cover;
   }
@@ -131,7 +154,7 @@ body {
     font-weight: 500;
     color: #000000;
     margin-left: -150px;
-    margin-top: 5px;
+    margin-top: -35px;
     margin-bottom: 20px;
   }
 
@@ -165,6 +188,7 @@ body {
     font-weight: 400;
     font-size: 20px;
     line-height: 26.04px;
+    margin-bottom: 5px;
   }
 
   .qty{
@@ -172,6 +196,7 @@ body {
     font-weight: 500;
     color: #868889;
     margin-top: 5px;
+    margin-bottom: 10px;
     line-height: 19.53px;
   }
   
@@ -219,6 +244,7 @@ body {
     font-weight: 500;
     color: #868889;
     max-width: 200px;
+    margin-left: 30px;
     line-height: 19.58px;
   }
 
@@ -227,6 +253,7 @@ body {
     font-weight: 500;
     color: #000000;
     line-height: 19.53px;
+    margin-left: 30px;
   }
 
   .paymentdet{
@@ -242,9 +269,32 @@ body {
     color: #868889;
   }
 
+  .deliveryadd{
+    margin-left: 30px;
+  }
+
+  .paywithpay1{
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 30px;
+    color: #868889;
+  }
+
   .lineorder1{
     margin-top: 5px;
     margin-bottom: 20px;
     width: 1180px;
     color: #EDEDED;
+}
+
+.pm{
+  margin-left: 30px;
+}
+
+.paymentdet{
+  margin-left: 30px;
+}
+
+.total-amount1{
+  margin-left: 30px;
 }

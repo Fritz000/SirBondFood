@@ -39,7 +39,7 @@ const Signin = ({ setUser }) => {
   <X size={24} />
 </button>
 
-        <img src={logo} alt="Feed the Nation Logo" style={{ width: "70px", height: "70px", display: "block", margin: "auto", marginBottom: "30px" }} />
+        <img src={logo} alt="Feed the Nation Logo" style={{ width: "150px", height: "150px", display: "block", margin: "auto", marginBottom: "30px" }} />
         <h2>Welcome back!</h2>
         <p>Enter your email or phone number to login.</p>
         <small>

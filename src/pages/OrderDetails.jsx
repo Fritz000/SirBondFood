@@ -12,9 +12,11 @@ const OrderDetails = ({ onClose }) => {
     <div className="Orderways">
       <div className="Orderdetails">
         <div className="ordericons">
-          <button className="back-btn1" onClick={() => navigate(-1)}>  
-            <ChevronLeft size={24} />
-          </button>
+          <div className="orderdetailsicons">
+            <button className="orderdetails-back-btn1" onClick={() => navigate(-1)}>  
+              <ChevronLeft />
+            </button>
+          </div>
           <h2 className="order100">Order Details</h2>
         </div>
         <div className="lineorder">
@@ -57,10 +59,10 @@ const OrderDetails = ({ onClose }) => {
           </div>
           <div className="lineorder1">
           <hr />
-        </div>
+          </div>
           <p className="paymentdet"><strong>Payment Details</strong></p>
-          <p className="paywithpay">Items total: ₦3,999</p>
-          <p className="paywithpay">Delivery Fee: ₦1,000</p>
+          <p className="paywithpay1">Items total: ₦3,999</p>
+          <p className="paywithpay1">Delivery Fee: ₦1,000</p>
           <p className="total-amount1">Total: ₦4,999</p>
         </div>
         <div className="pi">

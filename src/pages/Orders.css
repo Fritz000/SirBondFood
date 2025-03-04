@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.order-container1 {
+    margin-top: 10px;
+    text-align: left;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.orders1{
+    margin-left: -90px;
+}
+
+.orders1 p{
+    font-size: 24px;
+    font-weight: 600;
+    color: #000;
+}
+
+.line21{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 1230px;
+    color: #EEEEE4;
+}
+
+.order-header1 {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    border-bottom: 2px solid #EEEEEE;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    width: 1000px; /* Reduces the width to half */
+}
+
+.order-tab1 {
+    padding: 10px 15px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 600;
+    color: #868889;
+    position: relative;
+}
+
+.order-tab1.active {
+    color: #6cc51d;
+    font-weight: 600;
+}
+
+.order-tab1.active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #6cc51d;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+}
+
+.section10 {
+    width: 90vw;  /* Makes it span the full width of the viewport */
+    max-width: none; /* Removes any width restriction */
+    margin-left: -90px; /* Aligns it fully to the left */
+    margin-right: 0; /* Ensures no unnecessary margin */
+    padding: 20px;
+    border: 2px solid #E0E0E0;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: #ffffff;
+}
+
+.item10 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: 30px;
+  }
+  
+  .item-image10 {
+    width: 120px;
+    height: 120px;
+    margin-top: 5px;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+
+  .rab20{
+    font-size: 15px;
+    font-weight: 500;
+    color: #000000;
+    transform: translateY(-5%);
+  }
+  
+  .status10 {
+    background: #6cc51d;
+    color: white;
+    padding: 2px 8px;
+    width: 81px;
+    height: 30px;
+    font-size: 15px;
+    border-radius: 5px;
+  }
+  
+  .item-name20 {
+    font-weight: 400;
+    font-size: 20px;
+    color: #000;
+    line-height: 26.04px;
+    margin-bottom: 5px;
+  }
+
+  .orderno20{
+    font-size: 15px;
+    font-weight: 500;
+    color: #868889;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    line-height: 19.53px;
+  }
+
+  .date20{
+    font-size: 20px;
+    font-weight: 400;
+    color: #000000;
+    margin-top: 5px;
+    line-height: 19.53px;
+  }
+
+  .left-side{
+    text-align: right;
+    transform: translateX(230%);
+    color: #6cc51d;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .left-side1{
+    text-align: right;
+    transform: translateX(200%);
+    color: #6cc51d;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .left-side2{
+    text-align: right;
+    transform: translateX(315%);
+    color: #6cc51d;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .left-side3{
+    text-align: right;
+    transform: translateX(265%);
+    color: #6cc51d;
+    font-size: 20px;
+    font-weight: 600;
+  }

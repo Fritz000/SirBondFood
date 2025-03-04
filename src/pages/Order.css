@@ -14,15 +14,20 @@
 }
 
 .orders{
-    margin-left: -50px;
-    font-size: 25px;
-    font-weight: 700;
-    color: #EEEEEE;
+    margin-left: 50px;
+}
+
+.orders p{
+    font-size: 24px;
+    font-weight: 600;
+    color: #000;
 }
 
 .line2{
     margin-top: 15px;
     margin-bottom: 15px;
+    width: 1130px;
+    color: #EEEEE4;
 }
 
 .order-header {
@@ -31,17 +36,18 @@
     gap: 20px;
     border-bottom: 2px solid #EEEEEE;
     margin-bottom: 20px;
-    width: 95%; /* Reduces the width to half */
+    margin-left: 100px;
+    width: 1000px; /* Reduces the width to half */
 }
-
 
 .order-tab {
     padding: 10px 15px;
     border: none;
     background: none;
     cursor: pointer;
-    font-size: 16px;
-    color: gray;
+    font-size: 24px;
+    font-weight: 600;
+    color: #868889;
     position: relative;
 }
 
@@ -63,10 +69,11 @@
 
 .order-content {
     text-align: center;
-    padding: 40px 20px;
+    padding: 10px 60px;
     background-color: #ffffff;
     border-radius: 10px;
-    margin-top: 200px;
+    margin-top: 100px;
+    margin-left: 400px;
 }
 
 .order-empty {
@@ -76,13 +83,16 @@
 }
 
 .order-image {
-    width: 150px;
+    width: 466.58px;
+    height: 330px;
     margin-bottom: 20px;
 }
 
 .order-text {
-    font-size: 18px;
-    color: #333;
+    font-size: 16px;
+    font-weight: 20;
+    color: #000;
+    text-align: center;
     margin-bottom: 20px;
 }
 
@@ -90,7 +100,8 @@
     background-color: #6cc51d;
     color: white;
     padding: 10px 30px;
-    width: 450px;
+    width: 466.58px;
+    height: 50px;
     border: none;
     border-radius: 25px;
     cursor: pointer;

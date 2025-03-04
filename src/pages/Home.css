@@ -1,22 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
 .container {
     padding: 24px;
-    padding-left: 50px;
-    padding-right: 50px;
-    font-family: Arial, sans-serif;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-family: 'DM Sans', sans-serif;
 }
 
 .ads {
     background: #e0e0e0;
     text-align: center;
     padding: 1rem;
-    height: 100px;
+    width: 1232px;
+    height: 150px;
     text-align: center;
     font-size: 30px;
     font-weight: 600;
 }
   
   .heading {
-    font-size: 24px;
+    font-size: 32px;
+    font-weight: 700;
     font-weight: bold;
     margin-bottom: 16px;
   }
@@ -25,6 +29,9 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 16px;
+    width: 1232px;
+    height: 254px;
+  
   }
 
 .copy-button {
@@ -75,7 +82,7 @@
   }
 
   .card-title{
-    font-size: 20px;
+    font-size: 23px;
     font-weight: 700;
   }
   
@@ -100,13 +107,15 @@
   }
   
   .promo {
-    background-color: #f0fff4;
+    background-color: #ebffd7;
     padding: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 8px;
-    margin-top: 24px;
+    width: 1232px;
+    height: 79.17px;
+    margin-top: -5px;
     margin-bottom: 20px;
   }
   
@@ -117,21 +126,27 @@
 
   
   .promo-text {
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 500;
-    margin-left: 8px;
+    margin-left: 35px;
+    color: #052d07;
   }
   
   .icon-red {
     color: #e53e3e;
+    width: 60px;
+    height: 60px;
   }
   
   .register-button {
-    background-color: #2f855a;
+    background-color: #052d07;
     color: white;
     padding: 8px 16px;
     border-radius: 16px;
+    width: 158px;
+    height: 50px;
     border: none;
+    border-radius: 60px;
     cursor: pointer;
   }
   
@@ -196,11 +211,14 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+    width: 1232px;
+    height: 305px;
   }
   
   .profile-card h2 {
-    font-size: 20px;
+    font-size: 32px;
     margin-bottom: 10px;
+    font-weight: 700;
     color: #FFF;
   }
   
@@ -219,6 +237,8 @@
   .profile-left p,
   .profile-right p {
     margin: 8px 0;
+    font-size: 20px;
+    font-weight: 500;
     color: #FFF;
   }
   
@@ -233,6 +253,8 @@
     padding: 8px 16px;
     border: none;
     border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
   }
   
@@ -241,23 +263,26 @@
   }
   
   .activity-card {
-    background-color: #2d3748;
+    background-color: #052d07;
     color: white;
     padding: 20px;
+    width: 1232px;
+    height: 204px;
     border-radius: 12px;
   }
   
   .activity-card h2 {
-    font-size: 20px;
+    font-size: 32px;
     margin-bottom: 10px;
     color: white;
-    font-weight: 500;
+    font-weight: 700;
   }
   
   .activity-card ul {
     list-style-type: disc;
     padding-left: 20px;
-    font-size: 13px;
+    font-size: 20px;
+    font-weight: 400;
   }
   
   .activity-card li {
