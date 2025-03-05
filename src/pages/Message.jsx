@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './message.css';
+import './Message.css';
 import MessagePopup from './MessagePopup'; // Import the popup component
 import { ChevronLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
