@@ -9,6 +9,7 @@ import twemojishoppingcart from "../assets/twemojishoppingcart.png";
 import notowrappedgift from "../assets/notowrappedgift.png";
 
 import { Gift, ShoppingCart, Package, Soup, Copy } from "lucide-react";
+import MarketRuns from './MarketRuns';
 
 const Home = ({ user }) => {
   const location = useLocation();
@@ -44,8 +45,8 @@ const Home = ({ user }) => {
       </div>
 
       <div className="card card-yellow">
-        <img src={twemojishoppingcart} alt="Market runs" className="icon icon-yellow" />
-        <p className="card-title">Market runs</p>
+        <Link to="/MarketRuns"><img src={twemojishoppingcart} alt="Market runs" className="icon icon-yellow" />
+        <p className="card-title">Market runs</p></Link>
       </div>
 
       <div className="card card-teal">
