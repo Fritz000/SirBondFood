@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 import { FaRegBell, FaShoppingCart, FaChevronDown } from "react-icons/fa";
@@ -11,6 +11,40 @@ import { HiMenuAlt2 } from "react-icons/hi";
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [cartCount, setCartCount] = useState(0);
+
+  // Function to update cart count
+  const updateCartCount = () => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartCount(storedCart.length);
+  };
+
+  // Load cart count from localStorage and listen for changes
+  useEffect(() => {
+    updateCartCount();
+
+    // Listen for storage updates across tabs/windows
+    const handleStorageChange = (e) => {
+      if (e.key === "cart") {
+        updateCartCount();
+      }
+    };
+
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
+
+  // Listen for local cart updates within the same tab
+  useEffect(() => {
+    const interval = setInterval(() => {
+      updateCartCount();
+    }, 500); // Check every 500ms
+
+    return () => clearInterval(interval);
+  }, []);
 
   const toggleDropdown = (dropdown) => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
@@ -24,14 +58,12 @@ const Navbar = () => {
 
   return (
     <div className="navbar" onClick={closeDropdown}>
-      {/* Left Section - Menu Button & Logo */}
+      {/* Left Section - Menu & Logo */}
       <div className="navbar-left">
-        {/* Menu Button */}
         <button className="hamburger-menu" onClick={(e) => { e.stopPropagation(); toggleDropdown("menu"); }}>
           <HiMenuAlt2 size={24} />
         </button>
 
-        {/* Menu Dropdown */}
         <div className={`dropdown-menu ${activeDropdown === "menu" ? "show" : ""}`} onClick={(e) => e.stopPropagation()}>
           <h3 className="menu-title">
             <button className="hamburger-menu" onClick={() => toggleDropdown("menu")}>
@@ -39,40 +71,16 @@ const Navbar = () => {
             </button>
           </h3>
           <ul>
-            <li className="menu-item">
-              <Link to="/" onClick={() => setActiveDropdown(null)}>
-                <RiHome2Line style={{ marginRight: "10px" }} size={15} /> Home
-              </Link>
-            </li>
-            <li className="menu-item">
-              <Link to="/Order" onClick={() => setActiveDropdown(null)}>
-                <Briefcase style={{ marginRight: "10px" }} size={15} /> Orders
-              </Link>
-            </li>
-            <li className="menu-item">
-              <Link to="/support" onClick={() => setActiveDropdown(null)}>
-                <MdOutlineSupportAgent style={{ marginRight: "7px" }} size={15} /> Support
-              </Link>
-            </li>
-            <li className="menu-item">
-              <Link to="/wallet" onClick={() => setActiveDropdown(null)}>
-                <Wallet style={{ marginRight: "10px" }} size={15} /> Wallet
-              </Link>
-            </li>
-            <li className="menu-item">
-              <Link to="/settings" onClick={() => setActiveDropdown(null)}>
-                <Settings style={{ marginRight: "7px" }} size={15} /> Settings
-              </Link>
-            </li>
-            <li className="menu-item">
-              <Link to="/logout" onClick={() => setActiveDropdown(null)}>
-                <RiLogoutCircleRLine style={{ marginRight: "7px" }} size={15} /> Logout
-              </Link>
-            </li>
+            <li className="menu-item"><Link to="/" onClick={() => setActiveDropdown(null)}><RiHome2Line style={{ marginRight: "10px" }} size={15} /> Home</Link></li>
+            <li className="menu-item"><Link to="/Order" onClick={() => setActiveDropdown(null)}><Briefcase style={{ marginRight: "10px" }} size={15} /> Orders</Link></li>
+            <li className="menu-item"><Link to="/support" onClick={() => setActiveDropdown(null)}><MdOutlineSupportAgent style={{ marginRight: "7px" }} size={15} /> Support</Link></li>
+            <li className="menu-item"><Link to="/wallet" onClick={() => setActiveDropdown(null)}><Wallet style={{ marginRight: "10px" }} size={15} /> Wallet</Link></li>
+            <li className="menu-item"><Link to="/settings" onClick={() => setActiveDropdown(null)}><Settings style={{ marginRight: "7px" }} size={15} /> Settings</Link></li>
+            <li className="menu-item"><Link to="/logout" onClick={() => setActiveDropdown(null)}><RiLogoutCircleRLine style={{ marginRight: "7px" }} size={15} /> Logout</Link></li>
           </ul>
         </div>
 
-        <img src={logo} alt="Logo" style={{ width: "100px", height: "100px"}} />
+        <img src={logo} alt="Logo" style={{ width: "100px", height: "100px" }} />
       </div>
 
       {/* Center Section: Search Bar */}
@@ -81,7 +89,7 @@ const Navbar = () => {
         <button className="search-button"><CiSearch size={20} /></button>
       </div>
 
-      {/* Right Section: User & Notifications */}
+      {/* Right Section: User, Notifications & Cart */}
       <div className="navbar-right">
         {/* User Dropdown */}
         <div className="user-info" onClick={(e) => { e.stopPropagation(); toggleDropdown("user"); }}>
@@ -113,9 +121,12 @@ const Navbar = () => {
           </ul>
         </div>
 
-        {/* Shopping Cart */}
-        <Link to="/Emptycart">
-          <button className="icon-button"><FaShoppingCart size={24} /></button>
+        {/* Shopping Cart with Dynamic Count */}
+        <Link to={cartCount > 0 ? "/Populatedcart" : "/Emptycart"}>
+          <button className="icon-button">
+            <FaShoppingCart size={24} />
+            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+          </button>
         </Link>
       </div>
     </div>

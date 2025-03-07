@@ -25,23 +25,34 @@ import Settings from './pages/Settings';
 import Orders from './pages/Orders';
 import Message from './pages/Message';
 import MessagePopup from './pages/MessagePopup';
+import MarketRuns from './pages/MarketRuns';
 
 const App = () => {
-  // State to manage user login data
+  // State for user authentication
   const [user, setUser] = useState(null);
+  
+  // 🛒 Cart state
+  const [cart, setCart] = useState([]);
 
-  // Load user data from localStorage (for persistence)
+  // Load user and cart data from localStorage
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
-    if (storedUser) {
-      setUser(storedUser);
-    }
+    const storedCart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (storedUser) setUser(storedUser);
+    setCart(storedCart);
   }, []);
+
+  // Add item to cart and update localStorage
+  const addToCart = (item) => {
+    const updatedCart = [...cart, item];
+    setCart(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
 
   // Router setup
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<RootLayout />}> 
+      <Route path="/" element={<RootLayout cartCount={cart.length} />}> {/* Pass cart count */}
         <Route index element={<Home user={user} />} />
         <Route path="Products" element={<Products />} />
         <Route path="About" element={<About />} />
@@ -63,10 +74,10 @@ const App = () => {
         <Route path="Wallet" element={<Wallet />} />
         <Route path="EmptyWallet" element={<EmptyWallet />} />
         <Route path="Settings" element={<Settings />} />
-        <Route path="Orders" element={<Orders />}/>
+        <Route path="Orders" element={<Orders />} />
         <Route path="Message" element={<Message />} />
         <Route path="MessagePopup" element={<MessagePopup />} />
-
+        <Route path="MarketRuns" element={<MarketRuns addToCart={addToCart} />} /> {/* Pass addToCart */}
       </Route>
     )
   );

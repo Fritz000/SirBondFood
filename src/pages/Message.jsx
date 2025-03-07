@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Message.css';
-import MessagePopup from './MessagePopup'; // Import the popup component
 import { ChevronLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import Vector from "../assets/Vector.png";
@@ -8,8 +7,6 @@ import Jamwrite from "../assets/jam_write.png";
 
 const Message = () => {
     const navigate = useNavigate();
-    const [showPopup, setShowPopup] = useState(false); // State to manage popup visibility
-
     return (
         <div className="message-container">
             <div className='messages'>
@@ -23,7 +20,6 @@ const Message = () => {
                     <img 
                         src={Jamwrite} 
                         className="jamwrite-back-btn1" 
-                        onClick={() => setShowPopup(true)} // Show popup on click
                         alt="Write Message" 
                     />
                 </div>
@@ -38,14 +34,6 @@ const Message = () => {
                 </div>
             </div>
 
-            {showPopup && (
-                <div className="popup-overlay">
-                    <div className="popup-container">
-                        <MessagePopup />
-                        <button className="popup-close-btn" onClick={() => setShowPopup(false)}>X</button>
-                    </div>
-                </div>
-            )}
         </div>
     );
 };

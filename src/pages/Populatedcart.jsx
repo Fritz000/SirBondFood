@@ -1,56 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../pages/PopulatedCart.css";
 
 const PopulatedCart = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1,
-      name: "Party jollof rice and stewed beef",
-      location: "Food Court",
-      price: 3999,
-      quantity: 1,
-      image: "https://via.placeholder.com/50",
-    },
-    {
-      id: 2,
-      name: "Grilled chicken peri peri",
-      location: "TGA Spicity",
-      price: 2850,
-      quantity: 1,
-      image: "https://via.placeholder.com/50",
-    },
-    {
-      id: 3,
-      name: "10kg of tomatoes",
-      location: "Marian Market",
-      price: 6750,
-      quantity: 1,
-      image: "https://via.placeholder.com/50",
-    },
-  ]);
-
+  const [cartItems, setCartItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
 
-  // Handle the selection of individual item checkboxes
+  // Load cart from localStorage on mount
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Ensure price & quantity are properly formatted
+    const cleanedCart = storedCart.map(item => ({
+      ...item,
+      price: parseFloat(item.price) || 0, // Convert to number & avoid NaN
+      quantity: parseInt(item.quantity) || 1 // Ensure valid quantity
+    }));
+
+    setCartItems(cleanedCart);
+  }, []);
+
+  // Save cart to localStorage whenever cart updates
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  // Handle item selection
   const handleSelectItem = (id) => {
-    setSelectedItems((prevSelectedItems) => {
-      if (prevSelectedItems.includes(id)) {
-        // Remove from selected items if already selected
-        return prevSelectedItems.filter((itemId) => itemId !== id);
-      } else {
-        // Add to selected items if not selected
-        return [...prevSelectedItems, id];
-      }
-    });
+    setSelectedItems((prevSelected) =>
+      prevSelected.includes(id)
+        ? prevSelected.filter((itemId) => itemId !== id)
+        : [...prevSelected, id]
+    );
   };
 
-  // Handle the "Select All" checkbox
+  // Handle "Select All"
   const handleSelectAll = (event) => {
-    if (event.target.checked) {
-      setSelectedItems(cartItems.map((item) => item.id)); // Select all items
-    } else {
-      setSelectedItems([]); // Deselect all items
-    }
+    setSelectedItems(event.target.checked ? cartItems.map((item) => item.id) : []);
   };
 
   // Update quantity
@@ -58,7 +43,7 @@ const PopulatedCart = () => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
         item.id === id
-          ? { ...item, quantity: item.quantity + increment }
+          ? { ...item, quantity: Math.max(1, item.quantity + increment) }
           : item
       )
     );
@@ -67,23 +52,20 @@ const PopulatedCart = () => {
   // Delete selected items
   const handleDeleteSelected = () => {
     setCartItems(cartItems.filter((item) => !selectedItems.includes(item.id)));
-    setSelectedItems([]); // Clear selected items after deletion
+    setSelectedItems([]); // Clear selected items
   };
 
-  // Helper function to format numbers with commas
+  // Format number for price display
   const formatNumber = (number) => {
     return new Intl.NumberFormat("en-US").format(number);
   };
 
-  // Calculations for subtotal and total
-  const subtotal = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
+  // Debugging: Check if price is available in items
+  console.log("Cart Items:", cartItems);
 
-  // Shipping fee: 0 if no items, 1500 if there are items
+  // Calculate totals
+  const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   const shippingFee = cartItems.length > 0 ? 1500 : 0;
-
   const total = subtotal + shippingFee;
 
   return (
@@ -97,47 +79,45 @@ const PopulatedCart = () => {
               type="checkbox"
               className="select-all-checkbox"
               onChange={handleSelectAll}
-              checked={selectedItems.length === cartItems.length} // Check if all items are selected
+              checked={selectedItems.length === cartItems.length && cartItems.length > 0}
             />
             <label>Select all items</label>
           </div>
-          <button
-            className="delete-selected-button"
-            onClick={handleDeleteSelected}
-          >
+          <button className="delete-selected-button" onClick={handleDeleteSelected} disabled={selectedItems.length === 0}>
             Delete selected items
           </button>
         </div>
 
-        {cartItems.map((item) => (
-          <div className="cart-item" key={item.id}>
-            <input
-              type="checkbox"
-              className="select-checkbox"
-              onChange={() => handleSelectItem(item.id)} // Select/Deselect individual item
-              checked={selectedItems.includes(item.id)} // If item is selected, check the box
-            />
-            <img src={item.image} alt={item.name} className="item-image" />
-            <div className="item-details">
-              <p className="item-name">{item.name}</p>
-              <p className="item-location">{item.location}</p>
-              <p className="available">Available</p>
-            </div>
-            <div className="item-price-container">
-              <p className="item-price">₦ {formatNumber(item.price)}</p>
-              <div className="quantity-controls">
-                <button
-                  onClick={() => handleQuantityChange(item.id, -1)}
-                  disabled={item.quantity === 1}
-                >
-                  -
-                </button>
-                <span>{item.quantity}</span>
-                <button onClick={() => handleQuantityChange(item.id, 1)}>+</button>
+        {cartItems.length === 0 ? (
+          <p className="empty-cart-message">Your cart is empty.</p>
+        ) : (
+          cartItems.map((item) => (
+            <div className="cart-item" key={item.id}>
+              <input
+                type="checkbox"
+                className="select-checkbox"
+                onChange={() => handleSelectItem(item.id)}
+                checked={selectedItems.includes(item.id)}
+              />
+              <img src={item.image} alt={item.name} className="item-image" />
+              <div className="item-details">
+                <p className="item-name">{item.name}</p>
+                <p className="item-location">{item.location}</p>
+                <p className="available">Available</p>
+              </div>
+              <div className="item-price-container">
+                <p className="item-price">₦ {formatNumber(item.price)}</p>
+                <div className="quantity-controls">
+                  <button onClick={() => handleQuantityChange(item.id, -1)} disabled={item.quantity === 1}>
+                    -
+                  </button>
+                  <span>{item.quantity}</span>
+                  <button onClick={() => handleQuantityChange(item.id, 1)}>+</button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
 
       {/* Right Container: Summary */}
@@ -157,7 +137,9 @@ const PopulatedCart = () => {
             <span>₦ {formatNumber(total)}</span>
           </div>
         </div>
-        <button className="make-payment-button">Make Payment</button>
+        <button className="make-payment-button" disabled={cartItems.length === 0}>
+          Make Payment
+        </button>
       </div>
     </div>
   );
