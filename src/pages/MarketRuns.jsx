@@ -14,7 +14,7 @@ import avocado from "../assets/avocado.png";
 import agbalumo from "../assets/agbalumo.png";
 import souvenir from "../assets/souvenir.png";
 import pineapple from "../assets/pineapple.png";
-import Group from "../assets/group.png";
+import Group from "../assets/Group.png";
 import { ChevronRight } from "lucide-react";
 import Star from "../assets/STAR.png"
 import rev from "../assets/rev.png"
@@ -212,6 +212,9 @@ const MarketRuns = () => {
           <hr className="description-line"/>
           <section className="review">
             <h4 className="review-text">Reviews</h4>
+            <button className="review-back-btn1" onClick={() => navigate(-1)}>  
+            <ChevronRight />
+          </button>
           </section>
           <section className="review-image">
             <img src={rev} alt="" />

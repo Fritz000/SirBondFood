@@ -416,6 +416,18 @@ body.popup-open {
     margin-left: 10px;
 }
 
+.review-back-btn1 {
+    align-items: right;
+    margin-right: -50px;
+    margin-top: 8px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    color: #000;
+    background: transparent;
+    cursor: pointer;
+}
+
 .review-text{
     font-size: 17px;
     font-weight: 500;
