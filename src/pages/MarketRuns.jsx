@@ -19,6 +19,7 @@ import { ChevronRight } from "lucide-react";
 import Star from "../assets/STAR.png"
 import rev from "../assets/rev.png"
 
+
 const categories = [
   { name: "Trending", image: Vector1 },
   { name: "Sea Foods", image: seafoods },
@@ -29,26 +30,54 @@ const categories = [
   { name: "Dairy Products", image: glassmilkbottle },
   { name: "Feed and Seeds", image: seeds },
 ];
-
+// Hardcoded trending items
 const trendingItems = [
   { id: 1, name: "Red Apple", price: 500, image: singleredapple, description: "Fresh red apple with juicy taste." },
   { id: 2, name: "Avocado", price: 500, image: avocado, description: "Rich and creamy avocado, great for salads." },
   { id: 3, name: "Tangerine", price: 500, image: tangerine, description: "Sweet and tangy tangerine packed with vitamins." },
   { id: 4, name: "Agbalumo", price: 200, image: agbalumo, description: "Nigerian cherry, also known as Udara." },
-  { id: 5, name: "Souvenir Fruitpacks", price: 500, image: souvenir, description: "This package contains 6 fresh fruits. It contains, banana, apple, pineapple, pears, orange and grapes. Kindly note that it can be delivered and packed based on your fruits preferences." },
+  { id: 5, name: "Souvenir Fruitpacks", price: 500, image: souvenir, description: "A mix of 6 fresh fruits." },
   { id: 6, name: "Pineapple", price: 500, image: pineapple, description: "Tropical pineapple, rich in vitamin C." },
+];
+
+const comments = [
+  {
+    id: 1,
+    name: "Kilomon",
+    date: "Feb 9, 2025",
+    verified: true,
+    rating: 5,
+    comment: "Fruit was fresh and lovely product packaging",
+  },
+  {
+    id: 2,
+    name: "Jack",
+    date: "Feb 9, 2025",
+    verified: true,
+    rating: 4,
+    comment: "Fruit was fresh, also bigger than I expected and lovely product packaging",
+  },
 ];
 
 const MarketRuns = () => {
   const [cart, setCart] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [items, setItems] = useState([]); // Holds admin-added items + trending
 
   useEffect(() => {
+    // Fetch items from localStorage (admin-added items)
+    const storedItems = JSON.parse(localStorage.getItem("marketItems")) || [];
+    setItems([...trendingItems, ...storedItems]); // Combine trending + admin items
+  }, []);
+
+  useEffect(() => {
+    // Load cart from localStorage
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(storedCart);
   }, []);
 
   useEffect(() => {
+    // Save cart to localStorage when updated
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
@@ -59,17 +88,62 @@ const MarketRuns = () => {
   const closePopup = () => {
     setSelectedItem(null);
   };
+  const [quantity, setQuantity] = useState(0); // Start with 0
+  const incrementQuantity = () => {
+    if (quantity === 0) {
+      addToCart(selectedItem); // Add item to cart if it's the first click
+    }
+    setQuantity(prev => prev + 1);
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 0) {
+      setQuantity(prev => prev - 1);
+      if (quantity === 1) {
+        removeFromCart(selectedItem); // Remove item from cart if 0
+      }
+    }
+  };
+
+  const getQuantity = (id) => {
+    const item = cart.find((cartItem) => cartItem.id === id);
+    return item ? item.quantity : 0;
+  };
+
+  const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedMarket, setSelectedMarket] = useState("");
+  
+
 
   return (
     <div className="container">
-      <div className="dropdowns">
-        <select className="dropdown">
-          <option>Location</option>
-        </select>
-        <select className="dropdown">
-          <option>Market</option>
-        </select>
-      </div>
+       <div className="dropdowns">
+      {/* Location Dropdown */}
+      <select 
+        className={`dropdown ${selectedLocation ? 'active' : ''}`} 
+        onChange={(e) => setSelectedLocation(e.target.value)}
+      >
+        <option value="" disabled selected>Location</option>
+        <option value="New York">New York</option>
+        <option value="Los Angeles">Los Angeles</option>
+        <option value="Chicago">Chicago</option>
+        <option value="Houston">Houston</option>
+        <option value="Miami">Miami</option>
+      </select>
+
+      {/* Market Dropdown */}
+      <select 
+        className={`dropdown ${selectedMarket ? 'active' : ''}`} 
+        onChange={(e) => setSelectedMarket(e.target.value)}
+      >
+        <option value="" disabled selected>Market</option>
+        <option value="Stock Market">Stock Market</option>
+        <option value="Real Estate">Real Estate</option>
+        <option value="Cryptocurrency">Cryptocurrency</option>
+        <option value="Retail">Retail</option>
+        <option value="Automotive">Automotive</option>
+      </select>
+    </div>
 
       <div className="grid-container">
         {categories.map((category, index) => (
@@ -79,10 +153,10 @@ const MarketRuns = () => {
           </div>
         ))}
       </div>
-
-      <h2 className="section-title">Trending</h2>
+      <h2 className="section-title">Market Runs</h2>
+      
       <div className="trending-grid">
-        {trendingItems.map((item) => (
+        {items.map((item) => (
           <div key={item.id} className="trending-card" onClick={() => setSelectedItem(item)}>
             <img src={item.image} alt={item.name} className="trending-image" />
             <div className="trending-info">
@@ -96,60 +170,75 @@ const MarketRuns = () => {
 
       {selectedItem && (
         <div className="popup-overlay" onClick={closePopup}>
-          <div className="popup" onClick={(e) => e.stopPropagation()}>
-            <button className="popup-close" onClick={closePopup}>&times;</button>
-            <div className="layout-container">
-              <div className="layout-container-image">
-            <img src={selectedItem.image} alt={selectedItem.name} className="popup-image" />
-            </div>
-            <div className="popup-title-content">
-            <h3 className="popup-title">{selectedItem.name}</h3>
-            <p className="popup-price">₦ {selectedItem.price.toLocaleString()}</p>
-            </div>
-            <div className="chat-icon-button">
-            <button className="chat-icon" onClick={() => addToCart(selectedItem)}> <img src={Group} className="groupchat" alt="" /> Chat</button>
-            <div className="cart-item-button100">
-  <button className="decrement" onClick={() => decrementQuantity(selectedItem)}>-</button>
-  <span className="quantity">1</span>
-  <button className="increment" onClick={() => incrementQuantity(selectedItem)}>+</button>
+        <div className="popup" onClick={(e) => e.stopPropagation()}>
+          <div className="layout-container">
+            <div className="layout-container-image">
+          <img src={selectedItem.image} alt={selectedItem.name} className="popup-image" />
+          </div>
+          <div className="popup-title-content">
+          <h3 className="popup-title">{selectedItem.name}</h3>
+          <p className="popup-price">₦ {selectedItem.price.toLocaleString()}</p>
+          </div>
+          <div className="chat-icon-button">
+          <button className="chat-icon" onClick={() => addToCart(selectedItem)}> <img src={Group} className="groupchat" alt="" /> Chat</button>
+          <div className="cart-item-button100">
+  <button className="decrement" onClick={decrementQuantity}>-</button>
+  <span className="quantity">{getQuantity(selectedItem.id)}</span>
+  <button className="increment" onClick={() => addToCart(selectedItem)}>+</button>
 </div>
 
-            </div>
-            </div>
-            <div className="layout-container1">
-              <div className="descriptionrole">
-              <p className="descriptionof">Description</p>
-              <div className="descriptionicons">
-            <button className="description-back-btn1" onClick={() => navigate(-1)}>  
-              <ChevronRight />
-            </button>
-        </div>
-              </div>
-              <hr className="description-line"/>
-            <p className="popup-description">{selectedItem.description}</p>
-            </div>
-            <div className="layout-container2">
-            <div className="descriptionrole1">
-              <p className="descriptionof1">4.8 (742)</p>
-            <div className="star-icon">  
-              <img src={Star} alt="" />
-              </div>
-            </div>
-            <hr className="description-line"/>
-            <section className="review">
-              <h4 className="review-text">Reviews</h4>
-            </section>
-            <section className="review-image">
-              <img src={rev} alt="" />
-            </section>
-            <hr className="description-line"/>
-            
-            </div>
-            <button className="popup-add-to-cart" onClick={() => addToCart(selectedItem)}>Add to Cart</button>
+
           </div>
+          </div>
+          <div className="layout-container1">
+            <div className="descriptionrole">
+            <p className="descriptionof">Description</p>
+            <div className="descriptionicons">
+          <button className="description-back-btn1" onClick={() => navigate(-1)}>  
+            <ChevronRight />
+          </button>
+      </div>
+            </div>
+            <hr className="description-line"/>
+          <p className="popup-description">{selectedItem.description}</p>
+          </div>
+          <div className="layout-container2">
+          <div className="descriptionrole1">
+            <p className="descriptionof1">4.8 (742)</p>
+          <div className="star-icon">  
+            <img src={Star} alt="" />
+            </div>
+          </div>
+          <hr className="description-line"/>
+          <section className="review">
+            <h4 className="review-text">Reviews</h4>
+          </section>
+          <section className="review-image">
+            <img src={rev} alt="" />
+          </section>
+          <hr className="description-line"/>
+          {comments.map((review) => (
+        <div key={review.id} className="comment-card">
+          <div className="comment-header">
+            <div className="comment-avatar">K</div>
+            <div className="comment-details">
+              <p className="comment-name">{review.name} | <span className="comment-date">{review.date}</span></p>
+              {review.verified && <p className="verified">Verified Purchased</p>}
+            </div>
+          </div>
+          <div className="comment-rating">
+          <div className="star-icon10">  
+            <img src={Star} alt="" />
+            </div>
+          </div>
+          <p className="comment-text">{review.comment}</p>
         </div>
-      )}
+      ))}
     </div>
+        </div>  
+        </div>
+    )}
+  </div>
   );
 };
 

@@ -26,6 +26,8 @@ import Orders from './pages/Orders';
 import Message from './pages/Message';
 import MessagePopup from './pages/MessagePopup';
 import MarketRuns from './pages/MarketRuns';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminLogin from './pages/AdminLogin';
 
 const App = () => {
   // State for user authentication
@@ -77,7 +79,9 @@ const App = () => {
         <Route path="Orders" element={<Orders />} />
         <Route path="Message" element={<Message />} />
         <Route path="MessagePopup" element={<MessagePopup />} />
-        <Route path="MarketRuns" element={<MarketRuns addToCart={addToCart} />} /> {/* Pass addToCart */}
+        <Route path="MarketRuns" element={<MarketRuns addToCart={addToCart} />} />
+        <Route path="AdminDashboard" element={<AdminDashboard />} />
+        <Route path="AdminLogin" element={<AdminLogin />} />
       </Route>
     )
   );
