@@ -1,0 +1,119 @@
+.healthandbeauty-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .healthandbeauty-first-header {
+    background-color: rgba(108, 197, 29, 0.3); /* Green with transparency */
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Ensure the header is aligned properly */
+  .healthandbeauty-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  /* Center "Food & Grocery" text */
+  .healthandbeauty {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 500;
+    color: #000;
+  }
+  
+  /* Make sure back button is properly aligned */
+  .back-button {
+    left: 10px; /* Extreme left */
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Search container styling */
+  .search-container {
+    display: flex;
+    align-items: center;
+    background: #FFF;
+    padding: 8px;
+    border-radius: 40px;
+    border: 2px solid #000;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .search-icon {
+    margin-left: 10px;
+    color: #666;
+  }
+  
+  .search-bar {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    background: transparent;
+    margin-left: 8px;
+  }
+  
+  .healthandbeauty-category-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .healthandbeauty-category-item {
+    display: flex;
+    align-items: center;
+    background: #f3f3f3; /* Category background */
+    padding: 15px;
+    border-radius: 10px;
+    justify-content: space-between;
+  }
+  
+  .healthandbeauty-icon-container {
+    width: 150px; /* Adjust size as needed */
+    height: 90px;
+    background: #fff; /* White background */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .healthandbeauty-category-icon {
+    width: 90px;
+    height: 90px;
+    object-fit: contain; /* Ensure proper fitting */
+  }
+  
+  .healthandbeauty-category-name {
+    flex-grow: 1;
+    text-align: left;
+    margin-left: 25px;
+    font-size: 24px;
+    font-weight: 500;
+  }
+  
+  .healthandbeauty-arrow-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .healthandbeauty-arrow-button svg {
+    width: 28px; /* Increased Chevron size */
+    height: 28px;
+  }
+  

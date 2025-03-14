@@ -28,6 +28,15 @@ import MessagePopup from './pages/MessagePopup';
 import MarketRuns from './pages/MarketRuns';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminLogin from './pages/AdminLogin';
+import FoodAndGrocery from './pages/FoodAndGrcoery';
+import Electronics from './pages/Electronics';
+import HomeAndLiving from './pages/HomeAndLiving';
+import HealthAndBeauty from './pages/HealthAndBeauty';
+import FashionAndClothing from './pages/FashionAndClothing';
+import BabiesAndGames from './pages/BabiesAndGames';
+import FeedAndSeeds from './pages/FeedAndSeeds';
+import SportAndOutdoors from './pages/SportAndOutdoors';
+import FoodGrocery from './pages/FoodGrocery';
 
 const App = () => {
   // State for user authentication
@@ -82,6 +91,15 @@ const App = () => {
         <Route path="MarketRuns" element={<MarketRuns addToCart={addToCart} />} />
         <Route path="AdminDashboard" element={<AdminDashboard />} />
         <Route path="AdminLogin" element={<AdminLogin />} />
+        <Route path="FoodAndGrocery" element={<FoodAndGrocery />} />
+        <Route path="Electronics" element={<Electronics />} />
+        <Route path="HomeAndLiving" element={<HomeAndLiving/>} />
+        <Route path="HealthAndBeauty" element={<HealthAndBeauty/>} />
+        <Route path="FashionAndClothing" element={<FashionAndClothing />} />
+        <Route path="BabiesAndGames" element={<BabiesAndGames />} />
+        <Route path="FeedAndSeeds" element={<FeedAndSeeds />} />
+        <Route path="SportAndOutdoors" element={<SportAndOutdoors />} />
+        <Route path="FoodGrocery" element={<FoodGrocery />} />
       </Route>
     )
   );

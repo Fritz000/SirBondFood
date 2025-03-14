@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./MarketRuns.css";
+import "./FoodGrocery.css";
 import { FaStar } from "react-icons/fa";
 import Vector1 from "../assets/Vector1.png";
 import seafoods from "../assets/fresh-bass-with-white-background1.png";
@@ -22,15 +22,11 @@ import rev from "../assets/rev.png"
 
 
 const categories = [
-  { name: "Food & Grocery", image: Vector1 },
-  { name: "Electronics", image: seafoods },
-  { name: "Home & Living", image: stunning },
-  { name: "Health & Beauty", image: grain },
-  { name: "Fashion & Clothing", image: singleredapple },
-  { name: "Babies & Games", image: vegetables },
-  { name: "Sport & Outdoors", image: glassmilkbottle },
-  { name: "Feed & Seeds", image: seeds },
+  { name: "Fruits", image: singleredapple },
+  { name: "Vegetable", image: seafoods  },
+  { name: "Spice", image: singleredapple }
 ];
+
 // Hardcoded trending items
 const trendingItems = [
   { id: 1, name: "Red Apple", price: 500, image: singleredapple, description: "Fresh red apple with juicy taste." },
@@ -60,7 +56,7 @@ const comments = [
   },
 ];
 
-const MarketRuns = () => {
+const FoodGrocery = () => {
   const [cart, setCart] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [items, setItems] = useState([]); // Holds admin-added items + trending
@@ -137,7 +133,15 @@ const handleCategoryClick = (categoryName) => {
 
   return (
     <div className="container">
-      <section className="ads">Mini Ads</section>
+      <div className="category-container">
+        {categories.map((cat, index) => (
+          <div key={index} className="category-item">
+          <img src={cat.image} alt={cat.name} className="category-icon" />
+          <p>{cat.name}</p>
+        </div>
+        
+        ))}
+      </div>
        <div className="dropdowns">
       {/* Location Dropdown */}
       <select 
@@ -167,44 +171,7 @@ const handleCategoryClick = (categoryName) => {
     </div>
 
     <div className="grid-container">
-        {categories.map((category, index) => (
-          <div
-            key={index}
-            className="category-card"
-            onClick={() => {
-              if (category.name === "Food & Grocery") {
-                navigate("/FoodAndGrocery"); // Navigate to the correct page
-              }
-              if (category.name === "Electronics") {
-                navigate("/Electronics"); // Navigate to the correct page
-              }
-              if (category.name === "Home & Living") {
-                navigate("/HomeAndLiving"); // Navigate to the correct page
-              }
-              if (category.name === "Health & Beauty") {
-                navigate("/HealthAndBeauty"); // Navigate to the correct page
-              }
-              if (category.name === "Fashion & Clothing") {
-                navigate("/FashionAndClothing"); // Navigate to the correct page
-              }
-              if (category.name === "Babies & Games") {
-                navigate("/BabiesAndGames"); // Navigate to the correct page
-              }
-              if (category.name === "Sport & Outdoors") {
-                navigate("/SportAndOutdoors"); // Navigate to the correct page
-              }
-              if (category.name === "Feed & Seeds") {
-                navigate("/FeedAndSeeds"); // Navigate to the correct page
-              }
-            }}
-            style={{ cursor: "pointer" }} // Make it look clickable
-          >
-            <div className="image-icon-container">
-            <img src={category.image} alt={category.name} className="category-image" />
-            </div>
-            <p className="category-name">{category.name}</p>
-          </div>
-        ))}
+        
       </div>
       <h2 className="section-title">Market Runs</h2>
       
@@ -300,4 +267,4 @@ const handleCategoryClick = (categoryName) => {
   );
 };
 
-export default MarketRuns;
+export default FoodGrocery;
