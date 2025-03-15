@@ -125,6 +125,11 @@
     transform: scale(1.05);
 }
 
+.trending0-image{
+    background-color: #fff;
+    border-radius: 7.3px;
+}
+
 .trending-image {
     width: 150px;
     height: 150px;
@@ -133,6 +138,7 @@
 
 .trending-info {
     margin-top: 5px;
+    text-align: left;
 }
 
 .trending-name {

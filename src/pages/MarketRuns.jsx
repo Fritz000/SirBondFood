@@ -138,33 +138,45 @@ const handleCategoryClick = (categoryName) => {
   return (
     <div className="container">
       <section className="ads">Mini Ads</section>
-       <div className="dropdowns">
-      {/* Location Dropdown */}
-      <select 
-        className={`dropdown ${selectedLocation ? 'active' : ''}`} 
-        onChange={(e) => setSelectedLocation(e.target.value)}
-      >
-        <option value="" disabled selected>Location</option>
-        <option value="New York">New York</option>
-        <option value="Los Angeles">Los Angeles</option>
-        <option value="Chicago">Chicago</option>
-        <option value="Houston">Houston</option>
-        <option value="Miami">Miami</option>
-      </select>
+      <div className="dropdowns">
+  {/* Location Dropdown */}
+  <select 
+    className="dropdown" 
+    onChange={(e) => setSelectedLocation(e.target.value)}
+  >
+    <option value="" disabled selected>Location</option>
+    <optgroup label="Available Region">
+      <option value="Cross River State">Cross River State</option>
+      <option value="Rivers State">Rivers State</option>
+    </optgroup>
+    <optgroup label="Regions Coming Soon">
+      <option value="Delta State">Delta State</option>
+      <option value="Lagos State">Lagos State</option>
+      <option value="Akwa Ibom State">Akwa Ibom State</option>
+      <option value="Abia State">Abia State</option>
+      <option value="Edo State">Edo State</option>
+    </optgroup>
+  </select>
 
-      {/* Market Dropdown */}
-      <select 
-        className={`dropdown ${selectedMarket ? 'active' : ''}`} 
-        onChange={(e) => setSelectedMarket(e.target.value)}
-      >
-        <option value="" disabled selected>Market</option>
-        <option value="Stock Market">Stock Market</option>
-        <option value="Real Estate">Real Estate</option>
-        <option value="Cryptocurrency">Cryptocurrency</option>
-        <option value="Retail">Retail</option>
-        <option value="Automotive">Automotive</option>
-      </select>
-    </div>
+  {/* Market Dropdown */}
+  <select 
+    className="dropdown" 
+    onChange={(e) => setSelectedMarket(e.target.value)}
+  >
+    <option value="" disabled selected>Market</option>
+    <optgroup label="Available Region">
+      <option value="Cross River State">Cross River State</option>
+      <option value="Rivers State">Rivers State</option>
+    </optgroup>
+    <optgroup label="Regions Coming Soon">
+      <option value="Delta State">Delta State</option>
+      <option value="Lagos State">Lagos State</option>
+      <option value="Akwa Ibom State">Akwa Ibom State</option>
+      <option value="Abia State">Abia State</option>
+      <option value="Edo State">Edo State</option>
+    </optgroup>
+  </select>
+</div>
 
     <div className="grid-container">
         {categories.map((category, index) => (
@@ -211,7 +223,9 @@ const handleCategoryClick = (categoryName) => {
       <div className="trending-grid">
         {items.map((item) => (
           <div key={item.id} className="trending-card" onClick={() => setSelectedItem(item)}>
+            <div className="trending0-image">
             <img src={item.image} alt={item.name} className="trending-image" />
+            </div>
             <div className="trending-info">
               <p className="trending-name">{item.name}</p>
               <p className="trending-price">₦ {item.price.toLocaleString()}</p>

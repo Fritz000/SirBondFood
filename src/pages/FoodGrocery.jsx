@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./FoodGrocery.css";
-import { FaStar } from "react-icons/fa";
-import Vector1 from "../assets/Vector1.png";
+import { Search } from "lucide-react";
 import seafoods from "../assets/fresh-bass-with-white-background1.png";
-import stunning from "../assets/stunning-impasto-painting-white-hen1.png";
-import grain from "../assets/412951555_bbc2c779-25c0-4851-adc1-c922a7d4c5b71.png";
 import singleredapple from "../assets/single-red-apple-with-green-leaf-water-droplets.png";
-import seeds from "../assets/single-red-apple-with-green-leaf-water-droplets2.png";
-import vegetables from "../assets/138792826_4acbcb31-951d-404f-ae4d-fd34a21218761.png";
-import glassmilkbottle from "../assets/glass-milk-bottle-fresh-milk1.png";
 import tangerine from "../assets/tangerine.png";
 import avocado from "../assets/avocado.png";
 import agbalumo from "../assets/agbalumo.png";
@@ -19,6 +13,7 @@ import Group from "../assets/Group.png";
 import { ChevronRight } from "lucide-react";
 import Star from "../assets/STAR.png"
 import rev from "../assets/rev.png"
+import mage from "../assets/mage_filter.png"
 
 
 const categories = [
@@ -129,61 +124,90 @@ const handleCategoryClick = (categoryName) => {
   }
 };
   
-
-
   return (
-    <div className="container">
-      <div className="category-container">
+          <div className="container">
+            <div className="search-container">
+            <Search className="search-icon" size={20} />
+            <input type="text" placeholder="Search food & grocery" className="search-bar" />
+          </div>
+              <div className="category1-container">
         {categories.map((cat, index) => (
-          <div key={index} className="category-item">
-          <img src={cat.image} alt={cat.name} className="category-icon" />
-          <p>{cat.name}</p>
-        </div>
-        
+          <div key={index} className="category1-item">
+            <div className={`category1-icon-wrapper ${index === 0 ? "first-icon" : ""}`}>
+              <img src={cat.image} alt={cat.name} className="category1-icon" />
+            </div>
+            <p>{cat.name}</p>
+          </div>
         ))}
       </div>
-       <div className="dropdowns">
-      {/* Location Dropdown */}
-      <select 
-        className={`dropdown ${selectedLocation ? 'active' : ''}`} 
-        onChange={(e) => setSelectedLocation(e.target.value)}
-      >
-        <option value="" disabled selected>Location</option>
-        <option value="New York">New York</option>
-        <option value="Los Angeles">Los Angeles</option>
-        <option value="Chicago">Chicago</option>
-        <option value="Houston">Houston</option>
-        <option value="Miami">Miami</option>
-      </select>
 
-      {/* Market Dropdown */}
-      <select 
-        className={`dropdown ${selectedMarket ? 'active' : ''}`} 
-        onChange={(e) => setSelectedMarket(e.target.value)}
-      >
-        <option value="" disabled selected>Market</option>
-        <option value="Stock Market">Stock Market</option>
-        <option value="Real Estate">Real Estate</option>
-        <option value="Cryptocurrency">Cryptocurrency</option>
-        <option value="Retail">Retail</option>
-        <option value="Automotive">Automotive</option>
-      </select>
-    </div>
 
-    <div className="grid-container">
-        
-      </div>
-      <h2 className="section-title">Market Runs</h2>
-      
+      <div className="dropdowns">
+  {/* Location Dropdown */}
+  <select 
+    className="dropdown" 
+    onChange={(e) => setSelectedLocation(e.target.value)}
+  >
+    <option value="" disabled selected>Location</option>
+    <optgroup label="Available Region">
+      <option value="Cross River State">Cross River State</option>
+      <option value="Rivers State">Rivers State</option>
+    </optgroup>
+    <optgroup label="Regions Coming Soon">
+      <option value="Delta State">Delta State</option>
+      <option value="Lagos State">Lagos State</option>
+      <option value="Akwa Ibom State">Akwa Ibom State</option>
+      <option value="Abia State">Abia State</option>
+      <option value="Edo State">Edo State</option>
+    </optgroup>
+  </select>
+
+  {/* Market Dropdown */}
+  <select 
+    className="dropdown" 
+    onChange={(e) => setSelectedMarket(e.target.value)}
+  >
+    <option value="" disabled selected>Market</option>
+    <optgroup label="Available Region">
+      <option value="Cross River State">Cross River State</option>
+      <option value="Rivers State">Rivers State</option>
+    </optgroup>
+    <optgroup label="Regions Coming Soon">
+      <option value="Delta State">Delta State</option>
+      <option value="Lagos State">Lagos State</option>
+      <option value="Akwa Ibom State">Akwa Ibom State</option>
+      <option value="Abia State">Abia State</option>
+      <option value="Edo State">Edo State</option>
+    </optgroup>
+  </select>
+
+  {/* Filter Button */}
+  <button className="filter-button">
+    <img src={mage} alt="Filter" />
+  </button>
+</div>
+
+
+
       <div className="trending-grid">
         {items.map((item) => (
           <div key={item.id} className="trending-card" onClick={() => setSelectedItem(item)}>
+            <div className="trending1-image">
             <img src={item.image} alt={item.name} className="trending-image" />
-            <div className="trending-info">
-              <p className="trending-name">{item.name}</p>
-              <p className="trending-price">₦ {item.price.toLocaleString()}</p>
             </div>
-            <button className="add-to-cart" onClick={(e) => { e.stopPropagation(); addToCart(item); }}>+</button>
+            <div className="trending-item">
+  <div className="trending-info">
+    <p className="trending-name">{item.name}</p>
+    <p className="trending-price">₦ {item.price.toLocaleString()}</p>
+  </div>
+  <button 
+    className="add-to-cart" 
+    onClick={(e) => { e.stopPropagation(); addToCart(item); }}
+  >
+    +
+  </button>
+</div>
+
           </div>
         ))}
       </div>
