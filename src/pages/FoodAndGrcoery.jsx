@@ -10,13 +10,14 @@ import glassmilkbottlefreshmilk1 from "../assets/glass-milk-bottle-fresh-milk1.p
 
 
 const categories = [
-  { name: "Fresh Produces", icon: freshbasswithwhitebackground1 },
+  { name: "Fresh Produces", icon: freshbasswithwhitebackground1, path: "/FoodGrocery" },
   { name: "Pantry & Stable", icon: freshbasswithwhitebackground1 },
   { name: "Meat & Seafood", icon: stunningimpastopaintingwhitehen1 },
   { name: "Dairy & Eggs", icon: dairyeggs },
   { name: "Bakery", icon: foodbasket },
   { name: "Beverages", icon: glassmilkbottlefreshmilk1 },
 ];
+
 
 const FoodAndGrocery = () => {
     const navigate = useNavigate();
@@ -36,19 +37,24 @@ const FoodAndGrocery = () => {
       <input type="text" placeholder="Search food & grocery" className="search-bar" />
     </div>
   </div>
-<div className="category-list">
+  <div className="category-list">
   {categories.map((category, index) => (
-    <div key={index} className="category-item">
-        <div className="icon-container">
+    <div 
+      key={index} 
+      className="category-item" 
+      onClick={() => category.path && navigate(category.path)}
+    >
+      <div className="icon-container">
         <img src={category.icon} alt={category.name} className="category-icon" />
       </div>
       <span className="category-name">{category.name}</span>
       <button className="arrow-button">
-        <ChevronRight size={28} /> {/* Increased size */}
+        <ChevronRight size={28} />
       </button>
     </div>
   ))}
 </div>
+
     </div>
   );
 };

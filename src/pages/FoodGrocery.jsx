@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./FoodGrocery.css";
-import { Search } from "lucide-react";
+import { Search, ChevronLeft } from "lucide-react";
 import seafoods from "../assets/fresh-bass-with-white-background1.png";
 import singleredapple from "../assets/single-red-apple-with-green-leaf-water-droplets.png";
 import tangerine from "../assets/tangerine.png";
@@ -126,6 +126,9 @@ const handleCategoryClick = (categoryName) => {
   
   return (
           <div className="container">
+            <button className="back-button" onClick={() => navigate(-1)}>
+                    <ChevronLeft size={32} />
+                  </button>
             <div className="search-container">
             <Search className="search-icon" size={20} />
             <input type="text" placeholder="Search food & grocery" className="search-bar" />
