@@ -10,14 +10,14 @@ import glassmilkbottlefreshmilk1 from "../assets/glass-milk-bottle-fresh-milk1.p
 
 
 const categories = [
-  { name: "Computers & TV", icon: freshbasswithwhitebackground1 },
-  { name: "Phone Accessories", icon: freshbasswithwhitebackground1 },
-  { name: "Computer Accessories", icon: stunningimpastopaintingwhitehen1 },
-  { name: "Home Appliances", icon: dairyeggs },
-  { name: "Audio & Musical", icon: foodbasket },
-  { name: "Cameras & Photograph", icon: glassmilkbottlefreshmilk1 },
-  { name: "Gaming", icon: glassmilkbottlefreshmilk1 },
-  { name: "Wearable Technology", icon: glassmilkbottlefreshmilk1 },
+  { name: "Computers & TV", icon: freshbasswithwhitebackground1, path: "/ComputersTv" },
+  { name: "Phone Accessories", icon: freshbasswithwhitebackground1, path: "/PhoneAccessories" },
+  { name: "Computer Accessories", icon: stunningimpastopaintingwhitehen1, path: "/ComputerAccessories" },
+  { name: "Home Appliances", icon: dairyeggs, path: "/HomeAppliances" },
+  { name: "Audio & Musical", icon: foodbasket, path: "/AudioandMusical" },
+  { name: "Cameras & Photograph", icon: glassmilkbottlefreshmilk1, path: "/CamerasPhotograph" },
+  { name: "Gaming", icon: glassmilkbottlefreshmilk1, path: "/Gaming" },
+  { name: "Wearable Technology", icon: glassmilkbottlefreshmilk1, path: "/Wearable" },
 ];
 
 const Electronics = () => {

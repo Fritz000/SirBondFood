@@ -28,7 +28,7 @@ import MessagePopup from './pages/MessagePopup';
 import MarketRuns from './pages/MarketRuns';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminLogin from './pages/AdminLogin';
-import FoodAndGrocery from './pages/FoodAndGrcoery';
+import FoodAndGrocery from './pages/FoodAndGrocery';
 import Electronics from './pages/Electronics';
 import HomeAndLiving from './pages/HomeAndLiving';
 import HealthAndBeauty from './pages/HealthAndBeauty';
@@ -37,6 +37,19 @@ import BabiesAndGames from './pages/BabiesAndGames';
 import FeedAndSeeds from './pages/FeedAndSeeds';
 import SportAndOutdoors from './pages/SportAndOutdoors';
 import FoodGrocery from './pages/FoodGrocery';
+import PantryStable from './pages/PantryStable';
+import MeatSeafood from './pages/MeatSeafood';
+import DairyEggs from './pages/DairyEggs';
+import BakeryItems from './pages/BakeryItems';
+import Beverages from './pages/Beverages';
+import ComputersTv from './pages/ComputersTv';
+import PhoneAccessories from './pages/PhoneAccessories'
+import ComputerAccessories from './pages/ComputerAccessories'
+import HomeAppliances from './pages/HomeAppliances'
+import AudioandMusical from './pages/AudioandMusical'
+import CamerasPhotograph from './pages/CamerasPhotograph'
+import Gaming from './pages/Gaming'
+import Wearable from './pages/Wearable'
 
 const App = () => {
   // State for user authentication
@@ -100,6 +113,19 @@ const App = () => {
         <Route path="FeedAndSeeds" element={<FeedAndSeeds />} />
         <Route path="SportAndOutdoors" element={<SportAndOutdoors />} />
         <Route path="FoodGrocery" element={<FoodGrocery />} />
+        <Route path="PantryStable" element={<PantryStable />} />
+        <Route path="MeatSeafood" element={<MeatSeafood />} />
+        <Route path="DairyEggs" element={<DairyEggs />} />
+        <Route path="BakeryItems" element={<BakeryItems />} />
+        <Route path="Beverages" element={<Beverages />} />
+        <Route path="ComputersTv" element={<ComputersTv />} />
+        <Route path="PhoneAccessories" element={<PhoneAccessories />} />
+        <Route path="ComputerAccessories" element={<ComputerAccessories />} />
+        <Route path="HomeAppliances" element={<HomeAppliances />} />
+        <Route path="AudioandMusical" element={<AudioandMusical />} />
+        <Route path="CamerasPhotograph" element={<CamerasPhotograph />} />
+        <Route path="Gaming" element={<Gaming />} />
+        <Route path="Wearable" element={<Wearable />} />
       </Route>
     )
   );
