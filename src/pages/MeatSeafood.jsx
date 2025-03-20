@@ -57,10 +57,22 @@ const MeatSeafood = () => {
   const [items, setItems] = useState([]); // Holds admin-added items + trending
 
   useEffect(() => {
-    // Fetch items from localStorage (admin-added items)
-    const storedItems = JSON.parse(localStorage.getItem("marketItems")) || [];
-    setItems([...trendingItems, ...storedItems]); // Combine trending + admin items
-  }, []);
+      const fetchItems = () => {
+        const storedItems = JSON.parse(localStorage.getItem("meatSeafoodItems")) || [];
+        setItems(storedItems);
+      };
+    
+      fetchItems(); // Fetch initially
+    
+      const handleStorageChange = (event) => {
+        if (event.key === "meatSeafoodItems") {
+          fetchItems(); // Update state when localStorage changes
+        }
+      };
+    
+      window.addEventListener("storage", handleStorageChange);
+      return () => window.removeEventListener("storage", handleStorageChange);
+    }, []);
 
   useEffect(() => {
     // Load cart from localStorage
@@ -193,24 +205,21 @@ const handleCategoryClick = (categoryName) => {
 
 
       <div className="trending-grid">
-        {items.map((item) => (
+      {items.map((item) => (
           <div key={item.id} className="trending-card" onClick={() => setSelectedItem(item)}>
-            <div className="trending1-image">
             <img src={item.image} alt={item.name} className="trending-image" />
+            <div className="trending-info">
+              <p className="trending-name">{item.name}</p>
+              <p className="trending-price">
+                {item.approved ? `₦ ${item.price.toLocaleString()}` : "Pending"}
+              </p>
             </div>
-            <div className="trending-item">
-  <div className="trending-info">
-    <p className="trending-name">{item.name}</p>
-    <p className="trending-price">₦ {item.price.toLocaleString()}</p>
-  </div>
-  <button 
-    className="add-to-cart" 
-    onClick={(e) => { e.stopPropagation(); addToCart(item); }}
-  >
-    +
-  </button>
-</div>
-
+            <button 
+              className="add-to-cart" 
+              onClick={(e) => { e.stopPropagation(); addToCart(item); }}
+              disabled={!item.approved}
+            >+
+            </button>
           </div>
         ))}
       </div>

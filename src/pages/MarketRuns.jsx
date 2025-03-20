@@ -66,9 +66,21 @@ const MarketRuns = () => {
   const [items, setItems] = useState([]); // Holds admin-added items + trending
 
   useEffect(() => {
-    // Fetch items from localStorage (admin-added items)
-    const storedItems = JSON.parse(localStorage.getItem("marketItems")) || [];
-    setItems([...trendingItems, ...storedItems]); // Combine trending + admin items
+    const fetchItems = () => {
+      const storedItems = JSON.parse(localStorage.getItem("marketItems")) || [];
+      setItems(storedItems);
+    };
+  
+    fetchItems(); // Fetch initially
+  
+    const handleStorageChange = (event) => {
+      if (event.key === "marketItems") {
+        fetchItems(); // Update state when localStorage changes
+      }
+    };
+  
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
   useEffect(() => {
@@ -221,16 +233,21 @@ const handleCategoryClick = (categoryName) => {
       <h2 className="section-title">Market Runs</h2>
       
       <div className="trending-grid">
-        {items.map((item) => (
+      {items.map((item) => (
           <div key={item.id} className="trending-card" onClick={() => setSelectedItem(item)}>
-            <div className="trending0-image">
             <img src={item.image} alt={item.name} className="trending-image" />
-            </div>
             <div className="trending-info">
               <p className="trending-name">{item.name}</p>
-              <p className="trending-price">₦ {item.price.toLocaleString()}</p>
+              <p className="trending-price">
+                {item.approved ? `₦ ${item.price.toLocaleString()}` : "Pending"}
+              </p>
             </div>
-            <button className="add-to-cart" onClick={(e) => { e.stopPropagation(); addToCart(item); }}>+</button>
+            <button 
+              className="add-to-cart" 
+              onClick={(e) => { e.stopPropagation(); addToCart(item); }}
+              disabled={!item.approved}
+            >+
+            </button>
           </div>
         ))}
       </div>

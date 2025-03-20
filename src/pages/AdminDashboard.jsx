@@ -3,84 +3,175 @@ import { useNavigate } from "react-router-dom";
 import "./AdminDashboard.css";
 
 const AdminDashboard = () => {
-  const navigate = useNavigate();
-  const [items, setItems] = useState([]);
-  const [form, setForm] = useState({ name: "", price: "", location: "", description: "", image: "" });
-
-  // Protect Dashboard: Redirect if admin is not logged in
-  useEffect(() => {
-    const isAuthenticated = localStorage.getItem("adminAuth") === "true";
-    if (!isAuthenticated) {
-      navigate("/AdminLogin"); // Redirect to login if not authenticated
-    }
-  }, [navigate]);
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("marketRuns");
+  const [image, setImage] = useState(null);
+  const [itemsByCategory, setItemsByCategory] = useState({});
 
   useEffect(() => {
-    const storedItems = JSON.parse(localStorage.getItem("marketItems")) || [];
-    setItems(storedItems);
+    const categoryMap = {
+      marketRuns: "marketItems",
+      foodGrocery: "foodGroceryItems",
+      pantryStable: "pantryStableItems",
+      meatSeafood: "meatSeafoodItems",
+      dairyEggs: "dairyEggsItems",
+      bakery: "bakeryItems",
+      beverages: "beveragesItems",
+    };
+  
+    const fetchItems = () => {
+      const updatedItems = {};
+      Object.keys(categoryMap).forEach((key) => {
+        updatedItems[key] = JSON.parse(localStorage.getItem(categoryMap[key])) || [];
+      });
+      setItemsByCategory(updatedItems);
+    };
+  
+    fetchItems(); // Fetch initially
+  
+    const handleStorageChange = (event) => {
+      if (Object.values(categoryMap).includes(event.key)) {
+        fetchItems(); // Re-fetch items when storage updates
+      }
+    };
+  
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
-
-  useEffect(() => {
-    localStorage.setItem("marketItems", JSON.stringify(items));
-  }, [items]);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
-  };
+  
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setForm({ ...form, image: reader.result });
+        setImage(reader.result);
       };
       reader.readAsDataURL(file);
     }
   };
 
-  const addItem = () => {
-    if (form.name && form.price && form.image) {
-      setItems([...items, { ...form, id: Date.now() }]);
-      setForm({ name: "", price: "", location: "", description: "", image: "" });
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newItem = { 
+      id: Date.now(), 
+      name, 
+      price, 
+      description, 
+      image,
+      pending: true // Mark as pending for Super Admin review
+    };
+  
+    const categoryMap = {
+      marketRuns: "marketItems",
+      foodGrocery: "foodGroceryItems",
+      pantryStable: "pantryStableItems",
+      meatSeafood: "meatSeafoodItems",
+      dairyEggs: "dairyEggsItems",
+      bakery: "bakeryItems",
+      beverages: "beveragesItems",
+    };
+  
+    const storageKey = categoryMap[category] || "marketItems";
+    const storedItems = JSON.parse(localStorage.getItem(storageKey)) || [];
+    storedItems.push(newItem);
+    localStorage.setItem(storageKey, JSON.stringify(storedItems));
+  
+    setItemsByCategory((prev) => ({
+      ...prev,
+      [category]: [...(prev[category] || []), newItem],
+    }));
+  
+    setName("");
+    setPrice("");
+    setDescription("");
+    setImage(null);
   };
 
-  const deleteItem = (id) => {
-    setItems(items.filter((item) => item.id !== id));
-  };
+  const handleDelete = (category, id) => {
+    const categoryMap = {
+      marketRuns: "marketItems",
+      foodGrocery: "foodGroceryItems",
+      pantryStable: "pantryStableItems",
+      meatSeafood: "meatSeafoodItems",
+      dairyEggs: "dairyEggsItems",
+      bakery: "bakeryItems",
+      beverages: "beveragesItems",
+    };
 
-  const handleLogout = () => {
-    localStorage.removeItem("adminAuth"); // Remove admin auth state
-    navigate("/AdminLogin"); // Redirect to login
+    const storageKey = categoryMap[category];
+    const updatedItems = itemsByCategory[category].filter(item => item.id !== id);
+    localStorage.setItem(storageKey, JSON.stringify(updatedItems));
+    setItemsByCategory(prev => ({ ...prev, [category]: updatedItems }));
   };
 
   return (
-    <div className="admin-container10">
-      <h2 className="admindash">Admin Dashboard</h2>
-      <button className="logout-button10" onClick={handleLogout}>Logout</button>
-      <div className="form-group10">
-        <input type="text" name="name" placeholder="Item Name" value={form.name} onChange={handleChange} />
-        <input type="number" name="price" placeholder="Price" value={form.price} onChange={handleChange} />
-        <input type="text" name="location" placeholder="Location" value={form.location} onChange={handleChange} />
-        <textarea name="description" placeholder="Description" value={form.description} onChange={handleChange}></textarea>
-        <input type="file" onChange={handleImageUpload} />
-        {form.image && <img src={form.image} alt="Preview" className="preview-image" />}
-        <button className="adminbutton" onClick={addItem}>Add Item</button>
-      </div>
-      <div className="items-list">
+    <div className="admin-container">
+      <h2>Admin Dashboard</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Item Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <input
+          type="number"
+          placeholder="Price"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          required
+        />
+        <textarea
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        />
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <option value="marketRuns">Market Runs</option>
+          <option value="foodGrocery">Food Grocery</option>
+          <option value="pantryStable">Pantry & Stable</option>
+          <option value="meatSeafood">Meat & Seafood</option>
+          <option value="dairyEggs">Dairy & Eggs</option>
+          <option value="bakery">Bakery</option>
+          <option value="beverages">Beverages</option>
+        </select>
+        <input type="file" accept="image/*" onChange={handleImageUpload} />
+        {image && <img src={image} alt="Preview" className="image-preview" />}
+        <button className="button1000" type="submit">Add Item</button>
+      </form>
+
+      {Object.entries(itemsByCategory).map(([key, items]) => (
+  items.length > 0 && (
+    <div key={key} className="category-section">
+      <h3>{key.replace(/([A-Z])/g, ' $1').trim().replace(/\b\w/g, c => c.toUpperCase())}</h3>
+      <div className="items-grid">
         {items.map((item) => (
           <div key={item.id} className="item-card">
-            <img src={item.image} alt={item.name} />
+            <img src={item.image} alt={item.name} className="item-image" />
             <p>{item.name}</p>
-            <p>₦ {item.price}</p>
-            <p>{item.location}</p>
-            <p>{item.description}</p>
-            <button onClick={() => deleteItem(item.id)}>Delete</button>
+            
+            {item.pending ? (
+              <p className="pending-label">Pending Approval</p>
+            ) : (
+              <>
+                <p>₦ {item.price}</p>
+                <p>{item.description}</p>
+              </>
+            )}
+            
+            <button onClick={() => handleDelete(key, item.id)} className="delete-button">Delete</button>
           </div>
         ))}
       </div>
+    </div>
+  )
+))}
+
     </div>
   );
 };

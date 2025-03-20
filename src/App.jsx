@@ -50,6 +50,7 @@ import AudioandMusical from './pages/AudioandMusical'
 import CamerasPhotograph from './pages/CamerasPhotograph'
 import Gaming from './pages/Gaming'
 import Wearable from './pages/Wearable'
+import SuperAdminDashboard from './pages/SuperAdminDashboard';
 
 const App = () => {
   // State for user authentication
@@ -126,6 +127,7 @@ const App = () => {
         <Route path="CamerasPhotograph" element={<CamerasPhotograph />} />
         <Route path="Gaming" element={<Gaming />} />
         <Route path="Wearable" element={<Wearable />} />
+        <Route path="SuperAdminDashboard" element={<SuperAdminDashboard />} />
       </Route>
     )
   );
