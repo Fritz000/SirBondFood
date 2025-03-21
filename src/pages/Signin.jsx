@@ -34,12 +34,12 @@ const Signin = ({ setUser }) => {
 
   return (
     <div className="signup-overlay">
-      <div className="signup-modal2">
+      <div className="signup-modal112">
       <button className="close-btn" onClick={() => navigate("/")}>
-  <X size={24} />
-</button>
+        <X size={24} />
+      </button>
 
-        <img src={logo} alt="Feed the Nation Logo" style={{ width: "150px", height: "150px", display: "block", margin: "auto", marginBottom: "30px" }} />
+        <img src={logo} alt="Feed the Nation Logo" className="logo-img1" />
         <h2>Welcome back!</h2>
         <p>Enter your email or phone number to login.</p>
         <small>
@@ -54,6 +54,9 @@ const Signin = ({ setUser }) => {
 
         <Link to="/resetpassword"><p className="signin2">Forgot password?</p></Link>
         <p className="signin3">Don't have an account? <span className="signup1"><Link to="/Signup">Sign up</Link></span></p>
+        <p className="signin40">
+        For further support, you may visit the Help Center or contact our support team.
+        </p>
       </div>
     </div>
   );

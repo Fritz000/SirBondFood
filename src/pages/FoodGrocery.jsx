@@ -52,7 +52,7 @@ const FoodGrocery = () => {
 
   useEffect(() => {
       const fetchItems = () => {
-        const storedItems = JSON.parse(localStorage.getItem("marketItems")) || [];
+        const storedItems = JSON.parse(localStorage.getItem("foodGroceryItems")) || [];
         setItems(storedItems);
       };
     

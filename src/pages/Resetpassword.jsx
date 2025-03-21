@@ -30,8 +30,7 @@ const Resetpassword = ({ onClose }) => {
                 {/* Header */}
                 <img
                     src={logo}
-                    alt="Feed the Nation Logo"
-                    style={{ width: "70px", height: "70px", display: "block", margin: "auto", marginBottom: "30px" }}
+                    alt="Feed the Nation Logo" className='logo-img'
                 />
                 <h2>Reset your password</h2>
                 <p>We will send a security code to the email address below to reset your password.</p>

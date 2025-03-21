@@ -57,10 +57,24 @@ const ComputersTv = () => {
   const [items, setItems] = useState([]); // Holds admin-added items + trending
 
   useEffect(() => {
-    // Fetch items from localStorage (admin-added items)
-    const storedItems = JSON.parse(localStorage.getItem("marketItems")) || [];
-    setItems([...trendingItems, ...storedItems]); // Combine trending + admin items
+    const fetchItems = () => {
+      const storedItems = JSON.parse(localStorage.getItem("computersTvItems")) || [];
+      setItems(storedItems);
+    };
+  
+    fetchItems(); // Fetch initially
+  
+    const handleStorageChange = (event) => {
+      if (event.key === "computersTvItems") {
+        fetchItems(); // Update state when localStorage changes
+      }
+    };
+  
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
+  
+  
 
   useEffect(() => {
     // Load cart from localStorage
@@ -188,51 +202,49 @@ const closePopup = () => {
 
 
 
-      <div className="trending-grid">
-        {items.map((item) => (
-          <div key={item.id} className="trending-card" onClick={() => setSelectedItem(item)}>
-            <div className="trending1-image">
-            <img src={item.image} alt={item.name} className="trending-image" />
-            </div>
-            <div className="trending-item">
-  <div className="trending-info">
-    <p className="trending-name">{item.name}</p>
-    <p className="trending-price">₦ {item.price.toLocaleString()}</p>
-  </div>
-  <button 
-    className="add-to-cart" 
-    onClick={(e) => { e.stopPropagation(); addToCart(item); }}
-  >
-    +
-  </button>
-</div>
-
-          </div>
-        ))}
-      </div>
-
-      {selectedItem && (
-        <div className="popup-overlay" onClick={closePopup}>
-        <div className="popup" onClick={(e) => e.stopPropagation()}>
-          <div className="layout-container">
-            <div className="layout-container-image">
-          <img src={selectedItem.image} alt={selectedItem.name} className="popup-image" />
-          </div>
-          <div className="popup-title-content">
-          <h3 className="popup-title">{selectedItem.name}</h3>
-          <p className="popup-price">₦ {selectedItem.price.toLocaleString()}</p>
-          </div>
-          <div className="chat-icon-button">
-          <button className="chat-icon" onClick={() => addToCart(selectedItem)}> <img src={Group} className="groupchat" alt="" /> Chat</button>
-          <div className="cart-item-button100">
-  <button className="decrement" onClick={decrementQuantity}>-</button>
-  <span className="quantity">{getQuantity(selectedItem.id)}</span>
-  <button className="increment" onClick={() => addToCart(selectedItem)}>+</button>
-</div>
-
-
-          </div>
-          </div>
+           <div className="trending-grid">
+           {items.map((item) => (
+               <div key={item.id} className="trending-card" onClick={() => setSelectedItem(item)}>
+                 <img src={item.image} alt={item.name} className="trending-image" />
+                 <div className="trending-info">
+                   <p className="trending-name">{item.name}</p>
+                   <p className="trending-price">
+                     {item.approved ? `₦ ${item.price.toLocaleString()}` : "Pending"}
+                   </p>
+                 </div>
+                 <button 
+                   className="add-to-cart" 
+                   onClick={(e) => { e.stopPropagation(); addToCart(item); }}
+                   disabled={!item.approved}
+                 >+
+                 </button>
+               </div>
+             ))}
+           </div>
+     
+           {selectedItem && (
+             <div className="popup-overlay" onClick={closePopup}>
+             <div className="popup" onClick={(e) => e.stopPropagation()}>
+               <div className="layout-container">
+                 <div className="layout-container-image">
+               <img src={selectedItem.image} alt={selectedItem.name} className="popup-image" />
+               </div>
+               <div className="popup-title-content">
+               <h3 className="popup-title">{selectedItem.name}</h3>
+               <p className="popup-price">₦ {selectedItem.price.toLocaleString()}</p>
+               </div>
+               <div className="chat-icon-button">
+               <button className="chat-icon" onClick={() => addToCart(selectedItem)}> <img src={Group} className="groupchat" alt="" /> Chat</button>
+               <div className="cart-item-button100">
+       <button className="decrement" onClick={decrementQuantity}>-</button>
+       <span className="quantity">{getQuantity(selectedItem.id)}</span>
+       <button className="increment" onClick={() => addToCart(selectedItem)}>+</button>
+     </div>
+     
+        
+        
+                  </div>
+                  </div>
           {/* Button to open Description */}
           <div className="layout-container1">
             <div className="descriptionrole">

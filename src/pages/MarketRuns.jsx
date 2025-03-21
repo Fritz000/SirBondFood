@@ -148,8 +148,8 @@ const handleCategoryClick = (categoryName) => {
 
 
   return (
-    <div className="container">
-      <section className="ads">Mini Ads</section>
+    <div className="container106">
+      <section className="ads1">Mini Ads</section>
       <div className="dropdowns">
   {/* Location Dropdown */}
   <select 
@@ -190,11 +190,11 @@ const handleCategoryClick = (categoryName) => {
   </select>
 </div>
 
-    <div className="grid-container">
+    <div className="grid-container100">
         {categories.map((category, index) => (
           <div
             key={index}
-            className="category-card"
+            className="category-card100"
             onClick={() => {
               if (category.name === "Food & Grocery") {
                 navigate("/FoodAndGrocery"); // Navigate to the correct page
@@ -223,22 +223,21 @@ const handleCategoryClick = (categoryName) => {
             }}
             style={{ cursor: "pointer" }} // Make it look clickable
           >
-            <div className="image-icon-container">
-            <img src={category.image} alt={category.name} className="category-image" />
+            <div className="image-icon-container100">
+            <img src={category.image} alt={category.name} className="category-image100" />
             </div>
-            <p className="category-name">{category.name}</p>
+            <p className="category-name100">{category.name}</p>
           </div>
         ))}
       </div>
-      <h2 className="section-title">Market Runs</h2>
-      
-      <div className="trending-grid">
+      <h2 className="section-title100">Trending</h2>
+      <div className="trending-grid100">
       {items.map((item) => (
-          <div key={item.id} className="trending-card" onClick={() => setSelectedItem(item)}>
-            <img src={item.image} alt={item.name} className="trending-image" />
-            <div className="trending-info">
-              <p className="trending-name">{item.name}</p>
-              <p className="trending-price">
+          <div key={item.id} className="trending-card100" onClick={() => setSelectedItem(item)}>
+            <img src={item.image} alt={item.name} className="trending-image100" />
+            <div className="trending-info100">
+              <p className="trending-name100">{item.name}</p>
+              <p className="trending-price100">
                 {item.approved ? `₦ ${item.price.toLocaleString()}` : "Pending"}
               </p>
             </div>

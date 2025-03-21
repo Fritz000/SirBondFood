@@ -19,6 +19,7 @@ const AdminDashboard = () => {
       dairyEggs: "dairyEggsItems",
       bakery: "bakeryItems",
       beverages: "beveragesItems",
+      computersTv: "computersTvItems",
     };
   
     const fetchItems = () => {
@@ -72,6 +73,7 @@ const AdminDashboard = () => {
       dairyEggs: "dairyEggsItems",
       bakery: "bakeryItems",
       beverages: "beveragesItems",
+      computersTv: "computersTvItems",
     };
   
     const storageKey = categoryMap[category] || "marketItems";
@@ -99,6 +101,7 @@ const AdminDashboard = () => {
       dairyEggs: "dairyEggsItems",
       bakery: "bakeryItems",
       beverages: "beveragesItems",
+      computersTv: "computersTvItems",
     };
 
     const storageKey = categoryMap[category];
@@ -139,6 +142,7 @@ const AdminDashboard = () => {
           <option value="dairyEggs">Dairy & Eggs</option>
           <option value="bakery">Bakery</option>
           <option value="beverages">Beverages</option>
+          <option value="computersTv">Computers & TV</option>
         </select>
         <input type="file" accept="image/*" onChange={handleImageUpload} />
         {image && <img src={image} alt="Preview" className="image-preview" />}

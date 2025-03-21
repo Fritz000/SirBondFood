@@ -63,7 +63,7 @@ const Reset = ({ onClose }) => {
 
   return (
     <div className="signup-overlay">
-      <div className="signup-modal20">
+      <div className="signup-modal2000">
         {/* Back and Close Icons */}
         <div className="top-icons">
               <button className="back-btn" onClick={() => navigate(-1)}>  
@@ -76,8 +76,7 @@ const Reset = ({ onClose }) => {
 
         <img
           src={logo}
-          alt="Feed the Nation Logo"
-          style={{ width: "70px", height: "70px", display: "block", margin: "auto", marginBottom: "30px" }}
+          alt="Feed the Nation Logo" className="logo-img7"
         />
         <h2>Reset your password</h2>
         <p>Enter your new password</p>
@@ -123,7 +122,7 @@ const Reset = ({ onClose }) => {
 
           {errorMessage && <p className="error-message" style={{ color: "red" }}>{errorMessage}</p>}
 
-          <ul className="password-hints">
+          <ul className="password-hints190">
             <li>
               {isPasswordValid ? <CheckCircle size={20} color="green" /> : <span className="bullet1">&bull;</span>} 6 - 20 characters
             </li>
@@ -138,7 +137,7 @@ const Reset = ({ onClose }) => {
           <button type="submit" className="signup-btn1">Change Password</button>
         </form>
 
-        <p className="signin1l9">For further support, you may visit the Help Center or contact our support team.</p>
+        <p className="signin1l90">For further support, you may visit the Help Center or contact our support team.</p>
       </div>
     </div>
   );

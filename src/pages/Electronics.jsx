@@ -40,7 +40,11 @@ const Electronics = () => {
   </div>
 <div className="electronics-category-list">
   {categories.map((category, index) => (
-    <div key={index} className="electronics-category-item">
+    <div 
+    key={index} 
+    className="electronics-category-item" 
+    onClick={() => category.path && navigate(category.path)}
+  >
         <div className="electronics-icon-container">
         <img src={category.icon} alt={category.name} className="electronics-category-icon" />
       </div>

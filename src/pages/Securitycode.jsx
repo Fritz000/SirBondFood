@@ -57,7 +57,7 @@ const Securitycode = ({ onClose }) => {
                   <X size={24} />
               </button>
           </div>
-        <img src={logo} alt="Feed the Nation Logo" style={{ width: "70px", height: "70px", display: "block", margin: "auto", marginBottom: "30px" }} />
+        <img src={logo} alt="Feed the Nation Logo" className='logo-img3' />
         <h2>Enter security code</h2>
         <p>Enter the security code that was sent to your email address</p>
         <small><ShieldBan size={24} style={{ position: "relative", top: "5px" }} /> Your information is 100% secured</small>
@@ -88,11 +88,11 @@ const Securitycode = ({ onClose }) => {
               Request a new code
             </span>
           ) : (
-            <>Didn't receive any code? It could take a bit of time, request a new code in <span className="highlight">{timeLeft}s</span></>
+            <>Didn't receive any code? It could take a bit of time, request a new code in <span className="highlight">{timeLeft} seconds</span></>
           )}
         </p>
 
-        <p className="signinn">
+        <p className="signinn100">
           For further support, you may visit the Help Center or contact our support team.
         </p>
       </div>

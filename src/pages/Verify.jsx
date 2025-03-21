@@ -54,7 +54,7 @@ const Verify = ({ onClose }) => {
 
   return (
     <div className="signup-overlay">
-      <div className="signup-modal1">
+      <div className="signup-modal105">
         {/* Back and Close Icons */}
           <div className="top-icons">
               <button className="back-btn" onClick={() => navigate(-1)}>  
@@ -64,7 +64,7 @@ const Verify = ({ onClose }) => {
                   <X size={24} />
               </button>
           </div>
-        <img src={logo} alt="Feed the Nation Logo" style={{ width: "70px", height: "70px", display: "block", margin: "auto", marginBottom: "30px" }} />
+        <img src={logo} alt="Feed the Nation Logo" className="logo-img4" />
         <h2>Verify your email address</h2>
         <p>Please enter the 4-digit verification code sent to your email address.</p>
         <small>
@@ -91,16 +91,16 @@ const Verify = ({ onClose }) => {
         </button>
 
         <p className="terms">
-          Didn't receive any code? {canRequestNewCode ? (
+          Didn't receive any code? It could take a bit of time. {canRequestNewCode ? (
             <span className="highlight" onClick={handleRequestNewCode} style={{ cursor: "pointer", color: "blue" }}>
               Request a new code
             </span>
           ) : (
-            <>Request a new code in <span className="highlight">{timeLeft}s</span></>
+            <>Request a new code in <span className="highlight">{timeLeft} seconds</span></>
           )}
         </p>
 
-        <p className="signin">For further support, you may visit the Help Center or contact our support team.</p>
+        <p className="signin101">For further support, you may visit the Help Center or contact our support team.</p>
       </div>
     </div>
   );

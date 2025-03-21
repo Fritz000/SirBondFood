@@ -9,6 +9,7 @@ const categoryMap = {
   dairyEggs: "dairyEggsItems",
   bakery: "bakeryItems",
   beverages: "beveragesItems",
+  computersTv: "computersTvItems",
 };
 
 const SuperAdminDashboard = () => {

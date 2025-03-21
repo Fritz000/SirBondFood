@@ -39,8 +39,8 @@ const Signup = ({ onClose }) => {
         </button>
 
         {/* Header */}
-        <img src={logo} alt="Feed the Nation Logo" style={{ width: "70px", height: "70px", display: "block", margin: "auto", marginBottom: "30px"}} />
-        <h2>Welcome to Feed the Nation!</h2>
+        <img src={logo} alt="Feed the Nation Logo" className="logo-img" />
+        <h2>Welcome to BondFood!</h2>
         <p>Enter your email or phone number to create an account.</p>
         <small><ShieldBan size={24} style={{ position: "relative", top: "5px", Color: "black" }}/> Your information is 100% secured</small>
 

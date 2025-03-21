@@ -64,11 +64,10 @@ const Registrationsuccessful = () => {
         {/* Logo */}
         <img
           src={logo}
-          alt="Feed the Nation Logo"
-          style={{ width: "70px", height: "70px", display: "block", margin: "auto", marginBottom: "30px" }}
+          alt="Feed the Nation Logo" className="logo-img6"
         />
 
-        <h2>Registration successful</h2>
+        <h2 className="regsucc">Registration successful</h2>
         <p>Create a password to secure your account. You can use it when you log in next time.</p>
         <small>
           <ShieldBan size={24} style={{ position: "relative", top: "5px", color: "black" }} /> Your information is 100% secured
@@ -104,12 +103,12 @@ const Registrationsuccessful = () => {
             </span>
           </div>
           {errorMessage && <p className="error-message" style={{ color: "red" }}>{errorMessage}</p>}
-          <ul className="password-hints">
+          <ul className="password-hints100">
             <li>
               {isPasswordValid ? <CheckCircle size={20} color="green" /> : <span className="bullet1">&bull;</span>} 6 - 20 characters
             </li>
             <li>
-              {isPasswordValid ? <CheckCircle size={20} color="green" /> : <span className="bullet1">&bull;</span>} Contains numbers, letters, and symbols
+              {isPasswordValid ? <CheckCircle size={20} color="green" /> : <span className="bullet1">&bull;</span>} Contains numbers, letters, or symbols
             </li>
             <li>
               {doPasswordsMatch ? <CheckCircle size={20} color="green" /> : <span className="bullet1">&bull;</span>} Passwords match
