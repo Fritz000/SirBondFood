@@ -19,7 +19,7 @@ const Resetpassword = ({ onClose }) => {
         <div className="signup-overlay">
             <div className="signup-modal2">
             <div className="top-icons">
-              <button className="back-btn" onClick={() => navigate(-1)}>  
+              <button className="back-btnreset" onClick={() => navigate(-1)}>  
                   <ChevronLeft size={24} />
               </button>
               <button className="close-btn" onClick={onClose ? onClose : () => navigate("/")}>

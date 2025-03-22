@@ -33,8 +33,14 @@ const Securitycode = ({ onClose }) => {
       const newOtp = [...otp];
       newOtp[index] = value;
       setOtp(newOtp);
+  
+      // Move focus to the next input
+      if (value && index < otp.length - 1) {
+        document.getElementById(`otp-input-${index + 1}`).focus();
+      }
     }
   };
+  
 
   const handleSubmit = () => {
     const enteredOtp = otp.join("");
@@ -50,7 +56,7 @@ const Securitycode = ({ onClose }) => {
       <div className="signup-modal1l">
         {/* Back and Close Icons */}
         <div className="top-icons">
-              <button className="back-btn" onClick={() => navigate(-1)}>  
+              <button className="back-btnsecurity" onClick={() => navigate(-1)}>  
                   <ChevronLeft size={24} />
               </button>
               <button className="close-btn" onClick={onClose ? onClose : () => navigate("/")}>
@@ -58,27 +64,34 @@ const Securitycode = ({ onClose }) => {
               </button>
           </div>
         <img src={logo} alt="Feed the Nation Logo" className='logo-img3' />
-        <h2>Enter security code</h2>
+        <h2 className='esc'>Enter security code</h2>
         <p>Enter the security code that was sent to your email address</p>
         <small><ShieldBan size={24} style={{ position: "relative", top: "5px" }} /> Your information is 100% secured</small>
         
         <div className="verification-code">
-          {otp.map((digit, index) => (
-            <input
-              key={index}
-              type="text"
-              maxLength="1"
-              className={`code-input ${error ? "error-border" : ""}`}
-              value={digit}
-              onChange={(e) => handleChange(index, e.target.value)}
-            />
-          ))}
-        </div>
+  {otp.map((digit, index) => (
+    <input
+      key={index}
+      id={`otp-input-${index}`} // Unique ID for each input
+      type="text"
+      maxLength="1"
+      className={`code-input ${error ? "error-border" : ""}`}
+      value={digit}
+      onChange={(e) => handleChange(index, e.target.value)}
+      onKeyDown={(e) => {
+        if (e.key === "Backspace" && !otp[index] && index > 0) {
+          document.getElementById(`otp-input-${index - 1}`).focus();
+        }
+      }}
+    />
+  ))}
+</div>
+
 
         {error && <p className="error-message1">The code is incorrect, please try again. <span className="resend-code1" onClick={handleRequestNewCode}>Resend code</span></p>}
 
         <button type="submit" onClick={handleSubmit} className="signup-btn">
-          Continue
+          Submit
         </button>
 
         {/* Dynamic text logic */}

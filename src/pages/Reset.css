@@ -20,6 +20,16 @@
   flex-direction: column;
 }
 
+.back-btnreset {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #000;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
 .logo-img7 {
   width: 150px;
   height: 150px; 
@@ -28,7 +38,7 @@
   margin-bottom: 10px;
 }
 
-h2 {
+.reyp {
   font-size: 1.5rem;
   color: #333;
   margin-bottom: 10px;
@@ -263,7 +273,7 @@ form input,
   color: #333; /* Optional: Change color on hover */
 }
 
-@media (max-width:391px){
+@media (max-width:390px){
   .signup-overlay {
     display: flex;
     align-items: center;
@@ -273,16 +283,30 @@ form input,
   }
   
   .signup-modal2000 {
-    background: white;
-  width: 800px;
-  height: auto;
-  margin-top: 350px;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+      background: white;
+      width: 800px;
+      height: auto;
+      margin-top: 550px;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: none; /* Removes any shadow */
+      border: none; /* Ensures no border */
+      outline: none; /* Removes any outline */
+      display: flex;
+      flex-direction: column;
   }
+
+  .back-btnreset {
+    position: absolute;
+    top: 10px;
+    color: #000;
+    left: -5px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  
   
   .logo-img7 {
     width: 120px;
@@ -292,9 +316,10 @@ form input,
     margin-bottom: 10px;
   }
   
-  h2 {
+  .reyp {
     font-size: 1.5rem;
-    color: #333;
+    color: #000;
+    margin-top: -30px;
     margin-bottom: 10px;
   }
   
@@ -483,7 +508,7 @@ form input,
     list-style: none;
     padding: 0;
     margin: 15px 40px;
-    font-size: 13px;
+    font-size: 11px;
     color: #777;
     display: flex;
     flex-direction: column;
@@ -517,7 +542,7 @@ form input,
   .toggle-password4 {
     right: 50px;
     top: 50%;
-    transform: translateY(-210%);
+    transform: translateY(-310%);
     cursor: pointer;
     font-size: 18px;
   }

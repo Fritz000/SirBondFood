@@ -54,7 +54,7 @@
 }
 
 /* Text Styling */
-h2 {
+.wtbf {
     font-size: 1.5rem;
     color: #333;
     margin-bottom: 10px;
@@ -171,7 +171,7 @@ p, small {
 
 @media (max-width: 391px){
     .signup-overlay {
-        display: flex;
+    display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
@@ -182,14 +182,17 @@ p, small {
         background: white;
         width: 800px;
         height: auto;
-        margin-top: 400px;
+        margin-top: 550px;
         padding: 20px;
         border-radius: 10px;
         text-align: center;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: none; /* Removes any shadow */
+        border: none; /* Ensures no border */
+        outline: none; /* Removes any outline */
         display: flex;
         flex-direction: column;
     }
+    
     
     /* Top Icons (Back and Close) */
     .top-icons {
@@ -224,9 +227,10 @@ p, small {
     }
     
     /* Text Styling */
-    h2 {
+    .wtbf {
         font-size: 1.5rem;
         color: #333;
+        margin-top: -30px;
         margin-bottom: 10px;
     }
     

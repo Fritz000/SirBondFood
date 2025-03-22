@@ -40,7 +40,7 @@ const Signin = ({ setUser }) => {
       </button>
 
         <img src={logo} alt="Feed the Nation Logo" className="logo-img1" />
-        <h2>Welcome back!</h2>
+        <h2 className="wb">Welcome back!</h2>
         <p>Enter your email or phone number to login.</p>
         <small>
           <ShieldBan size={24} style={{ position: "relative", top: "5px", color: "black" }} /> Your information is 100% secured

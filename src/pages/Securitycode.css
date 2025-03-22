@@ -20,7 +20,7 @@
     flex-direction: column;
 }
 
-h2 {
+.esc {
     font-size: 1.5rem;
     color: #333;
     margin-bottom: 10px;
@@ -51,10 +51,11 @@ h2 {
     width: 100%;
   }
   
-  .back-btn {
+  .back-btnsecurity {
     position: absolute;
     top: 10px;
     left: 10px;
+    color: #000;
     border: none;
     background: transparent;
     cursor: pointer;
@@ -147,7 +148,7 @@ h2 {
     border-radius: 5px;
   }
 
-@media (max-width: 391px){
+@media (max-width: 390px){
   .signup-overlay{
     display: flex;
     align-items: center;
@@ -157,20 +158,24 @@ h2 {
 }
 
 .signup-modal1l {
-  background: white;
-  width: 800px;
-  height: auto;
-  margin-top: 170px;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
+    background: white;
+    width: 800px;
+    height: auto;
+    margin-top: 290px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: none; /* Removes any shadow */
+    border: none; /* Ensures no border */
+    outline: none; /* Removes any outline */
+    display: flex;
+    flex-direction: column;
 }
 
-h2 {
+.esc {
     font-size: 1.5rem;
-    color: #333;
+    color: #000;
+    margin-top: -40px;
     margin-bottom: 10px;
   }
   
@@ -199,10 +204,11 @@ h2 {
     width: 100%;
   }
   
-  .back-btn {
+  .back-btnsecurity {
     position: absolute;
     top: 10px;
-    left: 10px;
+    color: #000;
+    left: -5px;
     border: none;
     background: transparent;
     cursor: pointer;

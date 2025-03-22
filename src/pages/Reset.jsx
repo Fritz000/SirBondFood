@@ -66,7 +66,7 @@ const Reset = ({ onClose }) => {
       <div className="signup-modal2000">
         {/* Back and Close Icons */}
         <div className="top-icons">
-              <button className="back-btn" onClick={() => navigate(-1)}>  
+              <button className="back-btnreset" onClick={() => navigate(-1)}>  
                   <ChevronLeft size={24} />
               </button>
               <button className="close-btn" onClick={onClose ? onClose : () => navigate("/")}>
@@ -78,7 +78,7 @@ const Reset = ({ onClose }) => {
           src={logo}
           alt="Feed the Nation Logo" className="logo-img7"
         />
-        <h2>Reset your password</h2>
+        <h2 className="reyp">Reset your password</h2>
         <p>Enter your new password</p>
         <small>
           <ShieldBan size={24} style={{ position: "relative", top: "5px", color: "black" }} /> Your information is 100% secured

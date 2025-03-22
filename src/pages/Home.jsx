@@ -76,7 +76,7 @@ const Home = ({ user }) => {
 
       {/* Profile Section */}
       <div className="profile-card">
-        <h2>Profile & Notifications</h2>
+        <h2 className='pandn'>Profile & Notifications</h2>
         <div className="profile-details">
           <div className="profile-left">
             <p>Rank: <strong>Mastermind</strong></p>

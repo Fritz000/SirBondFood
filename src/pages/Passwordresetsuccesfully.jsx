@@ -52,7 +52,7 @@ const Passwordresetsuccesfully = ({ onClose }) => {
       <div className="signup-modal2n1">
         {/* Back and Close Icons */}
         <div className="top-icons">
-              <button className="back-btn" onClick={() => navigate(-1)}>  
+              <button className="back-btnprs" onClick={() => navigate(-1)}>  
                   <ChevronLeft size={24} />
               </button>
               <button className="close-btn" onClick={onClose ? onClose : () => navigate("/")}>
