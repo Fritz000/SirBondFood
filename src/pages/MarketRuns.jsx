@@ -19,16 +19,22 @@ import Group from "../assets/Group.png";
 import { ChevronRight } from "lucide-react";
 import Star from "../assets/STAR.png"
 import rev from "../assets/rev.png"
+import bicycle from "../assets/bicycle.png";
+import jacket from "../assets/jacket.png";
+import doll from "../assets/doll.png";
+import chair from "../assets/chair.png";
+import cream from "../assets/cream.png";
+import tv from "../assets/tv.png";
 
 
 const categories = [
   { name: "Food & Grocery", image: Vector1 },
-  { name: "Electronics", image: seafoods },
-  { name: "Home & Living", image: stunning },
-  { name: "Health & Beauty", image: grain },
-  { name: "Fashion & Clothing", image: singleredapple },
-  { name: "Babies & Games", image: vegetables },
-  { name: "Sport & Outdoors", image: glassmilkbottle },
+  { name: "Electronics", image: tv },
+  { name: "Home & Living", image: chair },
+  { name: "Health & Beauty", image: cream },
+  { name: "Fashion & Clothing", image: jacket },
+  { name: "Babies & Games", image: doll },
+  { name: "Sport & Outdoors", image: bicycle },
   { name: "Feed & Seeds", image: seeds },
 ];
 // Hardcoded trending items
@@ -234,7 +240,9 @@ const handleCategoryClick = (categoryName) => {
       <div className="trending-grid100">
       {items.map((item) => (
           <div key={item.id} className="trending-card100" onClick={() => setSelectedItem(item)}>
+            <div className="category-image-icon-container100">
             <img src={item.image} alt={item.name} className="trending-image100" />
+            </div>
             <div className="trending-info100">
               <p className="trending-name100">{item.name}</p>
               <p className="trending-price100">

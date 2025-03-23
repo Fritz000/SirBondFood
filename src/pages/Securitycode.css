@@ -148,7 +148,7 @@
     border-radius: 5px;
   }
 
-@media (max-width: 390px){
+@media (max-width: 500PX){
   .signup-overlay{
     display: flex;
     align-items: center;

@@ -89,7 +89,7 @@
 
 .empty-cart-text {
     font-size: 14px;
-    color: #666;
+    color: #000;
     margin-bottom: 20px;
 }
 
@@ -107,4 +107,130 @@
 
 .add-item-button:hover {
     background-color: #45a049;
+}
+
+@media (max-width:500px){
+    .empty-cart-container {
+        display: flex;
+        height: 100vh;
+        background-color: white;
+        box-shadow: none; /* Removes shadow */
+        border-radius: 0; /* Removes rounded corners */
+        border: none; /* Ensures no border */
+    }
+    
+      
+    .empty-cart-box {
+        justify-content: center;
+        align-items: center;
+        background: white;
+        padding: 30px;
+        margin: 200px auto 0; /* Centers horizontally */
+        border: none;
+        border-radius: 10px;
+        box-shadow: none;
+        transform: translateX(-15%);
+        text-align: center;
+        max-width: 90%; /* Ensures it fits inside small screens */
+        width: 100%;
+    }
+    
+    
+    .icon-button1{
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: color 0.2s;
+        color: #FAC136;
+    }
+    
+    .cart0 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    
+    .delete {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-left: 20px;
+        margin-top: -15px;
+    }
+    
+    .selectall-container {
+        display: flex;
+        align-items: center;
+        gap: 5px; /* Adjust spacing between radio button and text */
+    }
+    
+    .radio-button {
+        width: 14px;
+        height: 14px;
+        cursor: pointer;
+        accent-color: #007bff; /* Matches theme */
+    }
+    
+    /* Aligns "Select all items" properly */
+    .selectall {
+        font-size: 13px;
+        font-weight: 400;
+        color: #333;
+    }
+    
+    /* Keeps "Delete selected items" aligned and formatted */
+    .deleteselected {
+        font-size: 13px;
+        font-weight: 400;
+        margin-top: 15px;
+        margin-left: 10px;
+        color: rgb(14, 231, 14);
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    
+    .empty-cart-image {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 15px;
+    }
+    
+    .empty-cart-title {
+        font-size: 22px;
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .empty-cart-text {
+        font-size: 14px;
+        color: #000;
+        margin-bottom: 20px;
+        width: 100vw; /* Stretches across the full screen */
+        text-align: center;
+        display: block;
+        overflow: hidden;
+        transform: translateX(-50px); /* Shifts it left without using margin */
+    }    
+    
+    .add-item-button {
+        display: inline-block;
+        width: 90%; /* Adjusts width dynamically */
+        max-width: 350px; /* Prevents it from becoming too large */
+        padding: 10px 20px;
+        background-color: #6CC51D;
+        color: white;
+        font-size: 16px;
+        text-decoration: none;
+        border-radius: 20px;
+        transition: background 0.3s;
+        text-align: center; /* Ensures text stays centered */
+        margin: 0 auto; /* Centers the button */
+    }
+    
+    
+    .add-item-button:hover {
+        background-color: #45a049;
+    }
+    
 }

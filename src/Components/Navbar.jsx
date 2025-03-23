@@ -48,7 +48,7 @@ const Navbar = () => {
   }, []);
 
   const toggleDropdown = (dropdown) => {
-    if (window.innerWidth <= 390) {
+    if (window.innerWidth <= 500) {
       if (dropdown === "user") {
         navigate("/Signup"); // Redirect to Signup
         return;
