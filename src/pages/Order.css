@@ -112,7 +112,7 @@
     background-color: #5aa414;
 }
 
-@media (max-width: 500px){
+@media (max-width: 430px){
 
 .order-container {
     margin-top: 10px;
@@ -121,7 +121,7 @@
 }
 
 .orders {
-    text-align: left;
+    text-align: center;
     margin-left: 0; /* Remove negative margin */
     max-width: 90%; /* Prevents it from overflowing */
     padding-left: 20px; /* Adjust padding instead */
@@ -148,7 +148,7 @@
     border-bottom: 2px solid #EEEEEE;
     margin-bottom: 20px;
     margin-left: 200px;
-    width: 60%; /* Reduces the width to half */
+    width: 50%; /* Reduces the width to half */
 }
 
 .order-tab {
