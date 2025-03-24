@@ -20,7 +20,7 @@
     flex-direction: column;
 }
 
-/* Top Icons (Back and Close) */
+
 .top-icons {
     position: relative;
     width: 100%;
@@ -44,7 +44,7 @@
     cursor: pointer;
 }
 
-/* Logo */
+
 .logo-img {
     width: 150px;
     height: 150px; 
@@ -53,7 +53,7 @@
     margin-bottom: 10px;
 }
 
-/* Text Styling */
+
 .wtbf {
     font-size: 1.5rem;
     color: #333;
@@ -72,7 +72,7 @@ p, small {
     color: black;
 }
 
-/* Form Inputs */
+
 .curved-input {
     padding: 12px 15px;
     border-radius: 20px;
@@ -106,7 +106,7 @@ p, small {
     flex-grow: 1;
 }
 
-/* Submit Button */
+
 .signup-btn {
     background: #DAF0C6;
     color: white;
@@ -122,7 +122,7 @@ p, small {
     background-color: #008000;
 }
 
-/* Social Signup */
+
 .social-signup {
     display: flex;
     flex-direction: column;
@@ -151,7 +151,7 @@ p, small {
     color: #666;
 }
 
-/* Social Icons */
+
 .social-icons {
     display: flex;
     justify-content: center;
@@ -169,7 +169,7 @@ p, small {
     color: #555;
 }
 
-@media (max-width: 500PX){
+@media (max-width: 430px){
     .signup-overlay {
     display: flex;
       align-items: center;
@@ -182,19 +182,17 @@ p, small {
         background: white;
         width: 800px;
         height: auto;
-        margin-top: 550px;
+        margin-top: 310px;
         padding: 20px;
         border-radius: 10px;
         text-align: center;
-        box-shadow: none; /* Removes any shadow */
-        border: none; /* Ensures no border */
-        outline: none; /* Removes any outline */
+        box-shadow: none;
+        border: none;
+        outline: none;
         display: flex;
         flex-direction: column;
     }
-    
-    
-    /* Top Icons (Back and Close) */
+   
     .top-icons {
         position: relative;
         width: 100%;
@@ -217,7 +215,7 @@ p, small {
         cursor: pointer;
     }
     
-    /* Logo */
+   
     .logo-img {
         width: 120px;
         height: 120px; 
@@ -226,7 +224,7 @@ p, small {
         margin-bottom: 5px;
     }
     
-    /* Text Styling */
+   
     .wtbf {
         font-size: 1.5rem;
         color: #333;
@@ -246,7 +244,7 @@ p, small {
         color: black;
     }
     
-    /* Form Inputs */
+   
     .curved-input {
         width: 100%;
         max-width: 100%;
@@ -255,25 +253,25 @@ p, small {
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 10px;
-        box-sizing: border-box; /* Ensures padding doesn't shrink width */
+        box-sizing: border-box;
     }
     
-    /* Fix Date of Birth input specifically */
+   
     input[type="date"] {
-        width: 100% !important; /* Forces it to take full width */
+        width: 100% !important;
         max-width: 100% !important;
         height: 45px;
         font-size: 16px;
         padding: 10px;
         border-radius: 20px;
-        box-sizing: border-box; /* Prevents width issues */
+        box-sizing: border-box;
     }
 
     .curved-input, .input-group input, .input-group select {
-        width: 100%; /* Ensures it takes full width */
-        max-width: 100%; /* Prevents it from shrinking */
-        height: 45px; /* Makes it uniform in height */
-        font-size: 16px; /* Increases readability */
+        width: 100%;
+        max-width: 100%;
+        height: 45px;
+        font-size: 16px;
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 10px;
@@ -304,7 +302,7 @@ p, small {
         flex-grow: 1;
     }
     
-    /* Submit Button */
+   
     .signup-btn {
         background: #DAF0C6;
         color: white;
@@ -320,7 +318,7 @@ p, small {
         background-color: #008000;
     }
     
-    /* Social Signup */
+   
     .social-signup {
         display: flex;
         flex-direction: column;
@@ -350,7 +348,620 @@ p, small {
         color: #666;
     }
     
-    /* Social Icons */
+   
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .icon {
+        font-size: 32px;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    .icon:hover {
+        transform: scale(1.2);
+        color: #555;
+    }
+
+    .signin{
+        font-size: 15px;
+        color: #000;
+    }
+    
+}
+
+@media (max-width: 414px){
+    .signup-overlay {
+    display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100vh;
+    }
+    
+    .signup-modal {
+        background: white;
+        width: 800px;
+        height: auto;
+        margin-top: 350px;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: none;
+        border: none;
+        outline: none;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    
+   
+    .top-icons {
+        position: relative;
+        width: 100%;
+    }
+    
+    .back-btn {
+        top: 10px;
+        left: 10px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+    }
+    
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        border: none;
+        display: none;
+        background: transparent;
+        cursor: pointer;
+    }
+    
+   
+    .logo-img {
+        width: 120px;
+        height: 120px; 
+        margin: auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    
+   
+    .wtbf {
+        font-size: 1.5rem;
+        color: #333;
+        margin-top: -30px;
+        margin-bottom: 10px;
+    }
+    
+    p, small {
+        font-size: 0.9rem;
+        color: #555;
+        margin-bottom: 15px;
+    }
+    
+    .secure-icon {
+        position: relative;
+        top: 5px;
+        color: black;
+    }
+    
+   
+    .curved-input {
+        width: 100%;
+        max-width: 100%;
+        height: 45px;
+        font-size: 16px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+    
+   
+    input[type="date"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 45px;
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 20px;
+        box-sizing: border-box;
+    }
+
+    .curved-input, .input-group input, .input-group select {
+        width: 100%;
+        max-width: 100%;
+        height: 45px;
+        font-size: 16px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+
+    
+    
+    .input-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .input-group select,
+    .input-group input {
+        padding: 10px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        outline: none;
+    }
+    
+    .input-group select {
+        width: 30%;
+    }
+    
+    .input-group input {
+        flex-grow: 1;
+    }
+    
+   
+    .signup-btn {
+        background: #DAF0C6;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    
+    .signup-btn:hover {
+        background-color: #008000;
+    }
+    
+   
+    .social-signup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .separator {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 300px;
+        margin: 20px 0;
+    }
+    
+    .line {
+        flex: 1;
+        height: 1px;
+        margin-top: 10px;
+        background-color: #ccc;
+    }
+    
+    .text {
+        margin: 0 10px;
+        font-size: 14px;
+        color: #666;
+    }
+    
+   
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .icon {
+        font-size: 32px;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    .icon:hover {
+        transform: scale(1.2);
+        color: #555;
+    }
+
+    .signin{
+        font-size: 15px;
+        color: #000;
+    }
+    
+}
+
+@media (max-width: 390PX){
+    .signup-overlay {
+    display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100vh;
+    }
+    
+    .signup-modal {
+        background: white;
+        width: 800px;
+        height: auto;
+        margin-top: 550px;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: none;
+        border: none;
+        outline: none;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    
+   
+    .top-icons {
+        position: relative;
+        width: 100%;
+    }
+    
+    .back-btn {
+        top: 10px;
+        left: 10px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+    }
+    
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        border: none;
+        display: none;
+        background: transparent;
+        cursor: pointer;
+    }
+    
+   
+    .logo-img {
+        width: 120px;
+        height: 120px; 
+        margin: auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    
+   
+    .wtbf {
+        font-size: 1.5rem;
+        color: #333;
+        margin-top: -30px;
+        margin-bottom: 10px;
+    }
+    
+    p, small {
+        font-size: 0.9rem;
+        color: #555;
+        margin-bottom: 15px;
+    }
+    
+    .secure-icon {
+        position: relative;
+        top: 5px;
+        color: black;
+    }
+    
+   
+    .curved-input {
+        width: 100%;
+        max-width: 100%;
+        height: 45px;
+        font-size: 16px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+    
+   
+    input[type="date"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 45px;
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 20px;
+        box-sizing: border-box;
+    }
+
+    .curved-input, .input-group input, .input-group select {
+        width: 100%;
+        max-width: 100%;
+        height: 45px;
+        font-size: 16px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+
+    
+    
+    .input-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .input-group select,
+    .input-group input {
+        padding: 10px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        outline: none;
+    }
+    
+    .input-group select {
+        width: 30%;
+    }
+    
+    .input-group input {
+        flex-grow: 1;
+    }
+    
+   
+    .signup-btn {
+        background: #DAF0C6;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    
+    .signup-btn:hover {
+        background-color: #008000;
+    }
+    
+   
+    .social-signup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .separator {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 300px;
+        margin: 20px 0;
+    }
+    
+    .line {
+        flex: 1;
+        height: 1px;
+        margin-top: 10px;
+        background-color: #ccc;
+    }
+    
+    .text {
+        margin: 0 10px;
+        font-size: 14px;
+        color: #666;
+    }
+    
+   
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+    
+    .icon {
+        font-size: 32px;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    .icon:hover {
+        transform: scale(1.2);
+        color: #555;
+    }
+
+    .signin{
+        font-size: 15px;
+        color: #000;
+    }
+    
+}
+
+@media (max-width: 375PX){
+    .signup-overlay {
+    display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100vh;
+    }
+    
+    .signup-modal {
+        background: white;
+        width: 800px;
+        height: auto;
+        margin-top: 500px;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: none;
+        border: none;
+        outline: none;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .top-icons {
+        position: relative;
+        width: 100%;
+    }
+    
+    .back-btn {
+        top: 10px;
+        left: 10px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+    }
+    
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        border: none;
+        display: none;
+        background: transparent;
+        cursor: pointer;
+    }
+   
+    .logo-img {
+        width: 120px;
+        height: 120px; 
+        margin: auto;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    
+   
+    .wtbf {
+        font-size: 1.5rem;
+        color: #333;
+        margin-top: -30px;
+        margin-bottom: 10px;
+    }
+    
+    p, small {
+        font-size: 0.9rem;
+        color: #555;
+        margin-bottom: 15px;
+    }
+    
+    .secure-icon {
+        position: relative;
+        top: 5px;
+        color: black;
+    }
+    
+   
+    .curved-input {
+        width: 100%;
+        max-width: 100%;
+        height: 45px;
+        font-size: 16px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+    
+   
+    input[type="date"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 45px;
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 20px;
+        box-sizing: border-box;
+    }
+
+    .curved-input, .input-group input, .input-group select {
+        width: 100%;
+        max-width: 100%;
+        height: 45px;
+        font-size: 16px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+    
+    .input-group {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .input-group select,
+    .input-group input {
+        padding: 10px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        outline: none;
+    }
+    
+    .input-group select {
+        width: 30%;
+    }
+    
+    .input-group input {
+        flex-grow: 1;
+    }
+    
+   
+    .signup-btn {
+        background: #DAF0C6;
+        color: white;
+        padding: 10px;
+        width: 100%;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    
+    .signup-btn:hover {
+        background-color: #008000;
+    }
+    
+   
+    .social-signup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    
+    .separator {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 300px;
+        margin: 20px 0;
+    }
+    
+    .line {
+        flex: 1;
+        height: 1px;
+        margin-top: 10px;
+        background-color: #ccc;
+    }
+    
+    .text {
+        margin: 0 10px;
+        font-size: 14px;
+        color: #666;
+    }
+    
+   
     .social-icons {
         display: flex;
         justify-content: center;

@@ -82,18 +82,18 @@
     font-weight: bold;
   }
   
-  /* Input Fields */
+ 
   form input,
   .phone-input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 20px; /* Rounded corners */
+    border-radius: 20px;
     outline: none;
   }
   
-  /* Phone Input - Select + Number */
+ 
   .phone-input {
     display: flex;
     align-items: center;
@@ -106,7 +106,7 @@
     width: 70%;
   }
   
-  /* Continue Button */
+ 
   .signup-btn {
     background: #DAF0C6;
     color: white;
@@ -128,13 +128,13 @@
 
 .highlight {
     color: green;
-    font-weight: bold; /* Optional: Makes it stand out */
+    font-weight: bold;
 }
 
 .verification-code {
     display: flex;
     justify-content: center;
-    gap: 12px; /* Adjust the spacing between boxes */
+    gap: 12px;
     margin-bottom: 15px;
     margin-top: 30px;
   }
@@ -148,7 +148,164 @@
     border-radius: 5px;
   }
 
-@media (max-width: 500PX){
+@media (max-width: 414px){
+    .signup-overlay{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 70vh;
+  }
+  
+  .signup-modal1l {
+      background: white;
+      width: 800px;
+      height: auto;
+      margin-top: 70px;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: none;
+      border: none;
+      outline: none;
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .esc {
+      font-size: 1.5rem;
+      color: #000;
+      margin-top: -40px;
+      margin-bottom: 10px;
+    }
+    
+    p {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+    
+    small {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+  
+    .logo-img3 {
+      width: 120px;
+      height: 120px; 
+      margin: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }
+    
+    .top-icons {
+      position: relative;
+      width: 100%;
+    }
+    
+    .back-btnsecurity {
+      position: absolute;
+      top: 10px;
+      color: #000;
+      left: -5px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+    
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+    }
+  
+    .error-message1 {
+      color: black;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  
+    .resend-code1 {
+      color: green;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    
+   
+    form input,
+    .phone-input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+    }
+    
+   
+    .phone-input {
+      display: flex;
+      align-items: center;
+    }
+    .phone-input select {
+      width: 30%;
+      padding: 10px;
+    }
+    .phone-input input {
+      width: 70%;
+    }
+    
+   
+    .signup-btn {
+      background: #DAF0C6;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .signinn100{
+      font-size: 15px;
+      margin-top: 170px;
+      color: #000;
+    }
+  
+  .terms{
+      font-size: 13px;
+      margin-top: 20px;
+  }
+  
+  .highlight {
+      color: green;
+      font-weight: bold;
+  }
+  
+  .verification-code {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 15px;
+      margin-top: 30px;
+    }
+    
+  .code-input {
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      text-align: center;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  
+  }
+
+@media (max-width: 390px){
   .signup-overlay{
     display: flex;
     align-items: center;
@@ -165,9 +322,9 @@
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    box-shadow: none; /* Removes any shadow */
-    border: none; /* Ensures no border */
-    outline: none; /* Removes any outline */
+    box-shadow: none;
+    border: none;
+    outline: none;
     display: flex;
     flex-direction: column;
 }
@@ -235,18 +392,18 @@
     font-weight: bold;
   }
   
-  /* Input Fields */
+ 
   form input,
   .phone-input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 20px; /* Rounded corners */
+    border-radius: 20px;
     outline: none;
   }
   
-  /* Phone Input - Select + Number */
+ 
   .phone-input {
     display: flex;
     align-items: center;
@@ -259,7 +416,7 @@
     width: 70%;
   }
   
-  /* Continue Button */
+ 
   .signup-btn {
     background: #DAF0C6;
     color: white;
@@ -283,13 +440,170 @@
 
 .highlight {
     color: green;
-    font-weight: bold; /* Optional: Makes it stand out */
+    font-weight: bold;
 }
 
 .verification-code {
     display: flex;
     justify-content: center;
-    gap: 12px; /* Adjust the spacing between boxes */
+    gap: 12px;
+    margin-bottom: 15px;
+    margin-top: 30px;
+  }
+  
+.code-input {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+}
+
+@media (max-width: 375px){
+  .signup-overlay{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 70vh;
+}
+
+.signup-modal1l {
+    background: white;
+    width: 800px;
+    height: auto;
+    margin-top: 260px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.esc {
+    font-size: 1.5rem;
+    color: #000;
+    margin-top: -40px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+  small {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 15px;
+  }
+
+  .logo-img3 {
+    width: 120px;
+    height: 120px; 
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+  
+  .top-icons {
+    position: relative;
+    width: 100%;
+  }
+  
+  .back-btnsecurity {
+    position: absolute;
+    top: 10px;
+    color: #000;
+    left: -5px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .error-message1 {
+    color: black;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  .resend-code1 {
+    color: green;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+ 
+  form input,
+  .phone-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+  }
+  
+ 
+  .phone-input {
+    display: flex;
+    align-items: center;
+  }
+  .phone-input select {
+    width: 30%;
+    padding: 10px;
+  }
+  .phone-input input {
+    width: 70%;
+  }
+  
+ 
+  .signup-btn {
+    background: #DAF0C6;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .signinn100{
+    font-size: 15px;
+    margin-top: 170px;
+    color: #000;
+  }
+
+.terms{
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+.highlight {
+    color: green;
+    font-weight: bold;
+}
+
+.verification-code {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
     margin-bottom: 15px;
     margin-top: 30px;
   }

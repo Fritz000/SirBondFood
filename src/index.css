@@ -497,7 +497,7 @@ a {
   margin-bottom: 10px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 430px) {
  
   .navbar {
     display: flex;
@@ -545,7 +545,434 @@ a {
     overflow-y: auto;
   }
 
+  .dropdown-menu.show {
+    display: flex !important;
+  }
+
  
+  .dropdown-menu .menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .dropdown-menu .menu-header .logo {
+    display: block !important;
+    width: 120px;
+    height: auto;
+    margin-left: 10px;
+  }
+
+  .menu-title {
+    font-size: 20px;
+    font-weight: bold;
+    display: none;
+    margin-bottom: 10px;
+  }
+
+  .menu-logo {
+    display: flex;
+    align-items: center;
+    left: 0;
+    margin-left: -18px;
+    width: 100vw;
+    border-bottom: 2px solid #E9E9E9;
+    padding: 10px 0;
+    background-color: white;
+    z-index: 1000;
+    margin-bottom: 30px;
+}
+
+.logo-left {
+    width: 100px; 
+    height: auto;
+    display: block;
+    margin-left: 0;
+}
+
+.logo-right{
+  width: 75px; 
+  height: auto;
+  display: none;
+}
+
+.navbar-search {
+  width: 405px;
+  margin: 20px auto 0;
+  transform: translateX(-18px); /* Moves it left without affecting layout */
+}
+
+  .search-input {
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+  }
+
+  .search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: gray;
+    border: #BFBFBF;
+  }
+
+.user-text {
+  text-align: left;
+  display: none;
+}
+
+.user-info-icon{
+  margin-right: -5px; 
+  font-size: 24px;
+}
+
+.faregbell{
+  font-size: 24px;
+}
+
+.fashoppingcart{
+  font-size: 24px;
+}
+}
+
+@media screen and (max-width: 414px) {
+ 
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navbar-left {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 15px;
+  }
+
+  .navbar-right {
+    justify-content: flex-end;
+    position: absolute;
+    top: 25px;
+    right: 15px;
+  }
+
+  .navbar .logo {
+    display: none !important;
+  }
+
+  .hamburger-menu {
+    display: flex !important;
+    color: black;
+    margin-left: -30px;
+  }
+ 
+  .dropdown-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100vh;
+    background-color: white;
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: none;
+    overflow-y: auto;
+  }
+
+  .dropdown-menu.show {
+    display: flex !important;
+  }
+
+ 
+  .dropdown-menu .menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .dropdown-menu .menu-header .logo {
+    display: block !important;
+    width: 120px;
+    height: auto;
+    margin-left: 10px;
+  }
+
+  .menu-title {
+    font-size: 20px;
+    font-weight: bold;
+    display: none;
+    margin-bottom: 10px;
+  }
+
+  .menu-logo {
+    display: flex;
+    align-items: center;
+    left: 0;
+    margin-left: -18px;
+    width: 100vw;
+    border-bottom: 2px solid #E9E9E9;
+    padding: 10px 0;
+    background-color: white;
+    z-index: 1000;
+    margin-bottom: 30px;
+}
+
+.logo-left {
+    width: 100px; 
+    height: auto;
+    display: block;
+    margin-left: 0;
+}
+
+.logo-right{
+  width: 75px; 
+  height: auto;
+  display: none;
+}
+
+.navbar-search {
+  width: 390px;
+  margin: 20px auto 0;
+  transform: translateX(-18px); /* Moves it left without affecting layout */
+}
+
+
+  .search-input {
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+  }
+
+  .search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: gray;
+    border: #BFBFBF;
+  }
+
+.user-text {
+  text-align: left;
+  display: none;
+}
+
+.user-info-icon{
+  margin-right: -5px; 
+  font-size: 24px;
+}
+
+.faregbell{
+  font-size: 24px;
+}
+
+.fashoppingcart{
+  font-size: 24px;
+}
+}
+
+@media screen and (max-width: 390px) {
+ 
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navbar-left {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 15px;
+  }
+
+  .navbar-right {
+    justify-content: flex-end;
+    position: absolute;
+    top: 25px;
+    right: 15px;
+  }
+
+  .navbar .logo {
+    display: none !important;
+  }
+
+  .hamburger-menu {
+    display: flex !important;
+    color: black;
+    margin-left: -30px;
+  }
+ 
+  .dropdown-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100vh;
+    background-color: white;
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: none;
+    overflow-y: auto;
+  }
+
+  .dropdown-menu.show {
+    display: flex !important;
+  }
+
+ 
+  .dropdown-menu .menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .dropdown-menu .menu-header .logo {
+    display: block !important;
+    width: 120px;
+    height: auto;
+    margin-left: 10px;
+  }
+
+  .menu-title {
+    font-size: 20px;
+    font-weight: bold;
+    display: none;
+    margin-bottom: 10px;
+  }
+
+  .menu-logo {
+    display: flex;
+    align-items: center;
+    left: 0;
+    margin-left: -18px;
+    width: 100vw;
+    border-bottom: 2px solid #E9E9E9;
+    padding: 10px 0;
+    background-color: white;
+    z-index: 1000;
+    margin-bottom: 30px;
+}
+
+.logo-left {
+    width: 100px; 
+    height: auto;
+    display: block;
+    margin-left: 0;
+}
+
+.logo-right{
+  width: 75px; 
+  height: auto;
+  display: none;
+}
+
+.navbar-search {
+  width: 365px;
+  margin: 20px auto 0;
+  transform: translateX(-18px); /* Moves it left without affecting layout */
+}
+
+
+  .search-input {
+    width: 100%;
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+  }
+
+  .search-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: gray;
+    border: #BFBFBF;
+  }
+
+.user-text {
+  text-align: left;
+  display: none;
+}
+
+.user-info-icon{
+  margin-right: -5px; 
+  font-size: 24px;
+}
+
+.faregbell{
+  font-size: 24px;
+}
+
+.fashoppingcart{
+  font-size: 24px;
+}
+}
+
+@media screen and (max-width: 375px) {
+ 
+  .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navbar-left {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 15px;
+  }
+
+  .navbar-right {
+    justify-content: flex-end;
+    position: absolute;
+    top: 25px;
+    right: 15px;
+  }
+
+  .navbar .logo {
+    display: none !important;
+  }
+
+  .hamburger-menu {
+    display: flex !important;
+    color: black;
+    margin-left: -30px;
+  }
+ 
+  .dropdown-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100vh;
+    background-color: white;
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: none;
+    overflow-y: auto;
+  }
+
   .dropdown-menu.show {
     display: flex !important;
   }

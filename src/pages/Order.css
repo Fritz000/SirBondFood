@@ -111,3 +111,114 @@
 .order-button:hover {
     background-color: #5aa414;
 }
+
+@media (max-width: 500px){
+
+.order-container {
+    margin-top: 10px;
+    width: 100%;
+    margin: auto;
+}
+
+.orders {
+    text-align: left;
+    margin-left: 0; /* Remove negative margin */
+    max-width: 90%; /* Prevents it from overflowing */
+    padding-left: 20px; /* Adjust padding instead */
+}
+
+.orders p{
+    font-size: 24px;
+    font-weight: 600;
+    color: #000;
+}
+
+.line2{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+    display: none;
+    color: #EEEEE4;
+}
+
+.order-header {
+    display: flex;
+    justify-content: flex-start;
+    gap: 5px;
+    border-bottom: 2px solid #EEEEEE;
+    margin-bottom: 20px;
+    margin-left: 200px;
+    width: 60%; /* Reduces the width to half */
+}
+
+.order-tab {
+    padding: 10px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: #868889;
+}
+
+.order-tab.active {
+    color: #6cc51d;
+    font-weight: 600;
+}
+
+.order-tab.active::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #6cc51d;
+    bottom: -2px;
+    left: 0;
+}
+
+.order-content {
+    text-align: center;
+    padding: 10px 60px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    margin-top: 100px;
+    margin-left: 10px;
+}
+
+.order-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.order-image {
+    width: 249px;
+    height: 260px;
+    margin-bottom: 20px;
+}
+
+.order-text {
+    font-size: 16px;
+    font-weight: 20;
+    color: #000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.order-button {
+    background-color: #6cc51d;
+    color: white;
+    padding: 10px 30px;
+    width: 249px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.order-button:hover {
+    background-color: #5aa414;
+}
+
+}
