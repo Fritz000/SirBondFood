@@ -220,6 +220,7 @@
     margin-bottom: 10px;
     font-weight: 700;
     color: #FFF;
+    text-align: left;
   }
   
   .profile-details {
@@ -275,6 +276,7 @@
     font-size: 32px;
     margin-bottom: 10px;
     color: white;
+    text-align: left;
     font-weight: 700;
   }
   

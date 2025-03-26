@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./MarketRuns.css";
-import { FaStar } from "react-icons/fa";
-import Vector1 from "../assets/Vector1.png";
-import seafoods from "../assets/fresh-bass-with-white-background1.png";
-import stunning from "../assets/stunning-impasto-painting-white-hen1.png";
-import grain from "../assets/412951555_bbc2c779-25c0-4851-adc1-c922a7d4c5b71.png";
 import singleredapple from "../assets/single-red-apple-with-green-leaf-water-droplets.png";
-import seeds from "../assets/single-red-apple-with-green-leaf-water-droplets2.png";
-import vegetables from "../assets/138792826_4acbcb31-951d-404f-ae4d-fd34a21218761.png";
-import glassmilkbottle from "../assets/glass-milk-bottle-fresh-milk1.png";
 import tangerine from "../assets/tangerine.png";
 import avocado from "../assets/avocado.png";
 import agbalumo from "../assets/agbalumo.png";
@@ -25,17 +17,17 @@ import doll from "../assets/doll.png";
 import chair from "../assets/chair.png";
 import cream from "../assets/cream.png";
 import tv from "../assets/tv.png";
+import dpp from "../assets/dpp.png";
 
 
 const categories = [
-  { name: "Food & Grocery", image: Vector1 },
+  { name: "Food & Grocery", image: dpp },
   { name: "Electronics", image: tv },
   { name: "Home & Living", image: chair },
   { name: "Health & Beauty", image: cream },
   { name: "Fashion & Clothing", image: jacket },
   { name: "Babies & Games", image: doll },
   { name: "Sport & Outdoors", image: bicycle },
-  { name: "Feed & Seeds", image: seeds },
 ];
 // Hardcoded trending items
 const trendingItems = [

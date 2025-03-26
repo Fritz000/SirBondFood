@@ -26,7 +26,7 @@ const FoodAndGrocery = () => {
   {/* Header & Search in One Container */}
   <div className="ffgheader">
     <header className="food-grocery-header">
-      <button className="back-button" onClick={() => navigate(-1)}>
+      <button className="back-button105" onClick={() => navigate(-1)}>
         <ChevronLeft size={32} />
       </button>
       <h2 className="ffg">Food & Grocery</h2>
@@ -47,7 +47,7 @@ const FoodAndGrocery = () => {
       <div className="icon-container">
         <img src={category.icon} alt={category.name} className="category-icon" />
       </div>
-      <span className="category-name">{category.name}</span>
+      <span className="category-name105">{category.name}</span>
       <button className="arrow-button">
         <ChevronRight size={28} />
       </button>

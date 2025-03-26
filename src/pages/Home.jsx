@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import '../pages/Home.css';
 import { BsBag } from "react-icons/bs";
@@ -11,9 +11,24 @@ import notowrappedgift from "../assets/notowrappedgift.png";
 import { Gift, ShoppingCart, Package, Soup, Copy } from "lucide-react";
 import MarketRuns from './MarketRuns';
 
+// Function to generate a random referral code
+const generateReferralCode = () => {
+  return Math.random().toString(36).substr(2, 8).toUpperCase(); // Example: 'A1B2C3D4'
+};
+
 const Home = ({ user }) => {
   const location = useLocation();
-  const referralCode = user?.referralCode || "XY6NM82W"; 
+  const [referralCode, setReferralCode] = useState(user?.referralCode || "");
+
+  // Generate code if user has none
+  useEffect(() => {
+    if (!referralCode) {
+      const newCode = generateReferralCode();
+      setReferralCode(newCode);
+      // Here, you should also send this new code to the backend to save it for the user
+    }
+  }, [user]);
+
   const referralLink = `https://sirbond.page.link/${referralCode}`;
 
   // Function to copy referral link to clipboard
@@ -39,14 +54,15 @@ const Home = ({ user }) => {
       <h1 className="heading">What services would you like to access</h1>
 
       <div className="services-grid">
-      <div className="card card-green">
-        <img src={emojionepotoffood} alt="Order meals" className="icon icon-green" />
-        <p className="card-title">Order meals</p>
-      </div>
 
       <div className="card card-yellow">
         <Link to="/MarketRuns"><img src={twemojishoppingcart} alt="Market runs" className="icon icon-yellow" />
         <p className="card-title">Market runs</p></Link>
+      </div>
+
+      <div className="card card-green">
+        <img src={emojionepotoffood} alt="Order meals" className="icon icon-green" />
+        <p className="card-title">Order meals</p>
       </div>
 
       <div className="card card-teal">
