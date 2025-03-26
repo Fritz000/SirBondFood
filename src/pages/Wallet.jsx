@@ -34,29 +34,29 @@ const Wallet = ({ onClose }) => {
         });
 
     return (
-        <div className="Walletcontainer">
-            <div className="Walletdetails">
-                <h2 className="Wallet100">Wallet</h2>
+        <div className="Walletcontainer1">
+            <div className="Walletdetails1">
+                <h3 className="wallet1000">WALLET</h3>
             </div>
 
-            <div className="image-container-wallet">
-                <div className="wallet-image" style={{ backgroundImage: `url(${Rectangle4219})` }}>
-                    <div className="wallet-content">
-                        <div className="wallet-image2" style={{ backgroundImage: `url(${Rectangle4221})` }}>
-                            <div className="wallet-content2">
-                                <p className="wallet-balance1">Balance</p>
-                                <p className="wallet-amount1">₦{totalCredit.toLocaleString()}</p>
+            <div className="image-container-wallet1">
+                <div className="wallet-image1" style={{ backgroundImage: `url(${Rectangle4219})` }}>
+                    <div className="wallet-content1">
+                        <div className="wallet-image21" style={{ backgroundImage: `url(${Rectangle4221})` }}>
+                            <div className="wallet-content21">
+                                <p className="wallet-balance110">Balance</p>
+                                <p className="wallet-amount11">₦{totalCredit.toLocaleString()}</p>
                             </div>
                         </div>
-                        <div className="wallet509">
-                            <div className="wallet-content3">
-                                <div className="wallet-image3" style={{ backgroundImage: `url(${group18266})` }}>
-                                    <p className="top">Top Up</p>
+                        <div className="wallet5091">
+                            <div className="wallet-content31">
+                                <div className="wallet-image31" style={{ backgroundImage: `url(${group18266})` }}>
+                                    <p className="top1">Top Up</p>
                                 </div>
                             </div>
-                            <div className="wallet-content1">
-                                <div className="wallet-image3" style={{ backgroundImage: `url(${group18265})` }}>
-                                    <p className="withdraw">Withdraw</p>
+                            <div className="wallet-content11">
+                                <div className="wallet-image31" style={{ backgroundImage: `url(${group18265})` }}>
+                                    <p className="withdraw1">Withdraw</p>
                                 </div>
                             </div>
                         </div>
@@ -64,17 +64,17 @@ const Wallet = ({ onClose }) => {
                 </div>
             </div>
 
-            <div className="transaction-header">
-                <span className="title">Transaction History</span>
-                <a href="#" className="see-all" onClick={() => setActiveTab('All')}>See all</a>
+            <div className="transaction-header109">
+                <span className="title109">Transaction History</span>
+                <a href="#" className="see-all109" onClick={() => setActiveTab('All')}>See all</a>
             </div>
 
-            <div className="wallet-container1">
-                <div className="wallet-header">
+            <div className="wallet-container1109">
+                <div className="wallet-header109">
                     {tabs.map((tab) => (
                         <button
                             key={tab}
-                            className={`wallet-tab ${activeTab === tab ? 'active' : ''}`}
+                            className={`wallet-tab109 ${activeTab === tab ? 'active' : ''}`}
                             onClick={() => setActiveTab(tab)}
                         >
                             {tab}
@@ -84,13 +84,13 @@ const Wallet = ({ onClose }) => {
             </div>
 
             {filteredTransactions.length > 0 ? (
-                <div className="transactions-list">
+                <div className="transactions-list109">
                     {filteredTransactions.map(transaction => (
-                        <div key={transaction.id} className="transaction-item">
-                            <p className="transaction-reference">{transaction.reference}</p>
-                            <p className={`transaction-amount ${transaction.type.toLowerCase()}`}
+                        <div key={transaction.id} className="transaction-item109">
+                            <p className="transaction-reference109">{transaction.reference}</p>
+                            <p className={`transaction-amount109 ${transaction.type.toLowerCase()}`}
                                 style={{ display: 'flex', alignItems: 'center' }}>
-                                <span className="transaction-arrow" style={{
+                                <span className="transaction-arrow109" style={{
                                     background: activeTab === "Referral Earnings" ? 'gold' : (transaction.amount < 0 ? '#FF2A23' : '#6CC51D'),
                                     color: '#000',
                                     borderRadius: '50%',
@@ -107,14 +107,14 @@ const Wallet = ({ onClose }) => {
                                 </span>
                                 ₦{Math.abs(transaction.amount).toLocaleString()}
                             </p>
-                            <p className="transaction-description">{transaction.description} on {transaction.date} || {transaction.time}</p>
-                            <span className={`transaction-type ${transaction.type.toLowerCase()}`}>{transaction.type}</span>
-                            <button className="transaction-download"><MdOutlineFileDownload className="Mdoutlinefiledownload" /> Download</button>
+                            <p className="transaction-description109">{transaction.description} on {transaction.date} || {transaction.time}</p>
+                            <span className={`transaction-type109 ${transaction.type.toLowerCase()}`}>{transaction.type}</span>
+                            <button className="transaction-download109"><MdOutlineFileDownload className="Mdoutlinefiledownload109" /> Download</button>
                         </div>
                     ))}
                 </div>
             ) : (
-                <p className="no-transactions">No transactions yet.</p>
+                <p className="no-transactions109">No transactions yet.</p>
             )}
         </div>
     );
