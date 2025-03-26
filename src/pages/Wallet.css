@@ -308,7 +308,7 @@ body {
     background: #FF2A23;
 }
 
-@media (max-width: 390px){
+@media (max-width: 430px){
     .walletcontainer1 {
         display: flex;
         align-items: flex-start; /* Aligns items to the top */
@@ -338,7 +338,8 @@ body {
         line-height: 31.25px;
         color: #000;
         font-family: 'DM Sans', sans-serif;
-        margin-bottom: 40px;
+        margin-bottom: 10px;
+        margin-top: 20px;
         margin-left: 10px;
     }
     
@@ -351,7 +352,7 @@ body {
     }
     
     .wallet-image1 {
-        width: 336px;
+        width: 420px;
           height: 100px ;
           background-size: cover;
           background-position: center;
@@ -431,14 +432,16 @@ body {
         align-items: center;
         justify-content: flex-start;
         width: 54px;
+        background-position: calc(50% + 1px) calc(-15% - 350px);
         height: 54px;
         border-radius: 10px;
+        margin-top: 20px;
         margin-bottom: 50px;
     }
     
     .wallet5091{
         display: flex;
-        transform: translateX(5%);
+        transform: translateX(50%);
     }
     
     .top1{
@@ -471,7 +474,7 @@ body {
       
       .title109 {
         font-weight: 500;
-        font-size: 15px;
+        font-size: 17px;
         line-height: 31.25px;
         color: #000000;
       }
@@ -479,7 +482,7 @@ body {
       .see-all109 {
         color: #6cc51d;
         text-decoration: none;
-        font-size: 15px;
+        font-size: 17px;
         line-height: 31.25px;
         font-weight: 500;
       }
@@ -491,24 +494,23 @@ body {
         max-width: 1000px;
         margin: auto;
         transform: translateX(2%);
-        
     }
     
     .wallet-header109 {
         display: flex;
         justify-content: flex-start;
-        gap: 20px;
+        gap: 10px;
         border-bottom: 2px solid #EEEEEE;
         margin-bottom: 20px;
-        width: 95%;
+        width: 98%;
     }
     
     .wallet-tab109 {
-        padding: 10px 15px;
+        padding: 5px 5px;
         border: none;
         background: none;
         cursor: pointer;
-        font-size: 13px;
+        font-size: 15px;
         color: #868889;
         position: relative;
         transition: color 0.3s ease;
@@ -621,6 +623,973 @@ body {
     }
     .transaction-type109.debit {
         background: #FF2A23;
+    }
+
+    .no-transactions109{
+        transform: translateX(5%);
+    }
+}
+
+@media (max-width: 414px){
+    .walletcontainer1 {
+        display: flex;
+        align-items: flex-start; /* Aligns items to the top */
+        justify-content: flex-start; /* Aligns items to the left */
+        width: 100%;
+        height: 70vh;
+        padding-left: 20px; /* Optional: Adds some left padding */
+    }
+
+    .walletdetails1 {
+        background: white;
+        width: 800px;
+        margin-top: 140px;
+        max-height: 300vh;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: left;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Ensures content aligns left */
+    }
+    
+    .wallet1000{
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 31.25px;
+        color: #000;
+        font-family: 'DM Sans', sans-serif;
+        margin-bottom: 20px;
+        margin-left: 10px;
+    }
+    
+    .image-container-wallet1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        margin-left: 10px;
+    }
+    
+    .wallet-image1 {
+        width: 390px;
+          height: 100px ;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+          color: white;
+          padding: 50px 30px;
+          margin: 0 auto;
+          border-radius: 10px;
+      }
+      
+      .wallet-content1 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 10px;
+        padding-left: 20px;
+    }
+    
+    .wallet-image21 {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 163px;
+        height: 75px;
+        border-radius: 10px;
+        margin-left: -25px;
+    }
+    
+    .wallet-content21{
+        padding-left: 10px;
+        padding-bottom: 2px;
+    }
+    
+    .wallet-balance110{
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 100%;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        color: #000000;
+    }
+    
+    .wallet-amount11{
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 65.1px;
+        margin-top: -30px;
+        margin-left: -38px;
+        color: #000000;
+    }
+    
+    .wallet-content11 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 10px;
+        padding-left: 20px;
+    }
+    
+    .wallet-content31 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 10px;
+        padding-left: 20px;
+    }
+    
+    .wallet-image31 {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 54px;
+        background-position: calc(50% + 1px) calc(-15% - 350px);
+        height: 54px;
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+    
+    .wallet5091{
+        display: flex;
+        transform: translateX(25%);
+    }
+    
+    .top1{
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 26.04px;
+        align-items: center;
+        color: #FFFFFF;
+        transform: translateY(200%);
+        margin-left: 4px;
+    }
+    
+    .withdraw1{
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 26.04px;
+        align-items: center;
+        color: #FFFFFF;
+        transform: translateY(200%);
+        margin-left: -2px;
+    }
+    
+    .transaction-header109 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 8px 16px;
+      }
+      
+      .title109 {
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 31.25px;
+        color: #000000;
+      }
+      
+      .see-all109 {
+        color: #6cc51d;
+        text-decoration: none;
+        font-size: 17px;
+        line-height: 31.25px;
+        font-weight: 500;
+      }
+      
+    
+    .wallet-container1109 {
+        margin-top: 10px;
+        text-align: left;
+        max-width: 1000px;
+        margin: auto;
+        transform: translateX(2%);
+    }
+    
+    .wallet-header109 {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        border-bottom: 2px solid #EEEEEE;
+        margin-bottom: 20px;
+        width: 95%;
+    }
+    
+    .wallet-tab109 {
+        padding: 5px 5px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 14px;
+        color: #868889;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+    
+    .wallet-tab109:hover {
+        color: #6cc51d;
+    }
+    
+    .wallet-tab109.active {
+        color: #6cc51d;
+        font-weight: 600;
+    }
+    
+    
+    .wallet-tab109.active::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #6cc51d;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    
+    .transactions-list109 {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+    .transaction-item109 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border-radius: 5px;
+        background: #fff;
+        gap: 15px;
+    }
+    
+    .transaction-description109{
+        font-size: 20px;
+        font-weight: 400;
+        color: #000;
+    }
+    
+    
+    .transaction-reference109 {
+        font-weight: 400;
+        color: #000;
+        flex: 1;
+        font-size: 20px;
+        min-width: 150px;
+    }
+    
+    .transaction-amount109 {
+        flex: 1;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        min-width: 120px;
+    }
+    
+    .transaction-amount109.credit {
+        color: green;
+    }
+    .transaction-amount109.debit {
+        color: red;
+    }
+    .transaction-description109 {
+        flex: 3;
+        color: #555;
+        font-size: 18px;
+        min-width: 250px;
+    }
+    
+    .transaction-type109 {
+        flex: 0.5;
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: white;
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    .transaction-download109 {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 10px;
+        border: none;
+        background: #ffffff;
+        color: #000;
+        border-radius: 5px;
+        font-size: 15px;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+    
+    .MdOutlineFileDownload109 {
+        width: 18px;
+        height: 18px;
+        color: #000;
+    }
+    
+    .transaction-type109.credit {
+        background: #6CC51D;
+    }
+    .transaction-type109.debit {
+        background: #FF2A23;
+    }
+
+    .no-transactions109{
+        transform: translateX(5%);
+    }
+}
+
+@media (max-width: 390px){
+    .walletcontainer1 {
+        display: flex;
+        align-items: flex-start; /* Aligns items to the top */
+        justify-content: flex-start; /* Aligns items to the left */
+        width: 100%;
+        height: 70vh;
+        padding-left: 20px; /* Optional: Adds some left padding */
+    }
+
+    .walletdetails1 {
+        background: white;
+        width: 800px;
+        margin-top: 140px;
+        max-height: 300vh;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: left;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Ensures content aligns left */
+    }
+    
+    .wallet1000{
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 31.25px;
+        color: #000;
+        font-family: 'DM Sans', sans-serif;
+        margin-bottom: 40px;
+        margin-left: 10px;
+    }
+    
+    .image-container-wallet1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        margin-left: 10px;
+    }
+    
+    .wallet-image1 {
+        width: 376px;
+          height: 100px ;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+          color: white;
+          padding: 50px 20px;
+          margin: 0 auto;
+          border-radius: 10px;
+      }
+      
+      .wallet-content1 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 10px;
+        padding-left: 20px;
+    }
+    
+    .wallet-image21 {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 163px;
+        height: 75px;
+        border-radius: 10px;
+        margin-left: -25px;
+    }
+    
+    .wallet-content21{
+        padding-left: 10px;
+        padding-bottom: 2px;
+    }
+    
+    .wallet-balance110{
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 100%;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        color: #000000;
+    }
+    
+    .wallet-amount11{
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 65.1px;
+        margin-top: -30px;
+        margin-left: -38px;
+        color: #000000;
+    }
+    
+    .wallet-content11 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 10px;
+        padding-left: 20px;
+    }
+    
+    .wallet-content31 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 10px;
+        padding-left: 20px;
+    }
+    
+    .wallet-image31 {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 54px;
+        background-position: calc(50% + 1px) calc(-15% - 350px);
+        height: 54px;
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+    
+    .wallet5091{
+        display: flex;
+        transform: translateX(20%);
+    }
+    
+    .top1{
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 26.04px;
+        align-items: center;
+        color: #FFFFFF;
+        transform: translateY(200%);
+        margin-left: 4px;
+    }
+    
+    .withdraw1{
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 26.04px;
+        align-items: center;
+        color: #FFFFFF;
+        transform: translateY(200%);
+        margin-left: -2px;
+    }
+    
+    .transaction-header109 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 8px 16px;
+      }
+      
+      .title109 {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 31.25px;
+        color: #000000;
+      }
+      
+      .see-all109 {
+        color: #6cc51d;
+        text-decoration: none;
+        font-size: 15px;
+        line-height: 31.25px;
+        font-weight: 500;
+      }
+      
+    
+    .wallet-container1109 {
+        margin-top: 10px;
+        text-align: left;
+        max-width: 1000px;
+        margin: auto;
+        transform: translateX(2%);
+    }
+    
+    .wallet-header109 {
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px;
+        border-bottom: 2px solid #EEEEEE;
+        margin-bottom: 20px;
+        width: 95%;
+    }
+    
+    .wallet-tab109 {
+        padding: 5px 5px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 12px;
+        color: #868889;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+    
+    .wallet-tab109:hover {
+        color: #6cc51d;
+    }
+    
+    .wallet-tab109.active {
+        color: #6cc51d;
+        font-weight: 600;
+    }
+    
+    
+    .wallet-tab109.active::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #6cc51d;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    
+    .transactions-list109 {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+    .transaction-item109 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border-radius: 5px;
+        background: #fff;
+        gap: 15px;
+    }
+    
+    .transaction-description109{
+        font-size: 20px;
+        font-weight: 400;
+        color: #000;
+    }
+    
+    
+    .transaction-reference109 {
+        font-weight: 400;
+        color: #000;
+        flex: 1;
+        font-size: 20px;
+        min-width: 150px;
+    }
+    
+    .transaction-amount109 {
+        flex: 1;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        min-width: 120px;
+    }
+    
+    .transaction-amount109.credit {
+        color: green;
+    }
+    .transaction-amount109.debit {
+        color: red;
+    }
+    .transaction-description109 {
+        flex: 3;
+        color: #555;
+        font-size: 18px;
+        min-width: 250px;
+    }
+    
+    .transaction-type109 {
+        flex: 0.5;
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: white;
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    .transaction-download109 {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 10px;
+        border: none;
+        background: #ffffff;
+        color: #000;
+        border-radius: 5px;
+        font-size: 15px;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+    
+    .MdOutlineFileDownload109 {
+        width: 18px;
+        height: 18px;
+        color: #000;
+    }
+    
+    .transaction-type109.credit {
+        background: #6CC51D;
+    }
+    .transaction-type109.debit {
+        background: #FF2A23;
+    }
+
+    .no-transactions109{
+        transform: translateX(5%);
+    }
+}
+
+@media (max-width: 375px){
+    .walletcontainer1 {
+        display: flex;
+        align-items: flex-start; /* Aligns items to the top */
+        justify-content: flex-start; /* Aligns items to the left */
+        width: 100%;
+        height: 70vh;
+        padding-left: 20px; /* Optional: Adds some left padding */
+    }
+
+    .walletdetails1 {
+        background: white;
+        width: 800px;
+        margin-top: 140px;
+        max-height: 300vh;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: left;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Ensures content aligns left */
+    }
+    
+    .wallet1000{
+        font-size: 25px;
+        font-weight: 600;
+        line-height: 31.25px;
+        color: #000;
+        font-family: 'DM Sans', sans-serif;
+        margin-bottom: 40px;
+        margin-left: 10px;
+    }
+    
+    .image-container-wallet1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+        margin-left: 10px;
+    }
+    
+    .wallet-image1 {
+        width: 336px;
+          height: 100px ;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: center;
+          color: white;
+          padding: 50px 20px;
+          margin: 0 auto;
+          border-radius: 10px;
+      }
+      
+      .wallet-content1 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 10px;
+        padding-left: 20px;
+    }
+    
+    .wallet-image21 {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 163px;
+        height: 75px;
+        border-radius: 10px;
+        margin-left: -25px;
+    }
+    
+    .wallet-content21{
+        padding-left: 10px;
+        padding-bottom: 2px;
+    }
+    
+    .wallet-balance110{
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 100%;
+        margin-top: 15px;
+        margin-bottom: 20px;
+        color: #000000;
+    }
+    
+    .wallet-amount11{
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 65.1px;
+        margin-top: -30px;
+        margin-left: -38px;
+        color: #000000;
+    }
+    
+    .wallet-content11 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 10px;
+        padding-left: 20px;
+    }
+    
+    .wallet-content31 {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 10px;
+        padding-left: 20px;
+    }
+    
+    .wallet-image31 {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 54px;
+        background-position: calc(50% + 1px) calc(-15% - 350px);
+        height: 54px;
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+    
+    .wallet5091{
+        display: flex;
+        transform: translateX(5%);
+    }
+    
+    .top1{
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 26.04px;
+        align-items: center;
+        color: #FFFFFF;
+        transform: translateY(200%);
+        margin-left: 4px;
+    }
+    
+    .withdraw1{
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 26.04px;
+        align-items: center;
+        color: #FFFFFF;
+        transform: translateY(200%);
+        margin-left: -2px;
+    }
+    
+    .transaction-header109 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 8px 16px;
+      }
+      
+      .title109 {
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 31.25px;
+        color: #000000;
+      }
+      
+      .see-all109 {
+        color: #6cc51d;
+        text-decoration: none;
+        font-size: 15px;
+        line-height: 31.25px;
+        font-weight: 500;
+      }
+      
+    
+    .wallet-container1109 {
+        margin-top: 10px;
+        text-align: left;
+        max-width: 1000px;
+        margin: auto;
+        transform: translateX(2%);
+    }
+    
+    .wallet-header109 {
+        display: flex;
+        justify-content: flex-start;
+        gap: 12px;
+        border-bottom: 2px solid #EEEEEE;
+        margin-bottom: 20px;
+        width: 95%;
+    }
+    
+    .wallet-tab109 {
+        padding: 5px 5px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 12px;
+        color: #868889;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+    
+    .wallet-tab109:hover {
+        color: #6cc51d;
+    }
+    
+    .wallet-tab109.active {
+        color: #6cc51d;
+        font-weight: 600;
+    }
+    
+    
+    .wallet-tab109.active::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #6cc51d;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    
+    .transactions-list109 {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+    .transaction-item109 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        border-radius: 5px;
+        background: #fff;
+        gap: 15px;
+    }
+    
+    .transaction-description109{
+        font-size: 20px;
+        font-weight: 400;
+        color: #000;
+    }
+    
+    
+    .transaction-reference109 {
+        font-weight: 400;
+        color: #000;
+        flex: 1;
+        font-size: 20px;
+        min-width: 150px;
+    }
+    
+    .transaction-amount109 {
+        flex: 1;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+        min-width: 120px;
+    }
+    
+    .transaction-amount109.credit {
+        color: green;
+    }
+    .transaction-amount109.debit {
+        color: red;
+    }
+    .transaction-description109 {
+        flex: 3;
+        color: #555;
+        font-size: 18px;
+        min-width: 250px;
+    }
+    
+    .transaction-type109 {
+        flex: 0.5;
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: white;
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    .transaction-download109 {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 5px 10px;
+        border: none;
+        background: #ffffff;
+        color: #000;
+        border-radius: 5px;
+        font-size: 15px;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+    
+    .MdOutlineFileDownload109 {
+        width: 18px;
+        height: 18px;
+        color: #000;
+    }
+    
+    .transaction-type109.credit {
+        background: #6CC51D;
+    }
+    .transaction-type109.debit {
+        background: #FF2A23;
+    }
+
+    .no-transactions109{
+        transform: translateX(5%);
     }
 }
 

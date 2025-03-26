@@ -114,7 +114,7 @@ const Wallet = ({ onClose }) => {
                     ))}
                 </div>
             ) : (
-                <p className="no-transactions109">No transactions yet.</p>
+                <h5 className="no-transactions109">No transactions yet.</h5>
             )}
         </div>
     );
