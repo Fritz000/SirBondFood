@@ -54,26 +54,27 @@ const Home = ({ user }) => {
       <h1 className="heading">What services would you like to access</h1>
 
       <div className="services-grid">
+        <div className="card card-yellow">
+          <Link to="/MarketRuns">
+            <img src={twemojishoppingcart} alt="Market runs" className="icon icon-yellow" />
+            <p className="card-title">Market runs</p>
+          </Link>
+        </div>
 
-      <div className="card card-yellow">
-        <Link to="/MarketRuns"><img src={twemojishoppingcart} alt="Market runs" className="icon icon-yellow" />
-        <p className="card-title">Market runs</p></Link>
-      </div>
+        <div className="card card-green coming-soon">
+          <img src={emojionepotoffood} alt="Order meals" className="icon icon-green" />
+          <div className="overlay">COMING SOON</div>
+        </div>
 
-      <div className="card card-green">
-        <img src={emojionepotoffood} alt="Order meals" className="icon icon-green" />
-        <p className="card-title">Order meals</p>
-      </div>
+        <div className="card card-teal coming-soon">
+          <img src={notoshoppingbags} alt="Bulk foodstuffs order" className="icon icon-teal" />
+          <div className="overlay">COMING SOON</div>
+        </div>
 
-      <div className="card card-teal">
-        <img src={notoshoppingbags} alt="Bulk foodstuffs order" className="icon icon-teal" />
-        <p className="card-title">Bulk foodstuffs order</p>
-      </div>
-
-      <div className="card card-pink">
-        <img src={fluentemojiflatpackage} alt="Diaspora orders" className="icon icon-pink" />
-        <p className="card-title">Diaspora orders</p>
-      </div>
+        <div className="card card-pink coming-soon">
+          <img src={fluentemojiflatpackage} alt="Diaspora orders" className="icon icon-pink" />
+          <div className="overlay">COMING SOON</div>
+        </div>
 
       </div>
 

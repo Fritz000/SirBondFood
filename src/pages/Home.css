@@ -105,6 +105,33 @@
   .icon-pink {
     color: #FCD5D5;
   }
+
+  .coming-soon {
+    position: relative;
+    overflow: hidden;
+    background-color: #BBBBBB; /* Light grey background */
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .coming-soon img {
+    filter: blur(4px);
+    opacity: 0.5;
+  }
+  
+  .coming-soon .overlay {
+    position: absolute;
+    font-size: 44px;
+    font-weight: bold;
+    color: white;
+    background: #BBBBBB;
+    padding: 70px 60px;
+    border-radius: 8px;
+    text-transform: uppercase;
+  }
+  
   
   .promo {
     background-color: #ebffd7;
@@ -392,6 +419,32 @@
         color: #FCD5D5;
         width: 50px;
         height: 50px;
+      }
+
+      .coming-soon {
+        position: relative;
+        overflow: hidden;
+        background-color: #BBBBBB; /* Light grey background */
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .coming-soon img {
+        filter: blur(4px);
+        opacity: 0.5;
+      }
+      
+      .coming-soon .overlay {
+        position: absolute;
+        font-size: 24px;
+        font-weight: 700;
+        color: white;
+        background: #BBBBBB;
+        padding: 10px 10px;
+        border-radius: 8px;
+        text-transform: uppercase;
       }
       
       .promo {
@@ -706,6 +759,32 @@
         width: 50px;
         height: 50px;
       }
+
+      .coming-soon {
+        position: relative;
+        overflow: hidden;
+        background-color: #BBBBBB; /* Light grey background */
+        border-radius: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .coming-soon img {
+        filter: blur(4px);
+        opacity: 0.5;
+      }
+      
+      .coming-soon .overlay {
+        position: absolute;
+        font-size: 24px;
+        font-weight: 700;
+        color: white;
+        background: #BBBBBB;
+        padding: 10px 10px;
+        border-radius: 8px;
+        text-transform: uppercase;
+      }
       
       .promo {
         background-color: #ebffd7;
@@ -919,7 +998,7 @@
   
 @media (max-width: 390px){
   .container {
-      padding: 24px;
+      padding: 10px;
       padding-left: 5px;
       padding-right: 5px;
       font-family: 'DM Sans', sans-serif;
@@ -948,7 +1027,7 @@
     .services-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
+      gap: 5px;
       width: 100%;
       align-items: center;
       height: auto;
@@ -1017,6 +1096,32 @@
       color: #FCD5D5;
       width: 50px;
       height: 50px;
+    }
+
+    .coming-soon {
+      position: relative;
+      overflow: hidden;
+      background-color: #BBBBBB; /* Light grey background */
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .coming-soon img {
+      filter: blur(4px);
+      opacity: 0.5;
+    }
+    
+    .coming-soon .overlay {
+      position: absolute;
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+      background: #BBBBBB;
+      padding: 10px 10px;
+      border-radius: 8px;
+      text-transform: uppercase;
     }
     
     .promo {
@@ -1330,6 +1435,32 @@
       color: #FCD5D5;
       width: 50px;
       height: 50px;
+    }
+
+    .coming-soon {
+      position: relative;
+      overflow: hidden;
+      background-color: #BBBBBB; /* Light grey background */
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .coming-soon img {
+      filter: blur(4px);
+      opacity: 0.5;
+    }
+    
+    .coming-soon .overlay {
+      position: absolute;
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+      background: #BBBBBB;
+      padding: 10px 10px;
+      border-radius: 8px;
+      text-transform: uppercase;
     }
     
     .promo {

@@ -579,7 +579,7 @@ p, small {
     
 }
 
-@media (max-width: 390PX){
+@media (max-width: 390px){
     .signup-overlay {
     display: flex;
       align-items: center;
@@ -602,8 +602,6 @@ p, small {
         display: flex;
         flex-direction: column;
     }
-    
-    
    
     .top-icons {
         position: relative;

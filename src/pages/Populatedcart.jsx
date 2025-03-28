@@ -72,7 +72,7 @@ const PopulatedCart = () => {
     <div className="populated-cart-container">
       {/* Left Container: Cart Items */}
       <div className="cart-items-section">
-        <p className="cart0">Cart ({cartItems.length})</p>
+        <p className="cart10">Cart ({cartItems.length})</p>
         <div className="cart-header">
           <div className="select-all-container">
             <input
@@ -99,15 +99,15 @@ const PopulatedCart = () => {
                 onChange={() => handleSelectItem(item.id)}
                 checked={selectedItems.includes(item.id)}
               />
-              <img src={item.image} alt={item.name} className="item-image" />
-              <div className="item-details">
-                <p className="item-name">{item.name}</p>
-                <p className="item-location">{item.location}</p>
-                <p className="available">Available</p>
+              <img src={item.image} alt={item.name} className="item-image10" />
+              <div className="item-details10">
+                <p className="item-name10">{item.name}</p>
+                <p className="item-location10">{item.location}</p>
+                <p className="available10">Available</p>
               </div>
-              <div className="item-price-container">
-                <p className="item-price">₦ {formatNumber(item.price)}</p>
-                <div className="quantity-controls">
+              <div className="item-price-container10">
+                <p className="item-price10">₦ {formatNumber(item.price)}</p>
+                <div className="quantity-controls10">
                   <button onClick={() => handleQuantityChange(item.id, -1)} disabled={item.quantity === 1}>
                     -
                   </button>

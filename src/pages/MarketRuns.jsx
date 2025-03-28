@@ -39,6 +39,16 @@ const trendingItems = [
   { id: 6, name: "Pineapple", price: 500, image: pineapple, description: "Tropical pineapple, rich in vitamin C." },
 ];
 
+const locationMarkets = {
+  "Cross River State": ["Marian Market", "Watt Market"],
+  "Rivers State": ["Mile 1 Market", "Oil Mill Market"],
+  "Delta State": ["Ogbeogonogo Market"],
+  "Lagos State": ["Balogun Market", "Computer Village"],
+  "Akwa Ibom State": ["Itam Market"],
+  "Abia State": ["Ariaria Market"],
+  "Edo State": ["Oba Market"],
+};
+
 const comments = [
   {
     id: 1,
@@ -60,6 +70,9 @@ const comments = [
 
 const MarketRuns = () => {
   const [cart, setCart] = useState([]);
+  const [selectedLocation, setSelectedLocation] = useState("");
+  const [availableMarkets, setAvailableMarkets] = useState([]);
+  const [selectedMarket, setSelectedMarket] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [items, setItems] = useState([]); // Holds admin-added items + trending
 
@@ -91,6 +104,15 @@ const MarketRuns = () => {
     // Save cart to localStorage when updated
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+
+  useEffect(() => {
+    if (selectedLocation === "Cross River State" || selectedLocation === "Rivers State") {
+      setAvailableMarkets(locationMarkets[selectedLocation]);
+    } else {
+      setAvailableMarkets([]); // Disable markets for other locations
+    }
+    setSelectedMarket(""); // Reset market selection when location changes
+  }, [selectedLocation]);
 
   const addToCart = (item) => {
     setCart((prevCart) => [...prevCart, { ...item, quantity: 1 }]);
@@ -132,9 +154,6 @@ const closePopup = () => {
     return item ? item.quantity : 0;
   };
 
-  const [selectedLocation, setSelectedLocation] = useState("");
-  const [selectedMarket, setSelectedMarket] = useState("");
-
   const navigate = useNavigate();
 
 const handleCategoryClick = (categoryName) => {
@@ -149,45 +168,34 @@ const handleCategoryClick = (categoryName) => {
     <div className="container106">
       <section className="ads1">Mini Ads</section>
       <div className="dropdowns">
-  {/* Location Dropdown */}
-  <select 
-    className="dropdown" 
-    onChange={(e) => setSelectedLocation(e.target.value)}
-  >
-    <option value="" disabled selected>Location</option>
-    <optgroup label="Available Region">
-      <option value="Cross River State">Cross River State</option>
-      <option value="Rivers State">Rivers State</option>
-    </optgroup>
-    <optgroup label="Regions Coming Soon">
-      <option value="Delta State">Delta State</option>
-      <option value="Lagos State">Lagos State</option>
-      <option value="Akwa Ibom State">Akwa Ibom State</option>
-      <option value="Abia State">Abia State</option>
-      <option value="Edo State">Edo State</option>
-    </optgroup>
-  </select>
+        {/* Location Dropdown */}
+        <select className="dropdown" onChange={(e) => setSelectedLocation(e.target.value)}>
+          <option value="" disabled selected>Location</option>
+          <optgroup label="Available Region">
+            {Object.keys(locationMarkets).map((location) => (
+              <option 
+                key={location} 
+                value={location} 
+                disabled={!(location === "Cross River State" || location === "Rivers State")}
+              >
+                {location}
+              </option>
+            ))}
+          </optgroup>
+        </select>
 
-  {/* Market Dropdown */}
-  <select 
-    className="dropdown" 
-    onChange={(e) => setSelectedMarket(e.target.value)}
-  >
-    <option value="" disabled selected>Market</option>
-    <optgroup label="Available Region">
-      <option value="Cross River State">Cross River State</option>
-      <option value="Rivers State">Rivers State</option>
-    </optgroup>
-    <optgroup label="Regions Coming Soon">
-      <option value="Delta State">Delta State</option>
-      <option value="Lagos State">Lagos State</option>
-      <option value="Akwa Ibom State">Akwa Ibom State</option>
-      <option value="Abia State">Abia State</option>
-      <option value="Edo State">Edo State</option>
-    </optgroup>
-  </select>
-</div>
-
+        {/* Market Dropdown (Only enabled for Cross River and Rivers State) */}
+        <select 
+          className="dropdown" 
+          onChange={(e) => setSelectedMarket(e.target.value)} 
+          disabled={availableMarkets.length === 0}
+        >
+          <option value="" disabled selected>Select Market</option>
+          {availableMarkets.map((market) => (
+            <option key={market} value={market}>{market}</option>
+          ))}
+        </select>
+      </div>
     <div className="grid-container100">
         {categories.map((category, index) => (
           <div

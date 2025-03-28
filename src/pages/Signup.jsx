@@ -16,17 +16,49 @@ const Signup = ({ onClose }) => {
     email: "",
     phone: "",
     dob: "",
-    referral: "",
+    password: "", // ✅ Added missing password field
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+  
+    // Create request payload
+    const payload = {
+      email: formData.email,
+      first_name: formData.firstName,
+      last_name: formData.surname,
+      password: formData.password,  // ✅ Use actual password from user
+      phone: formData.phone,  // ✅ Send phone number
+    };
+  
+    try {
+      const response = await fetch("https://bondfood.vercel.app/api/register/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+  
+      const data = await response.json();
+  
+      if (response.ok) {
+        console.log("Registration Successful:", data);
+        navigate("/Verify"); // ✅ Redirect on success
+      } else {
+        console.error("Registration Failed:", data);
+        alert(data.message || "Registration failed, please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong, please check your internet connection.");
+    }
   };
+  
 
   return (
     <div className="signup-overlay">
@@ -74,7 +106,14 @@ const Signup = ({ onClose }) => {
             <select>
               <option value="+234">+234</option>
             </select>
-            <input type="tel" placeholder="000 000 0000" maxlength="10"/>
+            <input 
+              type="tel" 
+              name="phone"  // ✅ Added missing name
+              placeholder="000 000 0000" 
+              maxLength="10"  // ✅ Fixed incorrect attribute
+              value={formData.phone}
+              onChange={handleChange}
+            />
           </div>
 
           <input className="curved-input"
@@ -84,16 +123,19 @@ const Signup = ({ onClose }) => {
             onChange={handleChange}
             required
           />
+
+          {/* ✅ Added password field */}
           <input className="curved-input"
-            type="text"
-            name="referral"
-            placeholder="Referral Code (Optional)"
-            value={formData.referral}
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
             onChange={handleChange}
+            required
           />
 
           {/* Submit Button */}
-          <Link to="/Verify"><button type="submit" className="signup-btn">Continue</button></Link>
+          <button type="submit" className="signup-btn">Continue</button>
         </form>
 
         <p className="terms">

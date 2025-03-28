@@ -160,6 +160,7 @@
       background: none;
       transform: translateY(-20%);
       border: none;
+      color: #000;
       cursor: pointer;
     }
     
@@ -235,6 +236,7 @@
     .arrow-button {
       background: none;
       border: none;
+      color: #000;
       cursor: pointer;
     }
     

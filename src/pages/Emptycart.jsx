@@ -61,7 +61,7 @@ const EmptyCart = () => {
             ? "You currently don't have anything in your cart. When you add items to your cart, you'll see them here."
             : "You currently don't have anything in your cart. When you add items to your cart, you'll see them here."}
         </p>
-        <Link to="/Home" className="add-item-button">
+        <Link to="/" className="add-item-button">
           Add Item
         </Link>
       </div>

@@ -22,12 +22,12 @@ const SportAndOutdoors = () => {
       <button className="back-button" onClick={() => navigate(-1)}>
         <ChevronLeft size={32} />
       </button>
-      <h2 className="sportandoutdoors">Electronics</h2>
+      <h2 className="sportandoutdoors">Sport & Outdoors</h2>
     </header>
 
     <div className="search-container">
       <Search className="search-icon" size={20} />
-      <input type="text" placeholder="Search electronics" className="search-bar" />
+      <input type="text" placeholder="Search Sport & Outdoors" className="search-bar" />
     </div>
   </div>
 <div className="sportandoutdoors-category-list">

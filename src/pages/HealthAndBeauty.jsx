@@ -9,11 +9,11 @@ import foodbasket from "../assets/138792826_4acbcb31-951d-404f-ae4d-fd34a2121876
 
 
 const categories = [
-  { name: "Furniture", icon: freshbasswithwhitebackground1 },
-  { name: "Home Decor", icon: freshbasswithwhitebackground1 },
-  { name: "Kitchen & Dining", icon: stunningimpastopaintingwhitehen1 },
-  { name: "House Essentials", icon: dairyeggs },
-  { name: "Bedding & Linen", icon: foodbasket },
+  { name: "Skincare", icon: freshbasswithwhitebackground1 },
+  { name: "Haircare", icon: freshbasswithwhitebackground1 },
+  { name: "Make-up", icon: stunningimpastopaintingwhitehen1 },
+  { name: "Personal care", icon: dairyeggs },
+  { name: "Health & Wellness", icon: foodbasket },
 ];
 
 const HealthAndBeauty = () => {
@@ -23,10 +23,10 @@ const HealthAndBeauty = () => {
   {/* Header & Search in One Container */}
   <div className="healthandbeauty-first-header">
     <header className="healthandbeauty-header">
-      <button className="back-button" onClick={() => navigate(-1)}>
+      <button className="back-button106" onClick={() => navigate(-1)}>
         <ChevronLeft size={32} />
       </button>
-      <h2 className="healthandbeauty">Home & Living</h2>
+      <h2 className="healthandbeauty">Health & Beauty</h2>
     </header>
 
     <div className="search-container">
