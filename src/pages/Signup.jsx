@@ -14,51 +14,34 @@ const Signup = ({ onClose }) => {
     firstName: "",
     surname: "",
     email: "",
+    countryCode: "+234",  // ✅ Default country code
     phone: "",
     dob: "",
-    password: "", // ✅ Added missing password field
+    referral: "",
   });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
+  
 
-  const handleSubmit = async (e) => {
+  const handleNext = (e) => {
     e.preventDefault();
-  
-    // Create request payload
-    const payload = {
-      email: formData.email,
-      first_name: formData.firstName,
-      last_name: formData.surname,
-      password: formData.password,  // ✅ Use actual password from user
-      phone: formData.phone,  // ✅ Send phone number
-    };
-  
-    try {
-      const response = await fetch("https://bondfood.vercel.app/api/register/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-  
-      const data = await response.json();
-  
-      if (response.ok) {
-        console.log("Registration Successful:", data);
-        navigate("/Verify"); // ✅ Redirect on success
-      } else {
-        console.error("Registration Failed:", data);
-        alert(data.message || "Registration failed, please try again.");
+    
+    console.log("✅ Storing Data:", formData); // Debugging
+
+    navigate("/password", { 
+      state: {
+        first_name: formData.firstName,  
+        last_name: formData.surname,  
+        email: formData.email,
+        phone: formData.phone,
+        dob: formData.dob,
+        referral: formData.referral,
       }
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Something went wrong, please check your internet connection.");
-    }
+    });  
   };
-  
 
   return (
     <div className="signup-overlay">
@@ -74,10 +57,10 @@ const Signup = ({ onClose }) => {
         <img src={logo} alt="Feed the Nation Logo" className="logo-img" />
         <h2 className="wtbf">Welcome to BondFood!</h2>
         <p>Enter your email or phone number to create an account.</p>
-        <small><ShieldBan size={24} style={{ position: "relative", top: "5px", Color: "black" }}/> Your information is 100% secured</small>
+        <small><ShieldBan size={24} style={{ position: "relative", top: "5px", color: "black" }}/> Your information is 100% secured</small>
 
-        {/* Signup Form */}
-        <form onSubmit={handleSubmit}>
+         {/* Signup Form */}
+         <form onSubmit={handleNext}>
           <input className="curved-input"
             type="text"
             name="firstName"
@@ -103,18 +86,25 @@ const Signup = ({ onClose }) => {
             required
           />
           <div className="input-group">
-            <select>
+            <select 
+              name="countryCode" 
+              value={formData.countryCode} 
+              onChange={handleChange}
+              required
+            >
               <option value="+234">+234</option>
             </select>
             <input 
-              type="tel" 
-              name="phone"  // ✅ Added missing name
-              placeholder="000 000 0000" 
-              maxLength="10"  // ✅ Fixed incorrect attribute
-              value={formData.phone}
-              onChange={handleChange}
-            />
-          </div>
+            type="tel" 
+            name="phone"  
+            placeholder="000 000 0000" 
+            maxLength="11"  // ✅ Increase to 11 digits
+            value={formData.phone}  
+            onChange={handleChange}  
+            required
+          />
+            </div>
+
 
           <input className="curved-input"
             type="date"
@@ -124,18 +114,7 @@ const Signup = ({ onClose }) => {
             required
           />
 
-          {/* ✅ Added password field */}
-          <input className="curved-input"
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-
-          {/* Submit Button */}
-          <button type="submit" className="signup-btn">Continue</button>
+          {/* Submit Button */}<button type="submit" className="signup-btn">Continue</button>
         </form>
 
         <p className="terms">

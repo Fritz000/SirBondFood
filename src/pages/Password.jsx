@@ -1,11 +1,14 @@
 import React, { useState } from "react"; 
 import { X, ShieldBan, CheckCircle } from "lucide-react";
-import "../pages/Registrationsuccessful.css";
-import { Link, useNavigate } from "react-router-dom";
+import "../pages/Password.css";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 
-const Registrationsuccessful = () => {
+const Password = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const userData = location.state || {}; // Retrieve user data from previous page
+
   const [formData, setFormData] = useState({
     password: "",
     confirmpassword: "",
@@ -16,9 +19,7 @@ const Registrationsuccessful = () => {
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [doPasswordsMatch, setDoPasswordsMatch] = useState(false);
 
-  const handleClose = () => {
-    navigate("/"); // Always navigate instead of calling onClose
-  };
+  const handleClose = () => navigate("/"); // Always navigate instead of calling onClose
 
   const validatePassword = (password) => {
     const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,20}$/;
@@ -27,18 +28,22 @@ const Registrationsuccessful = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
 
-    if (name === "password") {
-      setIsPasswordValid(validatePassword(value));
-    }
+    setFormData((prev) => {
+      const newFormData = { ...prev, [name]: value };
 
-    if (name === "confirmpassword") {
-      setDoPasswordsMatch(formData.password === value);
-    }
+      if (name === "password") {
+        setIsPasswordValid(validatePassword(value));
+      }
+      if (name === "confirmpassword") {
+        setDoPasswordsMatch(newFormData.password === newFormData.confirmpassword);
+      }
+
+      return newFormData;
+    });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!isPasswordValid) {
       setErrorMessage("Password must be 6-20 characters and include letters, numbers, and symbols.");
@@ -49,8 +54,43 @@ const Registrationsuccessful = () => {
       return;
     }
     setErrorMessage("");
-  console.log("Form submitted successfully");
-  navigate("/Signin"); 
+
+    const finalData = {
+      ...userData,
+      password: formData.password, // Only send password, not confirmpassword
+    };
+
+    try {
+      const response = await fetch("https://bondfood.vercel.app/api/register/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(finalData),
+      });
+
+      const data = await response.json(); // Get the actual response
+    
+      if (response.ok) {
+        console.log("✅ Registration successful:", data);
+        navigate("/Verify");
+      } else {
+        console.error("❌ Registration failed:", data);
+        setErrorMessage(data.message || "Registration failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("🌐 Network error:", error);
+      setErrorMessage("Network error. Please check your connection.");
+    }
+
+    if (response.ok) {
+      console.log("Registration successful:", data);
+    
+      // Store user details in local storage
+      localStorage.setItem("user", JSON.stringify(data.user));
+    
+      // Redirect to OTP Verification
+      navigate("/Verify", { state: { email: formData.email } });
+    }
+    
   };
 
   return (
@@ -62,10 +102,7 @@ const Registrationsuccessful = () => {
         </button>
 
         {/* Logo */}
-        <img
-          src={logo}
-          alt="Feed the Nation Logo" className="logo-img6"
-        />
+        <img src={logo} alt="Feed the Nation Logo" className="logo-img6" />
 
         <h2 className="regsucc">Registration successful</h2>
         <p>Create a password to secure your account. You can use it when you log in next time.</p>
@@ -85,9 +122,10 @@ const Registrationsuccessful = () => {
               required
             />
             <span className="toggle-password12" onClick={() => setIsPasswordVisible((prev) => !prev)}>
-              &#128065;
+              {isPasswordVisible ? "🙈" : "👁️"}
             </span>
           </div>
+
           <div className="password-container">
             <input
               className="curved-input"
@@ -99,10 +137,12 @@ const Registrationsuccessful = () => {
               required
             />
             <span className="toggle-password13" onClick={() => setIsConfirmPasswordVisible((prev) => !prev)}>
-              &#128065;
+              {isConfirmPasswordVisible ? "🙈" : "👁️"}
             </span>
           </div>
+
           {errorMessage && <p className="error-message" style={{ color: "red" }}>{errorMessage}</p>}
+
           <ul className="password-hints100">
             <li>
               {isPasswordValid ? <CheckCircle size={20} color="green" /> : <span className="bullet1">&bull;</span>} 6 - 20 characters
@@ -115,9 +155,8 @@ const Registrationsuccessful = () => {
             </li>
           </ul>
 
-          <button type="submit" className="signup-btn1">
-  Submit
-</button>
+          {/* Submit Button */}
+          <button type="submit" className="signup-btn1">Submit</button>
         </form>
 
         <p className="signin1ll">For further support, you may visit the Help Center or contact our support team.</p>
@@ -126,4 +165,4 @@ const Registrationsuccessful = () => {
   );
 };
 
-export default Registrationsuccessful;
+export default Password;

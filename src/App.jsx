@@ -7,7 +7,7 @@ import About from './pages/About';
 import Contacts from './pages/Contacts';
 import Signup from './pages/Signup';
 import Verify from './pages/Verify';
-import Registrationsuccessful from './pages/Registrationsuccessful';
+import Password from './pages/Password';
 import Signin from './pages/Signin';
 import Resetpassword from './pages/Resetpassword';
 import Securitycode from './pages/Securitycode';
@@ -84,7 +84,7 @@ const App = () => {
         <Route path="Contacts" element={<Contacts />} />
         <Route path="Signup" element={<Signup />} />
         <Route path="Verify" element={<Verify />} />
-        <Route path="Registrationsuccessful" element={<Registrationsuccessful />} />
+        <Route path="Password" element={<Password />} />
         <Route path="Signin" element={<Signin setUser={setUser} />} />
         <Route path="Resetpassword" element={<Resetpassword />} />
         <Route path="Securitycode" element={<Securitycode />} />

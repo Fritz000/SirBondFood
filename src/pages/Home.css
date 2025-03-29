@@ -2,8 +2,8 @@
 
 .container {
     padding: 24px;
-    padding-left: 30px;
-    padding-right: 30px;
+    align-items: center;
+    justify-content: center;
     font-family: 'DM Sans', sans-serif;
 }
 
