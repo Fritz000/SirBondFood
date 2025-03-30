@@ -235,6 +235,7 @@
       background: none;
       border: none;
       cursor: pointer;
+      color: #000;
     }
     
     .electronics-arrow-button svg {
@@ -358,6 +359,7 @@
     .electronics-arrow-button {
       background: none;
       border: none;
+      color: #000;
       cursor: pointer;
     }
     
@@ -484,6 +486,7 @@
     background: none;
     border: none;
     cursor: pointer;
+    color: #000;
   }
   
   .electronics-arrow-button svg {
@@ -607,6 +610,7 @@
   
   .electronics-arrow-button {
     background: none;
+    color: #000;
     border: none;
     cursor: pointer;
   }

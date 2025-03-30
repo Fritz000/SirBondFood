@@ -31,7 +31,12 @@ const EmptyCart = () => {
   return (
     <div className="empty-cart-container">
       <div className="cartitems">
-        <p className="cart0">Cart ({cartItems.length})</p>
+      <div className="cart-header">
+      <p className="cart0">
+  <span>Cart</span> <span>({cartItems.length})</span>
+</p>
+
+        </div>
         {cartItems.length > 0 && (
           <div className="delete">
             <div className="selectall-container">

@@ -9,7 +9,7 @@
 .signup-modal {
     background: white;
     width: 800px;
-    margin-top: 550px;
+    margin-top: 570px;
     max-height: 300vh;
     padding: 20px;
     border-radius: 10px;
@@ -592,7 +592,7 @@ p, small {
         background: white;
         width: 800px;
         height: auto;
-        margin-top: 550px;
+        margin-top: 450px;
         padding: 20px;
         border-radius: 10px;
         text-align: center;

@@ -13,6 +13,7 @@ import Resetpassword from './pages/Resetpassword';
 import Securitycode from './pages/Securitycode';
 import Reset from './pages/Reset';
 import Passwordresetsuccesfully from './pages/Passwordresetsuccesfully';
+import Logout from './pages/Logout';
 import NotificationList from './pages/NotificationList';
 import Populatedcart from './pages/Populatedcart';
 import EmptyCart from './pages/Emptycart';
@@ -90,6 +91,7 @@ const App = () => {
         <Route path="Securitycode" element={<Securitycode />} />
         <Route path="Reset" element={<Reset />} />
         <Route path="Passwordresetsuccesfully" element={<Passwordresetsuccesfully />} />
+        <Route path="Logout" element={<Logout />} />
         <Route path="NotificationList" element={<NotificationList />} />
         <Route path="Emptycart" element={<EmptyCart />} />
         <Route path="Populatedcart" element={<Populatedcart />} />

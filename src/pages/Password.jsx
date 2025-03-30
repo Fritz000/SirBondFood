@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { X, ShieldBan, CheckCircle } from "lucide-react";
 import "../pages/Password.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
 import logo from "../assets/logo.png";
 
 const Password = () => {
@@ -45,53 +46,57 @@ const Password = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (!isPasswordValid) {
       setErrorMessage("Password must be 6-20 characters and include letters, numbers, and symbols.");
       return;
     }
+    
     if (!doPasswordsMatch) {
       setErrorMessage("Passwords do not match.");
       return;
     }
-    setErrorMessage("");
-
+  
+    setErrorMessage(""); // Clear previous errors
+  
     const finalData = {
       ...userData,
-      password: formData.password, // Only send password, not confirmpassword
+      password: formData.password,
     };
-
+  
     try {
       const response = await fetch("https://bondfood.vercel.app/api/register/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(finalData),
       });
-
-      const data = await response.json(); // Get the actual response
-    
+  
+      const data = await response.json(); // Parse response JSON
+  
       if (response.ok) {
         console.log("✅ Registration successful:", data);
-        navigate("/Verify");
+        
+        // Store user details in local storage
+        localStorage.setItem("user", JSON.stringify(data.user));
+  
+        // Redirect to OTP Verification
+        navigate("/Verify", { state: { email: userData.email } });
       } else {
         console.error("❌ Registration failed:", data);
-        setErrorMessage(data.message || "Registration failed. Please try again.");
+  
+        // Handle specific email error
+        if (data.email && Array.isArray(data.email) && data.email[0]) {
+          setErrorMessage("This email is already registered. Try logging in instead.");
+        } else {
+          setErrorMessage(data.message || "Registration failed. Please try again.");
+        }
       }
     } catch (error) {
       console.error("🌐 Network error:", error);
       setErrorMessage("Network error. Please check your connection.");
     }
-
-    if (response.ok) {
-      console.log("Registration successful:", data);
-    
-      // Store user details in local storage
-      localStorage.setItem("user", JSON.stringify(data.user));
-    
-      // Redirect to OTP Verification
-      navigate("/Verify", { state: { email: formData.email } });
-    }
-    
   };
+  
 
   return (
     <div className="signup-overlay">
@@ -122,7 +127,7 @@ const Password = () => {
               required
             />
             <span className="toggle-password12" onClick={() => setIsPasswordVisible((prev) => !prev)}>
-              {isPasswordVisible ? "🙈" : "👁️"}
+              {isPasswordVisible ? <EyeOff /> : <Eye />}
             </span>
           </div>
 
@@ -137,7 +142,7 @@ const Password = () => {
               required
             />
             <span className="toggle-password13" onClick={() => setIsConfirmPasswordVisible((prev) => !prev)}>
-              {isConfirmPasswordVisible ? "🙈" : "👁️"}
+              {isConfirmPasswordVisible ? <EyeOff /> : <Eye />}
             </span>
           </div>
 

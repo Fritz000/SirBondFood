@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../pages/Settings.css";
 import { ChevronLeft } from "lucide-react";
@@ -15,11 +15,27 @@ import MaskGroup from "../assets/MaskGroup.png";
 const Settings = () => {
   const navigate = useNavigate(); // Define navigate
   const [activeTab, setActiveTab] = useState("profile");
+  const [showContent, setShowContent] = useState(false); // Mobile sidebar toggle
   const [profileImage, setProfileImage] = useState(MaskGroup);
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [activeMenu, setActiveMenu] = useState(""); // Track active menu item
+  
+  const handleMenuClick = (tabName) => {
+    setActiveTab(tabName);
+    if (window.innerWidth <= 390) setShowContent(true); // Only hide sidebar on mobile
+  };
+  
+  
+
+  useEffect(() => {
+    console.log("Active tab changed:", activeTab);
+  }, [activeTab]);
+  
+  
+
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -61,9 +77,18 @@ const Settings = () => {
     <div className="settings-container">
       
       {/* Sidebar */}
-      <aside className="settings-sidebar">
-        <ul className="sidebar-menu">
-          <li className="active"><img src={fluent} alt="Logo" /> Account Management</li>
+      <aside className={`settings-sidebar ${showContent ? "hidden" : ""}`}>
+      <ul className="sidebar-menu">
+  {/* Only Account Management switches content */}
+  <li 
+  className={activeMenu === "account" ? "active" : ""} 
+  onClick={() => handleMenuClick("account", "profile")}
+>
+  <img src={fluent} alt="Logo" /> Account Management
+</li>
+
+
+
           <li><img src={solar} alt="Logo" />Wallet Settings</li>
           <li><img src={solar} alt="Logo" />Notification & Alerts</li>
           <li><img src={iconamoon} alt="Logo" />Food Preferences</li>
@@ -77,27 +102,29 @@ const Settings = () => {
       </aside>
 
       {/* Main Settings Section */}
-      <main className="settings-main">
-
-        {/* Tabs */}
-        <div className="settings-tabs">
-          <button
-            className={`tab-button ${activeTab === "profile" ? "active" : ""}`}
-            onClick={() => setActiveTab("profile")}
-          >
-            Profile Information
-          </button>
-          <button
-            className={`tab-button ${activeTab === "referral" ? "active" : ""}`}
-            onClick={() => setActiveTab("referral")}
-          >
-            Referral Program Settings
-          </button>
-        </div>
+      <main className={`settings-main ${showContent ? "active" : ""}`}>
+  {activeTab === "profile" || activeTab === "referral" ? (
+    <>
+      {/* Tabs */}
+      <div className="settings-tabs">
+        <button
+          className={`tab-button ${activeTab === "profile" ? "active" : ""}`}
+          onClick={() => setActiveTab("profile")}
+        >
+          Profile Information
+        </button>
+        <button
+          className={`tab-button ${activeTab === "referral" ? "active" : ""}`}
+          onClick={() => setActiveTab("referral")}
+        >
+          Referral Program Settings
+        </button>
+      </div>
 
         <div className="settings-header">
-          <h2>Profile</h2>
-        </div>
+  <h2>{activeTab === "profile" ? "Profile Information" : "Referral Program Settings"}</h2>
+</div>
+
 
         {/* Tab Content */}
         <div className="settings-content">
@@ -152,6 +179,8 @@ const Settings = () => {
 
           {activeTab === "referral" && <div className="referral-section">Referral settings content...</div>}
         </div>
+        </>
+        ) : null}
       </main>
     </div>
     </div>

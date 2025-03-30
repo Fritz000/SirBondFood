@@ -3,6 +3,7 @@ import { X, ShieldBan, CheckCircle, ChevronLeft } from "lucide-react";
 import "../pages/Reset.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { Eye, EyeOff } from "lucide-react";
 
 const Reset = ({ onClose }) => {
   const navigate = useNavigate();
@@ -94,31 +95,35 @@ const Reset = ({ onClose }) => {
             onChange={handleChange}
             required
           />
-          <input
-            className="curved-input"
-            type={isPasswordVisible ? "text" : "password"}
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-          <span className="toggle-password4" onClick={() => setIsPasswordVisible((prev) => !prev)}>
-            &#128065;
-          </span>
+          <div className="password-container">
+            <input
+              className="curved-input"
+              type={isPasswordVisible ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+            <span className="toggle-password12" onClick={() => setIsPasswordVisible((prev) => !prev)}>
+              {isPasswordVisible ? <EyeOff /> : <Eye />}
+            </span>
+          </div>
 
-          <input
-            className="curved-input"
-            type={isConfirmPasswordVisible ? "text" : "password"}
-            name="confirmpassword"
-            placeholder="Confirm Password"
-            value={formData.confirmpassword}
-            onChange={handleChange}
-            required
-          />
-          <span className="toggle-password5" onClick={() => setIsConfirmPasswordVisible((prev) => !prev)}>
-            &#128065;
-          </span>
+          <div className="password-container">
+            <input
+              className="curved-input"
+              type={isConfirmPasswordVisible ? "text" : "password"}
+              name="confirmpassword"
+              placeholder="Confirm Password"
+              value={formData.confirmpassword}
+              onChange={handleChange}
+              required
+            />
+            <span className="toggle-password13" onClick={() => setIsConfirmPasswordVisible((prev) => !prev)}>
+              {isConfirmPasswordVisible ? <EyeOff /> : <Eye />}
+            </span>
+          </div>
 
           {errorMessage && <p className="error-message" style={{ color: "red" }}>{errorMessage}</p>}
 

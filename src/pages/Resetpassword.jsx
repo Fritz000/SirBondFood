@@ -3,6 +3,7 @@ import { X, ChevronLeft, ShieldBan } from "lucide-react";
 import "../pages/Resetpassword.css";
 import { Link, useNavigate } from 'react-router-dom';
 import logo from "../assets/logo.png";
+import { Eye, EyeOff } from "lucide-react";
 
 const Resetpassword = ({ onClose }) => {
     const navigate = useNavigate(); 
