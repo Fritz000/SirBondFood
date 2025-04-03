@@ -16,9 +16,17 @@ const generateReferralCode = () => {
   return Math.random().toString(36).substr(2, 8).toUpperCase(); // Example: 'A1B2C3D4'
 };
 
+const getRank = (referrals) => {
+  if (referrals >= 51) return "Mastermind";
+  if (referrals >= 31) return "Expert";
+  if (referrals >= 6) return "Intermediate";
+  return "Novice";
+};
 const Home = ({ user }) => {
   const location = useLocation();
   const [referralCode, setReferralCode] = useState(user?.referralCode || "");
+  const referralCount = user?.referrals || 0; // Get the number of referrals
+  const rank = getRank(referralCount); // Determine rank
 
   // Generate code if user has none
   useEffect(() => {
@@ -91,28 +99,34 @@ const Home = ({ user }) => {
         </Link>
       </div>
 
-      {/* Profile Section */}
-      <div className="profile-card">
-        <h2 className='pandn'>Profile & Notifications</h2>
+       {/* Profile Section */}
+       <div className="profile-card">
+        <h2 className="pandn">Profile & Notifications</h2>
         <div className="profile-details">
           <div className="profile-left">
-            <p>Rank: <strong>Mastermind</strong></p>
-            <p>Connection Code: <strong>{referralCode}</strong></p>
+            <p>
+              Rank: <strong>{rank}</strong>
+            </p>
+            <p>
+              Connection Code: <strong>{referralCode}</strong>
+            </p>
             <div className="referral-section">
               <a href={referralLink}>{referralLink}</a>
               <button onClick={copyToClipboard} className="copy-button">
                 <Copy size={16} /> Copy Link
               </button>
             </div>
-            <p>Level 1 connections: <strong>250</strong></p>
-            <p>Level 2 connections: <strong>115</strong></p>
-            <p>Level 3 connections: <strong>100</strong></p>
+            <p>
+              Level 1 connections: <strong>{referralCount}</strong>
+            </p>
           </div>
           <div className="profile-right">
-            <p>Total Residual Earnings: <strong>4,000,000</strong></p>
-            <p>Breakdown of Earnings</p>
-            <p>Available Balance: <strong>12,000,000</strong></p>
-            <button className="withdraw-button">Withdraw</button>
+            <p>
+              Total Residual Earnings: <strong>{user?.earnings || 0}</strong>
+            </p>
+            <p>
+              Available Balance: <strong>{user?.balance || 0}</strong>
+            </p>
           </div>
         </div>
       </div>
@@ -122,7 +136,10 @@ const Home = ({ user }) => {
         <h2>Activity</h2>
         <ul>
           <li>Connect 100 masterminds to become a CEO.</li>
-          <li>Order meals at least 3 times this week to activate your Bond Force Membership.</li>
+          <li>
+            Order meals at least 3 times this week to activate your Bond Force
+            Membership.
+          </li>
           <li>Enter your bank account in your wallet to encash your earnings.</li>
         </ul>
       </div>
