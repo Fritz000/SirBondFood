@@ -124,9 +124,11 @@ const Home = ({ user }) => {
             <p>
               Total Residual Earnings: <strong>{user?.earnings || 0}</strong>
             </p>
+            <p>Breakdown of Earnings</p>
             <p>
               Available Balance: <strong>{user?.balance || 0}</strong>
             </p>
+            <button className="withdraw-button">Withdraw</button>
           </div>
         </div>
       </div>
