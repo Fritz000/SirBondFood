@@ -18,6 +18,23 @@ const categories = [
   { name: "Beverages", icon: glassmilkbottlefreshmilk1 },
 ];
 
+const pages = [
+  { name: "Home", path: "/" },
+  { name: "Market Runs", path: "/MarketRuns" },
+  { name: "Wallet", path: "/Wallet" },
+  { name: "Food and Grocery", path: "/FoodAndGrocery" },
+  { name: "Electronics", path: "/Electronics" },
+  { name: "Home and Living", path: "/HomeAndLiving" },
+  { name: "Health and Beauty", path: "/HealthAndBeauty" },
+  { name: "Fashion and Clothing", path: "/FashionAndClothing" },
+  { name: "Babies And Games", path: "/BabiesAndGames" },
+  { name: "Sport and Outdoors", path: "/SportAndOutdoors" },
+  { name: "Orders", path: "/orders" },
+  { name: "Settings", path: "/settings" },
+  { name: "Support", path: "/support" },
+  // Add more pages if needed
+];
+
 
 const FoodAndGrocery = () => {
     const navigate = useNavigate();

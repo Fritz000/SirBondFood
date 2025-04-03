@@ -191,6 +191,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
+        <img src={logo} alt="Logo" className="logo-right" />
       </div>
 
       {/* Center Section: Search Bar */}
