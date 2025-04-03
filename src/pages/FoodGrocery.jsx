@@ -30,6 +30,17 @@ const trendingItems = [
   { id: 6, name: "Pineapple", price: 500, image: pineapple, description: "Tropical pineapple, rich in vitamin C." },
 ];
 
+const locationMarkets = {
+  "Cross River State": ["Marian Market", "Watt Market"],
+  "Rivers State": ["Mile 1 Market", "Oil Mill Market"],
+  "Delta State": ["Ogbeogonogo Market"],
+  "Lagos State": ["Balogun Market", "Computer Village"],
+  "Akwa Ibom State": ["Itam Market"],
+  "Abia State": ["Ariaria Market"],
+  "Edo State": ["Oba Market"],
+};
+
+
 const comments = [
   { id: 1, name: "Kilomon", date: "Feb 9, 2025", verified: true, rating: 5, comment: "Fruit was fresh and lovely product packaging" },
   { id: 2, name: "Jack", date: "Feb 9, 2025", verified: true, rating: 4, comment: "Fruit was fresh, also bigger than I expected and lovely product packaging" },
@@ -44,6 +55,7 @@ const FoodGrocery = () => {
   const [selectedMarket, setSelectedMarket] = useState("");
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
+  const [availableMarkets, setAvailableMarkets] = useState([]);
 
 
   useEffect(() => {
@@ -117,36 +129,56 @@ const FoodGrocery = () => {
       </div>
 
       <div className="dropdowns">
+        {/* Location Dropdown */}
         <select className="dropdown" onChange={(e) => setSelectedLocation(e.target.value)}>
           <option value="" disabled selected>Location</option>
-          <option value="Cross River State">Cross River State</option>
-          <option value="Rivers State">Rivers State</option>
+          <optgroup label="Available Region">
+            {Object.keys(locationMarkets).map((location) => (
+              <option 
+                key={location} 
+                value={location} 
+                disabled={!(location === "Cross River State" || location === "Rivers State")}
+              >
+                {location}
+              </option>
+            ))}
+          </optgroup>
         </select>
-        <select className="dropdown" onChange={(e) => setSelectedMarket(e.target.value)}>
-          <option value="" disabled selected>Market</option>
-          <option value="Cross River State">Cross River State</option>
-          <option value="Rivers State">Rivers State</option>
+
+        {/* Market Dropdown (Only enabled for Cross River and Rivers State) */}
+        <select 
+          className="dropdown" 
+          onChange={(e) => setSelectedMarket(e.target.value)} 
+          disabled={availableMarkets.length === 0}
+        >
+          <option value="" disabled selected>Select Market</option>
+          {availableMarkets.map((market) => (
+            <option key={market} value={market}>{market}</option>
+          ))}
         </select>
         <button className="filter-button">
           <img src={mage} alt="Filter" />
         </button>
       </div>
+        
 
-      <div className="trending-grid">
+      <div className="trending-grid101">
       {filteredItems.map((item) => (
-      <div key={item.id} className="trending-card" onClick={() => setSelectedItem(item)}>
-        <img src={item.image} alt={item.name} className="trending-image" />
-        <div className="trending-info">
-          <p className="trending-name">{item.name}</p>
-          <p className="trending-price">
+      <div key={item.id} className="trending-card101" onClick={() => setSelectedItem(item)}>
+        <div className="category-image-icon-container101">
+        <img src={item.image} alt={item.name} className="trending-image101" />
+        </div>
+        <div className="trending-info101">
+          <p className="trending-name101">{item.name}</p>
+          <p className="trending-price101">
             {item.approved ? `₦ ${item.price.toLocaleString()}` : "Pending"}
           </p>
         </div>
         <button 
-          className="add-to-cart" 
+          className="add-to-cart101" 
           onClick={(e) => { e.stopPropagation(); addToCart(item); }}
           disabled={!item.approved}
-        >+
+        >ADD +
         </button>
       </div>
       ))}

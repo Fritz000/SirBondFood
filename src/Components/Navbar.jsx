@@ -12,8 +12,10 @@ import axios from "axios";
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [cartCount, setCartCount] = useState(0);
-  const [user, setUser] = useState(null); // To store user profile data
-  const storedToken = localStorage.getItem("authToken"); // Get token from localStorage
+  const [user, setUser] = useState(null);
+  const storedToken = localStorage.getItem("authToken");
+
+  const dropdownRef = useRef(null); // To reference the dropdown container
 
   // Fetch user profile using Axios
   useEffect(() => {
@@ -22,20 +24,18 @@ const Navbar = () => {
         try {
           const response = await axios.get("https://bondfood.vercel.app/api/profile/", {
             headers: {
-              "Authorization": `Bearer ${storedToken}`, // Pass token for authentication
+              "Authorization": `Bearer ${storedToken}`,
             },
           });
-
-          setUser(response.data); // Set the user data from response
+          setUser(response.data);
         } catch (error) {
-          setError("Failed to fetch user profile. Please log in again.");
           console.error("Error fetching profile:", error);
         }
       }
     };
 
-    fetchUserProfile(); // Call the function to fetch user profile on component mount
-  }, [storedToken]); // Run effect when the token changes
+    fetchUserProfile();
+  }, [storedToken]);
 
   const navigate = useNavigate();
 
@@ -48,7 +48,6 @@ const Navbar = () => {
   useEffect(() => {
     updateCartCount();
 
-    // Listen for storage updates across tabs/windows
     const handleStorageChange = (e) => {
       if (e.key === "cart") {
         updateCartCount();
@@ -64,10 +63,10 @@ const Navbar = () => {
   const toggleDropdown = (dropdown) => {
     if (window.innerWidth <= 500) {
       if (dropdown === "user") {
-        navigate("/Signup"); // Redirect to Signup
+        navigate("/Signup");
         return;
       } else if (dropdown === "notifications") {
-        navigate("/NotificationList"); // Redirect to Notifications page
+        navigate("/NotificationList");
         return;
       }
     }
@@ -75,20 +74,40 @@ const Navbar = () => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
   };
 
+  // Close dropdown when clicking outside
   const closeDropdown = (e) => {
-    if (!e.target.closest(".dropdown, .hamburger-menu, .user-info, .icon-button")) {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
       setActiveDropdown(null);
     }
   };
 
+  useEffect(() => {
+    // Add event listener for clicks outside the dropdown
+    document.addEventListener("click", closeDropdown);
+
+    return () => {
+      document.removeEventListener("click", closeDropdown);
+    };
+  }, []);
+
   return (
-    <div className="navbar" onClick={closeDropdown}>
+    <div className="navbar">
       {/* Left Section - Menu & Logo */}
       <div className="navbar-left">
-        <button className="hamburger-menu" onClick={(e) => { e.stopPropagation(); toggleDropdown("menu"); }}>
+        <button
+          className="hamburger-menu"
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleDropdown("menu");
+          }}
+        >
           <HiMenuAlt2 size={24} />
         </button>
-        <div className={`dropdown-menu ${activeDropdown === "menu" ? "show" : ""}`} onClick={(e) => e.stopPropagation()}>
+        <div
+          className={`dropdown-menu ${activeDropdown === "menu" ? "show" : ""}`}
+          onClick={(e) => e.stopPropagation()}
+          ref={dropdownRef} // Reference the dropdown
+        >
           <h3 className="menu-title">
             <button className="hamburger-menu" onClick={() => toggleDropdown("menu")}>
               <HiMenuAlt2 style={{ marginRight: "2px" }} size={24} /> Menu
@@ -98,12 +117,36 @@ const Navbar = () => {
             <img src={logo} alt="Logo" className="logo-left" />
           </div>
           <ul>
-            <li className="menu-item"><Link to="/" onClick={() => setActiveDropdown(null)}><RiHome2Line size={15} /> Home</Link></li>
-            <li className="menu-item"><Link to="/Order" onClick={() => setActiveDropdown(null)}><Briefcase size={15} /> Orders</Link></li>
-            <li className="menu-item"><Link to="/support" onClick={() => setActiveDropdown(null)}><MdOutlineSupportAgent size={15} /> Support</Link></li>
-            <li className="menu-item"><Link to="/wallet" onClick={() => setActiveDropdown(null)}><Wallet size={15} /> Wallet</Link></li>
-            <li className="menu-item"><Link to="/settings" onClick={() => setActiveDropdown(null)}><Settings size={15} /> Settings</Link></li>
-            <li className="menu-item"><Link to="/logout" onClick={() => setActiveDropdown(null)}><RiLogoutCircleRLine size={15} /> Logout</Link></li>
+            <li className="menu-item">
+              <Link to="/" onClick={() => setActiveDropdown(null)}>
+                <RiHome2Line size={15} /> Home
+              </Link>
+            </li>
+            <li className="menu-item">
+              <Link to="/Order" onClick={() => setActiveDropdown(null)}>
+                <Briefcase size={15} /> Orders
+              </Link>
+            </li>
+            <li className="menu-item">
+              <Link to="/support" onClick={() => setActiveDropdown(null)}>
+                <MdOutlineSupportAgent size={15} /> Support
+              </Link>
+            </li>
+            <li className="menu-item">
+              <Link to="/wallet" onClick={() => setActiveDropdown(null)}>
+                <Wallet size={15} /> Wallet
+              </Link>
+            </li>
+            <li className="menu-item">
+              <Link to="/settings" onClick={() => setActiveDropdown(null)}>
+                <Settings size={15} /> Settings
+              </Link>
+            </li>
+            <li className="menu-item">
+              <Link to="/logout" onClick={() => setActiveDropdown(null)}>
+                <RiLogoutCircleRLine size={15} /> Logout
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
@@ -117,33 +160,57 @@ const Navbar = () => {
       {/* Right Section: User, Notifications & Cart */}
       <div className="navbar-right">
         {/* User Dropdown */}
-        <div className="user-info" onClick={(e) => { e.stopPropagation(); toggleDropdown("user"); }}>
+        <div
+          className="user-info"
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleDropdown("user");
+          }}
+        >
           <UserRound className="user-info-icon" />
           <div className="user-text">
             <p className="user-welcome">Welcome,</p>
             {user ? (
-              <p className="user-name">{user.firstName} {user.lastName} <FaChevronDown size={15} /></p>
+              <p className="user-name">
+                {user.firstName} {user.lastName} <FaChevronDown size={15} />
+              </p>
             ) : (
-              <p className="sign-in">Sign in / Register <FaChevronDown size={15} /></p>
+              <p className="sign-in">
+                Sign in / Register <FaChevronDown size={15} />
+              </p>
             )}
           </div>
         </div>
-        <div className={`user-dropdown ${activeDropdown === "user" ? "show" : ""}`} onClick={(e) => e.stopPropagation()}>
+        <div
+          className={`user-dropdown ${activeDropdown === "user" ? "show" : ""}`}
+          onClick={(e) => e.stopPropagation()}
+          ref={dropdownRef} // Reference the dropdown
+        >
           <Link to="/Signin"><button>Sign in</button></Link>
           <Link to="/Signup"><button className="register1">Register</button></Link>
           <ul className="registerway">
             <li><Link to="/profile"><UserRound className="userround" /> My Account</Link></li>
             <li><Link to="/orders"><Briefcase className="userbriefcase" /> My Orders</Link></li>
             <li><Link to="/wallet"><Wallet className="userwallet" /> Wallet</Link></li>
-            <li><Link to="/settings"><Settings className="usersettings"/> Settings</Link></li>
+            <li><Link to="/settings"><Settings className="usersettings" /> Settings</Link></li>
           </ul>
         </div>
 
         {/* Notifications Dropdown */}
-        <button className="icon-button" onClick={(e) => { e.stopPropagation(); toggleDropdown("notifications"); }}>
+        <button
+          className="icon-button"
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleDropdown("notifications");
+          }}
+        >
           <FaRegBell className="faregbell" />
         </button>
-        <div className={`notifications-dropdown ${activeDropdown === "notifications" ? "show" : ""}`} onClick={(e) => e.stopPropagation()}>
+        <div
+          className={`notifications-dropdown ${activeDropdown === "notifications" ? "show" : ""}`}
+          onClick={(e) => e.stopPropagation()}
+          ref={dropdownRef} // Reference the dropdown
+        >
           <div className="dropdown-notch"></div>
           <ul>
             <li>No new notifications</li>
