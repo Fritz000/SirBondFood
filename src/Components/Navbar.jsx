@@ -24,6 +24,7 @@ const Navbar = () => {
   const pages = [
     { name: "Home", path: "/" },
     { name: "Market Runs", path: "/MarketRuns" },
+    { name: "Wallet", path: "/Wallet" },
     { name: "Food and Grocery", path: "/FoodAndGrocery" },
     { name: "Electronics", path: "/Electronics" },
     { name: "Home and Living", path: "/HomeAndLiving" },
