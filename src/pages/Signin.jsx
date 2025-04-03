@@ -4,9 +4,11 @@ import { X, ShieldBan } from "lucide-react";
 import "../pages/Signin.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { Eye, EyeOff } from "lucide-react";
 
 const Signin = ({ setUser }) => {
   const navigate = useNavigate();
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -63,7 +65,9 @@ const Signin = ({ setUser }) => {
             onChange={handleChange}
             required
           />
-          <input
+        
+           <div className="password-container">
+           <input
             className="curved-input"
             type="password"
             name="password"
@@ -72,6 +76,10 @@ const Signin = ({ setUser }) => {
             onChange={handleChange}
             required
           />
+            <span className="toggle-password12" onClick={() => setIsPasswordVisible((prev) => !prev)}>
+              {isPasswordVisible ? <EyeOff /> : <Eye />}
+            </span>
+          </div>
           <button type="submit" className="signup-btn1">Submit</button>
         </form>
 
