@@ -18,9 +18,12 @@ import chair from "../assets/chair.png";
 import cream from "../assets/cream.png";
 import tv from "../assets/tv.png";
 import dpp from "../assets/dpp.png";
+import flashsale from "../assets/flashsale.png";
+import Vectorstar from "../assets/Vectorstar.png";
 
 
 const categories = [
+  { name: "Flash Sales", image: flashsale },
   { name: "Food & Grocery", image: dpp },
   { name: "Electronics", image: tv },
   { name: "Home & Living", image: chair },
@@ -78,21 +81,29 @@ const MarketRuns = () => {
 
   useEffect(() => {
     const fetchItems = () => {
-      const storedItems = JSON.parse(localStorage.getItem("marketItems")) || [];
+      let storedItems = JSON.parse(localStorage.getItem("marketItems")) || [];
+      
+      // Ensure each item has an `originalPrice`
+      storedItems = storedItems.map((item) => ({
+        ...item,
+        originalPrice: item.originalPrice || (item.price * 1.2), // Set original price if missing
+      }));
+  
       setItems(storedItems);
     };
   
-    fetchItems(); // Fetch initially
+    fetchItems();
   
     const handleStorageChange = (event) => {
       if (event.key === "marketItems") {
-        fetchItems(); // Update state when localStorage changes
+        fetchItems();
       }
     };
   
     window.addEventListener("storage", handleStorageChange);
     return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
+  
 
   useEffect(() => {
     // Load cart from localStorage
@@ -115,8 +126,19 @@ const MarketRuns = () => {
   }, [selectedLocation]);
 
   const addToCart = (item) => {
-    setCart((prevCart) => [...prevCart, { ...item, quantity: 1 }]);
-  };
+    setCart((prevCart) => {
+      const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
+      if (existingItem) {
+        return prevCart.map((cartItem) =>
+          cartItem.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        );
+      } else {
+        return [...prevCart, { ...item, quantity: 1 }];
+      }
+    });
+  };  
 
   const [popupStep, setPopupStep] = useState("product"); // 'product' or 'description'
 
@@ -140,19 +162,23 @@ const closePopup = () => {
     setQuantity(prev => prev + 1);
   };
 
-  const decrementQuantity = () => {
-    if (quantity > 0) {
-      setQuantity(prev => prev - 1);
-      if (quantity === 1) {
-        removeFromCart(selectedItem); // Remove item from cart if 0
-      }
-    }
+  const decrementQuantity = (itemId) => {
+    setCart((prevCart) => {
+      return prevCart
+        .map((cartItem) =>
+          cartItem.id === itemId
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
+        )
+        .filter((cartItem) => cartItem.quantity > 0); // Remove items with quantity 0
+    });
   };
-
+  
   const getQuantity = (id) => {
     const item = cart.find((cartItem) => cartItem.id === id);
     return item ? item.quantity : 0;
   };
+  
 
   const navigate = useNavigate();
 
@@ -196,46 +222,46 @@ const handleCategoryClick = (categoryName) => {
           ))}
         </select>
       </div>
-    <div className="grid-container100">
-        {categories.map((category, index) => (
-          <div
-            key={index}
-            className="category-card100"
-            onClick={() => {
-              if (category.name === "Food & Grocery") {
-                navigate("/FoodAndGrocery"); // Navigate to the correct page
-              }
-              if (category.name === "Electronics") {
-                navigate("/Electronics"); // Navigate to the correct page
-              }
-              if (category.name === "Home & Living") {
-                navigate("/HomeAndLiving"); // Navigate to the correct page
-              }
-              if (category.name === "Health & Beauty") {
-                navigate("/HealthAndBeauty"); // Navigate to the correct page
-              }
-              if (category.name === "Fashion & Clothing") {
-                navigate("/FashionAndClothing"); // Navigate to the correct page
-              }
-              if (category.name === "Babies & Games") {
-                navigate("/BabiesAndGames"); // Navigate to the correct page
-              }
-              if (category.name === "Sport & Outdoors") {
-                navigate("/SportAndOutdoors"); // Navigate to the correct page
-              }
-              if (category.name === "Feed & Seeds") {
-                navigate("/FeedAndSeeds"); // Navigate to the correct page
-              }
-            }}
-            style={{ cursor: "pointer" }} // Make it look clickable
-          >
-            <div className="image-icon-container100">
+      <div className="grid-container100">
+      {categories.map((category, index) => (
+        <div
+          key={index}
+          className={`category-card100 ${category.name === "Flash Sales" ? "flash-sales-special" : ""}`}
+          onClick={() => {
+            if (category.name === "Food & Grocery") {
+              navigate("/FoodAndGrocery");
+            }
+            if (category.name === "Electronics") {
+              navigate("/Electronics");
+            }
+            if (category.name === "Home & Living") {
+              navigate("/HomeAndLiving");
+            }
+            if (category.name === "Health & Beauty") {
+              navigate("/HealthAndBeauty");
+            }
+            if (category.name === "Fashion & Clothing") {
+              navigate("/FashionAndClothing");
+            }
+            if (category.name === "Babies & Games") {
+              navigate("/BabiesAndGames");
+            }
+            if (category.name === "Sport & Outdoors") {
+              navigate("/SportAndOutdoors");
+            }
+            if (category.name === "Feed & Seeds") {
+              navigate("/FeedAndSeeds");
+            }
+          }}
+          style={{ cursor: "pointer" }} // Make it look clickable
+        >
+          <div className="image-icon-container100">
             <img src={category.image} alt={category.name} className="category-image100" />
-            </div>
-            <p className="category-name100">{category.name}</p>
           </div>
-        ))}
-      </div>
+          <p className="category-name100">{category.name}</p>
+        </div>
+      ))}
+    </div>
       <h2 className="section-title100">Trending</h2>
       <div className="trending-grid100">
       {items.map((item) => (
@@ -245,15 +271,21 @@ const handleCategoryClick = (categoryName) => {
             </div>
             <div className="trending-info100">
               <p className="trending-name100">{item.name}</p>
-              <p className="trending-price100">
+              <p className="trending-price100 discounted-price">
                 {item.approved ? `₦ ${item.price.toLocaleString()}` : "Pending"}
               </p>
+                {item.originalPrice > 0 && (
+                  <p className="trending-price100 slashed-price">
+                    ₦ {item.originalPrice.toLocaleString()}
+                  </p>
+                )}
             </div>
+
             <button 
-              className="add-to-cart" 
+              className="add-to-cart1" 
               onClick={(e) => { e.stopPropagation(); addToCart(item); }}
               disabled={!item.approved}
-            >+
+            >ADD +
             </button>
           </div>
         ))}
@@ -263,7 +295,7 @@ const handleCategoryClick = (categoryName) => {
         <div className="popup-overlay" onClick={closePopup}>
         <div className="popup" onClick={(e) => e.stopPropagation()}>
           <div className="layout-container">
-            <div className="layout-container-image">
+          <div className="layout-container-image10">
           <img src={selectedItem.image} alt={selectedItem.name} className="popup-image" />
           </div>
           <div className="popup-title-content">
@@ -271,14 +303,12 @@ const handleCategoryClick = (categoryName) => {
           <p className="popup-price">₦ {selectedItem.price.toLocaleString()}</p>
           </div>
           <div className="chat-icon-button">
-          <button className="chat-icon" onClick={() => addToCart(selectedItem)}> <img src={Group} className="groupchat" alt="" /> Chat</button>
+          <button className="chat-icon"> <img src={Group} className="groupchat" alt="" /> Chat</button>
           <div className="cart-item-button100">
-  <button className="decrement" onClick={decrementQuantity}>-</button>
-  <span className="quantity">{getQuantity(selectedItem.id)}</span>
-  <button className="increment" onClick={() => addToCart(selectedItem)}>+</button>
-</div>
-
-
+          <button className="decrement" onClick={() => decrementQuantity(selectedItem.id)}>-</button>
+          <span className="quantity">{getQuantity(selectedItem.id)}</span>
+          <button className="increment" onClick={() => addToCart(selectedItem)}>+</button>
+          </div>
           </div>
           </div>
           {/* Button to open Description */}

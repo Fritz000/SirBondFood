@@ -1,7 +1,8 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import { X, ShieldBan, CheckCircle } from "lucide-react";
 import "../pages/Password.css";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
 import { Eye, EyeOff } from "lucide-react";
 import logo from "../assets/logo.png";
 
@@ -20,7 +21,7 @@ const Password = () => {
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [doPasswordsMatch, setDoPasswordsMatch] = useState(false);
 
-  const handleClose = () => navigate("/"); // Always navigate instead of calling onClose
+  const handleClose = () => navigate("/");
 
   const validatePassword = (password) => {
     const regex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,20}$/;
@@ -46,69 +47,64 @@ const Password = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
+    // Validate password
     if (!isPasswordValid) {
       setErrorMessage("Password must be 6-20 characters and include letters, numbers, and symbols.");
       return;
     }
-    
+
+    // Validate if passwords match
     if (!doPasswordsMatch) {
       setErrorMessage("Passwords do not match.");
       return;
     }
-  
+
     setErrorMessage(""); // Clear previous errors
-  
+
     const finalData = {
       ...userData,
       password: formData.password,
     };
-  
+
     try {
-      const response = await fetch("https://bondfood.vercel.app/api/register/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(finalData),
-      });
-  
-      const data = await response.json(); // Parse response JSON
-  
-      if (response.ok) {
-        console.log("✅ Registration successful:", data);
-        
+      console.log("Making API call to register...");
+
+      // Make the POST request to the backend
+      const response = await axios.post("https://bondfood.vercel.app/api/register/", finalData);
+
+      console.log("API response:", response);
+
+      // Check for successful registration
+      if (response.status >= 200 && response.status < 300) {
+        console.log("✅ Registration successful:", response.data);
+
         // Store user details in local storage
-        localStorage.setItem("user", JSON.stringify(data.user));
-  
-        // Redirect to OTP Verification
-        navigate("/Verify", { state: { email: userData.email } });
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+
+        // Optional delay for navigation
+        setTimeout(() => {
+          // Redirect to OTP Verification page
+          navigate("/Verify", { state: { email: userData.email } });
+        }, 1000); // 1-second delay to ensure everything is processed
       } else {
-        console.error("❌ Registration failed:", data);
-  
-        // Handle specific email error
-        if (data.email && Array.isArray(data.email) && data.email[0]) {
-          setErrorMessage("This email is already registered. Try logging in instead.");
-        } else {
-          setErrorMessage(data.message || "Registration failed. Please try again.");
-        }
+        console.error("❌ Registration failed:", response);
+        setErrorMessage(response.data.message || "Registration failed. Please try again.");
       }
     } catch (error) {
       console.error("🌐 Network error:", error);
       setErrorMessage("Network error. Please check your connection.");
     }
   };
-  
 
   return (
     <div className="signup-overlay">
       <div className="signup-modal21">
-        {/* Close button */}
         <button className="close-btn" onClick={handleClose}>
           <X size={24} />
         </button>
 
-        {/* Logo */}
         <img src={logo} alt="Feed the Nation Logo" className="logo-img6" />
-
         <h2 className="regsucc">Registration successful</h2>
         <p>Create a password to secure your account. You can use it when you log in next time.</p>
         <small>
@@ -160,7 +156,6 @@ const Password = () => {
             </li>
           </ul>
 
-          {/* Submit Button */}
           <button type="submit" className="signup-btn1">Submit</button>
         </form>
 

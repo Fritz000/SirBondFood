@@ -1,23 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { X, ChevronLeft, ShieldBan } from "lucide-react";
 import "../pages/Verify.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
+import axios from "axios"; // Importing Axios
 
 const Verify = ({ onClose }) => {
   const navigate = useNavigate();
-  const handleClose = () => {
-    if (onClose) {
-      onClose();
-    } else {
-      navigate("/"); 
-    }
-  };
+  const location = useLocation();
+  const userEmail = location.state?.email || localStorage.getItem("userEmail") || null;
+
   const [timeLeft, setTimeLeft] = useState(60);
   const [canRequestNewCode, setCanRequestNewCode] = useState(false);
-  const [otp, setOtp] = useState(["", "", "", ""]);
-  const [error, setError] = useState(false);
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const inputsRef = useRef([]);
+
+  // Ensure email is saved to localStorage for fallback
+  useEffect(() => {
+    if (userEmail) {
+      localStorage.setItem("userEmail", userEmail);
+    } else {
+      console.error("No email found for OTP verification.");
+    }
+  }, [userEmail]);
+
+  // Timer for resending OTP
   useEffect(() => {
     if (timeLeft > 0) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
@@ -27,11 +37,12 @@ const Verify = ({ onClose }) => {
     }
   }, [timeLeft]);
 
-  const handleRequestNewCode = () => {
-    setTimeLeft(60);
-    setCanRequestNewCode(false);
-    setError(false);
-    setOtp(["", "", "", ""]); // Clear OTP inputs
+  const handleClose = () => {
+    if (onClose) {
+      onClose();
+    } else {
+      navigate("/");
+    }
   };
 
   const handleChange = (index, value) => {
@@ -39,55 +50,109 @@ const Verify = ({ onClose }) => {
       const newOtp = [...otp];
       newOtp[index] = value;
       setOtp(newOtp);
+
+      // Move focus to the next input
+      if (value !== "" && index < otp.length - 1) {
+        inputsRef.current[index + 1].focus();
+      }
     }
   };
 
   const handleSubmit = async () => {
-    const enteredOtp = otp.join("");
-    setError(false); // Clear previous errors
-  
+    const enteredOtp = otp.join("").trim();
+    setError(""); // Clear previous errors
+
+    if (!userEmail) {
+      setError("No user email found. Please register again.");
+      return;
+    }
+
+    if (!/^\d{6}$/.test(enteredOtp)) {
+      setError("Please enter a valid 6-digit OTP.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
     try {
-      const response = await fetch("https://bondfood.vercel.app/api/verify-otp/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: "user@example.com", // Replace with actual email
-          otp: enteredOtp,
-        }),
+      const response = await axios.post("https://bondfood.vercel.app/api/verify-otp/", {
+        email: userEmail.toLowerCase(), // Normalize casing
+        otp: enteredOtp,
       });
-  
-      const data = await response.json();
-  
-      if (response.ok) {
-        navigate("/Registrationsuccessful"); // Redirect on success ✅
+
+      if (response.status === 200) {
+        const { authToken, user } = response.data; // Get authToken from API response
+        
+        // Save authentication token to localStorage
+        if (authToken) {
+          localStorage.setItem("authToken", authToken);
+        }
+        
+        // Save user details
+        localStorage.setItem("user", JSON.stringify({
+          firstName: user?.firstName,
+          lastName: user?.lastName,
+        }));
+        
+        // 🔄 Trigger Navbar update by dispatching a storage event
+        window.dispatchEvent(new Event("storage"));
+        
+        navigate("/");
       } else {
-        setError(data.message || "The code is incorrect, please try again."); // Show backend error message
+        setError(response.data.message || "The code is incorrect, please try again.");
       }
     } catch (error) {
-      setError("Something went wrong. Please try again."); // Handle network errors
+      setError("Something went wrong. Please try again.");
       console.error("Error verifying OTP:", error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
-  
-  
+
+  const handleRequestNewCode = async () => {
+    setError(""); // Clear previous errors
+    setOtp(["", "", "", "", "", ""]); // Clear current OTP
+
+    if (!userEmail) {
+      setError("No email found. Please register again.");
+      return;
+    }
+
+    setTimeLeft(60);
+    setCanRequestNewCode(false);
+
+    try {
+      const response = await axios.post("https://bondfood.vercel.app/api/resend-otp/", {
+        email: userEmail,
+      });
+
+      if (response.status === 200) {
+        alert("A new OTP has been sent to your email.");
+      } else {
+        setError(response.data.message || "Failed to resend code. Please try again.");
+      }
+    } catch (error) {
+      setError("Something went wrong. Please try again.");
+      console.error("Error requesting new OTP:", error);
+    }
+  };
 
   return (
     <div className="signup-overlay">
       <div className="signup-modal105">
         {/* Back and Close Icons */}
-          <div className="top-icons">
-              <button className="back-btn" onClick={() => navigate(-1)}>  
-                  <ChevronLeft size={24} />
-              </button>
-              <button className="close-btn" onClick={onClose ? onClose : () => navigate("/")}>
-                  <X size={24} />
-              </button>
-          </div>
+        <div className="top-icons">
+          <button className="back-btn" onClick={() => navigate(-1)}>
+            <ChevronLeft size={24} />
+          </button>
+          <button className="close-btn" onClick={handleClose}>
+            <X size={24} />
+          </button>
+        </div>
+
         <img src={logo} alt="Feed the Nation Logo" className="logo-img4" />
         <h2>Verify your email address</h2>
-        <p>Please enter the 4-digit verification code sent to your email address.</p>
+        <p>Please enter the 6-digit verification code sent to your email address.</p>
         <small>
           <ShieldBan size={24} style={{ position: "relative", top: "5px" }} /> Your information is 100% secured
         </small>
@@ -95,7 +160,9 @@ const Verify = ({ onClose }) => {
         <div className="verification-code">
           {otp.map((digit, index) => (
             <input
+              ref={(el) => (inputsRef.current[index] = el)}
               key={index}
+              id={`otp-input-${index}`}
               type="text"
               maxLength="1"
               className={`code-input ${error ? "error-border" : ""}`}
@@ -107,9 +174,13 @@ const Verify = ({ onClose }) => {
 
         {error && <p className="error-message">{error} <span className="resend-code" onClick={handleRequestNewCode}>Resend code</span></p>}
 
-
-        <button type="button" className="signup-btn" onClick={handleSubmit}>
-          Continue
+        <button
+          type="button"
+          className="signup-btn"
+          onClick={handleSubmit}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Verifying..." : "Continue"}
         </button>
 
         <p className="terms">

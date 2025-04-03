@@ -43,6 +43,8 @@ const FoodGrocery = () => {
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedMarket, setSelectedMarket] = useState("");
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState("");
+
 
   useEffect(() => {
     // Fetch items from "foodGroceryItems" instead of "marketItems"
@@ -88,6 +90,11 @@ const FoodGrocery = () => {
     return item ? item.quantity : 0;
   };
 
+  const filteredItems = items.filter((item) =>
+    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  
+
   return (
     <div className="container">
       <button className="back-button" onClick={() => navigate(-1)}>
@@ -95,7 +102,7 @@ const FoodGrocery = () => {
       </button>
       <div className="search-container">
         <Search className="search-icon" size={20} />
-        <input type="text" placeholder="Search food & grocery" className="search-bar" />
+        <input type="text" placeholder="Search food & grocery" className="search-bar" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
       </div>
 
       <div className="category1-container">
@@ -126,23 +133,23 @@ const FoodGrocery = () => {
       </div>
 
       <div className="trending-grid">
-      {items.map((item) => (
-          <div key={item.id} className="trending-card" onClick={() => setSelectedItem(item)}>
-            <img src={item.image} alt={item.name} className="trending-image" />
-            <div className="trending-info">
-              <p className="trending-name">{item.name}</p>
-              <p className="trending-price">
-                {item.approved ? `₦ ${item.price.toLocaleString()}` : "Pending"}
-              </p>
-            </div>
-            <button 
-              className="add-to-cart" 
-              onClick={(e) => { e.stopPropagation(); addToCart(item); }}
-              disabled={!item.approved}
-            >+
-            </button>
-          </div>
-        ))}
+      {filteredItems.map((item) => (
+      <div key={item.id} className="trending-card" onClick={() => setSelectedItem(item)}>
+        <img src={item.image} alt={item.name} className="trending-image" />
+        <div className="trending-info">
+          <p className="trending-name">{item.name}</p>
+          <p className="trending-price">
+            {item.approved ? `₦ ${item.price.toLocaleString()}` : "Pending"}
+          </p>
+        </div>
+        <button 
+          className="add-to-cart" 
+          onClick={(e) => { e.stopPropagation(); addToCart(item); }}
+          disabled={!item.approved}
+        >+
+        </button>
+      </div>
+      ))}
       </div>
 
       {selectedItem && (

@@ -8,7 +8,7 @@ const Securitycode = ({ onClose }) => {
   const navigate = useNavigate(); 
   const [timeLeft, setTimeLeft] = useState(60);
   const [canRequestNewCode, setCanRequestNewCode] = useState(false);
-  const [otp, setOtp] = useState(["", "", "", ""]);
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [error, setError] = useState(false);
   const expectedOtp = "1234"; // backend OTP
 
@@ -25,7 +25,7 @@ const Securitycode = ({ onClose }) => {
     setTimeLeft(60);
     setCanRequestNewCode(false);
     setError(false);
-    setOtp(["", "", "", ""]); // Clear OTP inputs
+    setOtp(["", "", "", "", "", ""]); // Clear OTP inputs
   };
 
   const handleChange = (index, value) => {
