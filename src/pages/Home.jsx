@@ -19,7 +19,7 @@ const generateReferralCode = () => {
 const getRank = (referrals) => {
   if (referrals >= 51) return "Mastermind";
   if (referrals >= 31) return "Expert";
-  if (referrals >= 6) return "Intermediate";
+  if (referrals >= 100) return "Star Manager";
   return "Novice";
 };
 const Home = ({ user }) => {

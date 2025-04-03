@@ -13,9 +13,29 @@ const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [cartCount, setCartCount] = useState(0);
   const [user, setUser] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(""); // State to store search input
+  const [searchResults, setSearchResults] = useState([]); // State for search suggestions
   const storedToken = localStorage.getItem("authToken");
 
   const dropdownRef = useRef(null); // To reference the dropdown container
+  const navigate = useNavigate(); // For navigation
+
+  // Hardcoded list of possible pages to search
+  const pages = [
+    { name: "Home", path: "/" },
+    { name: "Market Runs", path: "/MarketRuns" },
+    { name: "Food and Grocery", path: "/FoodAndGrocery" },
+    { name: "Electronics", path: "/Electronics" },
+    { name: "Home and Living", path: "/HomeAndLiving" },
+    { name: "Health and Beauty", path: "/HealthAndBeauty" },
+    { name: "Fashion and Clothing", path: "/FashionAndClothing" },
+    { name: "Babies And Games", path: "/BabiesAndGames" },
+    { name: "Sport and Outdoors", path: "/SportAndOutdoors" },
+    { name: "Orders", path: "/orders" },
+    { name: "Settings", path: "/settings" },
+    { name: "Support", path: "/support" },
+    // Add more pages if needed
+  ];
 
   // Fetch user profile using Axios
   useEffect(() => {
@@ -36,8 +56,6 @@ const Navbar = () => {
 
     fetchUserProfile();
   }, [storedToken]);
-
-  const navigate = useNavigate();
 
   // Cart count update function
   const updateCartCount = () => {
@@ -89,6 +107,29 @@ const Navbar = () => {
       document.removeEventListener("click", closeDropdown);
     };
   }, []);
+
+  // Handle search input change
+  const handleSearchChange = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    if (query) {
+      // Filter pages based on the search query (case-insensitive)
+      const filteredResults = pages.filter((page) =>
+        page.name.toLowerCase().includes(query.toLowerCase())
+      );
+      setSearchResults(filteredResults);
+    } else {
+      setSearchResults([]);
+    }
+  };
+
+  // Handle search suggestion click
+  const handleSearchClick = (path) => {
+    navigate(path); // Navigate to the corresponding page
+    setSearchQuery(""); // Optionally clear the search input
+    setSearchResults([]); // Clear search results
+  };
 
   return (
     <div className="navbar">
@@ -153,8 +194,29 @@ const Navbar = () => {
 
       {/* Center Section: Search Bar */}
       <div className="navbar-search">
-        <input type="text" placeholder="Search" className="search-input" />
-        <button className="search-button"><CiSearch size={20} /></button>
+        <input
+          type="text"
+          placeholder="Search"
+          className="search-input"
+          value={searchQuery}
+          onChange={handleSearchChange}
+        />
+        <button className="search-button">
+          <CiSearch size={20} />
+        </button>
+        
+        {/* Dropdown for search suggestions */}
+        {searchQuery && searchResults.length > 0 && (
+          <div className="search-dropdown">
+            <ul>
+              {searchResults.map((result) => (
+                <li key={result.name} onClick={() => handleSearchClick(result.path)}>
+                  {result.name}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       {/* Right Section: User, Notifications & Cart */}
@@ -184,7 +246,7 @@ const Navbar = () => {
         <div
           className={`user-dropdown ${activeDropdown === "user" ? "show" : ""}`}
           onClick={(e) => e.stopPropagation()}
-          ref={dropdownRef} // Reference the dropdown
+          ref={dropdownRef}
         >
           <Link to="/Signin"><button>Sign in</button></Link>
           <Link to="/Signup"><button className="register1">Register</button></Link>
@@ -209,7 +271,7 @@ const Navbar = () => {
         <div
           className={`notifications-dropdown ${activeDropdown === "notifications" ? "show" : ""}`}
           onClick={(e) => e.stopPropagation()}
-          ref={dropdownRef} // Reference the dropdown
+          ref={dropdownRef}
         >
           <div className="dropdown-notch"></div>
           <ul>
