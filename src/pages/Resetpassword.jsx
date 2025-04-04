@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ShieldBan } from "lucide-react";
 import "../pages/Resetpassword.css";
 import { Link, useNavigate } from 'react-router-dom';
@@ -12,21 +12,29 @@ const Resetpassword = ({ onClose }) => {
         email: "",
     });
 
+    const [isFormComplete, setIsFormComplete] = useState(false); // Track if form is complete
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    // Check if the email field is filled
+    useEffect(() => {
+        const isComplete = formData.email.trim() !== "";
+        setIsFormComplete(isComplete);
+    }, [formData]);
+
     return (
         <div className="signup-overlay">
             <div className="signup-modal2">
-            <div className="top-icons">
-              <button className="back-btnreset" onClick={() => navigate(-1)}>  
-                  <ChevronLeft size={24} />
-              </button>
-              <button className="close-btn" onClick={onClose ? onClose : () => navigate("/")}>
-                  <X size={24} />
-              </button>
-          </div>
+                <div className="top-icons">
+                    <button className="back-btnreset" onClick={() => navigate(-1)}>  
+                        <ChevronLeft size={24} />
+                    </button>
+                    <button className="close-btn" onClick={onClose ? onClose : () => navigate("/")}>
+                        <X size={24} />
+                    </button>
+                </div>
 
                 {/* Header */}
                 <img
@@ -53,9 +61,16 @@ const Resetpassword = ({ onClose }) => {
                     </div>
 
                     {/* Submit Button */}
-                    <Link to="/Securitycode"><button type="submit" className="signup-btn1">
-                        Reset Password
-                    </button></Link>
+                    <Link to="/Securitycode">
+                        <button
+                            type="submit"
+                            className="signup-btn1"
+                            disabled={!isFormComplete}
+                            style={{ backgroundColor: isFormComplete ? '#008000' : '#DAF0C6' }} // Green if filled
+                        >
+                            Reset Password
+                        </button>
+                    </Link>
                 </form>
 
                 <p className="signin4">

@@ -8,9 +8,10 @@ const Securitycode = ({ onClose }) => {
   const navigate = useNavigate(); 
   const [timeLeft, setTimeLeft] = useState(60);
   const [canRequestNewCode, setCanRequestNewCode] = useState(false);
-  const [otp, setOtp] = useState(["", "", "", "", "", ""]);
+  const [otp, setOtp] = useState(["", "", "", "", "", ""]); // 6-digit OTP
   const [error, setError] = useState(false);
-  const expectedOtp = "1234"; // backend OTP
+  const [isOtpValid, setIsOtpValid] = useState(false); // Track if OTP is valid
+  const expectedOtp = "123456"; // Backend OTP (6-digit)
 
   useEffect(() => {
     if (timeLeft > 0) {
@@ -20,6 +21,12 @@ const Securitycode = ({ onClose }) => {
       setCanRequestNewCode(true);
     }
   }, [timeLeft]);
+
+  // Check if OTP is valid (length and correct)
+  useEffect(() => {
+    const enteredOtp = otp.join("");
+    setIsOtpValid(enteredOtp.length === 6 && enteredOtp === expectedOtp);
+  }, [otp]);
 
   const handleRequestNewCode = () => {
     setTimeLeft(60);
@@ -40,7 +47,6 @@ const Securitycode = ({ onClose }) => {
       }
     }
   };
-  
 
   const handleSubmit = () => {
     const enteredOtp = otp.join("");
@@ -69,28 +75,32 @@ const Securitycode = ({ onClose }) => {
         <small><ShieldBan size={24} style={{ position: "relative", top: "5px" }} /> Your information is 100% secured</small>
         
         <div className="verification-code">
-  {otp.map((digit, index) => (
-    <input
-      key={index}
-      id={`otp-input-${index}`} // Unique ID for each input
-      type="text"
-      maxLength="1"
-      className={`code-input ${error ? "error-border" : ""}`}
-      value={digit}
-      onChange={(e) => handleChange(index, e.target.value)}
-      onKeyDown={(e) => {
-        if (e.key === "Backspace" && !otp[index] && index > 0) {
-          document.getElementById(`otp-input-${index - 1}`).focus();
-        }
-      }}
-    />
-  ))}
-</div>
-
+          {otp.map((digit, index) => (
+            <input
+              key={index}
+              id={`otp-input-${index}`} // Unique ID for each input
+              type="text"
+              maxLength="1"
+              className={`code-input ${error ? "error-border" : ""}`}
+              value={digit}
+              onChange={(e) => handleChange(index, e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Backspace" && !otp[index] && index > 0) {
+                  document.getElementById(`otp-input-${index - 1}`).focus();
+                }
+              }}
+            />
+          ))}
+        </div>
 
         {error && <p className="error-message1">The code is incorrect, please try again. <span className="resend-code1" onClick={handleRequestNewCode}>Resend code</span></p>}
 
-        <button type="submit" onClick={handleSubmit} className="signup-btn">
+        <button 
+          type="submit" 
+          onClick={handleSubmit} 
+          className={`signup-btn ${isOtpValid ? 'valid' : ''}`}
+          disabled={!isOtpValid} // Disable button if OTP is not valid
+        >
           Submit
         </button>
 

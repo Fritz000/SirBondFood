@@ -131,6 +131,12 @@ p, small {
     background-color: #008000;
 }
 
+.signup-btn:disabled {
+  cursor: not-allowed;
+  background-color: #e0e0e0;  /* Light gray when disabled */
+}
+
+
 
 .social-signup {
     display: flex;

@@ -17,12 +17,24 @@ const Reset = ({ onClose }) => {
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [doPasswordsMatch, setDoPasswordsMatch] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false); // Track form validity
 
+  // Check if passwords match
   useEffect(() => {
     if (formData.password && formData.confirmpassword) {
       setDoPasswordsMatch(formData.password === formData.confirmpassword);
     }
   }, [formData.password, formData.confirmpassword]);
+
+  // Check if form is valid
+  useEffect(() => {
+    const isEmailFilled = formData.email.trim() !== "";
+    const isPasswordFilled = isPasswordValid;
+    const isPasswordsMatch = doPasswordsMatch;
+    
+    // Form is valid if all conditions are met
+    setIsFormValid(isEmailFilled && isPasswordFilled && isPasswordsMatch);
+  }, [formData, isPasswordValid, doPasswordsMatch]);
 
   const handleClose = () => {
     navigate("/"); // Always navigate instead of calling onClose
@@ -67,17 +79,18 @@ const Reset = ({ onClose }) => {
       <div className="signup-modal2000">
         {/* Back and Close Icons */}
         <div className="top-icons">
-              <button className="back-btnreset" onClick={() => navigate(-1)}>  
-                  <ChevronLeft size={24} />
-              </button>
-              <button className="close-btn" onClick={onClose ? onClose : () => navigate("/")}>
-                  <X size={24} />
-              </button>
-          </div>
+          <button className="back-btnreset" onClick={() => navigate(-1)}>
+            <ChevronLeft size={24} />
+          </button>
+          <button className="close-btn" onClick={onClose ? onClose : () => navigate("/")}>
+            <X size={24} />
+          </button>
+        </div>
 
         <img
           src={logo}
-          alt="Feed the Nation Logo" className="logo-img7"
+          alt="Feed the Nation Logo"
+          className="logo-img7"
         />
         <h2 className="reyp">Reset your password</h2>
         <p>Enter your new password</p>
@@ -139,7 +152,14 @@ const Reset = ({ onClose }) => {
             </li>
           </ul>
 
-          <button type="submit" className="signup-btn1">Change Password</button>
+          <button
+            type="submit"
+            className="signup-btn1"
+            disabled={!isFormValid}
+            style={{ backgroundColor: isFormValid ? '#008000' : '#DAF0C6' }} // Green if form is valid
+          >
+            Change Password
+          </button>
         </form>
 
         <p className="signin1l90">For further support, you may visit the Help Center or contact our support team.</p>

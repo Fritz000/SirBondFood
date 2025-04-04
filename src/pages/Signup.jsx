@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { X, ShieldBan } from "lucide-react";
 import '../pages/Signup.css';
 import { Link, useNavigate } from "react-router-dom";
@@ -20,6 +20,18 @@ const Signup = ({ onClose }) => {
     dob: "",
     referral: "",
   });
+
+  const [isFormComplete, setIsFormComplete] = useState(false);
+
+  useEffect(() => {
+    // Check if all fields are filled
+    const { firstName, surname, email, phone, dob } = formData;
+    if (firstName && surname && email && phone && dob) {
+      setIsFormComplete(true);
+    } else {
+      setIsFormComplete(false);
+    }
+  }, [formData]);  // This hook will run every time formData changes
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -113,7 +125,14 @@ const Signup = ({ onClose }) => {
           />
 
           {/* Submit Button */}
-          <button type="submit" className="signup-btn">Continue</button>
+          <button 
+            type="submit" 
+            className="signup-btn" 
+            style={{ backgroundColor: isFormComplete ? '#008000' : '#DAF0C6' }}
+            disabled={!isFormComplete}
+          >
+            Continue
+          </button>
         </form>
 
         <p className="terms">

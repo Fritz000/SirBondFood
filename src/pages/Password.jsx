@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { X, ShieldBan, CheckCircle } from "lucide-react";
 import "../pages/Password.css";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -20,6 +20,7 @@ const Password = () => {
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [doPasswordsMatch, setDoPasswordsMatch] = useState(false);
+  const [isFormComplete, setIsFormComplete] = useState(false);
 
   const handleClose = () => navigate("/");
 
@@ -45,55 +46,65 @@ const Password = () => {
     });
   };
 
+  useEffect(() => {
+    // Check if form is complete: password is valid, and passwords match
+    setIsFormComplete(isPasswordValid && doPasswordsMatch && formData.password && formData.confirmpassword);
+  }, [formData, isPasswordValid, doPasswordsMatch]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     // Validate password
     if (!isPasswordValid) {
       setErrorMessage("Password must be 6-20 characters and include letters, numbers, and symbols.");
       return;
     }
-
+  
     // Validate if passwords match
     if (!doPasswordsMatch) {
       setErrorMessage("Passwords do not match.");
       return;
     }
-
+  
     setErrorMessage(""); // Clear previous errors
-
+  
     const finalData = {
       ...userData,
       password: formData.password,
     };
-
+  
     try {
-      console.log("Making API call to register...");
-
-      // Make the POST request to the backend
       const response = await axios.post("https://bondfood.vercel.app/api/register/", finalData);
-
-      console.log("API response:", response);
-
-      // Check for successful registration
+  
       if (response.status >= 200 && response.status < 300) {
         console.log("✅ Registration successful:", response.data);
-
+  
         // Store user details in local storage
         localStorage.setItem("user", JSON.stringify(response.data.user));
-
+  
         // Optional delay for navigation
         setTimeout(() => {
           // Redirect to OTP Verification page
           navigate("/Verify", { state: { email: userData.email } });
         }, 1000); // 1-second delay to ensure everything is processed
       } else {
-        console.error("❌ Registration failed:", response);
+        // Handle failed registration due to other reasons
         setErrorMessage(response.data.message || "Registration failed. Please try again.");
       }
     } catch (error) {
-      console.error("🌐 Network error:", error);
-      setErrorMessage("Network error. Please check your connection.");
+      console.error("Network error:", error);
+  
+      if (error.response) {
+        // Check for duplicate email error
+        const errorMessage = error.response.data.email
+          ? "This email is already registered. Please login."
+          : error.response.data.message || "An error occurred. Please try again.";
+  
+        setErrorMessage(errorMessage);
+      } else {
+        // Network error (e.g., no internet, API server down)
+        setErrorMessage("Network error. Please check your connection.");
+      }
     }
   };
 
@@ -156,7 +167,14 @@ const Password = () => {
             </li>
           </ul>
 
-          <button type="submit" className="signup-btn1">Submit</button>
+          <button 
+            type="submit" 
+            className="signup-btn1" 
+            style={{ backgroundColor: isFormComplete ? '#008000' : '#DAF0C6' }}
+            disabled={!isFormComplete}
+          >
+            Submit
+          </button>
         </form>
 
         <p className="signin1ll">For further support, you may visit the Help Center or contact our support team.</p>

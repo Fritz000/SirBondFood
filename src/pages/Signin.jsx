@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios"; // Axios for API requests
 import { X, ShieldBan } from "lucide-react";
 import "../pages/Signin.css";
@@ -13,10 +13,17 @@ const Signin = ({ setUser }) => {
     email: "",
     password: "",
   });
+  const [isFormComplete, setIsFormComplete] = useState(false); // Track if form is complete
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  // Check if both email and password fields are filled
+  useEffect(() => {
+    const isComplete = formData.email.trim() !== "" && formData.password.trim() !== "";
+    setIsFormComplete(isComplete);
+  }, [formData]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +46,6 @@ const Signin = ({ setUser }) => {
       alert(error.response?.data?.detail || "Login failed. Please check your credentials.");
     }
   };
-  
 
   return (
     <div className="signup-overlay">
@@ -66,21 +72,29 @@ const Signin = ({ setUser }) => {
             required
           />
         
-           <div className="password-container">
-           <input
-            className="curved-input"
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
+          <div className="password-container">
+            <input
+              className="curved-input"
+              type={isPasswordVisible ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
             <span className="toggle-password12" onClick={() => setIsPasswordVisible((prev) => !prev)}>
               {isPasswordVisible ? <EyeOff /> : <Eye />}
             </span>
           </div>
-          <button type="submit" className="signup-btn1">Submit</button>
+
+          <button
+            type="submit"
+            className="signup-btn1"
+            disabled={!isFormComplete}
+            style={{ backgroundColor: isFormComplete ? '#008000' : '#DAF0C6' }} // Green if complete
+          >
+            Submit
+          </button>
         </form>
 
         <Link to="/resetpassword">
