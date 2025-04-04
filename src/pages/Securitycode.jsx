@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ShieldBan } from "lucide-react";
 import '../pages/Securitycode.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import logo from "../assets/logo.png";
 
 const Securitycode = ({ onClose }) => {
@@ -10,7 +10,6 @@ const Securitycode = ({ onClose }) => {
   const [canRequestNewCode, setCanRequestNewCode] = useState(false);
   const [otp, setOtp] = useState(["", "", "", "", "", ""]); // 6-digit OTP
   const [error, setError] = useState(false);
-  const [isOtpValid, setIsOtpValid] = useState(false); // Track if OTP is valid
   const expectedOtp = "123456"; // Backend OTP (6-digit)
 
   useEffect(() => {
@@ -21,12 +20,6 @@ const Securitycode = ({ onClose }) => {
       setCanRequestNewCode(true);
     }
   }, [timeLeft]);
-
-  // Check if OTP is valid (length and correct)
-  useEffect(() => {
-    const enteredOtp = otp.join("");
-    setIsOtpValid(enteredOtp.length === 6 && enteredOtp === expectedOtp);
-  }, [otp]);
 
   const handleRequestNewCode = () => {
     setTimeLeft(60);
@@ -40,8 +33,8 @@ const Securitycode = ({ onClose }) => {
       const newOtp = [...otp];
       newOtp[index] = value;
       setOtp(newOtp);
-  
-      // Move focus to the next input
+
+      // Move focus to the next input if value is entered
       if (value && index < otp.length - 1) {
         document.getElementById(`otp-input-${index + 1}`).focus();
       }
@@ -56,6 +49,10 @@ const Securitycode = ({ onClose }) => {
       setError(true);
     }
   };
+
+  // Check if OTP is valid (length and correct)
+  const isOtpComplete = otp.join("").length === 6; // Check if all OTP digits are entered
+  const isOtpValid = otp.join("") === expectedOtp;
 
   return (
     <div className="signup-overlay">
@@ -95,11 +92,12 @@ const Securitycode = ({ onClose }) => {
 
         {error && <p className="error-message1">The code is incorrect, please try again. <span className="resend-code1" onClick={handleRequestNewCode}>Resend code</span></p>}
 
+        {/* Submit Button */}
         <button 
           type="submit" 
           onClick={handleSubmit} 
-          className={`signup-btn ${isOtpValid ? 'valid' : ''}`}
-          disabled={!isOtpValid} // Disable button if OTP is not valid
+          className={`signup-btn ${isOtpComplete ? (isOtpValid ? 'valid' : 'invalid') : ''}`} // Button color changes based on OTP validity
+          disabled={!isOtpComplete} // Disable button until OTP is fully entered
         >
           Submit
         </button>

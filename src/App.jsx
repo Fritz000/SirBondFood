@@ -52,6 +52,7 @@ import CamerasPhotograph from './pages/CamerasPhotograph'
 import Gaming from './pages/Gaming'
 import Wearable from './pages/Wearable'
 import SuperAdminDashboard from './pages/SuperAdminDashboard';
+import categoriesData from './data/categoriesData.json';
 
 const App = () => {
   // State for user authentication
@@ -67,6 +68,15 @@ const App = () => {
     if (storedUser) setUser(storedUser);
     setCart(storedCart);
   }, []);
+
+   // Dynamic Category Routes
+   const categoryRoutes = categoriesData.map((category, index) => (
+    <Route 
+      key={index}
+      path={category.path}
+      element={<category.component />}  // You can dynamically choose components here
+    />
+  ));
 
   // Add item to cart and update localStorage
   const addToCart = (item) => {
@@ -130,6 +140,7 @@ const App = () => {
         <Route path="Gaming" element={<Gaming />} />
         <Route path="Wearable" element={<Wearable />} />
         <Route path="SuperAdminDashboard" element={<SuperAdminDashboard />} />
+        {categoryRoutes}
       </Route>
     )
   );

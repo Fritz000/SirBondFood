@@ -8,6 +8,7 @@ import { CiSearch } from "react-icons/ci";
 import logo from "../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import categoriesData from "../data/categoriesData.json";
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -15,28 +16,17 @@ const Navbar = () => {
   const [user, setUser] = useState(null);
   const [searchQuery, setSearchQuery] = useState(""); // State to store search input
   const [searchResults, setSearchResults] = useState([]); // State for search suggestions
+  const [categoryItems, setCategoryItems] = useState([]); // State for category items based on search
   const storedToken = localStorage.getItem("authToken");
 
   const dropdownRef = useRef(null); // To reference the dropdown container
   const navigate = useNavigate(); // For navigation
 
-  // Hardcoded list of possible pages to search
-  const pages = [
-    { name: "Home", path: "/" },
-    { name: "Market Runs", path: "/MarketRuns" },
-    { name: "Wallet", path: "/Wallet" },
-    { name: "Food and Grocery", path: "/FoodAndGrocery" },
-    { name: "Electronics", path: "/Electronics" },
-    { name: "Home and Living", path: "/HomeAndLiving" },
-    { name: "Health and Beauty", path: "/HealthAndBeauty" },
-    { name: "Fashion and Clothing", path: "/FashionAndClothing" },
-    { name: "Babies And Games", path: "/BabiesAndGames" },
-    { name: "Sport and Outdoors", path: "/SportAndOutdoors" },
-    { name: "Orders", path: "/orders" },
-    { name: "Settings", path: "/settings" },
-    { name: "Support", path: "/support" },
-    // Add more pages if needed
-  ];
+  // Dynamic pages based on categoriesData
+  const pages = categoriesData.map((category) => ({
+    name: category.name,
+    path: category.path,
+  }));
 
   // Fetch user profile using Axios
   useEffect(() => {
@@ -115,22 +105,67 @@ const Navbar = () => {
     setSearchQuery(query);
 
     if (query) {
-      // Filter pages based on the search query (case-insensitive)
-      const filteredResults = pages.filter((page) =>
-        page.name.toLowerCase().includes(query.toLowerCase())
-      );
-      setSearchResults(filteredResults);
+        // Filter flattened search data
+        const filteredResults = searchData.filter((item) =>
+            item.name.toLowerCase().includes(query.toLowerCase())
+        );
+        setSearchResults(filteredResults);
+
+        // Sub-category items are already part of searchData, no need for additional handling
+        setCategoryItems(filteredResults);
     } else {
-      setSearchResults([]);
+        setSearchResults([]);
+        setCategoryItems([]);
     }
-  };
+};
+
+useEffect(() => {
+  const flattenedData = flattenSearchData(categoriesData);
+  setSearchResults(flattenedData); // Preload the flattened data for search
+}, []);
+  
 
   // Handle search suggestion click
   const handleSearchClick = (path) => {
-    navigate(path); // Navigate to the corresponding page
-    setSearchQuery(""); // Optionally clear the search input
+    console.log("Navigating to:", path); // Debugging output
+    navigate(path);
+    setSearchQuery(""); // Clear search input
     setSearchResults([]); // Clear search results
   };
+
+  function flattenSearchData(data) {
+    let searchList = [];
+
+    data.forEach(category => {
+        // Add top-level category to search list
+        searchList.push({ name: category.name, path: category.path });
+
+        // If it has sub-items, add those too, with the parent's path
+        if (category.items) {
+            category.items.forEach(item => {
+                searchList.push({ name: item.name, path: category.path, id: item.id });
+            });
+        }
+    });
+
+    return searchList;
+}
+
+// Your JSON data
+const jsonData = [
+    { "name": "Home", "path": "/" },
+    { "name": "Food and Grocery", "path": "/FoodAndGrocery", "items": [
+        { "name": "Apples", "id":"1"},
+        { "name": "Bananas", "id":"2"},
+        { "name": "Oranges", "id":"3"}
+    ]},
+    { "name": "Electronics", "path": "/Electronics" }
+];
+
+// Flattening the JSON structure
+const searchData = flattenSearchData(jsonData);
+console.log(searchData); // This will now contain both categories & their sub-items
+  
 
   return (
     <div className="navbar">
@@ -196,30 +231,32 @@ const Navbar = () => {
 
       {/* Center Section: Search Bar */}
       <div className="navbar-search">
-        <input
-          type="text"
-          placeholder="Search"
-          className="search-input"
-          value={searchQuery}
-          onChange={handleSearchChange}
-        />
-        <button className="search-button">
-          <CiSearch size={20} />
-        </button>
-        
-        {/* Dropdown for search suggestions */}
-        {searchQuery && searchResults.length > 0 && (
-          <div className="search-dropdown">
-            <ul>
-              {searchResults.map((result) => (
-                <li key={result.name} onClick={() => handleSearchClick(result.path)}>
-                  {result.name}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
+  <input
+    type="text"
+    placeholder="I'm shopping for..."
+    className="search-input"
+    value={searchQuery}
+    onChange={handleSearchChange}
+  />
+  <button className="search-button">
+    <CiSearch size={20} />
+  </button>
+
+  {/* Dropdown for search suggestions */}
+  {searchQuery && searchResults.length > 0 && (
+    <div className="search-dropdown">
+      <ul>
+        {searchResults.map((result) => (
+          <li key={result.name} onClick={() => handleSearchClick(result.path)}>
+            <CiSearch className="search-icon" />
+            {result.name}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</div>
+
 
       {/* Right Section: User, Notifications & Cart */}
       <div className="navbar-right">

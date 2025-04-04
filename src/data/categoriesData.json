@@ -1,0 +1,34 @@
+[
+    { "name": "Home", "path": "/"},
+    { "name": "Market Runs", "path": "/MarketRuns" },
+    { "name": "Wallet", "path": "/Wallet" },
+    { "name": "Food and Grocery", "path": "/FoodAndGrocery",  "items": [
+        { "name": "Apples", "id":"1"},
+        { "name": "Bananas", "id":"2"},
+        { "name": "Oranges", "id":"3"},
+        { "name": "Grapes", "id":"4"},
+        { "name": "Strawberries", "id":"5"},
+        { "name": "Pineapple", "id":"6"},
+        { "name": "Avocados", "id":"7"},
+        { "name": "Lettuce", "id":"8"},
+        { "name": "Carrots", "id":"9"},
+        { "name": "Broccoli", "id":"10"},
+        { "name": "Spinach", "id":"11"}
+    ]  },
+    { "name": "Electronics", "path": "/Electronics" },
+    { "name": "Health and Beauty", "path": "/HealthAndBeauty" },
+    { "name": "Fashion and Clothing", "path": "/FashionAndClothing" },
+    { "name": "Sport and Outdoors", "path": "/SportAndOutdoors" },
+    { "name": "Orders", "path": "/Orders" },
+    { "name": "Settings", "path": "/Settings" },
+    { "name": "Support", "path": "/Support" },
+    { "name": "Support", "path": "/Support" },
+    { "name": "Support", "path": "/Support" },
+    { "name": "Support", "path": "/Support" },
+    { "name": "Support", "path": "/Support" },
+    { "name": "Support", "path": "/Support" },
+    { "name": "Support", "path": "/Support" },
+    { "name": "Support", "path": "/Support" }
+
+  ]
+  
