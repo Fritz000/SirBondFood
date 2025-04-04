@@ -105,33 +105,37 @@ const Navbar = () => {
     setSearchQuery(query);
 
     if (query) {
-        // Filter flattened search data
-        const filteredResults = searchData.filter((item) =>
+        // Filter freshly flattened data (not relying on stale state)
+        const flattenedData = flattenSearchData(categoriesData);
+        const filteredResults = flattenedData.filter((item) =>
             item.name.toLowerCase().includes(query.toLowerCase())
         );
-        setSearchResults(filteredResults);
-
-        // Sub-category items are already part of searchData, no need for additional handling
-        setCategoryItems(filteredResults);
+        setSearchResults(filteredResults); // Update dropdown with the new results
     } else {
-        setSearchResults([]);
-        setCategoryItems([]);
+        setSearchResults([]); // Clear results if the query is empty
     }
 };
 
 useEffect(() => {
   const flattenedData = flattenSearchData(categoriesData);
-  setSearchResults(flattenedData); // Preload the flattened data for search
+  setSearchResults(flattenedData); // Store flattened data for search
 }, []);
+
+const highlightMatch = (text, query) => {
+  if (!query) return text; // Return normal text if query is empty
+  
+  const regex = new RegExp(`(${query})`, "gi"); // Case-insensitive match
+  return text.replace(regex, "<strong>$1</strong>"); // Wrap matching text in <strong>
+};
+
   
 
   // Handle search suggestion click
   const handleSearchClick = (path) => {
-    console.log("Navigating to:", path); // Debugging output
-    navigate(path);
+    navigate(path); // Navigate to the selected path
     setSearchQuery(""); // Clear search input
     setSearchResults([]); // Clear search results
-  };
+};
 
   function flattenSearchData(data) {
     let searchList = [];
@@ -140,7 +144,7 @@ useEffect(() => {
         // Add top-level category to search list
         searchList.push({ name: category.name, path: category.path });
 
-        // If it has sub-items, add those too, with the parent's path
+        // Add sub-items with the parent's path
         if (category.items) {
             category.items.forEach(item => {
                 searchList.push({ name: item.name, path: category.path, id: item.id });
@@ -246,12 +250,12 @@ console.log(searchData); // This will now contain both categories & their sub-it
   {searchQuery && searchResults.length > 0 && (
     <div className="search-dropdown">
       <ul>
-        {searchResults.map((result) => (
-          <li key={result.name} onClick={() => handleSearchClick(result.path)}>
-            <CiSearch className="search-icon" />
-            {result.name}
-          </li>
-        ))}
+      {searchResults.map((result) => (
+        <li key={result.name} onClick={() => handleSearchClick(result.path)}>
+          <CiSearch className="search-icon" />
+          <span dangerouslySetInnerHTML={{ __html: highlightMatch(result.name, searchQuery) }} />
+        </li>
+      ))}
       </ul>
     </div>
   )}

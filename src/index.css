@@ -528,15 +528,24 @@ a {
   position: absolute;
   top: 100%;
   left: 20;
+  height: auto;
   width: 70%;
   background: white;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   max-height: 300px;
-  overflow-y: auto;
+  overflow-y: hidden; /* Prevent scrolling */
   z-index: 1000;
   padding: 10px 0;
 }
+
+
+input:focus {
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
 
 /* Search result items */
 .search-dropdown li {

@@ -131,7 +131,7 @@ const handleCategoryClick = (categoryName) => {
                   </button>
             <div className="search-container">
             <Search className="search-icon" size={20} />
-            <input type="text" placeholder="Search food & grocery" className="search-bar" />
+            <input type="text" placeholder="Search Phones & Accessories" className="search-bar" />
           </div>
               <div className="category1-container">
         {categories.map((cat, index) => (
