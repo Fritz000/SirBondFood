@@ -2,18 +2,19 @@ import React from "react";
 import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import "./HealthAndBeauty.css";
 import {useNavigate} from "react-router-dom"
-import freshbasswithwhitebackground1 from "../assets/fresh-bass-with-white-background1.png"
-import stunningimpastopaintingwhitehen1 from "../assets/stunning-impasto-painting-white-hen1.png"
-import dairyeggs from "../assets/412951555_bbc2c779-25c0-4851-adc1-c922a7d4c5b71.png"
-import foodbasket from "../assets/138792826_4acbcb31-951d-404f-ae4d-fd34a21218761.png"
+import cream from "../assets/cream.svg"
+import perf from "../assets/perf.svg"
+import makeup from "../assets/makeup.svg"
+import niv from "../assets/niv.svg"
+import firstaid from "../assets/firstaid.svg"
 
 
 const categories = [
-  { name: "Skincare", icon: freshbasswithwhitebackground1 },
-  { name: "Haircare", icon: freshbasswithwhitebackground1 },
-  { name: "Make-up", icon: stunningimpastopaintingwhitehen1 },
-  { name: "Personal care", icon: dairyeggs },
-  { name: "Health & Wellness", icon: foodbasket },
+  { name: "Skincare", icon: cream },
+  { name: "Haircare", icon: perf },
+  { name: "Make-up", icon: makeup },
+  { name: "Personal care", icon: niv },
+  { name: "Health & Wellness", icon: firstaid },
 ];
 
 const HealthAndBeauty = () => {

@@ -6,14 +6,19 @@ import freshbasswithwhitebackground1 from "../assets/fresh-bass-with-white-backg
 import stunningimpastopaintingwhitehen1 from "../assets/stunning-impasto-painting-white-hen1.png"
 import dairyeggs from "../assets/412951555_bbc2c779-25c0-4851-adc1-c922a7d4c5b71.png"
 import foodbasket from "../assets/138792826_4acbcb31-951d-404f-ae4d-fd34a21218761.png"
+import chair from "../assets/chair.svg"
+import basket from "../assets/basket.svg"
+import bed from "../assets/bed.svg"
+import pot from "../assets/pot.svg"
+import cotton from "../assets/cotton.svg"
 
 
 const categories = [
-  { name: "Furniture", icon: freshbasswithwhitebackground1 },
-  { name: "Home Decor", icon: freshbasswithwhitebackground1 },
-  { name: "Bedding & Linen", icon: stunningimpastopaintingwhitehen1 },
-  { name: "Kitchen & Dining", icon: dairyeggs },
-  { name: "House Essentials", icon: foodbasket },
+  { name: "Furniture", icon: chair },
+  { name: "Home Decor", icon: cotton },
+  { name: "Bedding & Linen", icon: bed },
+  { name: "Kitchen & Dining", icon: pot },
+  { name: "House Essentials", icon: basket },
 ];
 
 const HomeAndLiving = () => {
