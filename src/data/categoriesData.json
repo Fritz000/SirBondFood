@@ -468,17 +468,7 @@
         { "name": "GPS Wearables", "id":"424" },
         { "name": "Wearable Blood Pressure Monitors", "id":"425" },
         { "name": "Hearing Aids with Smart Features", "id":"426" }
-    ]},
-
-    {"name": "Health and Beauty",  "path": "/HealthAndBeauty"},
-    {"name": "Fashion and Clothing",  "path": "/FashionAndClothing"},
-    {"name": "Sport and Outdoors",  "path": "/SportAndOutdoors"},
-
-
-    
-    { "name": "Health and Beauty", "path": "/HealthAndBeauty" },
-    { "name": "Fashion and Clothing", "path": "/FashionAndClothing" },
-    { "name": "Sport and Outdoors", "path": "/SportAndOutdoors" }
+    ]}
 
   ]
   

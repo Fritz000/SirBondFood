@@ -29,30 +29,37 @@ import MessagePopup from './pages/MessagePopup';
 import MarketRuns from './pages/MarketRuns';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminLogin from './pages/AdminLogin';
-import FoodAndGrocery from './pages/FoodAndGrocery';
-import Electronics from './pages/Electronics';
-import HomeAndLiving from './pages/HomeAndLiving';
-import HealthAndBeauty from './pages/HealthAndBeauty';
-import FashionAndClothing from './pages/FashionAndClothing';
-import BabiesAndGames from './pages/BabiesAndGames';
-import FeedAndSeeds from './pages/FeedAndSeeds';
-import SportAndOutdoors from './pages/SportAndOutdoors';
-import FoodGrocery from './pages/FoodGrocery';
-import PantryStable from './pages/PantryStable';
-import MeatSeafood from './pages/MeatSeafood';
-import DairyEggs from './pages/DairyEggs';
-import BakeryItems from './pages/BakeryItems';
-import Beverages from './pages/Beverages';
-import ComputersTv from './pages/ComputersTv';
-import PhoneAccessories from './pages/PhoneAccessories'
-import ComputerAccessories from './pages/ComputerAccessories'
-import HomeAppliances from './pages/HomeAppliances'
-import AudioandMusical from './pages/AudioandMusical'
-import CamerasPhotograph from './pages/CamerasPhotograph'
-import Gaming from './pages/Gaming'
-import Wearable from './pages/Wearable'
 import SuperAdminDashboard from './pages/SuperAdminDashboard';
 import categoriesData from './data/categoriesData.json';
+import BabiesAndGames from './pages/BabiesAndGames';
+import BakeryItems from './pages/BakeryItems';
+import Beverages from './pages/Beverages';
+import ComputerAccessories from './pages/ComputerAccessories'
+import AudioandMusical from './pages/AudioandMusical'
+import CamerasPhotograph from './pages/CamerasPhotograph'
+import FoodAndGrocery from './pages/FoodAndGrocery';
+import Electronics from './pages/Electronics';
+import DairyEggs from './pages/DairyEggs';
+import ComputersTv from './pages/ComputersTv';
+import FashionAndClothing from './pages/FashionAndClothing';
+import FeedAndSeeds from './pages/FeedAndSeeds';
+import HealthAndBeauty from './pages/HealthAndBeauty';
+import Gaming from './pages/Gaming'
+import HomeAppliances from './pages/HomeAppliances'
+
+import PantryStable from './pages/PantryStable';
+import MeatSeafood from './pages/MeatSeafood';
+import SportAndOutdoors from './pages/SportAndOutdoors';
+
+
+import PhoneAccessories from './pages/PhoneAccessories'
+
+
+import HomeAndLiving from './pages/HomeAndLiving'
+
+import Wearable from './pages/Wearable'
+
+
 
 const App = () => {
   // State for user authentication
@@ -74,9 +81,10 @@ const App = () => {
     <Route 
       key={index}
       path={category.path}
-      element={<category.component />}  // You can dynamically choose components here
+      element={React.createElement(category.component)}  // ✅ This works
     />
   ));
+  
 
   // Add item to cart and update localStorage
   const addToCart = (item) => {
@@ -117,28 +125,28 @@ const App = () => {
         <Route path="MarketRuns" element={<MarketRuns addToCart={addToCart} />} />
         <Route path="AdminDashboard" element={<AdminDashboard />} />
         <Route path="AdminLogin" element={<AdminLogin />} />
-        <Route path="FoodAndGrocery" element={<FoodAndGrocery />} />
-        <Route path="Electronics" element={<Electronics />} />
-        <Route path="HomeAndLiving" element={<HomeAndLiving/>} />
-        <Route path="HealthAndBeauty" element={<HealthAndBeauty/>} />
-        <Route path="FashionAndClothing" element={<FashionAndClothing />} />
         <Route path="BabiesAndGames" element={<BabiesAndGames />} />
-        <Route path="FeedAndSeeds" element={<FeedAndSeeds />} />
-        <Route path="SportAndOutdoors" element={<SportAndOutdoors />} />
-        <Route path="FoodGrocery" element={<FoodGrocery />} />
-        <Route path="PantryStable" element={<PantryStable />} />
-        <Route path="MeatSeafood" element={<MeatSeafood />} />
-        <Route path="DairyEggs" element={<DairyEggs />} />
         <Route path="BakeryItems" element={<BakeryItems />} />
         <Route path="Beverages" element={<Beverages />} />
-        <Route path="ComputersTv" element={<ComputersTv />} />
-        <Route path="PhoneAccessories" element={<PhoneAccessories />} />
         <Route path="ComputerAccessories" element={<ComputerAccessories />} />
-        <Route path="HomeAppliances" element={<HomeAppliances />} />
         <Route path="AudioandMusical" element={<AudioandMusical />} />
         <Route path="CamerasPhotograph" element={<CamerasPhotograph />} />
+        <Route path="FoodAndGrocery" element={<FoodAndGrocery />} />
+        <Route path="Electronics" element={<Electronics />} />
+        <Route path="DairyEggs" element={<DairyEggs />} />
+        <Route path="ComputersTv" element={<ComputersTv />} />
+        <Route path="FashionAndClothing" element={<FashionAndClothing />} />
+        <Route path="FeedAndSeeds" element={<FeedAndSeeds />} />
+        <Route path="HealthAndBeauty" element={<HealthAndBeauty />} />
         <Route path="Gaming" element={<Gaming />} />
+        <Route path="HomeAppliances" element={<HomeAppliances />} />
+        <Route path="PantryStable" element={<PantryStable />} />
+        <Route path="MeatSeafood" element={<MeatSeafood />} />
+        <Route path="SportAndOutdoors" element={<SportAndOutdoors />} />
+        <Route path="PhoneAccessories" element={<PhoneAccessories />} />
         <Route path="Wearable" element={<Wearable />} />
+        <Route path="HomeAndLiving" element={<HomeAndLiving />} />
+        {/* Add more category routes here */}
         <Route path="SuperAdminDashboard" element={<SuperAdminDashboard />} />
         {categoryRoutes}
       </Route>

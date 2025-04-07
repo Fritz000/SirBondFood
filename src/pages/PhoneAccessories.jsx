@@ -119,8 +119,8 @@ const closePopup = () => {
   const navigate = useNavigate();
 
 const handleCategoryClick = (categoryName) => {
-  if (categoryName === "Food & Grocery") {
-    navigate("/foodandgrocery");
+  if (categoryName === "PhoneAccessories") {
+    navigate("/phoneaccessories");
   }
 };
   
