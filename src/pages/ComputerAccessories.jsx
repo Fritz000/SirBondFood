@@ -185,29 +185,27 @@ const handleCategoryClick = (categoryName) => {
   </select>
 
   {/* Filter Button */}
-  <button className="filter-button">
+  <button className="filter-button10">
     <img src={mage} alt="Filter" />
   </button>
 </div>
 
-
-
-      <div className="trending-grid">
+      <div className="trending-gridc">
         {items.map((item) => (
-          <div key={item.id} className="trending-card" onClick={() => setSelectedItem(item)}>
-            <div className="trending1-image">
-            <img src={item.image} alt={item.name} className="trending-image" />
+          <div key={item.id} className="trending-cardc" onClick={() => setSelectedItem(item)}>
+            <div className="trending1-imagec">
+            <img src={item.image} alt={item.name} className="trending-imagec" />
             </div>
-            <div className="trending-item">
-  <div className="trending-info">
-    <p className="trending-name">{item.name}</p>
-    <p className="trending-price">₦ {item.price.toLocaleString()}</p>
+            <div className="trending-itemc">
+  <div className="trending-infoc">
+    <p className="trending-namec">{item.name}</p>
+    <p className="trending-pricec">₦ {item.price.toLocaleString()}</p>
   </div>
   <button 
-    className="add-to-cart" 
+    className="add-to-cartcc" 
     onClick={(e) => { e.stopPropagation(); addToCart(item); }}
   >
-    +
+    + Add
   </button>
 </div>
 

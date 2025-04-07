@@ -285,7 +285,7 @@ const handleCategoryClick = (categoryName) => {
               className="add-to-cart1" 
               onClick={(e) => { e.stopPropagation(); addToCart(item); }}
               disabled={!item.approved}
-            >ADD +
+            >+ Add
             </button>
           </div>
         ))}

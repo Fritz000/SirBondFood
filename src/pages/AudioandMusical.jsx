@@ -144,7 +144,6 @@ const handleCategoryClick = (categoryName) => {
         ))}
       </div>
 
-
       <div className="dropdowns">
   {/* Location Dropdown */}
   <select 
@@ -164,56 +163,55 @@ const handleCategoryClick = (categoryName) => {
       <option value="Edo State">Edo State</option>
     </optgroup>
   </select>
-
-  {/* Market Dropdown */}
-  <select 
-    className="dropdown" 
-    onChange={(e) => setSelectedMarket(e.target.value)}
-  >
-    <option value="" disabled selected>Market</option>
-    <optgroup label="Available Region">
-      <option value="Cross River State">Cross River State</option>
-      <option value="Rivers State">Rivers State</option>
-    </optgroup>
-    <optgroup label="Regions Coming Soon">
-      <option value="Delta State">Delta State</option>
-      <option value="Lagos State">Lagos State</option>
-      <option value="Akwa Ibom State">Akwa Ibom State</option>
-      <option value="Abia State">Abia State</option>
-      <option value="Edo State">Edo State</option>
-    </optgroup>
-  </select>
-
-  {/* Filter Button */}
-  <button className="filter-button">
-    <img src={mage} alt="Filter" />
-  </button>
-</div>
-
-
-
-      <div className="trending-grid">
-        {items.map((item) => (
-          <div key={item.id} className="trending-card" onClick={() => setSelectedItem(item)}>
-            <div className="trending1-image">
-            <img src={item.image} alt={item.name} className="trending-image" />
-            </div>
-            <div className="trending-item">
-  <div className="trending-info">
-    <p className="trending-name">{item.name}</p>
-    <p className="trending-price">₦ {item.price.toLocaleString()}</p>
-  </div>
-  <button 
-    className="add-to-cart" 
-    onClick={(e) => { e.stopPropagation(); addToCart(item); }}
-  >
-    +
-  </button>
-</div>
-
-          </div>
-        ))}
+      {/* Market Dropdown */}
+        <select 
+          className="dropdown" 
+          onChange={(e) => setSelectedMarket(e.target.value)}
+        >
+          <option value="" disabled selected>Market</option>
+          <optgroup label="Available Region">
+            <option value="Cross River State">Cross River State</option>
+            <option value="Rivers State">Rivers State</option>
+          </optgroup>
+          <optgroup label="Regions Coming Soon">
+            <option value="Delta State">Delta State</option>
+            <option value="Lagos State">Lagos State</option>
+            <option value="Akwa Ibom State">Akwa Ibom State</option>
+            <option value="Abia State">Abia State</option>
+            <option value="Edo State">Edo State</option>
+          </optgroup>
+        </select>
+      
+        {/* Filter Button */}
+        <button className="filter-button10">
+          <img src={mage} alt="Filter" />
+        </button>
       </div>
+      
+      
+      
+            <div className="trending-gridh">
+              {items.map((item) => (
+                <div key={item.id} className="trending-cardh" onClick={() => setSelectedItem(item)}>
+                  <div className="trending1-imageh">
+                  <img src={item.image} alt={item.name} className="trending-imageh" />
+                  </div>
+                  <div className="trending-itemh">
+        <div className="trending-infoh">
+          <p className="trending-nameh">{item.name}</p>
+          <p className="trending-priceh">₦ {item.price.toLocaleString()}</p>
+        </div>
+        <button 
+          className="add-to-carth" 
+          onClick={(e) => { e.stopPropagation(); addToCart(item); }}
+        >
+          + Add
+        </button>
+      </div>
+      
+                </div>
+              ))}
+            </div>
 
       {selectedItem && (
         <div className="popup-overlay" onClick={closePopup}>

@@ -32,7 +32,7 @@
     border-color: #aaa; /* Slightly darker border on hover */
 }
 
-.filter-button {
+.filter-button10 {
     width: 90px;
     height: 60px;
     background: #ffffff;
@@ -160,7 +160,7 @@
     margin-left: 50px;
 }
 
-.trending-grid {
+.trending-gridh {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 50px;
@@ -168,7 +168,7 @@
     margin-bottom: 20px;
 }
 
-.trending-card {
+.trending-cardh {
     background: #f3f3f3;
     padding: 10px;
     border-radius: 10px;
@@ -179,39 +179,39 @@
     transition: transform 0.3s ease-in-out;
 }
 
-.trending-card:hover {
+.trending-cardh:hover {
     transform: scale(1.05);
 }
 
-.trending1-image{
+.trending1-imageh{
     background-color: #fff;
     border-radius: 7.3px;
 }
 
-.trending-image {
+.trending-imageh {
     width: 150px;
     height: 150px;
     object-fit: contain;
 }
 
-.trending-info {
+.trending-infoh {
     margin-top: 15px;
     text-align: left;
 }
 
-.trending-name {
+.trending-nameh {
     font-size: 24px;
     font-weight: 600;
 }
 
-.trending-price {
+.trending-priceh {
     color: #28a745;
     font-size: 20px;
     font-weight: 600;
     margin-top: 3px;
 }
 
-.add-to-cart {
+.add-to-carth {
     background: #6cc51d;
     color: white;
     font-size: 30px;
@@ -226,7 +226,7 @@
     cursor: pointer;
 }
 
-.add-to-cart:hover {
+.add-to-carth:hover {
     background: #5bb517;
 }
 
@@ -680,3 +680,502 @@ body.popup-open {
     font-weight: 400;
     border: #6cc51d;
   }
+
+  @media (max-width: 430px){
+    .dropdowns {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px; /* Add spacing between elements */
+        margin: 20px 0;
+    }
+    
+    .dropdown {
+        flex: 1; /* Makes both dropdowns take equal space */
+        padding: 12px;
+        height: 60px;
+        font-size: 18px;
+        font-weight: 600;
+        border: 1px solid #ddd; /* Light grey border */
+        background-color: #fff; /* White background */
+        border-radius: 10px;
+        outline: none;
+        color: #000; /* Black text */
+        transition: border-color 0.3s ease;
+    }
+    
+    .dropdown:hover {
+        border-color: #aaa; /* Slightly darker border on hover */
+    }
+    
+    .filter-button10 {
+        width: 100px;
+        height: 40px;
+        background: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        margin-top: -10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    
+    .filter-button10 img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .filter-button:hover {
+        background: #f8f8f8;
+    }
+
+    .trending-gridh {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-left: 1px;
+    }
+
+    .trending-cardh {
+        background: #F3F3F3;
+        padding: 5px;
+        border-radius: 10px;
+        margin: 10px;
+        width: 180px;
+        height: 150px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .trending-cardh:hover {
+        transform: scale(1.05);
+    }
+
+    .trending1-imageh {
+        width: 169px; /* Adjust size as needed */
+        height: 95px;
+        background: #fff; /* White background */
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .trending-imageh {
+        width: 50px;
+        height: 50px;
+        align-items: center;
+        object-fit: contain;
+    }
+
+    .trending-infoh {
+        margin-top: 5px;
+        text-align: left;
+    }
+
+    .trending-nameh {
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .trending-priceh {
+        color: #000;
+        font-size: 13px;
+        font-weight: 600;
+        margin-top: -15px;
+    }
+
+    .add-to-carth {
+        background: #FFF;
+        border: 2px solid #6cc51d; /* Set border width and color */
+        color: #6cc51d;
+        font-size: 10px;
+        font-weight: 900;
+        border-radius: 20%;
+        width: 60px;
+        height: 25px;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 414px){
+    .dropdowns {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px; /* Add spacing between elements */
+        margin: 20px 0;
+    }
+    
+    .dropdown {
+        flex: 1; /* Makes both dropdowns take equal space */
+        padding: 12px;
+        height: 60px;
+        font-size: 18px;
+        font-weight: 600;
+        border: 1px solid #ddd; /* Light grey border */
+        background-color: #fff; /* White background */
+        border-radius: 10px;
+        outline: none;
+        color: #000; /* Black text */
+        transition: border-color 0.3s ease;
+    }
+    
+    .dropdown:hover {
+        border-color: #aaa; /* Slightly darker border on hover */
+    }
+    
+    .filter-button10 {
+        width: 100px;
+        height: 40px;
+        background: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        margin-top: -10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    
+    .filter-button10 img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .filter-button:hover {
+        background: #f8f8f8;
+    }
+
+    .trending-gridh {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-left: 1px;
+    }
+
+    .trending-cardh {
+        background: #F3F3F3;
+        padding: 5px;
+        border-radius: 10px;
+        margin: 10px;
+        width: 161px;
+        height: 141px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .trending-cardh:hover {
+        transform: scale(1.05);
+    }
+
+    .trending1-imageh {
+        width: 151px; /* Adjust size as needed */
+        height: 88px;
+        background: #fff; /* White background */
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+
+
+    .trending-imageh {
+        width: 50px;
+        height: 50px;
+        align-items: center;
+        object-fit: contain;
+    }
+
+    .trending-infoh {
+        margin-top: 5px;
+        text-align: left;
+    }
+
+    .trending-nameh {
+        font-size: 10px;
+        font-weight: 600;
+    }
+
+    .trending-priceh {
+        color: #000;
+        font-size: 10px;
+        font-weight: 600;
+        margin-top: -15px;
+    }
+
+    .add-to-carth {
+        background: #FFF;
+        border: 2px solid #6cc51d; /* Set border width and color */
+        color: #6cc51d;
+        font-size: 10px;
+        font-weight: 900;
+        border-radius: 20%;
+        width: 50px;
+        height: 20px;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+}  
+
+@media (max-width: 390px){
+    .dropdowns {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px; /* Add spacing between elements */
+        margin: 20px 0;
+    }
+    
+    .dropdown {
+        flex: 1; /* Makes both dropdowns take equal space */
+        padding: 12px;
+        height: 60px;
+        font-size: 18px;
+        font-weight: 600;
+        border: 1px solid #ddd; /* Light grey border */
+        background-color: #fff; /* White background */
+        border-radius: 10px;
+        outline: none;
+        color: #000; /* Black text */
+        transition: border-color 0.3s ease;
+    }
+    
+    .dropdown:hover {
+        border-color: #aaa; /* Slightly darker border on hover */
+    }
+    
+    .filter-button10 {
+        width: 100px;
+        height: 40px;
+        background: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        margin-top: -10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    
+    .filter-button10 img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .filter-button:hover {
+        background: #f8f8f8;
+    }
+
+    .trending-gridh {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-left: 1px;
+    }
+
+    .trending-cardh {
+        background: #F3F3F3;
+        padding: 5px;
+        border-radius: 10px;
+        margin: 10px;
+        width: 161px;
+        height: 141px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .trending-cardh:hover {
+        transform: scale(1.05);
+    }
+
+    .trending1-imageh {
+        width: 151px; /* Adjust size as needed */
+        height: 88px;
+        background: #fff; /* White background */
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+
+
+    .trending-imageh {
+        width: 50px;
+        height: 50px;
+        align-items: center;
+        object-fit: contain;
+    }
+
+    .trending-infoh {
+        margin-top: 5px;
+        text-align: left;
+    }
+
+    .trending-nameh {
+        font-size: 9px;
+        font-weight: 600;
+    }
+
+    .trending-priceh {
+        color: #333;
+        font-size: 9px;
+        font-weight: 600;
+        margin-top: -15px;
+    }
+
+    .add-to-carth {
+        background: #FFF;
+        border: 2px solid #6cc51d; /* Set border width and color */
+        color: #6cc51d;
+        font-size: 8px;
+        font-weight: 900;
+        border-radius: 20%;
+        width: 40px;
+        height: 20px;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 375px){
+    .dropdowns {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px; /* Add spacing between elements */
+        margin: 20px 0;
+    }
+    
+    .dropdown {
+        flex: 1; /* Makes both dropdowns take equal space */
+        padding: 12px;
+        height: 60px;
+        font-size: 18px;
+        font-weight: 600;
+        border: 1px solid #ddd; /* Light grey border */
+        background-color: #fff; /* White background */
+        border-radius: 10px;
+        outline: none;
+        color: #000; /* Black text */
+        transition: border-color 0.3s ease;
+    }
+    
+    .dropdown:hover {
+        border-color: #aaa; /* Slightly darker border on hover */
+    }
+    
+    .filter-button10 {
+        width: 100px;
+        height: 35px;
+        background: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: none;
+        margin-top: -10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    
+    .filter-button10 img {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .filter-button:hover {
+        background: #f8f8f8;
+    }
+
+    .trending-gridh {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-left: -5px;
+    }
+
+    .trending-cardh {
+        background: #F3F3F3;
+        padding: 5px;
+        border-radius: 10px;
+        margin: 10px;
+        width: 161px;
+        height: 141px;
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .trending-cardh:hover {
+        transform: scale(1.05);
+    }
+
+    .trending1-imageh {
+        width: 151px; /* Adjust size as needed */
+        height: 88px;
+        background: #fff; /* White background */
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+
+
+    .trending-imageh {
+        width: 50px;
+        height: 50px;
+        align-items: center;
+        object-fit: contain;
+    }
+
+    .trending-infoh {
+        margin-top: 5px;
+        text-align: left;
+    }
+
+    .trending-nameh {
+        font-size: 9px;
+        font-weight: 600;
+    }
+
+    .trending-priceh {
+        color: #333;
+        font-size: 9px;
+        font-weight: 600;
+        margin-top: -15px;
+    }
+
+    .add-to-carth {
+        background: #FFF;
+        border: 2px solid #6cc51d; /* Set border width and color */
+        color: #6cc51d;
+        font-size: 8px;
+        font-weight: 900;
+        border-radius: 20%;
+        width: 40px;
+        height: 20px;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+}

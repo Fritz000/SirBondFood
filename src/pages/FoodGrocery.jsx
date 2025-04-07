@@ -178,7 +178,7 @@ const FoodGrocery = () => {
           className="add-to-cart101" 
           onClick={(e) => { e.stopPropagation(); addToCart(item); }}
           disabled={!item.approved}
-        >ADD +
+        >+ Add
         </button>
       </div>
       ))}

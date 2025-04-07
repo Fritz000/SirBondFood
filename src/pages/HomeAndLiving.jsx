@@ -9,11 +9,14 @@ import foodbasket from "../assets/138792826_4acbcb31-951d-404f-ae4d-fd34a2121876
 
 
 const categories = [
-  { name: "Furniture", icon: freshbasswithwhitebackground1 },
-  { name: "Home Decor", icon: freshbasswithwhitebackground1 },
-  { name: "Kitchen & Dining", icon: stunningimpastopaintingwhitehen1 },
-  { name: "House Essentials", icon: dairyeggs },
-  { name: "Bedding & Linen", icon: foodbasket },
+  { name: "Furniture", icon: freshbasswithwhitebackground1, path: "/Furniture" },
+  { name: "Home Decor", icon: freshbasswithwhitebackground1, path: "/HomeDecor" },
+  { name: "Kitchen & Dining", icon: stunningimpastopaintingwhitehen1, path: "/KitchenandDining" },
+  { name: "House Essentials", icon: dairyeggs, path: "/HouseEssentials" },
+  { name: "Bedding & Linen", icon: foodbasket, path: "/BeddingandLinen" },
+  { name: "Cameras & Photograph", icon: glassmilkbottlefreshmilk1, path: "/CamerasPhotograph" },
+  { name: "Gaming", icon: glassmilkbottlefreshmilk1, path: "/Gaming" },
+  { name: "Wearable Technology", icon: glassmilkbottlefreshmilk1, path: "/Wearable" },
 ];
 
 const HomeAndLiving = () => {
