@@ -11,14 +11,14 @@ import Group from "../assets/Group.png";
 import { ChevronRight } from "lucide-react";
 import Star from "../assets/STAR.png"
 import rev from "../assets/rev.png"
-import bicycle from "../assets/bicycle.png";
-import jacket from "../assets/jacket.png";
-import doll from "../assets/doll.png";
-import chair from "../assets/chair.png";
-import cream from "../assets/cream.png";
-import tv from "../assets/tv.png";
-import dpp from "../assets/dpp.png";
-import flashsale from "../assets/flashsale.png";
+import bicycle from "../assets/bicycle.svg";
+import jacket from "../assets/jacket.svg";
+import doll from "../assets/doll.svg";
+import chair from "../assets/chair.svg";
+import cream from "../assets/cream.svg";
+import tv from "../assets/tv.svg";
+import dpp from "../assets/dpp.svg";
+import flashsale from "../assets/flashsale.svg";
 import Vectorstar from "../assets/Vectorstar.png";
 
 
@@ -188,8 +188,6 @@ const handleCategoryClick = (categoryName) => {
   }
 };
   
-
-
   return (
     <div className="container106">
       <section className="ads1">Mini Ads</section>

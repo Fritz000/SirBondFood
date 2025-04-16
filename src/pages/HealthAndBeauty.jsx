@@ -10,11 +10,11 @@ import firstaid from "../assets/firstaid.svg"
 
 
 const categories = [
-  { name: "Skincare", icon: cream },
-  { name: "Haircare", icon: perf },
-  { name: "Make-up", icon: makeup },
-  { name: "Personal care", icon: niv },
-  { name: "Health & Wellness", icon: firstaid },
+  { name: "Skincare", icon: cream, path: "/SkinCare" },
+  { name: "Haircare", icon: perf, path: "/HairCare" },
+  { name: "Make-up", icon: makeup, path: "/Makeup" },
+  { name: "Personal care", icon: niv, path: "/Personalcare" },
+  { name: "Health & Wellness", icon: firstaid, path: "/Healthwellness" },
 ];
 
 const HealthAndBeauty = () => {
@@ -37,7 +37,7 @@ const HealthAndBeauty = () => {
   </div>
 <div className="healthandbeauty-category-list">
   {categories.map((category, index) => (
-    <div key={index} className="healthandbeauty-category-item">
+    <div key={index} className="healthandbeauty-category-item" onClick={() => category.path && navigate(category.path)}>
         <div className="healthandbeauty-icon-container">
         <img src={category.icon} alt={category.name} className="healthandbeauty-category-icon" />
       </div>

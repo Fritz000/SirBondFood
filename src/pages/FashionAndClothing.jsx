@@ -2,21 +2,23 @@ import React from "react";
 import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import "./FashionAndClothing.css";
 import {useNavigate} from "react-router-dom"
-import freshbasswithwhitebackground1 from "../assets/fresh-bass-with-white-background1.png"
-import stunningimpastopaintingwhitehen1 from "../assets/stunning-impasto-painting-white-hen1.png"
-import dairyeggs from "../assets/412951555_bbc2c779-25c0-4851-adc1-c922a7d4c5b71.png"
-import foodbasket from "../assets/138792826_4acbcb31-951d-404f-ae4d-fd34a21218761.png"
-import glassmilkbottlefreshmilk1 from "../assets/glass-milk-bottle-fresh-milk1.png"
+import womencloth from "../assets/womencloth.svg"
+import mencloth from "../assets/mencloth.svg"
+import kidscloth from "../assets/kidscloth.svg"
+import footwear from "../assets/footwear.svg"
+import jewelries from "../assets/jewelries.svg"
+import bags from "../assets/bags.svg"
+import hat from "../assets/hat.svg"
 
 
 const categories = [
-  { name: "Women's Fashion", icon: freshbasswithwhitebackground1 },
-  { name: "Men's Fashion", icon: freshbasswithwhitebackground1 },
-  { name: "Kid's Clothing", icon: stunningimpastopaintingwhitehen1 },
-  { name: "Footwear", icon: dairyeggs },
-  { name: "Jewelries", icon: foodbasket },
-  { name: "Bags", icon: glassmilkbottlefreshmilk1 },
-  { name: "Clothing & Accessories", icon: glassmilkbottlefreshmilk1 },
+  { name: "Women's Fashion", icon: womencloth, path: "/Women" },
+  { name: "Men's Fashion", icon: mencloth, path: "/Men" },
+  { name: "Kid's Clothing", icon: kidscloth, path: "/Kids" },
+  { name: "Footwear", icon: footwear, path: "/Footwear" },
+  { name: "Jewelries", icon: jewelries, path: "/Jewelries" },
+  { name: "Bags", icon: bags, path: "/Bags" },
+  { name: "Clothing & Accessories", icon: hat, path: "/Clothingaccessories" },
 ];
 
 const FashionAndClothing = () => {
@@ -39,7 +41,7 @@ const FashionAndClothing = () => {
   </div>
 <div className="fashionandclothing-category-list">
   {categories.map((category, index) => (
-    <div key={index} className="fashionandclothing-category-item">
+    <div key={index} className="fashionandclothing-category-item" onClick={() => category.path && navigate(category.path)}>
         <div className="fashionandclothing-icon-container">
         <img src={category.icon} alt={category.name} className="fashionandclothing-category-icon" />
       </div>

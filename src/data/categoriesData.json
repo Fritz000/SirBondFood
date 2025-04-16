@@ -227,7 +227,6 @@
         { "name": "Computer Components (CPU, GPU, RAM, etc.)", "id":"189" },
         { "name": "External Hard Drives", "id":"190" },
         { "name": "USB Drives", "id":"191" },
-        { "name": "Webcams", "id":"192" },
         { "name": "Headphones", "id":"193" },
         { "name": "Microphones", "id":"194" },
         { "name": "Docking Stations", "id":"195" },

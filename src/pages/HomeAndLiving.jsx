@@ -14,11 +14,11 @@ import cotton from "../assets/cotton.svg"
 
 
 const categories = [
-  { name: "Furniture", icon: chair },
-  { name: "Home Decor", icon: cotton },
-  { name: "Bedding & Linen", icon: bed },
-  { name: "Kitchen & Dining", icon: pot },
-  { name: "House Essentials", icon: basket },
+  { name: "Furniture", icon: chair, path: "/Furniture" },
+  { name: "Home Decor", icon: cotton, path: "/Homedecor" },
+  { name: "Bedding & Linen", icon: bed, path: "/BeddingLinen" },
+  { name: "Kitchen & Dining", icon: pot, path: "/KitchenLinen" },
+  { name: "House Essentials", icon: basket, path: "/HouseEssentials" },
 ];
 
 const HomeAndLiving = () => {
@@ -41,7 +41,7 @@ const HomeAndLiving = () => {
   </div>
 <div className="healthandbeauty-category-list">
   {categories.map((category, index) => (
-    <div key={index} className="healthandbeauty-category-item">
+    <div key={index} className="healthandbeauty-category-item" onClick={() => category.path && navigate(category.path)}>
         <div className="healthandbeauty-icon-container">
         <img src={category.icon} alt={category.name} className="healthandbeauty-category-icon" />
       </div>

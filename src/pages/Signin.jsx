@@ -1,49 +1,34 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"; // Axios for API requests
-import { X, ShieldBan } from "lucide-react";
-import "../pages/Signin.css";
+import { X, ShieldBan, Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { Eye, EyeOff } from "lucide-react";
+import "../pages/Signin.css";
 
-const Signin = ({ setUser }) => {
+const Signin = () => {
   const navigate = useNavigate();
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  const [isFormComplete, setIsFormComplete] = useState(false); // Track if form is complete
+  const [isFormComplete, setIsFormComplete] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Check if both email and password fields are filled
   useEffect(() => {
-    const isComplete = formData.email.trim() !== "" && formData.password.trim() !== "";
+    const isComplete =
+      formData.email.trim() !== "" && formData.password.trim() !== "";
     setIsFormComplete(isComplete);
   }, [formData]);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-  
-    try {
-      const response = await axios.post(
-        "https://bondfood.vercel.app/api/login/",
-        JSON.stringify(formData),  // 🔹 Ensure JSON formatting
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-        }
-      );
-  
-      console.log("✅ Login Successful:", response.data);
-    } catch (error) {
-      console.error("❌ Login Error:", error.response?.data || error.message);
-      alert(error.response?.data?.detail || "Login failed. Please check your credentials.");
+    if (isFormComplete) {
+      // Simulate a successful login by navigating
+      navigate("/");
     }
   };
 
@@ -58,7 +43,11 @@ const Signin = ({ setUser }) => {
         <h2 className="wb">Welcome back!</h2>
         <p>Enter your email or phone number to login.</p>
         <small>
-          <ShieldBan size={24} style={{ position: "relative", top: "5px", color: "black" }} /> Your information is 100% secured
+          <ShieldBan
+            size={24}
+            style={{ position: "relative", top: "5px", color: "black" }}
+          />{" "}
+          Your information is 100% secured
         </small>
 
         <form onSubmit={handleSubmit}>
@@ -71,7 +60,7 @@ const Signin = ({ setUser }) => {
             onChange={handleChange}
             required
           />
-        
+
           <div className="password-container">
             <input
               className="curved-input"
@@ -82,7 +71,10 @@ const Signin = ({ setUser }) => {
               onChange={handleChange}
               required
             />
-            <span className="toggle-password12" onClick={() => setIsPasswordVisible((prev) => !prev)}>
+            <span
+              className="toggle-password12"
+              onClick={() => setIsPasswordVisible((prev) => !prev)}
+            >
               {isPasswordVisible ? <EyeOff /> : <Eye />}
             </span>
           </div>
@@ -91,7 +83,9 @@ const Signin = ({ setUser }) => {
             type="submit"
             className="signup-btn1"
             disabled={!isFormComplete}
-            style={{ backgroundColor: isFormComplete ? '#008000' : '#DAF0C6' }} // Green if complete
+            style={{
+              backgroundColor: isFormComplete ? "#008000" : "#DAF0C6",
+            }}
           >
             Submit
           </button>
@@ -101,10 +95,14 @@ const Signin = ({ setUser }) => {
           <p className="signin2">Forgot password?</p>
         </Link>
         <p className="signin3">
-          Don't have an account? <span className="signup1"><Link to="/Signup">Sign up</Link></span>
+          Don't have an account?{" "}
+          <span className="signup1">
+            <Link to="/Signup">Sign up</Link>
+          </span>
         </p>
         <p className="signin40">
-          For further support, you may visit the Help Center or contact our support team.
+          For further support, you may visit the Help Center or contact our
+          support team.
         </p>
       </div>
     </div>

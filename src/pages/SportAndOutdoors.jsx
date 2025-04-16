@@ -2,14 +2,15 @@ import React from "react";
 import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import "./SportAndOutdoors.css";
 import {useNavigate} from "react-router-dom"
-import freshbasswithwhitebackground1 from "../assets/fresh-bass-with-white-background1.png"
-import stunningimpastopaintingwhitehen1 from "../assets/stunning-impasto-painting-white-hen1.png"
+import bicycle from "../assets/bicycle.svg"
+import clock from "../assets/clock.svg"
+import skateboard from "../assets/skateboard.svg"
 
 
 const categories = [
-  { name: "Fitness & Equipment", icon: freshbasswithwhitebackground1 },
-  { name: "Outdoor & Camping", icon: freshbasswithwhitebackground1 },
-  { name: "Bikes & Accessories", icon: stunningimpastopaintingwhitehen1 },
+  { name: "Fitness & Equipment", icon: skateboard, path: "/FitnessEquipment" },
+  { name: "Outdoor & Camping", icon: bicycle, path: "/OutdoorCamping" },
+  { name: "Bikes & Accessories", icon: clock, path: "/BikesAccessories" },
 ];
 
 const SportAndOutdoors = () => {
@@ -32,7 +33,7 @@ const SportAndOutdoors = () => {
   </div>
 <div className="sportandoutdoors-category-list">
   {categories.map((category, index) => (
-    <div key={index} className="sportandoutdoors-category-item">
+    <div key={index} className="sportandoutdoors-category-item" onClick={() => category.path && navigate(category.path)}>
         <div className="sportandoutdoors-icon-container">
         <img src={category.icon} alt={category.name} className="sportandoutdoors-category-icon" />
       </div>

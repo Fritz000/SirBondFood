@@ -2,18 +2,16 @@ import React from "react";
 import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import "./BabiesAndGames.css";
 import {useNavigate} from "react-router-dom"
-import freshbasswithwhitebackground1 from "../assets/fresh-bass-with-white-background1.png"
-import stunningimpastopaintingwhitehen1 from "../assets/stunning-impasto-painting-white-hen1.png"
-import dairyeggs from "../assets/412951555_bbc2c779-25c0-4851-adc1-c922a7d4c5b71.png"
-import foodbasket from "../assets/138792826_4acbcb31-951d-404f-ae4d-fd34a21218761.png"
-import glassmilkbottlefreshmilk1 from "../assets/glass-milk-bottle-fresh-milk1.png"
-
+import babyessentails from "../assets/babyessentails.svg"
+import toysandgames from "../assets/toysandgames.svg"
+import childrenfurniture from "../assets/childrenfurniture.svg"
+import kidsaccessories from "../assets/kidsaccessories.svg"
 
 const categories = [
-  { name: "Baby Essentials", icon: freshbasswithwhitebackground1 },
-  { name: "Toys & Games", icon: freshbasswithwhitebackground1 },
-  { name: "Children Furniture", icon: stunningimpastopaintingwhitehen1 },
-  { name: "Kids' Accessories", icon: dairyeggs },
+  { name: "Baby Essentials", icon: babyessentails, path: "/Babyessentials" },
+  { name: "Toys & Games", icon: toysandgames, path: "/Toys" },
+  { name: "Children Furniture", icon: childrenfurniture, path: "/ChildrenFurniture" },
+  { name: "Kids' Accessories", icon: kidsaccessories, path: "/Kidsaccessories" },
 ];
 
 const BabiesAndGames = () => {
@@ -36,7 +34,7 @@ const BabiesAndGames = () => {
   </div>
 <div className="babiesandgames-category-list">
   {categories.map((category, index) => (
-    <div key={index} className="babiesandgames-category-item">
+    <div key={index} className="babiesandgames-category-item" onClick={() => category.path && navigate(category.path)}>
         <div className="babiesandgames-icon-container">
         <img src={category.icon} alt={category.name} className="babiesandgames-category-icon" />
       </div>

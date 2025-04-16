@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
 import Home from './pages/Home';
 import Products from './pages/Products';
@@ -46,24 +46,57 @@ import FeedAndSeeds from './pages/FeedAndSeeds';
 import HealthAndBeauty from './pages/HealthAndBeauty';
 import Gaming from './pages/Gaming'
 import HomeAppliances from './pages/HomeAppliances'
-
 import PantryStable from './pages/PantryStable';
 import MeatSeafood from './pages/MeatSeafood';
 import SportAndOutdoors from './pages/SportAndOutdoors';
-
-
 import PhoneAccessories from './pages/PhoneAccessories'
-
-
 import HomeAndLiving from './pages/HomeAndLiving'
-
 import Wearable from './pages/Wearable'
-
+import Furniture from './pages/Furniture'
+import Homedecor from './pages/Homedecor'
+import BeddingLinen from './pages/BeddingLinen'
+import KitchenLinen from './pages/KitchenLinen'
+import HouseEssentials from './pages/HouseEssentials';
+import SkinCare from './pages/SkinCare';
+import HairCare from './pages/HairCare';
+import Makeup from './pages/Makeup';
+import Personalcare from './pages/Personalcare';
+import Healthwellness from './pages/Healthwellness';
+import Men from './pages/Men';
+import Women from './pages/Women';
+import Kids from './pages/Kids';
+import Footwear from './pages/Footwear';
+import Jewelries from './pages/Jewelries';
+import Bags from './pages/Bags';
+import Clothingaccessories from './pages/Clothingaccessories';
+import Babyessentials from './pages/Babyessentials';
+import { Toys } from '@mui/icons-material';
+import ChildrenFurniture from './pages/ChildrenFurniture';
+import Kidsaccessories from './pages/Kidsaccessories';
+import BikesAccessories from './pages/BikesAccessories';
+import OutdoorCamping from './pages/OutdoorCamping';
+import FitnessEquipment from './pages/FitnessEquipment';
 
 
 const App = () => {
-  // State for user authentication
   const [user, setUser] = useState(null);
+
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem("authToken");
+  //   if (token) {
+  //     axios.get("https://bondfood.vercel.app/api/profile/", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     }).then((res) => {
+  //       setUser(res.data);
+  //     }).catch((err) => {
+  //       console.error("Profile fetch failed", err);
+  //       setUser(null);
+  //     });
+  //   }
+  // }, []);
   
   // 🛒 Cart state
   const [cart, setCart] = useState([]);
@@ -77,11 +110,18 @@ const App = () => {
   }, []);
 
    // Dynamic Category Routes
-   const categoryRoutes = categoriesData.map((category, index) => (
+   const categoryComponentMap = {
+    BabiesAndGames,
+    BakeryItems,
+    Beverages,
+    // ...add all other category components here
+  };
+  
+  const categoryRoutes = categoriesData.map((category, index) => (
     <Route 
       key={index}
       path={category.path}
-      element={React.createElement(category.component)}  // ✅ This works
+      element={React.createElement(categoryComponentMap[category.component])} 
     />
   ));
   
@@ -146,6 +186,30 @@ const App = () => {
         <Route path="PhoneAccessories" element={<PhoneAccessories />} />
         <Route path="Wearable" element={<Wearable />} />
         <Route path="HomeAndLiving" element={<HomeAndLiving />} />
+        <Route path="Furniture" element={<Furniture />} />
+        <Route path="Homedecor" element={<Homedecor />} />
+        <Route path="BeddingLinen" element={<BeddingLinen />} />
+        <Route path="KitchenLinen" element={<KitchenLinen />} />
+        <Route path="HouseEssentials" element={<HouseEssentials />} />
+        <Route path="SkinCare" element={<SkinCare />} />
+        <Route path="HairCare" element={<HairCare />} />
+        <Route path="Makeup" element={<Makeup />} />
+        <Route path="Personalcare" element={<Personalcare />} />
+        <Route path="Healthwellness" element={<Healthwellness />} />
+        <Route path="Men" element={<Men />} />
+        <Route path="Women" element={<Women />} />
+        <Route path="Kids" element={<Kids />} />
+        <Route path="Footwear" element={<Footwear />} />
+        <Route path="Jewelries" element={<Jewelries />} />
+        <Route path="Bags" element={<Bags />} />
+        <Route path="Clothingaccessories" element={<Clothingaccessories />} />
+        <Route path="Babyessentials" element={<Babyessentials />} />
+        <Route path="Toys" element={<Toys />} />
+        <Route path="ChildrenFurniture" element={<ChildrenFurniture />} />
+        <Route path="Kidsaccessories" element={<Kidsaccessories />} />
+        <Route path="FitnessEquipment" element={<FitnessEquipment />} />
+        <Route path="OutdoorCamping" element={<OutdoorCamping />} />
+        <Route path="BikesAccessories" element={<BikesAccessories />} />
         {/* Add more category routes here */}
         <Route path="SuperAdminDashboard" element={<SuperAdminDashboard />} />
         {categoryRoutes}

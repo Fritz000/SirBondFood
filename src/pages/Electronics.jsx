@@ -2,22 +2,25 @@ import React from "react";
 import { ChevronLeft, ChevronRight, Search } from "lucide-react";
 import "./Electronics.css";
 import {useNavigate} from "react-router-dom"
-import freshbasswithwhitebackground1 from "../assets/fresh-bass-with-white-background1.png"
-import stunningimpastopaintingwhitehen1 from "../assets/stunning-impasto-painting-white-hen1.png"
-import dairyeggs from "../assets/412951555_bbc2c779-25c0-4851-adc1-c922a7d4c5b71.png"
-import foodbasket from "../assets/138792826_4acbcb31-951d-404f-ae4d-fd34a21218761.png"
-import glassmilkbottlefreshmilk1 from "../assets/glass-milk-bottle-fresh-milk1.png"
+import gaming from "../assets/gaming.svg"
+import wearable from "../assets/wearable.svg"
+import computeraccessories from "../assets/computeraccessories.svg"
+import computerstv from "../assets/computerstv.svg"
+import phoneaccessories from "../assets/phoneaccessories.svg"
+import homeappliances from "../assets/homeappliances.svg"
+import audiomusical from "../assets/audiomusical.svg"
+import cameras from "../assets/cameras.svg"
 
 
 const categories = [
-  { name: "Computers & TV", icon: freshbasswithwhitebackground1, path: "/ComputersTv" },
-  { name: "Phone Accessories", icon: freshbasswithwhitebackground1, path: "/PhoneAccessories" },
-  { name: "Computer Accessories", icon: stunningimpastopaintingwhitehen1, path: "/ComputerAccessories" },
-  { name: "Home Appliances", icon: dairyeggs, path: "/HomeAppliances" },
-  { name: "Audio & Musical", icon: foodbasket, path: "/AudioandMusical" },
-  { name: "Cameras & Photograph", icon: glassmilkbottlefreshmilk1, path: "/CamerasPhotograph" },
-  { name: "Gaming", icon: glassmilkbottlefreshmilk1, path: "/Gaming" },
-  { name: "Wearable Technology", icon: glassmilkbottlefreshmilk1, path: "/Wearable" },
+  { name: "Computers & TV", icon: computerstv, path: "/ComputersTv" },
+  { name: "Phone Accessories", icon: phoneaccessories, path: "/PhoneAccessories" },
+  { name: "Computer Accessories", icon: computeraccessories, path: "/ComputerAccessories" },
+  { name: "Home Appliances", icon: homeappliances, path: "/HomeAppliances" },
+  { name: "Audio & Musical", icon: audiomusical, path: "/AudioandMusical" },
+  { name: "Cameras & Photograph", icon: cameras, path: "/CamerasPhotograph" },
+  { name: "Gaming", icon: gaming, path: "/Gaming" },
+  { name: "Wearable Technology", icon: wearable, path: "/Wearable" },
 ];
 
 const Electronics = () => {

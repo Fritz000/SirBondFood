@@ -10,8 +10,6 @@ import agbalumo from "../assets/agbalumo.png";
 import souvenir from "../assets/souvenir.png";
 import pineapple from "../assets/pineapple.png";
 import Group from "../assets/Group.png";
-import Star from "../assets/STAR.png";
-import rev from "../assets/rev.png";
 import mage from "../assets/mage_filter.png";
 
 const categories = [
