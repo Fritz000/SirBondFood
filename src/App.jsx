@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, lazy, Suspense } from 'react';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
 import Home from './pages/Home';
@@ -216,8 +216,12 @@ const App = () => {
       </Route>
     )
   );
-
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
+  
 };
 
 export default App;
