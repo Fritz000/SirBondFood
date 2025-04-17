@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [
     react(),
     visualizer({
-      filename: 'dist/report.html', // 📊 This file will be generated after build
-      open: true, // Opens the report in your browser automatically
+      filename: 'dist/report.html',
+      open: true,
     }),
   ],
   build: {
@@ -17,6 +17,15 @@ export default defineConfig({
         manualChunks(id) {
           if (id.includes('node_modules')) {
             return 'vendor';
+          }
+
+          // 💡 This splits each page into its own chunk
+          if (id.includes('/src/pages/')) {
+            const name = id
+              .split('/src/pages/')[1]
+              .split('/')[0]
+              .replace(/\.[jt]sx?$/, ''); // remove .js or .jsx
+            return `page-${name}`;
           }
         },
       },
