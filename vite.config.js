@@ -7,25 +7,27 @@ export default defineConfig({
     react(),
     visualizer({
       filename: 'dist/report.html',
-      open: true,
+      open: false,
     }),
   ],
   build: {
-    chunkSizeWarningLimit: 2500, // just for local dev warning
+    // Suppress warning (Vite only)
+    chunkSizeWarningLimit: 3000,
+
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // Split node_modules packages by group or library
           if (id.includes('node_modules')) {
+            // Split large vendor libraries
             if (id.includes('react')) return 'vendor-react';
             if (id.includes('lucide-react')) return 'vendor-icons';
             if (id.includes('framer-motion')) return 'vendor-motion';
             if (id.includes('@heroicons')) return 'vendor-heroicons';
             if (id.includes('tailwindcss')) return 'vendor-tailwind';
-            return 'vendor'; // fallback chunk
+            return 'vendor';
           }
 
-          // Split each page into a separate chunk
+          // Split each page
           if (id.includes('/src/pages/')) {
             const name = id
               .split('/src/pages/')[1]
@@ -34,7 +36,7 @@ export default defineConfig({
             return `page-${name}`;
           }
 
-          // Optionally split components or large UI libraries
+          // Optional: split components
           if (id.includes('/src/components/')) {
             const name = id
               .split('/src/components/')[1]
