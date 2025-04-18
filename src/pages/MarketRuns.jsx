@@ -16,7 +16,7 @@ import jacket from "../assets/jacket.svg";
 import doll from "../assets/doll.svg";
 import chair from "../assets/chair.svg";
 import cream from "../assets/cream.svg";
-import tv from "../assets/tv.svg";
+import tv from "../assets/Tv.svg";
 import dpp from "../assets/dpp.svg";
 import flashsale from "../assets/flashsale.svg";
 import Vectorstar from "../assets/Vectorstar.png";
