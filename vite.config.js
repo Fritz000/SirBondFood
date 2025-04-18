@@ -11,21 +11,36 @@ export default defineConfig({
     }),
   ],
   build: {
-    chunkSizeWarningLimit: 2500,
+    chunkSizeWarningLimit: 2500, // just for local dev warning
     rollupOptions: {
       output: {
         manualChunks(id) {
+          // Split node_modules packages by group or library
           if (id.includes('node_modules')) {
-            return 'vendor';
+            if (id.includes('react')) return 'vendor-react';
+            if (id.includes('lucide-react')) return 'vendor-icons';
+            if (id.includes('framer-motion')) return 'vendor-motion';
+            if (id.includes('@heroicons')) return 'vendor-heroicons';
+            if (id.includes('tailwindcss')) return 'vendor-tailwind';
+            return 'vendor'; // fallback chunk
           }
 
-          // 💡 This splits each page into its own chunk
+          // Split each page into a separate chunk
           if (id.includes('/src/pages/')) {
             const name = id
               .split('/src/pages/')[1]
               .split('/')[0]
-              .replace(/\.[jt]sx?$/, ''); // remove .js or .jsx
+              .replace(/\.[jt]sx?$/, '');
             return `page-${name}`;
+          }
+
+          // Optionally split components or large UI libraries
+          if (id.includes('/src/components/')) {
+            const name = id
+              .split('/src/components/')[1]
+              .split('/')[0]
+              .replace(/\.[jt]sx?$/, '');
+            return `component-${name}`;
           }
         },
       },
