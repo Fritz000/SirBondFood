@@ -86,20 +86,20 @@ const HelpCenter = () => {
 
       return (
         <div className="faq-item" key={index}>
-          {parts.map((part, i) =>
-            part.toLowerCase() === searchQuery.toLowerCase() ? (
-              <strong key={i}>{part}</strong>
-            ) : (
-              <span key={i}>{part}</span>
-            )
+            {parts.map((part, i) =>
+              part.toLowerCase() === searchQuery.toLowerCase() ? (
+                <strong key={i}>{part}</strong>
+              ) : (
+                <span key={i}>{part}</span>
+              )
+            )}
+          </div>
+            );
+          })
+          ) : (
+            <div className="faq-item">No results found</div>
           )}
         </div>
-      );
-    })
-  ) : (
-    <div className="faq-item">No results found</div>
-  )}
-</div>
 
         </div>
       </div>
