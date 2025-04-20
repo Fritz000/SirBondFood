@@ -46,12 +46,12 @@ const Message = () => {
   return (
     <div className="message-container">
       <div className='messages'>
-        <div className="orderdetailsicons">
-          <button className="orderdetails-back-btn1" onClick={() => navigate(-1)}>
+        <div className="messageicons">
+          <button className="message-back-btn1" onClick={() => navigate(-1)}>
             <ChevronLeft />
           </button>
         </div>
-        <p>Messages</p>
+        <p className='messagetext'>Messages</p>
         <div className="jamwriteicons">
           <img 
             src={Jamwrite} 
