@@ -29,6 +29,31 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutsideMenu = (e) => {
+      const isMobile = window.innerWidth < 500;
+  
+      if (
+        isMobile &&
+        activeDropdown === "menu" &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target) &&
+        !e.target.closest(".hamburger-menu")
+      ) {
+        // Use a timeout to let other events (like link navigation) happen first
+        setTimeout(() => {
+          setActiveDropdown(null);
+        }, 100); // slight delay to not interfere with navigation
+      }
+    };
+  
+    document.addEventListener("mousedown", handleClickOutsideMenu);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutsideMenu);
+    };
+  }, [activeDropdown]);
+  
+
   // Cart count state from localStorage
   useEffect(() => {
     const updateCartCount = () => {
