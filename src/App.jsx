@@ -75,6 +75,7 @@ const Kidsaccessories = lazy(() => import('./pages/Kidsaccessories'));
 const BikesAccessories = lazy(() => import('./pages/BikesAccessories'));
 const OutdoorCamping = lazy(() => import('./pages/OutdoorCamping'));
 const FitnessEquipment = lazy(() => import('./pages/FitnessEquipment'));
+const Toys = lazy(() => import ('./pages/Toys'));
 
 import categoriesData from './data/categoriesData.json';
 
