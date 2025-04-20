@@ -15,13 +15,19 @@ const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-
-  // Separate refs for each dropdown
-  const menuDropdownRef = useRef(null);
-  const userDropdownRef = useRef(null);
-  const notificationsDropdownRef = useRef(null);
-
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 500); // To detect if the screen width is smaller than 500px
+  const dropdownRef = useRef(null);
   const navigate = useNavigate();
+
+  // Update isMobile state on screen resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 500);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Cart count state from localStorage
   useEffect(() => {
@@ -40,29 +46,37 @@ const Navbar = () => {
     return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
-  const toggleDropdown = (dropdown) => {
-    if (window.innerWidth <= 500) {
-      if (dropdown === "user") navigate("/Signup");
-      else if (dropdown === "notifications") navigate("/NotificationList");
-      return;
-    }
-    setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
-  };
-
-  // Close all dropdowns if clicking outside
   useEffect(() => {
-    const closeDropdown = (e) => {
+    const handleClickOutsideMenu = (e) => {
+      const isMobile = window.innerWidth < 500;
+  
       if (
-        !menuDropdownRef.current?.contains(e.target) &&
-        !userDropdownRef.current?.contains(e.target) &&
-        !notificationsDropdownRef.current?.contains(e.target)
+        isMobile &&
+        activeDropdown === "menu" &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target) &&
+        !e.target.closest(".hamburger-menu")
       ) {
         setActiveDropdown(null);
       }
     };
-    document.addEventListener("click", closeDropdown);
-    return () => document.removeEventListener("click", closeDropdown);
-  }, []);
+  
+    document.addEventListener("mousedown", handleClickOutsideMenu);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutsideMenu);
+    };
+  }, [activeDropdown]);
+  
+
+  const toggleDropdown = (dropdown) => {
+    setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
+  };
+
+  const closeDropdown = (e) => {
+    if (!e.target.closest(".dropdown, .hamburger-menu, .user-info, .icon-button")) {
+      setActiveDropdown(null);
+    }
+  };
 
   const handleSearchChange = (e) => {
     const query = e.target.value;
@@ -103,6 +117,22 @@ const Navbar = () => {
     return searchList;
   };
 
+  const handleProfileClick = () => {
+    if (isMobile) {
+      navigate("/Signup"); // Redirect to the signup page on mobile
+    } else {
+      setActiveDropdown("user"); // Show the user dropdown on larger screens
+    }
+  };
+
+  const handleNotificationClick = () => {
+    if (isMobile) {
+      navigate("/NotificationList"); // Redirect to the notifications page on mobile
+    } else {
+      toggleDropdown("Notifications"); // Show the notifications dropdown on larger screens
+    }
+  };
+
   return (
     <div className="navbar">
       {/* Left Section - Menu & Logo */}
@@ -119,7 +149,7 @@ const Navbar = () => {
         <div
           className={`dropdown-menu ${activeDropdown === "menu" ? "show" : ""}`}
           onClick={(e) => e.stopPropagation()}
-          ref={menuDropdownRef}
+          ref={dropdownRef}
         >
           <h3 className="menu-title">
             <button className="hamburger-menu" onClick={() => toggleDropdown("menu")}>
@@ -171,10 +201,7 @@ const Navbar = () => {
       <div className="navbar-right">
         <div
           className="user-info"
-          onClick={(e) => {
-            e.stopPropagation();
-            toggleDropdown("user");
-          }}
+          onClick={handleProfileClick}
         >
           <UserRound className="user-info-icon" />
           <div className="user-text">
@@ -188,7 +215,7 @@ const Navbar = () => {
         <div
           className={`user-dropdown ${activeDropdown === "user" ? "show" : ""}`}
           onClick={(e) => e.stopPropagation()}
-          ref={userDropdownRef}
+          ref={dropdownRef}
         >
           <Link to="/Signin"><button>Sign in</button></Link>
           <Link to="/Signup"><button className="register1">Register</button></Link>
@@ -202,10 +229,7 @@ const Navbar = () => {
 
         <button
           className="icon-button"
-          onClick={(e) => {
-            e.stopPropagation();
-            toggleDropdown("notifications");
-          }}
+          onClick={handleNotificationClick}
         >
           <FaRegBell className="faregbell" />
         </button>
@@ -213,7 +237,7 @@ const Navbar = () => {
         <div
           className={`notifications-dropdown ${activeDropdown === "notifications" ? "show" : ""}`}
           onClick={(e) => e.stopPropagation()}
-          ref={notificationsDropdownRef}
+          ref={dropdownRef}
         >
           <div className="dropdown-notch"></div>
           <ul>
