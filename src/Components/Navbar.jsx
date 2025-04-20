@@ -46,28 +46,6 @@ const Navbar = () => {
     return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
-  useEffect(() => {
-    const handleClickOutsideMenu = (e) => {
-      const isMobile = window.innerWidth < 500;
-  
-      if (
-        isMobile &&
-        activeDropdown === "menu" &&
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target) &&
-        !e.target.closest(".hamburger-menu")
-      ) {
-        setActiveDropdown(null);
-      }
-    };
-  
-    document.addEventListener("mousedown", handleClickOutsideMenu);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutsideMenu);
-    };
-  }, [activeDropdown]);
-  
-
   const toggleDropdown = (dropdown) => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
   };
@@ -129,7 +107,7 @@ const Navbar = () => {
     if (isMobile) {
       navigate("/NotificationList"); // Redirect to the notifications page on mobile
     } else {
-      toggleDropdown("Notifications"); // Show the notifications dropdown on larger screens
+      toggleDropdown("NotificationList"); // Show the notifications dropdown on larger screens
     }
   };
 
