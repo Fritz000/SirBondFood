@@ -169,9 +169,22 @@
   .faq-item:hover {
     color: #333;
   }
+
+  .mobile-close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: black;
+    z-index: 10;
+    display: none; /* Hide by default */
+    cursor: pointer;
+  }
   
 @media (max-width: 390px) {
   .help-container {
+    position: relative;
     min-height: 100vh;
     padding: 60px 30px;
     background: linear-gradient(to bottom, #6CC51D 0%, #6CC51D 55%, #ffffff 100%);
@@ -183,7 +196,17 @@
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
   }
-  
+
+  .mobile-close-button {
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #FFF;
+    z-index: 10;
+    display: block; /* Hide by default */
+    cursor: pointer;
+  }
   
   .help-inner {
     background: white;
