@@ -1,83 +1,82 @@
 import React, { useState, useEffect, useContext, lazy, Suspense } from 'react';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
-const Home = lazy(() => import('./pages/Home'));
-const Products = lazy(() => import('./pages/Products'));
-const About = lazy(() => import('./pages/About'));
-const Contacts = lazy(() => import('./pages/Contacts'));
-const Signup = lazy(() => import('./pages/Signup'));
-const Verify = lazy(() => import('./pages/Verify'));
-const Password = lazy(() => import('./pages/Password'));
-const Signin = lazy(() => import('./pages/Signin'));
-const Resetpassword = lazy(() => import('./pages/Resetpassword'));
-const Securitycode = lazy(() => import('./pages/Securitycode'));
-const Reset = lazy(() => import('./pages/Reset'));
-const Passwordresetsuccesfully = lazy(() => import('./pages/Passwordresetsuccesfully'));
-const Logout = lazy(() => import('./pages/Logout'));
-const NotificationList = lazy(() => import('./pages/NotificationList'));
-const Populatedcart = lazy(() => import('./pages/Populatedcart'));
-const EmptyCart = lazy(() => import('./pages/Emptycart'));
-const Order = lazy(() => import('./pages/Order'));
-const OrderDetails = lazy(() => import('./pages/OrderDetails'));
-const HelpCenter = lazy(() => import('./pages/HelpCenter'));
-const Wallet = lazy(() => import('./pages/Wallet'));
-const EmptyWallet = lazy(() => import('./pages/EmptyWallet'));
-const Settings = lazy(() => import('./pages/Settings'));
-const Orders = lazy(() => import('./pages/Orders'));
-const Message = lazy(() => import('./pages/Message'));
-const MessagePopup = lazy(() => import('./pages/MessagePopup'));
-const MarketRuns = lazy(() => import('./pages/MarketRuns'));
-const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
-const AdminLogin = lazy(() => import('./pages/AdminLogin'));
-const SuperAdminDashboard = lazy(() => import('./pages/SuperAdminDashboard'));
-
-const BabiesAndGames = lazy(() => import('./pages/BabiesAndGames'));
-const BakeryItems = lazy(() => import('./pages/BakeryItems'));
-const Beverages = lazy(() => import('./pages/Beverages'));
-const ComputerAccessories = lazy(() => import('./pages/ComputerAccessories'));
-const AudioandMusical = lazy(() => import('./pages/AudioandMusical'));
-const CamerasPhotograph = lazy(() => import('./pages/CamerasPhotograph'));
-const FoodAndGrocery = lazy(() => import('./pages/FoodAndGrocery'));
-const Electronics = lazy(() => import('./pages/Electronics'));
-const DairyEggs = lazy(() => import('./pages/DairyEggs'));
-const ComputersTv = lazy(() => import('./pages/ComputersTv'));
-const FashionAndClothing = lazy(() => import('./pages/FashionAndClothing'));
-const FeedAndSeeds = lazy(() => import('./pages/FeedAndSeeds'));
-const HealthAndBeauty = lazy(() => import('./pages/HealthAndBeauty'));
-const Gaming = lazy(() => import('./pages/Gaming'));
-const HomeAppliances = lazy(() => import('./pages/HomeAppliances'));
-const PantryStable = lazy(() => import('./pages/PantryStable'));
-const MeatSeafood = lazy(() => import('./pages/MeatSeafood'));
-const SportAndOutdoors = lazy(() => import('./pages/SportAndOutdoors'));
-const PhoneAccessories = lazy(() => import('./pages/PhoneAccessories'));
-const HomeAndLiving = lazy(() => import('./pages/HomeAndLiving'));
-const Wearable = lazy(() => import('./pages/Wearable'));
-const Furniture = lazy(() => import('./pages/Furniture'));
-const Homedecor = lazy(() => import('./pages/Homedecor'));
-const BeddingLinen = lazy(() => import('./pages/BeddingLinen'));
-const KitchenLinen = lazy(() => import('./pages/KitchenLinen'));
-const HouseEssentials = lazy(() => import('./pages/HouseEssentials'));
-const SkinCare = lazy(() => import('./pages/SkinCare'));
-const HairCare = lazy(() => import('./pages/HairCare'));
-const Makeup = lazy(() => import('./pages/Makeup'));
-const Personalcare = lazy(() => import('./pages/Personalcare'));
-const Healthwellness = lazy(() => import('./pages/Healthwellness'));
-const Men = lazy(() => import('./pages/Men'));
-const Women = lazy(() => import('./pages/Women'));
-const Kids = lazy(() => import('./pages/Kids'));
-const Footwear = lazy(() => import('./pages/Footwear'));
-const Jewelries = lazy(() => import('./pages/Jewelries'));
-const Bags = lazy(() => import('./pages/Bags'));
-const Clothingaccessories = lazy(() => import('./pages/Clothingaccessories'));
-const Babyessentials = lazy(() => import('./pages/Babyessentials'));
-const ChildrenFurniture = lazy(() => import('./pages/ChildrenFurniture'));
-const Kidsaccessories = lazy(() => import('./pages/Kidsaccessories'));
-const BikesAccessories = lazy(() => import('./pages/BikesAccessories'));
-const OutdoorCamping = lazy(() => import('./pages/OutdoorCamping'));
-const FitnessEquipment = lazy(() => import('./pages/FitnessEquipment'));
-const Toys = lazy(() => import ('./pages/Toys'));
-
+import Home from './pages/Home';
+import Products from './pages/Products';
+import About from './pages/About';
+import Contacts from './pages/Contacts';
+import Signup from './pages/Signup';
+import Verify from './pages/Verify';
+import Password from './pages/Password';
+import Signin from './pages/Signin';
+import Resetpassword from './pages/Resetpassword';
+import Securitycode from './pages/Securitycode';
+import Reset from './pages/Reset';
+import Passwordresetsuccesfully from './pages/Passwordresetsuccesfully';
+import Logout from './pages/Logout';
+import NotificationList from './pages/NotificationList';
+import Populatedcart from './pages/Populatedcart';
+import EmptyCart from './pages/Emptycart';
+import Order from './pages/Order';
+import OrderDetails from './pages/OrderDetails';
+import HelpCenter from './pages/HelpCenter';
+import Wallet from './pages/Wallet';
+import EmptyWallet from './pages/EmptyWallet';
+import Settings from './pages/Settings';
+import Orders from './pages/Orders';
+import Message from './pages/Message';
+import MessagePopup from './pages/MessagePopup';
+import MarketRuns from './pages/MarketRuns';
+import AdminDashboard from './pages/AdminDashboard';
+import AdminLogin from './pages/AdminLogin';
+import SuperAdminDashboard from './pages/SuperAdminDashboard';
 import categoriesData from './data/categoriesData.json';
+import BabiesAndGames from './pages/BabiesAndGames';
+import BakeryItems from './pages/BakeryItems';
+import Beverages from './pages/Beverages';
+import ComputerAccessories from './pages/ComputerAccessories'
+import AudioandMusical from './pages/AudioandMusical'
+import CamerasPhotograph from './pages/CamerasPhotograph'
+import FoodAndGrocery from './pages/FoodAndGrocery';
+import Electronics from './pages/Electronics';
+import DairyEggs from './pages/DairyEggs';
+import ComputersTv from './pages/ComputersTv';
+import FashionAndClothing from './pages/FashionAndClothing';
+import FeedAndSeeds from './pages/FeedAndSeeds';
+import HealthAndBeauty from './pages/HealthAndBeauty';
+import Gaming from './pages/Gaming'
+import HomeAppliances from './pages/HomeAppliances'
+import PantryStable from './pages/PantryStable';
+import MeatSeafood from './pages/MeatSeafood';
+import SportAndOutdoors from './pages/SportAndOutdoors';
+import PhoneAccessories from './pages/PhoneAccessories'
+import HomeAndLiving from './pages/HomeAndLiving'
+import Wearable from './pages/Wearable'
+import Furniture from './pages/Furniture'
+import Homedecor from './pages/Homedecor'
+import BeddingLinen from './pages/BeddingLinen'
+import KitchenLinen from './pages/KitchenLinen'
+import HouseEssentials from './pages/HouseEssentials';
+import SkinCare from './pages/SkinCare';
+import HairCare from './pages/HairCare';
+import Makeup from './pages/Makeup';
+import Personalcare from './pages/Personalcare';
+import Healthwellness from './pages/Healthwellness';
+import Men from './pages/Men';
+import Women from './pages/Women';
+import Kids from './pages/Kids';
+import Footwear from './pages/Footwear';
+import Jewelries from './pages/Jewelries';
+import Bags from './pages/Bags';
+import Clothingaccessories from './pages/Clothingaccessories';
+import Babyessentials from './pages/Babyessentials';
+import Toys from "./pages/Toys";
+import ChildrenFurniture from './pages/ChildrenFurniture';
+import Kidsaccessories from './pages/Kidsaccessories';
+import BikesAccessories from './pages/BikesAccessories';
+import OutdoorCamping from './pages/OutdoorCamping';
+import FitnessEquipment from './pages/FitnessEquipment';
+
 
 
 

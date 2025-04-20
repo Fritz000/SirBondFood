@@ -15,7 +15,12 @@ const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const dropdownRef = useRef(null);
+
+  // Separate refs for each dropdown
+  const menuDropdownRef = useRef(null);
+  const userDropdownRef = useRef(null);
+  const notificationsDropdownRef = useRef(null);
+
   const navigate = useNavigate();
 
   // Cart count state from localStorage
@@ -44,9 +49,14 @@ const Navbar = () => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
   };
 
+  // Close all dropdowns if clicking outside
   useEffect(() => {
     const closeDropdown = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      if (
+        !menuDropdownRef.current?.contains(e.target) &&
+        !userDropdownRef.current?.contains(e.target) &&
+        !notificationsDropdownRef.current?.contains(e.target)
+      ) {
         setActiveDropdown(null);
       }
     };
@@ -109,7 +119,7 @@ const Navbar = () => {
         <div
           className={`dropdown-menu ${activeDropdown === "menu" ? "show" : ""}`}
           onClick={(e) => e.stopPropagation()}
-          ref={dropdownRef}
+          ref={menuDropdownRef}
         >
           <h3 className="menu-title">
             <button className="hamburger-menu" onClick={() => toggleDropdown("menu")}>
@@ -178,7 +188,7 @@ const Navbar = () => {
         <div
           className={`user-dropdown ${activeDropdown === "user" ? "show" : ""}`}
           onClick={(e) => e.stopPropagation()}
-          ref={dropdownRef}
+          ref={userDropdownRef}
         >
           <Link to="/Signin"><button>Sign in</button></Link>
           <Link to="/Signup"><button className="register1">Register</button></Link>
@@ -203,7 +213,7 @@ const Navbar = () => {
         <div
           className={`notifications-dropdown ${activeDropdown === "notifications" ? "show" : ""}`}
           onClick={(e) => e.stopPropagation()}
-          ref={dropdownRef}
+          ref={notificationsDropdownRef}
         >
           <div className="dropdown-notch"></div>
           <ul>
