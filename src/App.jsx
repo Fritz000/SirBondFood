@@ -77,7 +77,7 @@ const OutdoorCamping = lazy(() => import('./pages/OutdoorCamping'));
 const FitnessEquipment = lazy(() => import('./pages/FitnessEquipment'));
 
 import categoriesData from './data/categoriesData.json';
-S
+
 
 
 const App = () => {
