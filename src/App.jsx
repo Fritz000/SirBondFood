@@ -46,18 +46,38 @@ import FeedAndSeeds from './pages/FeedAndSeeds';
 import HealthAndBeauty from './pages/HealthAndBeauty';
 import Gaming from './pages/Gaming'
 import HomeAppliances from './pages/HomeAppliances'
-
+import FoodGrocery from './pages/FoodGrocery'
 import PantryStable from './pages/PantryStable';
 import MeatSeafood from './pages/MeatSeafood';
 import SportAndOutdoors from './pages/SportAndOutdoors';
-
-
 import PhoneAccessories from './pages/PhoneAccessories'
-
-
 import HomeAndLiving from './pages/HomeAndLiving'
-
 import Wearable from './pages/Wearable'
+import FitnessEquipment from './pages/FitnessEquipment'
+import OutdoorCamping from './pages/OutdoorCamping'
+import BikesAccessories from './pages/BikesAccessories'
+import Babyessentials from './pages/Babyessentials'
+import Toys from './pages/Toys'
+import ChildrenFurniture from './pages/ChildrenFurniture'
+import Women from './pages/Women'
+import Men from './pages/Men'
+import Kids from './pages/Kids'
+import Footwear from './pages/Footwear'
+import Clothingaccessories from './pages/Clothingaccessories'
+import Bags from './pages/Bags'
+import Jewelries from './pages/Jewelries'
+import Kidsaccessories from './pages/Kidsaccessories'
+import SkinCare from './pages/SkinCare'
+import HairCare from './pages/HairCare'
+import Makeup from './pages/Makeup'
+import Personalcare from './pages/Personalcare'
+import Healthwellness from './pages/Healthwellness'
+import Furniture from './pages/Furniture'
+import Homedecor from './pages/Homedecor'
+import BeddingLinen from './pages/BeddingLinen'
+import KitchenLinen from './pages/KitchenLinen'
+import HouseEssentials from './pages/HouseEssentials'
+import FlashSales from './pages/FlashSales'
 
 
 
@@ -146,9 +166,35 @@ const App = () => {
         <Route path="PhoneAccessories" element={<PhoneAccessories />} />
         <Route path="Wearable" element={<Wearable />} />
         <Route path="HomeAndLiving" element={<HomeAndLiving />} />
+        <Route path="FoodGrocery" element={<FoodGrocery />} />
         {/* Add more category routes here */}
         <Route path="SuperAdminDashboard" element={<SuperAdminDashboard />} />
         {categoryRoutes}
+        <Route path="FitnessEquipment" element={<FitnessEquipment />} />
+        <Route path="OutdoorCamping" element={<OutdoorCamping />} />
+        <Route path="BikesAccessories" element={<BikesAccessories />} />
+        <Route path="Babyessentials" element={<Babyessentials />} />
+        <Route path="Toys" element={<Toys />} />
+        <Route path="ChildrenFurniture" element={<ChildrenFurniture />} />
+        <Route path="Kidsaccessories" element={<Kidsaccessories />} />
+        <Route path="Women" element={<Women />} />
+        <Route path="Men" element={<Men />} />
+        <Route path="Kids" element={<Kids />} />
+        <Route path="Footwear" element={<Footwear />} />
+        <Route path="Jewelries" element={<Jewelries />} />
+        <Route path="Bags" element={<Bags />} />
+        <Route path="Clothingaccessories" element={<Clothingaccessories />} />
+        <Route path="HairCare" element={<HairCare />} />
+        <Route path="SkinCare" element={<SkinCare />} />
+        <Route path="Makeup" element={<Makeup />} />
+        <Route path="Personalcare" element={<Personalcare />} />
+        <Route path="Healthwellness" element={<Healthwellness />} />
+        <Route path="Furniture" element={<Furniture />} />
+        <Route path="Homedecor" element={<Homedecor />} />
+        <Route path="BeddingLinen" element={<BeddingLinen />} />
+        <Route path="KitchenLinen" element={<KitchenLinen />} />
+        <Route path="HouseEssentials" element={<HouseEssentials />} />
+        <Route path="FlashSales" element={<FlashSales />} />
       </Route>
     )
   );

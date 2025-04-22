@@ -11,7 +11,7 @@ const categories = [
   { name: "Baby Essentials", icon: babyessentails, path: "/Babyessentials" },
   { name: "Toys & Games", icon: toysandgames, path: "/Toys" },
   { name: "Children Furniture", icon: childrenfurniture, path: "/ChildrenFurniture" },
-  { name: "Kids' Accessories", icon: kidsaccessories, path: "/Kidsaccessories" },
+  { name: "Kids Accessories", icon: kidsaccessories, path: "/Kidsaccessories" },
 ];
 
 const BabiesAndGames = () => {

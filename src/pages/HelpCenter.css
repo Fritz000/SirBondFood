@@ -22,7 +22,6 @@
     margin: 0;
   }
 
-
   .combined-box {
     width: 1232px;
     height: 161px;
@@ -93,7 +92,6 @@
     justify-content: center; /* centers rows vertically */
   }
   
-  
   .howcanwehelp {
     font-size: 32px;
     font-weight: 700;
@@ -152,7 +150,7 @@
   .faq-list {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 10px;
     width: 1161px;
     height: 224px;
   }

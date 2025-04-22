@@ -14,7 +14,7 @@ import hat from "../assets/hat.svg"
 const categories = [
   { name: "Women's Fashion", icon: womencloth, path: "/Women" },
   { name: "Men's Fashion", icon: mencloth, path: "/Men" },
-  { name: "Kid's Clothing", icon: kidscloth, path: "/Kids" },
+  { name: "Kids Clothing", icon: kidscloth, path: "/Kids" },
   { name: "Footwear", icon: footwear, path: "/Footwear" },
   { name: "Jewelries", icon: jewelries, path: "/Jewelries" },
   { name: "Bags", icon: bags, path: "/Bags" },

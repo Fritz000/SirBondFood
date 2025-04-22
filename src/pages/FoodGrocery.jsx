@@ -1,31 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./FoodGrocery.css";
+import "./General.css";
 import { Search, ChevronLeft, ChevronRight } from "lucide-react";
 import seafoods from "../assets/fresh-bass-with-white-background1.png";
 import singleredapple from "../assets/single-red-apple-with-green-leaf-water-droplets.png";
-import tangerine from "../assets/tangerine.png";
-import avocado from "../assets/avocado.png";
-import agbalumo from "../assets/agbalumo.png";
-import souvenir from "../assets/souvenir.png";
-import pineapple from "../assets/pineapple.png";
 import Group from "../assets/Group.png";
 import mage from "../assets/mage_filter.png";
 
 const categories = [
   { name: "Fruits", image: singleredapple },
-  { name: "Vegetable", image: seafoods },
-  { name: "Spice", image: singleredapple },
+  { name: "Vegetable", image: seafoods  },
+  { name: "Spice", image: singleredapple }
 ];
 
 // Hardcoded trending items
 const trendingItems = [
-  { id: 1, name: "Red Apple", price: 500, image: singleredapple, description: "Fresh red apple with juicy taste." },
-  { id: 2, name: "Avocado", price: 500, image: avocado, description: "Rich and creamy avocado, great for salads." },
-  { id: 3, name: "Tangerine", price: 500, image: tangerine, description: "Sweet and tangy tangerine packed with vitamins." },
-  { id: 4, name: "Agbalumo", price: 200, image: agbalumo, description: "Nigerian cherry, also known as Udara." },
-  { id: 5, name: "Souvenir Fruitpacks", price: 500, image: souvenir, description: "A mix of 6 fresh fruits." },
-  { id: 6, name: "Pineapple", price: 500, image: pineapple, description: "Tropical pineapple, rich in vitamin C." },
 ];
 
 const locationMarkets = {

@@ -33,7 +33,7 @@ const comments = [
   { id: 2, name: "Jack", date: "Feb 9, 2025", verified: true, rating: 4, comment: "Fruit was fresh, also bigger than I expected and lovely product packaging" },
 ];
 
-const Men = () => {
+const FlashSales = () => {
   const [cart, setCart] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [items, setItems] = useState([]); // Holds admin-added items + trending
@@ -101,7 +101,7 @@ const Men = () => {
       </button>
       <div className="search-container">
         <Search className="search-icon" size={20} />
-        <input type="text" placeholder="Search Men Fashion" className="search-bar" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
+        <input type="text" placeholder="Search Flash Sales" className="search-bar" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
       </div>
 
       <div className="category1-container">
@@ -193,4 +193,4 @@ const Men = () => {
   );
 };
 
-export default Men;
+export default FlashSales;

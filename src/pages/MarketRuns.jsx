@@ -19,7 +19,6 @@ import cream from "../assets/cream.svg";
 import tv from "../assets/Tv.svg";
 import dpp from "../assets/dpp.svg";
 import flashsale from "../assets/flashsale.svg";
-import Vectorstar from "../assets/Vectorstar.png";
 
 
 const categories = [
@@ -78,6 +77,7 @@ const MarketRuns = () => {
   const [selectedMarket, setSelectedMarket] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [items, setItems] = useState([]); // Holds admin-added items + trending
+  // <svg viewBox="0 0 200 200" width="100" height="auto" preserveAspectRatio="xMidYMid meet"></svg>
 
   useEffect(() => {
     const fetchItems = () => {
@@ -226,6 +226,9 @@ const handleCategoryClick = (categoryName) => {
           key={index}
           className={`category-card100 ${category.name === "Flash Sales" ? "flash-sales-special" : ""}`}
           onClick={() => {
+            if (category.name === "Flash Sales") {
+              navigate("/FlashSales");
+            }
             if (category.name === "Food & Grocery") {
               navigate("/FoodAndGrocery");
             }
