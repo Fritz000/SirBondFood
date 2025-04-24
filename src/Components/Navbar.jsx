@@ -15,7 +15,7 @@ const Navbar = () => {
   const [cartCount, setCartCount] = useState(0);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 500); // To detect if the screen width is smaller than 500px
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 500);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleClickOutsideMenu = (e) => {
       const isMobile = window.innerWidth < 500;
-  
+
       if (
         isMobile &&
         activeDropdown === "menu" &&
@@ -40,21 +40,19 @@ const Navbar = () => {
         !dropdownRef.current.contains(e.target) &&
         !e.target.closest(".hamburger-menu")
       ) {
-        // Use a timeout to let other events (like link navigation) happen first
         setTimeout(() => {
           setActiveDropdown(null);
-        }, 100); // slight delay to not interfere with navigation
+        }, 100);
       }
     };
-  
+
     document.addEventListener("mousedown", handleClickOutsideMenu);
     return () => {
       document.removeEventListener("mousedown", handleClickOutsideMenu);
     };
   }, [activeDropdown]);
-  
 
-  // Cart count state from localStorage
+  // Update cart count from localStorage
   useEffect(() => {
     const updateCartCount = () => {
       const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -70,6 +68,26 @@ const Navbar = () => {
     window.addEventListener("storage", handleStorageChange);
     return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
+
+  // Cart update functions
+  const updateCartCount = () => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCartCount(storedCart.length);
+  };
+
+  const addToCart = (item) => {
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    storedCart.push(item);
+    localStorage.setItem("cart", JSON.stringify(storedCart));
+    updateCartCount(); // Update cart count state
+  };
+
+  const removeFromCart = (itemId) => {
+    let storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    storedCart = storedCart.filter(item => item.id !== itemId); // Remove item by ID
+    localStorage.setItem("cart", JSON.stringify(storedCart));
+    updateCartCount(); // Update cart count state
+  };
 
   const toggleDropdown = (dropdown) => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
@@ -122,23 +140,22 @@ const Navbar = () => {
 
   const handleProfileClick = () => {
     if (isMobile) {
-      navigate("/Signup"); // Redirect to the signup page on mobile
+      navigate("/Signup");
     } else {
-      setActiveDropdown("user"); // Show the user dropdown on larger screens
+      setActiveDropdown("user");
     }
   };
 
   const handleNotificationClick = () => {
     if (isMobile) {
-      navigate("/NotificationList"); // Redirect to the notifications page on mobile
+      navigate("/NotificationList");
     } else {
-      toggleDropdown("NotificationList"); // Show the notifications dropdown on larger screens
+      toggleDropdown("NotificationList");
     }
   };
 
   return (
     <div className="navbar">
-      {/* Left Section - Menu & Logo */}
       <div className="navbar-left">
         <button
           className="hamburger-menu"
@@ -174,7 +191,6 @@ const Navbar = () => {
         <img src={logo} alt="Logo" className="logo-right" />
       </div>
 
-      {/* Center Section: Search */}
       <div className="navbar-search">
         <input
           type="text"
@@ -200,7 +216,6 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* Right Section - User, Bell, Cart */}
       <div className="navbar-right">
         <div
           className="user-info"

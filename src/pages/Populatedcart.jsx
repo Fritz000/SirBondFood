@@ -12,8 +12,9 @@ const PopulatedCart = () => {
     // Ensure price & quantity are properly formatted
     const cleanedCart = storedCart.map(item => ({
       ...item,
-      price: parseFloat(item.price) || 0, // Convert to number & avoid NaN
-      quantity: parseInt(item.quantity) || 1 // Ensure valid quantity
+      price: parseFloat(item.price) || 0, // Ensure price is valid
+      quantity: parseInt(item.quantity) || 1, // Ensure quantity is an integer
+      imageURL: item.imageURL || item.image, // Use imageURL or fallback to image
     }));
 
     setCartItems(cleanedCart);
@@ -21,8 +22,20 @@ const PopulatedCart = () => {
 
   // Save cart to localStorage whenever cart updates
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cartItems));
-  }, [cartItems]);
+    const cleanedCart = cartItems.map(item => ({
+      ...item,
+      price: parseFloat(item.price) || 0,
+      quantity: parseInt(item.quantity) || 1,
+      imageURL: item.imageURL || item.image, // Store the image URL
+    }));
+
+    const cartData = JSON.stringify(cleanedCart);
+    if (cartData.length > 5000000) {
+      alert("The cart data is too large to store!");
+    } else {
+      localStorage.setItem("cart", cartData); // Store in localStorage
+    }
+  }, [cartItems]); // Runs when cartItems change
 
   // Handle item selection
   const handleSelectItem = (id) => {
@@ -38,7 +51,7 @@ const PopulatedCart = () => {
     setSelectedItems(event.target.checked ? cartItems.map((item) => item.id) : []);
   };
 
-  // Update quantity
+  // Handle quantity change
   const handleQuantityChange = (id, increment) => {
     setCartItems((prevItems) =>
       prevItems.map((item) =>
@@ -60,9 +73,6 @@ const PopulatedCart = () => {
     return new Intl.NumberFormat("en-US").format(number);
   };
 
-  // Debugging: Check if price is available in items
-  console.log("Cart Items:", cartItems);
-
   // Calculate totals
   const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
   const shippingFee = cartItems.length > 0 ? 1500 : 0;
@@ -83,7 +93,11 @@ const PopulatedCart = () => {
             />
             <label>Select all items</label>
           </div>
-          <button className="delete-selected-button" onClick={handleDeleteSelected} disabled={selectedItems.length === 0}>
+          <button
+            className="delete-selected-button"
+            onClick={handleDeleteSelected}
+            disabled={selectedItems.length === 0}
+          >
             Delete selected items
           </button>
         </div>
@@ -99,7 +113,7 @@ const PopulatedCart = () => {
                 onChange={() => handleSelectItem(item.id)}
                 checked={selectedItems.includes(item.id)}
               />
-              <img src={item.image} alt={item.name} className="item-image10" />
+              <img src={item.imageURL} alt={item.name} className="item-image10" />
               <div className="item-details10">
                 <p className="item-name10">{item.name}</p>
                 <p className="item-location10">{item.location}</p>
