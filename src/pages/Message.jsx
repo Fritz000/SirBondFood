@@ -97,54 +97,59 @@ const Message = () => {
             </div>
 
             <div className="chat-footer">
-              <input 
-                type="text" 
-                placeholder="Message..." 
-                value={newMessage}
-                onChange={(e) => setNewMessage(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
-              />
-              <img 
-                src={messagesend} 
-                alt="Send" 
-                onClick={handleSendMessage}
-                style={{ cursor: 'pointer' }}
-              />
+  <div className="input-row">
+    <input 
+      type="text" 
+      placeholder="Message..." 
+      value={newMessage}
+      onChange={(e) => setNewMessage(e.target.value)}
+      onKeyDown={(e) => e.key === 'Enter' && handleSendMessage()}
+    />
+    <img 
+      src={messagesend} 
+      alt="Send" 
+      onClick={handleSendMessage}
+    />
+  </div>
 
-              <div className="upload-icons">
-                <button onClick={handleCameraClick} className="upload-icon">
-                  <img src="/path_to_camera_icon.png" alt="Camera" />
-                  <input 
-                    ref={cameraInputRef} 
-                    type="file" 
-                    accept="image/*" 
-                    style={{ display: 'none' }} 
-                    onChange={handleFileChange} 
-                  />
-                </button>
+  <div className="upload-icons">
+    {/* Camera */}
+    <button onClick={handleCameraClick} className="upload-icon">
+      <img src="/path_to_camera_icon.png" alt="Camera" />
+      <input 
+        ref={cameraInputRef} 
+        type="file" 
+        accept="image/*" 
+        style={{ display: 'none' }} 
+        onChange={handleFileChange} 
+      />
+    </button>
 
-                <button onClick={handleDocumentClick} className="upload-icon">
-                  <img src="/path_to_document_icon.png" alt="Document" />
-                  <input 
-                    ref={fileInputRef} 
-                    type="file" 
-                    style={{ display: 'none' }} 
-                    onChange={handleFileChange} 
-                  />
-                </button>
+    {/* Document */}
+    <button onClick={handleDocumentClick} className="upload-icon">
+      <img src="/path_to_document_icon.png" alt="Document" />
+      <input 
+        ref={fileInputRef} 
+        type="file" 
+        style={{ display: 'none' }} 
+        onChange={handleFileChange} 
+      />
+    </button>
 
-                <button onClick={handleGalleryClick} className="upload-icon">
-                  <img src="/path_to_gallery_icon.png" alt="Gallery" />
-                  <input 
-                    ref={galleryInputRef} 
-                    type="file" 
-                    accept="image/*" 
-                    style={{ display: 'none' }} 
-                    onChange={handleFileChange} 
-                  />
-                </button>
-              </div>
-            </div>
+    {/* Gallery */}
+    <button onClick={handleGalleryClick} className="upload-icon">
+      <img src="/path_to_gallery_icon.png" alt="Gallery" />
+      <input 
+        ref={galleryInputRef} 
+        type="file" 
+        accept="image/*" 
+        style={{ display: 'none' }} 
+        onChange={handleFileChange} 
+      />
+    </button>
+  </div>
+</div>
+
           </div>
         </div>
       )}
