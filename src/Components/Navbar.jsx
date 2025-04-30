@@ -19,7 +19,6 @@ const Navbar = () => {
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
 
-  // Update isMobile state on screen resize
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 500);
@@ -52,7 +51,6 @@ const Navbar = () => {
     };
   }, [activeDropdown]);
 
-  // Update cart count from localStorage
   useEffect(() => {
     const updateCartCount = () => {
       const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -69,32 +67,14 @@ const Navbar = () => {
     return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
-  // Cart update functions
-  const updateCartCount = () => {
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    setCartCount(storedCart.length);
-  };
-
-  const addToCart = (item) => {
-    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    storedCart.push(item);
-    localStorage.setItem("cart", JSON.stringify(storedCart));
-    updateCartCount(); // Update cart count state
-  };
-
-  const removeFromCart = (itemId) => {
-    let storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-    storedCart = storedCart.filter(item => item.id !== itemId); // Remove item by ID
-    localStorage.setItem("cart", JSON.stringify(storedCart));
-    updateCartCount(); // Update cart count state
-  };
-
   const toggleDropdown = (dropdown) => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
   };
 
   const closeDropdown = (e) => {
-    if (!e.target.closest(".dropdown, .hamburger-menu, .user-info, .icon-button")) {
+    if (
+      !e.target.closest(".dropdown, .hamburger-menu, .user-info, .icon-button")
+    ) {
       setActiveDropdown(null);
     }
   };
@@ -150,12 +130,13 @@ const Navbar = () => {
     if (isMobile) {
       navigate("/NotificationList");
     } else {
-      toggleDropdown("NotificationList");
+      toggleDropdown("notifications");
     }
   };
 
   return (
     <div className="navbar">
+      {/* Left Section - Menu & Logo */}
       <div className="navbar-left">
         <button
           className="hamburger-menu"
@@ -166,6 +147,7 @@ const Navbar = () => {
         >
           <HiMenuAlt2 size={24} />
         </button>
+
         <div
           className={`dropdown-menu ${activeDropdown === "menu" ? "show" : ""}`}
           onClick={(e) => e.stopPropagation()}
@@ -180,17 +162,43 @@ const Navbar = () => {
             <img src={logo} alt="Logo" className="logo-left" />
           </div>
           <ul>
-            <li className="menu-item"><Link to="/" onClick={() => setActiveDropdown(null)}><RiHome2Line size={15} /> Home</Link></li>
-            <li className="menu-item"><Link to="/Order" onClick={() => setActiveDropdown(null)}><Briefcase size={15} /> Orders</Link></li>
-            <li className="menu-item"><Link to="/helpcenter" onClick={() => setActiveDropdown(null)}><MdOutlineSupportAgent size={15} /> Support</Link></li>
-            <li className="menu-item"><Link to="/wallet" onClick={() => setActiveDropdown(null)}><Wallet size={15} /> Wallet</Link></li>
-            <li className="menu-item"><Link to="/settings" onClick={() => setActiveDropdown(null)}><Settings size={15} /> Settings</Link></li>
-            <li className="menu-item"><Link to="/logout" onClick={() => setActiveDropdown(null)}><RiLogoutCircleRLine size={15} /> Logout</Link></li>
+            <li className="menu-item">
+              <Link to="/" onClick={() => setActiveDropdown(null)}>
+                <RiHome2Line size={15} /> Home
+              </Link>
+            </li>
+            <li className="menu-item">
+              <Link to="/Order" onClick={() => setActiveDropdown(null)}>
+                <Briefcase size={15} /> Orders
+              </Link>
+            </li>
+            <li className="menu-item">
+              <Link to="/helpcenter" onClick={() => setActiveDropdown(null)}>
+                <MdOutlineSupportAgent size={15} /> Support
+              </Link>
+            </li>
+            <li className="menu-item">
+              <Link to="/wallet" onClick={() => setActiveDropdown(null)}>
+                <Wallet size={15} /> Wallet
+              </Link>
+            </li>
+            <li className="menu-item">
+              <Link to="/settings" onClick={() => setActiveDropdown(null)}>
+                <Settings size={15} /> Settings
+              </Link>
+            </li>
+            <li className="menu-item">
+              <Link to="/logout" onClick={() => setActiveDropdown(null)}>
+                <RiLogoutCircleRLine size={15} /> Logout
+              </Link>
+            </li>
           </ul>
         </div>
+
         <img src={logo} alt="Logo" className="logo-right" />
       </div>
 
+      {/* Center Section: Search */}
       <div className="navbar-search">
         <input
           type="text"
@@ -208,7 +216,11 @@ const Navbar = () => {
               {searchResults.map((result) => (
                 <li key={result.name} onClick={() => handleSearchClick(result.path)}>
                   <CiSearch className="search-icon" />
-                  <span dangerouslySetInnerHTML={{ __html: highlightMatch(result.name, searchQuery) }} />
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: highlightMatch(result.name, searchQuery),
+                    }}
+                  />
                 </li>
               ))}
             </ul>
@@ -216,11 +228,9 @@ const Navbar = () => {
         )}
       </div>
 
+      {/* Right Section - User, Bell, Cart */}
       <div className="navbar-right">
-        <div
-          className="user-info"
-          onClick={handleProfileClick}
-        >
+        <div className="user-info" onClick={handleProfileClick}>
           <UserRound className="user-info-icon" />
           <div className="user-text">
             <p className="user-welcome">Welcome,</p>
@@ -235,20 +245,29 @@ const Navbar = () => {
           onClick={(e) => e.stopPropagation()}
           ref={dropdownRef}
         >
-          <Link to="/Signin"><button>Sign in</button></Link>
-          <Link to="/Signup"><button className="register1">Register</button></Link>
+          <Link to="/Signin">
+            <button>Sign in</button>
+          </Link>
+          <Link to="/Signup">
+            <button className="register1">Register</button>
+          </Link>
           <ul className="registerway">
-            <li><Link to="/profile"><UserRound className="userround" /> My Account</Link></li>
-            <li><Link to="/orders"><Briefcase className="userbriefcase" /> My Orders</Link></li>
-            <li><Link to="/wallet"><Wallet className="userwallet" /> Wallet</Link></li>
-            <li><Link to="/settings"><Settings className="usersettings" /> Settings</Link></li>
+            <li>
+              <Link to="/profile"><UserRound className="userround" /> My Account</Link>
+            </li>
+            <li>
+              <Link to="/orders"><Briefcase className="userbriefcase" /> My Orders</Link>
+            </li>
+            <li>
+              <Link to="/wallet"><Wallet className="userwallet" /> Wallet</Link>
+            </li>
+            <li>
+              <Link to="/settings"><Settings className="usersettings" /> Settings</Link>
+            </li>
           </ul>
         </div>
 
-        <button
-          className="icon-button"
-          onClick={handleNotificationClick}
-        >
+        <button className="icon-button" onClick={handleNotificationClick}>
           <FaRegBell className="faregbell" />
         </button>
 

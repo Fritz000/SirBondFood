@@ -136,20 +136,12 @@
     transform: scale(1.05);
 }
 
-.category-image-icon-container100{
-    width: 280px; /* Adjust size as needed */
-    height: 190px;
-    background: #fff; /* White background */
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-}
 
 .trending-image100 {
-    width: 150px;
-    height: 150px;
+    width: 285px;
+    height: 190px;
+    margin-top: -15px;
+    margin-left: -2px;
     object-fit: contain;
 }
 
@@ -656,8 +648,16 @@ body.popup-open {
     border: #6cc51d;
   }
 
-@media (max-width: 430px){
+  .item-market-location {
+    font-size: 0.75rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 4px;
+  }
+  
+  
 
+@media (max-width: 430px){
     .container106 {
         width: 100%;
         margin: auto;
@@ -769,17 +769,17 @@ body.popup-open {
     .trending-grid100 {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-        margin-left: 5px;
+        gap: 35px;
     }
 
     .trending-card100 {
         background: #F3F3F3;
         padding: 5px;
         border-radius: 10px;
-        margin: 10px;
-        width: 180px;
-        height: 150px;
+        margin: 5px;
+        margin-left: -35px;
+        width: 190px;
+        height: 164px;
         text-align: center;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease-in-out;
@@ -790,7 +790,7 @@ body.popup-open {
     }
 
     .category-image-icon-container100 {
-        width: 170px; /* Adjust size as needed */
+        width: 151px; /* Adjust size as needed */
         height: 88px;
         background: #fff; /* White background */
         border-radius: 10px;
@@ -800,10 +800,10 @@ body.popup-open {
         padding: 10px;
     }
 
-
     .trending-image100 {
-        width: 50px;
-        height: 50px;
+        width: 180px;
+        height: 88px;
+        margin-top: 5px;
         align-items: center;
         object-fit: contain;
     }
@@ -814,36 +814,37 @@ body.popup-open {
     }
 
     .trending-name100 {
-        font-size: 13px;
+        font-size: 11px;
         font-weight: 600;
+        color: #333333;
     }
 
     .trending-price100 {
         color: #333;
-        font-size: 13px;
+        font-size: 9px;
         font-weight: 600;
-        margin-top: -15px;
+        margin-top: -10px;
     }
 
     .add-to-cart1 {
         background: #FFF;
         border: 2px solid #6cc51d; /* Set border width and color */
         color: #6cc51d;
-        font-size: 12px;
+        font-size: 8px;
         font-weight: 900;
         border-radius: 20%;
-        width: 55px;
-        height: 25px;
+        width: 45px;
+        height: 14px;
         position: absolute;
-        bottom: 8px;
+        bottom: 15px;
         right: 10px;
         cursor: pointer;
     }
 
     .slashed-price {
         text-decoration: line-through;
-        color: #A6A6A6;
-        font-size: 13px;
+        color: #333333;
+        font-size: 11px;
         font-weight: 500;
         margin-top: -15px; /* Adjust spacing */
       }
@@ -851,11 +852,10 @@ body.popup-open {
     .discounted-price {
         font-weight: bold;
         color: #6cc51d;
-        font-size: 13px;
+        font-size: 11px;
     }
 
     .popup-overlay {
-        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -867,7 +867,6 @@ body.popup-open {
         z-index: 1000;
         overflow: hidden;
     }
-
 
     .popup {
         background: white;
@@ -897,8 +896,6 @@ body.popup-open {
     body.popup-open {
         overflow: hidden;
     }
-
-
 
     .popup-close {
         position: absolute;
@@ -1019,15 +1016,13 @@ body.popup-open {
         height: 24px;
     }
 
-    
-
     .popup-title-content{
         margin-top: 20px;
         margin-left: 20px;
     }
 
-    .layout-container-image{
-        width: 330px;
+    .layout-container-image10{
+        width: 319px;
         height: 190px;
         align-items: center;
         background-color: #fff;
@@ -1035,7 +1030,6 @@ body.popup-open {
         margin-left: 15px;
         border-radius: 20px;
     }
-
 
     .popup-title {
         font-size: 24px;
@@ -1416,17 +1410,17 @@ body.popup-open {
     .trending-grid100 {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 5px;
-        margin-left: 1px;
+        gap: 30px;
     }
 
     .trending-card100 {
         background: #F3F3F3;
         padding: 5px;
         border-radius: 10px;
-        margin: 10px;
+        margin: 5px;
+        margin-left: -30px;
         width: 180px;
-        height: 150px;
+        height: 164px;
         text-align: center;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease-in-out;
@@ -1437,7 +1431,7 @@ body.popup-open {
     }
 
     .category-image-icon-container100 {
-        width: 170px; /* Adjust size as needed */
+        width: 151px; /* Adjust size as needed */
         height: 88px;
         background: #fff; /* White background */
         border-radius: 10px;
@@ -1447,10 +1441,10 @@ body.popup-open {
         padding: 10px;
     }
 
-
     .trending-image100 {
-        width: 50px;
-        height: 50px;
+        width: 180px;
+        height: 88px;
+        margin-top: 5px;
         align-items: center;
         object-fit: contain;
     }
@@ -1463,33 +1457,34 @@ body.popup-open {
     .trending-name100 {
         font-size: 11px;
         font-weight: 600;
+        color: #333333;
     }
 
     .trending-price100 {
         color: #333;
-        font-size: 11px;
+        font-size: 9px;
         font-weight: 600;
-        margin-top: -12px;
+        margin-top: -10px;
     }
 
     .add-to-cart1 {
         background: #FFF;
         border: 2px solid #6cc51d; /* Set border width and color */
         color: #6cc51d;
-        font-size: 12px;
+        font-size: 8px;
         font-weight: 900;
         border-radius: 20%;
-        width: 55px;
-        height: 25px;
+        width: 45px;
+        height: 14px;
         position: absolute;
-        bottom: 8px;
+        bottom: 15px;
         right: 10px;
         cursor: pointer;
     }
 
     .slashed-price {
         text-decoration: line-through;
-        color: #A6A6A6;
+        color: #333333;
         font-size: 11px;
         font-weight: 500;
         margin-top: -15px; /* Adjust spacing */
@@ -1502,7 +1497,6 @@ body.popup-open {
     }
 
     .popup-overlay {
-        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
@@ -1514,7 +1508,6 @@ body.popup-open {
         z-index: 1000;
         overflow: hidden;
     }
-
 
     .popup {
         background: white;
@@ -1544,8 +1537,6 @@ body.popup-open {
     body.popup-open {
         overflow: hidden;
     }
-
-
 
     .popup-close {
         position: absolute;
@@ -1666,15 +1657,13 @@ body.popup-open {
         height: 24px;
     }
 
-    
-
     .popup-title-content{
         margin-top: 20px;
         margin-left: 20px;
     }
 
-    .layout-container-image{
-        width: 330px;
+    .layout-container-image10{
+        width: 319px;
         height: 190px;
         align-items: center;
         background-color: #fff;
@@ -1682,7 +1671,6 @@ body.popup-open {
         margin-left: 15px;
         border-radius: 20px;
     }
-
 
     .popup-title {
         font-size: 24px;
@@ -2063,7 +2051,7 @@ body.popup-open {
     .trending-grid100 {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 30px;
     }
 
     .trending-card100 {
@@ -2071,8 +2059,9 @@ body.popup-open {
         padding: 5px;
         border-radius: 10px;
         margin: 10px;
-        width: 161px;
-        height: 141px;
+        width: 165px;
+        height: 154px;
+        margin-left: -30px;
         text-align: center;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease-in-out;
@@ -2093,10 +2082,11 @@ body.popup-open {
         padding: 10px;
     }
 
-
     .trending-image100 {
-        width: 50px;
-        height: 50px;
+        width: 155px;
+        height: 88px;
+        margin-top: 1px;
+        margin-left: 1px;
         align-items: center;
         object-fit: contain;
     }
@@ -2109,13 +2099,14 @@ body.popup-open {
     .trending-name100 {
         font-size: 9px;
         font-weight: 600;
+        color: #333333;
     }
 
     .trending-price100 {
         color: #333;
         font-size: 9px;
         font-weight: 600;
-        margin-top: -15px;
+        margin-top: -10px;
     }
 
     .add-to-cart1 {
@@ -2125,18 +2116,18 @@ body.popup-open {
         font-size: 8px;
         font-weight: 900;
         border-radius: 20%;
-        width: 40px;
-        height: 20px;
+        width: 45px;
+        height: 14px;
         position: absolute;
-        bottom: 1px;
+        bottom: 15px;
         right: 10px;
         cursor: pointer;
     }
 
     .slashed-price {
         text-decoration: line-through;
-        color: #A6A6A6;
-        font-size: 9px;
+        color: #333333;
+        font-size: 10px;
         font-weight: 500;
         margin-top: -15px; /* Adjust spacing */
       }
@@ -2144,7 +2135,7 @@ body.popup-open {
     .discounted-price {
         font-weight: bold;
         color: #6cc51d;
-        font-size: 9px;
+        font-size: 10px;
     }
 
     .popup-overlay {
@@ -2646,7 +2637,7 @@ body.popup-open {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 5px;
-        margin-left: 1px;
+        margin-left: -1px;
         margin-bottom: 20px;
     }
 
@@ -2702,7 +2693,8 @@ body.popup-open {
     .trending-grid100 {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 5px;
+        margin-left: -7px;
     }
 
     .trending-card100 {
@@ -2710,8 +2702,8 @@ body.popup-open {
         padding: 5px;
         border-radius: 10px;
         margin: 10px;
-        width: 161px;
-        height: 141px;
+        width: 165px;
+        height: 154px;
         text-align: center;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease-in-out;
@@ -2732,10 +2724,11 @@ body.popup-open {
         padding: 10px;
     }
 
-
     .trending-image100 {
-        width: 50px;
-        height: 50px;
+        width: 155px;
+        height: 88px;
+        margin-top: 1px;
+        margin-left: 1px;
         align-items: center;
         object-fit: contain;
     }
@@ -2748,13 +2741,14 @@ body.popup-open {
     .trending-name100 {
         font-size: 9px;
         font-weight: 600;
+        color: #333333;
     }
 
     .trending-price100 {
         color: #333;
         font-size: 9px;
         font-weight: 600;
-        margin-top: -15px;
+        margin-top: -10px;
     }
 
     .add-to-cart1 {
@@ -2764,18 +2758,18 @@ body.popup-open {
         font-size: 8px;
         font-weight: 900;
         border-radius: 20%;
-        width: 40px;
-        height: 20px;
+        width: 45px;
+        height: 14px;
         position: absolute;
-        bottom: 1px;
+        bottom: 15px;
         right: 10px;
         cursor: pointer;
     }
 
     .slashed-price {
         text-decoration: line-through;
-        color: #A6A6A6;
-        font-size: 9px;
+        color: #333333;
+        font-size: 10px;
         font-weight: 500;
         margin-top: -15px; /* Adjust spacing */
       }
@@ -2783,8 +2777,7 @@ body.popup-open {
     .discounted-price {
         font-weight: bold;
         color: #6cc51d;
-        font-size: 9px;
-        margin-top: 10px;
+        font-size: 10px;
     }
 
     .popup-overlay {
