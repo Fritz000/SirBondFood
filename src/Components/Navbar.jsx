@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 import { FaRegBell, FaShoppingCart, FaChevronDown } from "react-icons/fa";
 import { UserRound, Briefcase, Wallet, Settings } from "lucide-react";
 import { RiHome2Line, RiLogoutCircleRLine } from "react-icons/ri";
@@ -18,6 +19,8 @@ const Navbar = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 500);
   const dropdownRef = useRef(null);
   const navigate = useNavigate();
+  const user = useSelector((state) => state.auth.user); // Adjust path based on your Redux slice
+  const userName = user ? `${user.first_name} ${user.last_name}` : null;
 
   useEffect(() => {
     const handleResize = () => {
@@ -230,15 +233,24 @@ const Navbar = () => {
 
       {/* Right Section - User, Bell, Cart */}
       <div className="navbar-right">
-        <div className="user-info" onClick={handleProfileClick}>
-          <UserRound className="user-info-icon" />
-          <div className="user-text">
-            <p className="user-welcome">Welcome,</p>
-            <p className="sign-in">
+      <div className="user-info" onClick={handleProfileClick}>
+        <UserRound className="user-info-icon" />
+      <div className="user-text">
+        <p className="user-welcome">Welcome,</p>
+        <p className="sign-in">
+          {userName ? (
+            <>
+              {userName} <FaChevronDown size={15} />
+            </>
+          ) : (
+            <>
               Sign in / Register <FaChevronDown size={15} />
-            </p>
-          </div>
-        </div>
+            </>
+          )}
+        </p>
+      </div>
+    </div>
+
 
         <div
           className={`user-dropdown ${activeDropdown === "user" ? "show" : ""}`}

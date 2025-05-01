@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux"; // Use Redux to access user data
 import "../pages/Settings.css";
 import { ChevronLeft } from "lucide-react";
 import fluent from "../assets/fluent_person-16-regular.png";
@@ -14,28 +15,24 @@ import MaskGroup from "../assets/MaskGroup.png";
 
 const Settings = () => {
   const navigate = useNavigate(); // Define navigate
+  const { user } = useSelector((state) => state.auth); // Fetch user data from Redux store
   const [activeTab, setActiveTab] = useState("profile");
   const [showContent, setShowContent] = useState(false); // Mobile sidebar toggle
   const [profileImage, setProfileImage] = useState(MaskGroup);
-  const [currentPassword, setCurrentPassword] = useState("");
+  const [currentPassword, setCurrentPassword] = useState(""); // Store current password input
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [activeMenu, setActiveMenu] = useState(""); // Track active menu item
-  
+
   const handleMenuClick = (tabName) => {
     setActiveTab(tabName);
     if (window.innerWidth <= 390) setShowContent(true); // Only hide sidebar on mobile
   };
-  
-  
 
   useEffect(() => {
     console.log("Active tab changed:", activeTab);
   }, [activeTab]);
-  
-  
-
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -72,7 +69,7 @@ const Settings = () => {
               <ChevronLeft />
             </button>
         </div>
-          <h2>Settings</h2>
+        <h2>Settings</h2>
       </div>
     <div className="settings-container">
       
@@ -103,86 +100,110 @@ const Settings = () => {
 
       {/* Main Settings Section */}
       <main className={`settings-main ${showContent ? "active" : ""}`}>
-  {activeTab === "profile" || activeTab === "referral" ? (
-    <>
-      {/* Tabs */}
-      <div className="settings-tabs">
-        <button
-          className={`tab-button ${activeTab === "profile" ? "active" : ""}`}
-          onClick={() => setActiveTab("profile")}
-        >
-          Profile Information
-        </button>
-        <button
-          className={`tab-button ${activeTab === "referral" ? "active" : ""}`}
-          onClick={() => setActiveTab("referral")}
-        >
-          Referral Program Settings
-        </button>
-      </div>
-
-        <div className="settings-header">
-  <h2>{activeTab === "profile" ? "Profile Information" : "Referral Program Settings"}</h2>
-</div>
-
-
-        {/* Tab Content */}
-        <div className="settings-content">
-          {activeTab === "profile" && (
-            <div className="profile-section">
-              <div className="profile-header">
-                <div className="profile-avatar">
-                  <img src={profileImage} alt="Profile" />
-                </div>
-                <label className="upload-btn">
-                  Upload Photo
-                  <input type="file" accept="image/png, image/jpeg" onChange={handleImageUpload} />
-                </label>
+          {activeTab === "profile" || activeTab === "referral" ? (
+            <>
+              {/* Tabs */}
+              <div className="settings-tabs">
+                <button
+                  className={`tab-button ${activeTab === "profile" ? "active" : ""}`}
+                  onClick={() => setActiveTab("profile")}
+                >
+                  Profile Information
+                </button>
+                <button
+                  className={`tab-button ${activeTab === "referral" ? "active" : ""}`}
+                  onClick={() => setActiveTab("referral")}
+                >
+                  Referral Program Settings
+                </button>
               </div>
 
-              {/* Profile Form */}
-              <form className="profile-form">
-                <label>Full Name</label>
-                <input type="text" placeholder="Enter full name" />
+              <div className="settings-header">
+                <h2>{activeTab === "profile" ? "Profile Information" : "Referral Program Settings"}</h2>
+              </div>
 
-                <label>Email Address</label>
-                <input type="email" placeholder="Enter email" />
+              {/* Tab Content */}
+              <div className="settings-content">
+                {activeTab === "profile" && (
+                  <div className="profile-section">
+                    <div className="profile-header">
+                      <div className="profile-avatar">
+                        <img src={profileImage} alt="Profile" />
+                      </div>
+                      <label className="upload-btn">
+                        Upload Photo
+                        <input type="file" accept="image/png, image/jpeg" onChange={handleImageUpload} />
+                      </label>
+                    </div>
 
-                <label>Phone Number</label>
-                <input type="text" placeholder="+234 000 0000 0000" />
+                    {/* Profile Form */}
+                    <form className="profile-form">
+                      <label>Full Name</label>
+                      <input
+                        type="text"
+                        placeholder="Enter full name"
+                        defaultValue={`${user?.first_name} ${user?.last_name}`} // Auto-populate with user data
+                        readOnly
+                      />
 
-                <h3 className="bankdet">Bank Details</h3>
-                <label>Bank Name</label>
-                <input type="text" placeholder="Enter bank name" />
+                      <label>Email Address</label>
+                      <input
+                        type="email"
+                        placeholder="Enter email"
+                        defaultValue={user?.email} // Auto-populate with user email
+                        readOnly
+                      />
 
-                <label>Account Number</label>
-                <input type="text" placeholder="Enter account number" />
+                      <label>Phone Number</label>
+                      <input type="text" placeholder="+234 000 0000 0000" />
 
-                <label>Account Holder's Name</label>
-                <input type="text" placeholder="Enter account name" />
+                      <h3 className="bankdet">Bank Details</h3>
+                      <label>Bank Name</label>
+                      <input type="text" placeholder="Enter bank name" />
 
-                <h3 className="bankdet">Change Password</h3>
-                {error && <p className="error-message">{error}</p>}
-                <label>Current Password*</label>
-                <input type="password" placeholder="xxxxxxxxxxxxxxxxxxxx" value={currentPassword} onChange={(e) => setCurrentPassword(e.target.value)} />
+                      <label>Account Number</label>
+                      <input type="text" placeholder="Enter account number" />
 
-                <label>New Password*</label>
-                <input type="password" placeholder="Enter new password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
+                      <label>Account Holder's Name</label>
+                      <input type="text" placeholder="Enter account name" />
 
-                <label>Confirm New Password*</label>
-                <input type="password" placeholder="Confirm new password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-              </form>
+                      <h3 className="bankdet">Change Password</h3>
+                      {error && <p className="error-message">{error}</p>}
+                      <label>Current Password*</label>
+                      <input 
+                        type="password" 
+                        placeholder="Enter current password" 
+                        value={currentPassword} 
+                        onChange={(e) => setCurrentPassword(e.target.value)} 
+                      />
 
-              <button className="update-btn" onClick={handlePasswordUpdate}>Update Changes</button>
-            </div>
-          )}
+                      <label>New Password*</label>
+                      <input 
+                        type="password" 
+                        placeholder="Enter new password" 
+                        value={newPassword} 
+                        onChange={(e) => setNewPassword(e.target.value)} 
+                      />
 
-          {activeTab === "referral" && <div className="referral-section">Referral settings content...</div>}
-        </div>
-        </>
-        ) : null}
-      </main>
-    </div>
+                      <label>Confirm New Password*</label>
+                      <input 
+                        type="password" 
+                        placeholder="Confirm new password" 
+                        value={confirmPassword} 
+                        onChange={(e) => setConfirmPassword(e.target.value)} 
+                      />
+                    </form>
+
+                    <button className="update-btn" onClick={handlePasswordUpdate}>Update Changes</button>
+                  </div>
+                )}
+
+                {activeTab === "referral" && <div className="referral-section">Referral settings content...</div>}
+              </div>
+            </>
+          ) : null}
+        </main>
+      </div>
     </div>
   );
 };
