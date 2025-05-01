@@ -248,31 +248,42 @@ const Navbar = () => {
         </div>
 
         <div
-          className={`user-dropdown ${activeDropdown === "user" ? "show" : ""}`}
-          onClick={(e) => e.stopPropagation()}
-          ref={userRef}
-        >
-          <Link to="/Signin">
-            <button>Sign in</button>
-          </Link>
-          <Link to="/Signup">
-            <button className="register1">Register</button>
-          </Link>
-          <ul className="registerway">
-            <li>
-              <Link to="/Settings"><UserRound className="userround" /> My Account</Link>
-            </li>
-            <li>
-              <Link to="/orders"><Briefcase className="userbriefcase" /> My Orders</Link>
-            </li>
-            <li>
-              <Link to="/wallet"><Wallet className="userwallet" /> Wallet</Link>
-            </li>
-            <li>
-              <Link to="/settings"><Settings className="usersettings" /> Settings</Link>
-            </li>
-          </ul>
-        </div>
+  className={`user-dropdown ${activeDropdown === "user" ? "show" : ""}`}
+  onClick={(e) => e.stopPropagation()}
+  ref={userRef}
+>
+  {user ? (
+    <Link to="/logout">
+      <button>Logout</button>
+    </Link>
+  ) : (
+    <>
+      <Link to="/Signin">
+        <button>Sign in</button>
+      </Link>
+      <Link to="/Signup">
+        <button className="register1">Register</button>
+      </Link>
+    </>
+  )}
+  {user && (
+    <ul className="registerway">
+      <li>
+        <Link to="/Settings"><UserRound className="userround" /> My Account</Link>
+      </li>
+      <li>
+        <Link to="/orders"><Briefcase className="userbriefcase" /> My Orders</Link>
+      </li>
+      <li>
+        <Link to="/wallet"><Wallet className="userwallet" /> Wallet</Link>
+      </li>
+      <li>
+        <Link to="/settings"><Settings className="usersettings" /> Settings</Link>
+      </li>
+    </ul>
+  )}
+</div>
+
 
         <button className="icon-button" onClick={handleNotificationClick}>
           <FaRegBell className="faregbell" />
