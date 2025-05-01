@@ -21,6 +21,7 @@ const Password = () => {
   const [isPasswordValid, setIsPasswordValid] = useState(false);
   const [doPasswordsMatch, setDoPasswordsMatch] = useState(false);
   const [isFormComplete, setIsFormComplete] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);  // New state for tracking loading status
 
   const handleClose = () => navigate("/");
 
@@ -53,35 +54,36 @@ const Password = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     // Validate password
     if (!isPasswordValid) {
       setErrorMessage("Password must be 6-20 characters and include letters, numbers, and symbols.");
       return;
     }
-  
+
     // Validate if passwords match
     if (!doPasswordsMatch) {
       setErrorMessage("Passwords do not match.");
       return;
     }
-  
+
     setErrorMessage(""); // Clear previous errors
-  
+    setIsSubmitting(true); // Start loading
+
     const finalData = {
       ...userData,
       password: formData.password,
     };
-  
+
     try {
       const response = await axios.post("https://bondfood.vercel.app/api/register/", finalData);
-  
+
       if (response.status >= 200 && response.status < 300) {
         console.log("✅ Registration successful:", response.data);
-  
+
         // Store user details in local storage
         localStorage.setItem("user", JSON.stringify(response.data.user));
-  
+
         // Optional delay for navigation
         setTimeout(() => {
           // Redirect to OTP Verification page
@@ -93,18 +95,20 @@ const Password = () => {
       }
     } catch (error) {
       console.error("Network error:", error);
-  
+
       if (error.response) {
         // Check for duplicate email error
         const errorMessage = error.response.data.email
           ? "This email is already registered. Please login."
           : error.response.data.message || "An error occurred. Please try again.";
-  
+
         setErrorMessage(errorMessage);
       } else {
         // Network error (e.g., no internet, API server down)
         setErrorMessage("Network error. Please check your connection.");
       }
+    } finally {
+      setIsSubmitting(false); // Stop loading
     }
   };
 
@@ -171,9 +175,9 @@ const Password = () => {
             type="submit" 
             className="signup-btn1" 
             style={{ backgroundColor: isFormComplete ? '#008000' : '#DAF0C6' }}
-            disabled={!isFormComplete}
+            disabled={!isFormComplete || isSubmitting} // Disable if form is incomplete or if submitting
           >
-            Submit
+            {isSubmitting ? "Processing..." : "Submit"} {/* Show loading text */}
           </button>
         </form>
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import '../pages/Home.css';
-import { BsBag } from "react-icons/bs";
+import { useSelector } from 'react-redux';
 import emojionepotoffood from "../assets/emojionepotoffood.png";
 import fluentemojiflatpackage from "../assets/fluentemojiflatpackage.png";
 import notoshoppingbags from "../assets/notoshoppingbags.png";
@@ -22,22 +22,14 @@ const getRank = (referrals) => {
   if (referrals >= 100) return "Star Manager";
   return "Novice";
 };
-const Home = ({ user }) => {
+const Home = () => {
+  const user = useSelector((state) => state.auth.user);
   const location = useLocation();
-  const [referralCode, setReferralCode] = useState(user?.referralCode || "");
-  const referralCount = user?.referrals || 0; // Get the number of referrals
-  const rank = getRank(referralCount); // Determine rank
-
-  // Generate code if user has none
-  useEffect(() => {
-    if (!referralCode) {
-      const newCode = generateReferralCode();
-      setReferralCode(newCode);
-      // Here, you should also send this new code to the backend to save it for the user
-    }
-  }, [user]);
-
+  const referralCode = user?.referral_code || "UNAVAILABLE";
+  const referralCount = user?.referrals || 0;
+  const rank = getRank(referralCount);
   const referralLink = `https://sirbond.page.link/${referralCode}`;
+
 
   // Function to copy referral link to clipboard
   const copyToClipboard = () => {

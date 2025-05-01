@@ -100,14 +100,23 @@ const Signin = () => {
           <button
             type="submit"
             className="signup-btn1"
-            disabled={!isFormComplete}
+            disabled={!isFormComplete || loading}
             style={{
               backgroundColor: isFormComplete ? "#008000" : "#DAF0C6",
+              opacity: loading ? 0.6 : 1,
+              cursor: loading ? "not-allowed" : "pointer",
             }}
           >
-            Submit
+            {loading ? "Processing..." : "Submit"}
           </button>
+
         </form>
+
+        {error && (
+          <p className="error-message" style={{ color: "red", marginTop: "5px" }}>
+            {typeof error === "string" ? error : "Login failed. Please check your credentials."}
+          </p>
+        )}
 
         <Link to="/resetpassword">
           <p className="signin2">Forgot password?</p>

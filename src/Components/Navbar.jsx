@@ -20,7 +20,10 @@ const Navbar = () => {
 
   const navigate = useNavigate();
   const user = useSelector((state) => state.auth.user);
-  const userName = user ? `${user.first_name} ${user.last_name}` : null;
+  const userName = user ? 
+  `${user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)} ${user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)}` 
+  : null;
+
 
   // Separate refs for each dropdown
   const menuRef = useRef(null);
@@ -119,11 +122,16 @@ const Navbar = () => {
 
   const handleProfileClick = () => {
     if (isMobile) {
-      navigate("/Signup");
+      if (user) {
+        navigate("/settings"); // Redirect to settings if logged in
+      } else {
+        navigate("/Signup"); // Otherwise go to sign up
+      }
     } else {
-      setActiveDropdown("user");
+      setActiveDropdown("user"); // Desktop opens dropdown
     }
   };
+  
 
   const handleNotificationClick = () => {
     if (isMobile) {

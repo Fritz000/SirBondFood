@@ -142,7 +142,7 @@ const Settings = () => {
                       <input
                         type="text"
                         placeholder="Enter full name"
-                        defaultValue={`${user?.first_name} ${user?.last_name}`} // Auto-populate with user data
+                        defaultValue={`${user?.first_name.charAt(0).toUpperCase() + user?.first_name.slice(1)} ${user?.last_name.charAt(0).toUpperCase() + user?.last_name.slice(1)}`} // Capitalized full name
                         readOnly
                       />
 
