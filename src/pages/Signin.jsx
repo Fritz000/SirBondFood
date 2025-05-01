@@ -3,16 +3,27 @@ import { X, ShieldBan, Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "../pages/Signin.css";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser } from "../features/auth/authSlice";
 
 const Signin = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
+  const { loading, error, token } = useSelector((state) => state.auth); // Get token from Redux store
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
   const [isFormComplete, setIsFormComplete] = useState(false);
+
+  // Redirect the user if they're already logged in
+  useEffect(() => {
+    if (token) {
+      // If token exists, user is logged in, redirect them to home or dashboard
+      navigate("/");
+    }
+  }, [token, navigate]); // Rerun if token or navigate changes
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -27,8 +38,15 @@ const Signin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isFormComplete) {
-      // Simulate a successful login by navigating
-      navigate("/");
+      dispatch(loginUser(formData))
+        .unwrap()
+        .then((res) => {
+          console.log("✅ Login successful:", res); // This shows the API response (tokens, etc.)
+          navigate("/"); // Redirect to home/dashboard
+        })
+        .catch((err) => {
+          console.error("❌ Login failed:", err); // This shows the error if login fails
+        });
     }
   };
 

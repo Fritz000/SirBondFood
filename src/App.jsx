@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './app/store';  // import store and persistor
+import { Provider } from 'react-redux';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom';
 import RootLayout from './layout/RootLayout';
 import Home from './pages/Home';
@@ -199,7 +202,13 @@ const App = () => {
     )
   );
 
-  return <RouterProvider router={router} />;
+  return (
+    <Provider store={store}> {/* Provide the Redux store */}
+      <PersistGate loading={<p>Loading...</p>} persistor={persistor}> {/* Wait for rehydration */}
+        <RouterProvider router={router} /> {/* Your app's router */}
+      </PersistGate>
+    </Provider>
+  );
 };
 
 export default App;
