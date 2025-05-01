@@ -17,10 +17,15 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 500);
-  const dropdownRef = useRef(null);
+
   const navigate = useNavigate();
-  const user = useSelector((state) => state.auth.user); // Adjust path based on your Redux slice
+  const user = useSelector((state) => state.auth.user);
   const userName = user ? `${user.first_name} ${user.last_name}` : null;
+
+  // Separate refs for each dropdown
+  const menuRef = useRef(null);
+  const userRef = useRef(null);
+  const notificationsRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,26 +36,25 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Close dropdowns on outside click
   useEffect(() => {
-    const handleClickOutsideMenu = (e) => {
-      const isMobile = window.innerWidth < 500;
-
+    const handleClickOutside = (e) => {
       if (
-        isMobile &&
-        activeDropdown === "menu" &&
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target) &&
-        !e.target.closest(".hamburger-menu")
+        activeDropdown &&
+        !menuRef.current?.contains(e.target) &&
+        !userRef.current?.contains(e.target) &&
+        !notificationsRef.current?.contains(e.target) &&
+        !e.target.closest(".hamburger-menu") &&
+        !e.target.closest(".user-info") &&
+        !e.target.closest(".icon-button")
       ) {
-        setTimeout(() => {
-          setActiveDropdown(null);
-        }, 100);
+        setActiveDropdown(null);
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutsideMenu);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutsideMenu);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [activeDropdown]);
 
@@ -72,14 +76,6 @@ const Navbar = () => {
 
   const toggleDropdown = (dropdown) => {
     setActiveDropdown(activeDropdown === dropdown ? null : dropdown);
-  };
-
-  const closeDropdown = (e) => {
-    if (
-      !e.target.closest(".dropdown, .hamburger-menu, .user-info, .icon-button")
-    ) {
-      setActiveDropdown(null);
-    }
   };
 
   const handleSearchChange = (e) => {
@@ -139,7 +135,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      {/* Left Section - Menu & Logo */}
+      {/* Left Section */}
       <div className="navbar-left">
         <button
           className="hamburger-menu"
@@ -154,7 +150,7 @@ const Navbar = () => {
         <div
           className={`dropdown-menu ${activeDropdown === "menu" ? "show" : ""}`}
           onClick={(e) => e.stopPropagation()}
-          ref={dropdownRef}
+          ref={menuRef}
         >
           <h3 className="menu-title">
             <button className="hamburger-menu" onClick={() => toggleDropdown("menu")}>
@@ -231,31 +227,30 @@ const Navbar = () => {
         )}
       </div>
 
-      {/* Right Section - User, Bell, Cart */}
+      {/* Right Section */}
       <div className="navbar-right">
-      <div className="user-info" onClick={handleProfileClick}>
-        <UserRound className="user-info-icon" />
-      <div className="user-text">
-        <p className="user-welcome">Welcome,</p>
-        <p className="sign-in">
-          {userName ? (
-            <>
-              {userName} <FaChevronDown size={15} />
-            </>
-          ) : (
-            <>
-              Sign in / Register <FaChevronDown size={15} />
-            </>
-          )}
-        </p>
-      </div>
-    </div>
-
+        <div className="user-info" onClick={handleProfileClick}>
+          <UserRound className="user-info-icon" />
+          <div className="user-text">
+            <p className="user-welcome">Welcome,</p>
+            <p className="sign-in">
+              {userName ? (
+                <>
+                  {userName} <FaChevronDown size={15} />
+                </>
+              ) : (
+                <>
+                  Sign in / Register <FaChevronDown size={15} />
+                </>
+              )}
+            </p>
+          </div>
+        </div>
 
         <div
           className={`user-dropdown ${activeDropdown === "user" ? "show" : ""}`}
           onClick={(e) => e.stopPropagation()}
-          ref={dropdownRef}
+          ref={userRef}
         >
           <Link to="/Signin">
             <button>Sign in</button>
@@ -265,7 +260,7 @@ const Navbar = () => {
           </Link>
           <ul className="registerway">
             <li>
-              <Link to="/profile"><UserRound className="userround" /> My Account</Link>
+              <Link to="/Settings"><UserRound className="userround" /> My Account</Link>
             </li>
             <li>
               <Link to="/orders"><Briefcase className="userbriefcase" /> My Orders</Link>
@@ -286,7 +281,7 @@ const Navbar = () => {
         <div
           className={`notifications-dropdown ${activeDropdown === "notifications" ? "show" : ""}`}
           onClick={(e) => e.stopPropagation()}
-          ref={dropdownRef}
+          ref={notificationsRef}
         >
           <div className="dropdown-notch"></div>
           <ul>
