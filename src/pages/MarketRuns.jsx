@@ -264,6 +264,7 @@ const handleCategoryClick = (categoryName) => {
       ))}
     </div>
       <h2 className="section-title100">Trending</h2>
+      <p className="section-paragraph">Do not miss the current offer until the end of May.</p>
       <div className="trending-grid100">
       {items.map((item) => (
           <div key={item.id} className="trending-card100" onClick={() => setSelectedItem(item)}>
@@ -282,10 +283,7 @@ const handleCategoryClick = (categoryName) => {
                 <p className="item-market-location">{selectedMarket}</p>
               )}
             </div>
-
-
             
-
             <button 
               className="add-to-cart1" 
               onClick={(e) => { e.stopPropagation(); addToCart(item); }}

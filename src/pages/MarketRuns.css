@@ -109,20 +109,27 @@
     margin-top: 10px;
 }
 
-
 .section-title100 {
     font-size: 24px;
     font-weight: 600;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
     margin-top: 50px;
-    margin-left: 50px;
+    text-align: left;
+}
+
+.section-paragraph{
+    font-size: 18px;
+    color: #a3a2a2;
+    font-weight: 600;
+    margin-bottom: 50px;
+    text-align: left;
 }
 
 .trending-grid100 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
-    margin-left: 50px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-left: 5px;
     margin-bottom: 20px;
 }
 
@@ -713,12 +720,11 @@ body.popup-open {
         border-color: #A3E072;
     }
 
-
     .grid-container100 {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 5px;
-        margin-left: 1px;
+        margin-left: 15px;
         margin-bottom: 20px;
     }
 
@@ -761,14 +767,21 @@ body.popup-open {
     }
 
     .section-title100 {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 300;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
         margin-top: 20px;
+        margin-left: 10px;
         text-align: left;
-        margin-left: 0;
-        background-color: rgba(108, 197, 29, 0.1); /* 10% opacity */
-    
+    }
+
+    .section-paragraph{
+        font-size: 15px;
+        color: #a3a2a2;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-align: left;
+        margin-left: 10px;
     }
 
     .trending-grid100 {
@@ -1359,7 +1372,7 @@ body.popup-open {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 5px;
-        margin-left: 1px;
+        margin-left: 10px;
         margin-bottom: 20px;
     }
 
@@ -1402,14 +1415,21 @@ body.popup-open {
     }
 
     .section-title100 {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 300;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
         margin-top: 20px;
+        margin-left: 10px;
         text-align: left;
-        margin-left: 0;
-        background-color: rgba(108, 197, 29, 0.1); /* 10% opacity */
-    
+    }
+
+    .section-paragraph{
+        font-size: 15px;
+        color: #a3a2a2;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-align: left;
+        margin-left: 10px;
     }
 
     .trending-grid100 {
@@ -2000,7 +2020,7 @@ body.popup-open {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 5px;
-        margin-left: 1px;
+        margin-left: 5px;
         margin-bottom: 20px;
     }
 
@@ -2043,14 +2063,21 @@ body.popup-open {
     }
 
     .section-title100 {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 300;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
         margin-top: 20px;
+        margin-left: 10px;
         text-align: left;
-        margin-left: 0;
-        background-color: rgba(108, 197, 29, 0.1); /* 10% opacity */
-    
+    }
+
+    .section-paragraph{
+        font-size: 15px;
+        color: #a3a2a2;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-align: left;
+        margin-left: 10px;
     }
 
     .trending-grid100 {
@@ -2642,7 +2669,7 @@ body.popup-open {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 5px;
-        margin-left: -1px;
+        margin-left: 10px;
         margin-bottom: 20px;
     }
 
@@ -2650,7 +2677,7 @@ body.popup-open {
         background: #F3F3F3;
         padding: 5px;
         justify-content: start;
-        width: 120px;
+        width: 110px;
         border-radius: 10px;
         text-align: center;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -2685,14 +2712,21 @@ body.popup-open {
     }
 
     .section-title100 {
-        font-size: 18px;
+        font-size: 20px;
         font-weight: 300;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
         margin-top: 20px;
+        margin-left: 10px;
         text-align: left;
-        margin-left: 0;
-        background-color: rgba(108, 197, 29, 0.1); /* 10% opacity */
-    
+    }
+
+    .section-paragraph{
+        font-size: 15px;
+        color: #a3a2a2;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-align: left;
+        margin-left: 10px;
     }
 
     .trending-grid100 {

@@ -66,7 +66,7 @@ const Settings = () => {
       <div className="settings">
         <div className="settingicons">
             <button className="setting-back-btn1" onClick={() => navigate(-1)}>  
-              <ChevronLeft />
+              <ChevronLeft size={24} />
             </button>
         </div>
         <h2>Settings</h2>
@@ -76,16 +76,13 @@ const Settings = () => {
       {/* Sidebar */}
       <aside className={`settings-sidebar ${showContent ? "hidden" : ""}`}>
       <ul className="sidebar-menu">
-  {/* Only Account Management switches content */}
-  <li 
-  className={activeMenu === "account" ? "active" : ""} 
-  onClick={() => handleMenuClick("account", "profile")}
->
-  <img src={fluent} alt="Logo" /> Account Management
-</li>
-
-
-
+        {/* Only Account Management switches content */}
+            <li 
+            className={activeMenu === "account" ? "active" : ""} 
+            onClick={() => handleMenuClick("account", "profile")}
+          >
+            <img src={fluent} alt="Logo" /> Account Management
+          </li>
           <li><img src={solar} alt="Logo" />Wallet Settings</li>
           <li><img src={solar} alt="Logo" />Notification & Alerts</li>
           <li><img src={iconamoon} alt="Logo" />Food Preferences</li>
@@ -155,7 +152,7 @@ const Settings = () => {
                       />
 
                       <label>Phone Number</label>
-                      <input type="text" placeholder="+234 000 0000 0000" />
+                      <input type="text" placeholder="+234 000 0000 0000" defaultValue={user?.phone_number} readOnly />
 
                       <h3 className="bankdet">Bank Details</h3>
                       <label>Bank Name</label>
