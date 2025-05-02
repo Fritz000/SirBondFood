@@ -132,7 +132,7 @@ const Verify = ({ onClose }) => {
 
         window.dispatchEvent(new Event("storage"));
 
-        navigate("/", { replace: true });
+        navigate("/Signin", { replace: true });
       } else {
         setError(response.data.message || "The code is incorrect, please try again.");
         console.error("❌ OTP Verification Failed:", response.data.message);

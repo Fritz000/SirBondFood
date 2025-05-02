@@ -9,7 +9,7 @@
 .ads1 {
     background: #e0e0e0;
     text-align: center;
-    padding: 1rem;
+    padding: 30px;
     width: 1232px;
     height: 150px;
     text-align: center;
@@ -53,26 +53,28 @@
 
 .grid-container100 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
-    margin-left: 50px;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+    margin-left: 5px;
     margin-bottom: 20px;
 }
 
 .category-card100 {
     background: #F3F3F3;
     padding: 15px;
-    width: 300px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%; /* Allow to stretch within grid */
+    box-sizing: border-box;
 }
 
 .category-image-wrapper100 {
-    width: 150px;
+    width: 100%;
+    max-width: 150px;
     height: 150px;
     background: white;
     border-radius: 10px;
@@ -83,27 +85,30 @@
 }
 
 .image-icon-container100 {
-    width: 280px; /* Adjust size as needed */
-    height: 190px;
-    background: #fff; /* White background */
+    width: 120px;
+    height: 100px;
+    background: #fff;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 10px;
-  }
+    box-sizing: border-box;
+}
 
 .category-image100 {
-    width: 120px;
+    width: 100%;
+    max-width: 120px;
     height: 120px;
     object-fit: contain;
 }
 
 .category-name100 {
-    font-size: 24px;
+    font-size: 12px;
     font-weight: 600;
     margin-top: 10px;
 }
+
 
 .section-title100 {
     font-size: 24px;
