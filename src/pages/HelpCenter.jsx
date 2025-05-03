@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './HelpCenter.css';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux'; // <-- Same logic
 import { Lock, ChevronDown, Search, X } from 'lucide-react';
 import sendicon from "../assets/sendicon.svg";
 import messageicon from "../assets/messageicon.svg";
@@ -9,6 +10,12 @@ import questionmark from "../assets/questionmark.svg";
 const HelpCenter = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
+
+  // ✅ Get user from Redux (like in Settings.js)
+  const { user } = useSelector((state) => state.auth);
+  const firstName = user?.first_name
+    ? user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)
+    : 'there';
 
   const faqs = [
     "How do I receive my orders?",
@@ -23,10 +30,9 @@ const HelpCenter = () => {
     "How do I apply a coupon code?",
   ];
 
-  // Filter FAQs by search query
   const filteredFaqs = faqs
     .filter((faq) => faq.toLowerCase().includes(searchQuery.toLowerCase()))
-    .slice(0, 4); // Limit to 4 results
+    .slice(0, 4);
 
   return (
     <div className="help-container">
@@ -35,7 +41,7 @@ const HelpCenter = () => {
       </button>
 
       <div className="help-header">
-        <h2 className='hiname'>Hi Canary 👋</h2>
+        <h2 className='hiname'>Hi {firstName} 👋</h2>
         <p className='howcanwehelp'>How can we help?</p>
       </div>
 
@@ -79,28 +85,27 @@ const HelpCenter = () => {
             </div>
           </div>
           <div className="faq-list">
-  {filteredFaqs.length > 0 ? (
-    filteredFaqs.map((faq, index) => {
-      const regex = new RegExp(`(${searchQuery})`, 'gi');
-      const parts = faq.split(regex);
+            {filteredFaqs.length > 0 ? (
+              filteredFaqs.map((faq, index) => {
+                const regex = new RegExp(`(${searchQuery})`, 'gi');
+                const parts = faq.split(regex);
 
-      return (
-        <div className="faq-item" key={index}>
-            {parts.map((part, i) =>
-              part.toLowerCase() === searchQuery.toLowerCase() ? (
-                <strong key={i}>{part}</strong>
-              ) : (
-                <span key={i}>{part}</span>
-              )
+                return (
+                  <div className="faq-item" key={index}>
+                    {parts.map((part, i) =>
+                      part.toLowerCase() === searchQuery.toLowerCase() ? (
+                        <strong key={i}>{part}</strong>
+                      ) : (
+                        <span key={i}>{part}</span>
+                      )
+                    )}
+                  </div>
+                );
+              })
+            ) : (
+              <div className="faq-item">No results found</div>
             )}
           </div>
-            );
-          })
-          ) : (
-            <div className="faq-item">No results found</div>
-          )}
-        </div>
-
         </div>
       </div>
     </div>

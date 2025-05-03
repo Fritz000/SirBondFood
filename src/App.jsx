@@ -81,8 +81,7 @@ import BeddingLinen from './pages/BeddingLinen'
 import KitchenLinen from './pages/KitchenLinen'
 import HouseEssentials from './pages/HouseEssentials'
 import FlashSales from './pages/FlashSales'
-
-
+import Checkout from './pages/Checkout'
 
 const App = () => {
   // State for user authentication
@@ -198,6 +197,7 @@ const App = () => {
         <Route path="KitchenLinen" element={<KitchenLinen />} />
         <Route path="HouseEssentials" element={<HouseEssentials />} />
         <Route path="FlashSales" element={<FlashSales />} />
+        <Route path="Checkout" element={<Checkout />} />
       </Route>
     )
   );

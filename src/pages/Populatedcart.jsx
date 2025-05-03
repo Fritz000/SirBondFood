@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "../pages/PopulatedCart.css";
+import { useNavigate } from "react-router-dom";
 
 const PopulatedCart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
+  const navigate = useNavigate();  // Corrected this line
 
   // Load cart from localStorage on mount
   useEffect(() => {
@@ -151,7 +153,7 @@ const PopulatedCart = () => {
             <span>₦ {formatNumber(total)}</span>
           </div>
         </div>
-        <button className="make-payment-button" disabled={cartItems.length === 0}>
+        <button className="make-payment-button" disabled={cartItems.length === 0} onClick={() => navigate("/Checkout")}>
           Make Payment
         </button>
       </div>

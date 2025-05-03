@@ -81,7 +81,7 @@ const Signup = ({ onClose }) => {
             className="curved-input"
             type="text"
             name="surname"
-            placeholder="Surname"
+            placeholder="Last Name"
             value={formData.surname}
             onChange={handleChange}
             required
