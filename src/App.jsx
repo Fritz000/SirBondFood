@@ -6,7 +6,6 @@ import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } 
 import RootLayout from './layout/RootLayout';
 import Home from './pages/Home';
 import Products from './pages/Products';
-import Contacts from './pages/Contacts';
 import Signup from './pages/Signup';
 import Verify from './pages/Verify';
 import Password from './pages/Password';
@@ -125,7 +124,6 @@ const App = () => {
       <Route path="/" element={<RootLayout cartCount={cart.length} />}> {/* Pass cart count */}
         <Route index element={<Home user={user} />} />
         <Route path="Products" element={<Products />} />
-        <Route path="Contacts" element={<Contacts />} />
         <Route path="Signup" element={<Signup />} />
         <Route path="Verify" element={<Verify />} />
         <Route path="Password" element={<Password />} />
