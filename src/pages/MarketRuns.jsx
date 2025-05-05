@@ -19,6 +19,7 @@ import cream from "../assets/cream.svg";
 import tv from "../assets/Tv.svg";
 import dpp from "../assets/dpp.svg";
 import flashsale from "../assets/flashsale.svg";
+import location from "../assets/locationn.png"
 
 
 const categories = [
@@ -42,13 +43,13 @@ const trendingItems = [
 ];
 
 const locationMarkets = {
-  "Cross River State": ["Marian Market", "Watt Market"],
-  "Rivers State": ["Mile 1 Market", "Oil Mill Market"],
-  "Delta State": ["Ogbeogonogo Market"],
-  "Lagos State": ["Balogun Market", "Computer Village"],
-  "Akwa Ibom State": ["Itam Market"],
-  "Abia State": ["Ariaria Market"],
-  "Edo State": ["Oba Market"],
+  "Cross River": ["Marian Market", "Watt Market"],
+  "Rivers": ["Mile 1 Market", "Oil Mill Market"],
+  "Delta": ["Ogbeogonogo Market"],
+  "Lagos": ["Balogun Market", "Computer Village"],
+  "Akwa Ibom": ["Itam Market"],
+  "Abia ": ["Ariaria Market"],
+  "Edo": ["Oba Market"],
 };
 
 const comments = [
@@ -117,7 +118,7 @@ const MarketRuns = () => {
   }, [cart]);
 
   useEffect(() => {
-    if (selectedLocation === "Cross River State" || selectedLocation === "Rivers State") {
+    if (selectedLocation === "Cross River" || selectedLocation === "Rivers") {
       setAvailableMarkets(locationMarkets[selectedLocation]);
     } else {
       setAvailableMarkets([]); // Disable markets for other locations
@@ -203,7 +204,7 @@ const handleCategoryClick = (categoryName) => {
               <option 
                 key={location} 
                 value={location} 
-                disabled={!(location === "Cross River State" || location === "Rivers State")}
+                disabled={!(location === "Cross River" || location === "Rivers")}
               >
                 {location}
               </option>
@@ -266,8 +267,135 @@ const handleCategoryClick = (categoryName) => {
         </div>
       ))}
     </div>
+    <div className="full-width-section">
+    <h2 className="section-title1001">Exclusive Offers</h2>
+    </div>
+
+    <div className="trending-grid100">
+  {items.map((item) => {
+    // Calculate the discount percentage if originalPrice exists
+    const discountPercentage = item.originalPrice
+      ? ((item.originalPrice - item.price) / item.originalPrice) * 100
+      : 0;
+
+    return (
+      <div key={item.id} className="trending-card100" onClick={() => setSelectedItem(item)}>
+        <img src={item.image} alt={item.name} className="trending-image100" />
+        <div className="trending-info100">
+          <p className="trending-name100">{item.name}</p>
+          <p className="trending-price100 discounted-price">
+            {item.approved ? `₦ ${item.price.toLocaleString()}` : "Pending"}
+          </p>
+
+          {parseFloat(item.discountedPrice) > 0 && (
+            <>
+              <p className="trending-price100 slashed-price">
+                {item.approved ? `₦ ${(item.discountedPrice || item.price).toLocaleString()}` : "Pending"}
+              </p>
+              <div className="discount-badge">
+                -{(((item.price - item.discountedPrice) / item.price) * 100).toFixed(0)}%
+              </div>
+            </>
+          )}
+
+          {/* ✅ Always show selected location if present */}
+          {selectedLocation && (
+            <p className="item-market-location"> <img src={location} className="loctaionstyle" alt="" /> {selectedLocation}</p>
+          )}
+
+        </div>
+
+        
+        <button 
+          className="add-to-cart1" 
+          onClick={(e) => { e.stopPropagation(); addToCart(item); }}
+          disabled={!item.approved}
+        >
+          + Add
+        </button>
+      </div>
+    );
+  })}
+</div>
+
+
+      {selectedItem && (
+        <div className="popup-overlay" onClick={closePopup}>
+        <div className="popup" onClick={(e) => e.stopPropagation()}>
+          <div className="layout-container">
+          <div className="layout-container-image10">
+          <img src={selectedItem.image} alt={selectedItem.name} className="popup-image" />
+          </div>
+          <div className="popup-title-content">
+          <h3 className="popup-title">{selectedItem.name}</h3>
+          <p className="popup-price">₦ {selectedItem.price.toLocaleString()}</p>
+          </div>
+          <div className="chat-icon-button">
+          <button className="chat-icon"> <img src={Group} className="groupchat" alt="" /> Chat</button>
+          <div className="cart-item-button100">
+          <button className="decrement" onClick={() => decrementQuantity(selectedItem.id)}>-</button>
+          <span className="quantity">{getQuantity(selectedItem.id)}</span>
+          <button className="increment" onClick={() => addToCart(selectedItem)}>+</button>
+          </div>
+          </div>
+          </div>
+          {/* Button to open Description */}
+          <div className="layout-container1">
+            <div className="descriptionrole">
+              <p className="descriptionof">Description</p>
+              <div className="descriptionicons">
+                <button className="description-back-btn1" onClick={() => setPopupStep("description")}>
+                  <ChevronRight />
+                </button>
+              </div>
+            </div>
+            <hr className="description-line" />
+            
+          <p className="popup-description">{selectedItem.description}</p>
+          </div>
+          <div className="layout-container2">
+          <div className="descriptionrole1">
+            <p className="descriptionof1">4.8 (742)</p>
+          <div className="star-icon">  
+            <img src={Star} alt="" />
+            </div>
+          </div>
+          <hr className="description-line"/>
+          <section className="review">
+            <h4 className="review-text">Reviews</h4>
+            <button className="review-back-btn1" onClick={() => navigate(-1)}>  
+            <h4 className="seeall">See all</h4><ChevronRight />
+          </button>
+          </section>
+          <section className="review-image">
+            <img src={rev} alt="" />
+          </section>
+          <hr className="description-line"/>
+          {comments.map((review) => (
+        <div key={review.id} className="comment-card">
+          <div className="comment-header">
+            <div className="comment-avatar">K</div>
+            <div className="comment-details">
+              <p className="comment-name">{review.name} | <span className="comment-date">{review.date}</span></p>
+              {review.verified && <p className="verified">Verified Purchased</p>}
+            </div>
+          </div>
+          <div className="comment-rating">
+          <div className="star-icon10">  
+            <img src={Star} alt="" />
+            </div>
+          </div>
+          <p className="comment-text">{review.comment}</p>
+        </div>
+      ))}
+    </div>
+        </div>  
+        </div>
+    )}
+
+    <div className="full-width-section1">
       <h2 className="section-title100">Trending</h2>
-      <p className="section-paragraph">Do not miss the current offer until the end of May.</p>
+      </div>
       <div className="trending-grid100">
   {items.map((item) => {
     // Calculate the discount percentage if originalPrice exists
@@ -283,23 +411,25 @@ const handleCategoryClick = (categoryName) => {
           <p className="trending-price100 discounted-price">
             {item.approved ? `₦ ${item.price.toLocaleString()}` : "Pending"}
           </p>
+
           {parseFloat(item.discountedPrice) > 0 && (
-  <>
-
-            <p className="trending-price100 slashed-price">
-          {item.approved ? `₦ ${(item.discountedPrice || item.price).toLocaleString()}` : "Pending"}
-            </p>
-
-                <div className="discount-badge">
-                  -{(((item.price - item.discountedPrice) / item.price) * 100).toFixed(0)}%
-                </div>
-              </>
-            )}
-
-          {selectedMarket && (
-            <p className="item-market-location">{selectedMarket}</p>
+            <>
+              <p className="trending-price100 slashed-price">
+                {item.approved ? `₦ ${(item.discountedPrice || item.price).toLocaleString()}` : "Pending"}
+              </p>
+              <div className="discount-badge">
+                -{(((item.price - item.discountedPrice) / item.price) * 100).toFixed(0)}%
+              </div>
+            </>
           )}
+
+          {/* ✅ Always show selected location if present */}
+          {selectedLocation && (
+            <p className="item-market-location"> <img src={location} className="loctaionstyle" alt="" /> {selectedLocation}</p>
+          )}
+
         </div>
+
         
         <button 
           className="add-to-cart1" 
