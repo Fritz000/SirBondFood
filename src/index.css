@@ -14,6 +14,33 @@ a {
   color: inherit;
 }
 
+/* Add this CSS to your Home.css */
+.login-success-message {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  width: 200px;
+  font-size: 14px;
+}
+
+.loading-bar {
+  width: 100%;
+  height: 5px;
+  background-color: #fff;
+  animation: loading 5s linear forwards;
+}
+
+@keyframes loading {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
 
 .navbar {
   width: 100%;

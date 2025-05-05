@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
 import { ShoppingCart, User, Minus, Plus } from 'lucide-react';
 import './Checkout.css';
+import { useSelector } from "react-redux"; // Use Redux to access user data
 
 const Checkout = () => {
+  const [cartItems, setCartItems] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [paymentMethod, setPaymentMethod] = useState('cash');
+  const { user } = useSelector((state) => state.auth); // Fetch user data from Redux store
+  const firstName = user?.first_name
+    ? user.first_name.charAt(0).toUpperCase() + user.first_name.slice(1)
+    : '';
+
+  const lastName = user?.last_name
+    ? user.last_name.charAt(0).toUpperCase() + user.last_name.slice(1)
+    : '';
   
   const handleDateSelect = (date) => {
     setSelectedDate(date);
@@ -39,9 +49,15 @@ const Checkout = () => {
     }
   ];
 
-  const subtotal = items.reduce((total, item) => total + (item.price * item.quantity), 0);
-  const shipping = 25.00;
-  const total = subtotal + shipping;
+   // Calculate totals
+   const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+   const shippingFee = cartItems.length > 0 ? 1500 : 0;
+   const total = subtotal + shippingFee;
+
+  // Format number for price display
+  const formatNumber = (number) => {
+    return new Intl.NumberFormat("en-US").format(number);
+  };
 
   return (
     <div className="bg-[#f3f3f2] min-h-screen flex flex-col">
@@ -55,50 +71,27 @@ const Checkout = () => {
             <div className="form-row">
               <div className="form-group">
                 <label htmlFor="firstName">First Name</label>
-                <input type="text" id="firstName" className="form-control" placeholder="John" />
+                <input type="text" id="firstName" className="form-control" placeholder="" defaultValue={firstName} readOnly />
               </div>
               <div className="form-group">
                 <label htmlFor="lastName">Last Name</label>
-                <input type="text" id="lastName" className="form-control" placeholder="Doe" />
+                <input type="text" id="lastName" className="form-control" placeholder="" defaultValue={firstName} readOnly />
               </div>
             </div>
             
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
-              <input type="email" id="email" className="form-control" placeholder="example@mail.com" />
+              <input type="email" id="email" className="form-control" placeholder="" defaultValue={user?.email} readOnly />
             </div>
             
             <div className="form-group">
               <label htmlFor="phone">Phone Number</label>
-              <input type="tel" id="phone" className="form-control" placeholder="+1 234 567 890" />
+              <input type="tel" id="phone" className="form-control" placeholder="+234 000 0000 000" />
             </div>
             
             <div className="form-group">
               <label htmlFor="address">Delivery Address</label>
-              <input type="text" id="address" className="form-control" placeholder="123 Main Street" />
-            </div>
-            
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="city">City</label>
-                <input type="text" id="city" className="form-control" placeholder="New York" />
-              </div>
-              
-              <div className="form-group state-select">
-                <label htmlFor="state">State</label>
-                <div className="select-wrapper">
-                  <select id="state" className="form-select">
-                    <option value="ny">NY</option>
-                    <option value="ca">CA</option>
-                    <option value="tx">TX</option>
-                  </select>
-                </div>
-              </div>
-              
-              <div className="form-group">
-                <label htmlFor="zip">ZIP Code</label>
-                <input type="text" id="zip" className="form-control" placeholder="10001" />
-              </div>
+              <input type="text" id="address" className="form-control" placeholder="Street, City, State" />
             </div>
             
             <div className="form-group">
@@ -108,7 +101,7 @@ const Checkout = () => {
                   <button className="calendar-nav">
                     ←
                   </button>
-                  <span className="calendar-month">June 2023</span>
+                  <span className="calendar-month">May 2025</span>
                   <button className="calendar-nav">
                     →
                   </button>
@@ -129,7 +122,7 @@ const Checkout = () => {
                     <button 
                       key={i + 1} 
                       className={`calendar-day ${i + 1 === selectedDate.getDate() ? 'selected' : ''}`}
-                      onClick={() => handleDateSelect(new Date(2023, 5, i + 1))}
+                      onClick={() => handleDateSelect(new Date(2025, 5, i + 1))}
                     >
                       {i + 1}
                     </button>
@@ -187,48 +180,25 @@ const Checkout = () => {
         
         {/* Order Summary Section */}
         <div className="order-summary">
-          <h2 className="section-title">Order Summary</h2>
+          <h2 className="section-title">Summary</h2>
           
-          <div className="order-items">
-            {items.map((item) => (
-              <div key={item.id} className="order-item">
-                <div className="item-image">
-                  <img src={item.image} alt={item.name} />
-                </div>
-                <div className="item-details">
-                  <h3 className="item-name">{item.name}</h3>
-                  <div className="item-price">${item.price.toFixed(2)}</div>
-                </div>
-                <div className="item-quantity">
-                  <button className="quantity-btn">
-                    <Minus className="quantity-icon" />
-                  </button>
-                  <span className="quantity-value">{item.quantity.toString().padStart(2, '0')}</span>
-                  <button className="quantity-btn">
-                    <Plus className="quantity-icon" />
-                  </button>
-                </div>
-              </div>
-            ))}
+          <div className="summary-details">
+          <div className="summary-item">
+            <span>Subtotal</span>
+            <span>₦ {formatNumber(subtotal)}</span>
           </div>
-          
-          <div className="order-totals">
-            <div className="total-row">
-              <span className="total-label">Subtotal</span>
-              <span className="total-value">${subtotal.toFixed(2)}</span>
-            </div>
-            <div className="total-row">
-              <span className="total-label">Shipping</span>
-              <span className="total-value">${shipping.toFixed(2)}</span>
-            </div>
-            <div className="total-row grand-total">
-              <span className="total-label">Total (USD)</span>
-              <span className="total-value">${total.toFixed(2)}</span>
-            </div>
+          <div className="summary-item">
+            <span>Shipping fee</span>
+            <span>₦ {formatNumber(shippingFee)}</span>
           </div>
+          <div className="summary-total">
+            <span>Total</span>
+            <span>₦ {formatNumber(total)}</span>
+          </div>
+        </div>
           
           <button className="confirm-order-btn">
-            Confirm Order
+            Confirm Order 
             <span className="btn-arrow">→</span>
           </button>
         </div>

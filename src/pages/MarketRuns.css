@@ -17,6 +17,24 @@
     font-weight: 600;
 }
 
+.discount-badge {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    background-color: #f5b03e; /* Orange background */
+    color: white;
+    width: 70px; /* Set the width */
+    height: 38px; /* Set the height */
+    display: flex;
+    align-items: center; /* Vertically center the text */
+    justify-content: center; /* Horizontally center the text */
+    border-radius: 5px;
+    font-size: 15px; /* Adjust font size to fit the smaller badge */
+    font-weight: bold;
+    z-index: 10; /* Ensure it's above the image */
+  }
+  
+
 .dropdowns {
     display: flex;
     justify-content: space-between;

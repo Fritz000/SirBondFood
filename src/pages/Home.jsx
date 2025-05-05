@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import '../pages/Home.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLoginSuccess } from "../features/auth/authSlice"; // Import the setLoginSuccess action
 import emojionepotoffood from "../assets/emojionepotoffood.png";
 import fluentemojiflatpackage from "../assets/fluentemojiflatpackage.png";
 import notoshoppingbags from "../assets/notoshoppingbags.png";
 import twemojishoppingcart from "../assets/twemojishoppingcart.png";
 import notowrappedgift from "../assets/notowrappedgift.png";
+import { Copy } from "lucide-react";
 
-import { Gift, ShoppingCart, Package, Soup, Copy } from "lucide-react";
-import MarketRuns from './MarketRuns';
-
-// Function to generate a random referral code
 const generateReferralCode = () => {
   return Math.random().toString(36).substr(2, 8).toUpperCase(); // Example: 'A1B2C3D4'
 };
@@ -22,14 +20,29 @@ const getRank = (referrals) => {
   if (referrals >= 100) return "Star Manager";
   return "Novice";
 };
+
 const Home = () => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
+  const loginSuccess = useSelector((state) => state.auth.loginSuccess); // Access the loginSuccess state
   const location = useLocation();
   const referralCode = user?.referral_code || "UNAVAILABLE";
   const referralCount = user?.referrals || 0;
   const rank = getRank(referralCount);
   const referralLink = `https://sirbond.page.link/${referralCode}`;
 
+  const [showMessage, setShowMessage] = useState(false);
+
+  // Show the login success message for 5 seconds
+  useEffect(() => {
+    if (loginSuccess) {
+      setShowMessage(true); // Show the success message
+      setTimeout(() => {
+        setShowMessage(false); // Hide the message after 5 seconds
+        dispatch(setLoginSuccess(false)); // Reset the login success state in Redux
+      }, 5000); // 5 seconds
+    }
+  }, [loginSuccess, dispatch]);
 
   // Function to copy referral link to clipboard
   const copyToClipboard = () => {
@@ -41,7 +54,6 @@ const Home = () => {
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
     const refCode = queryParams.get('ref');
-
     if (refCode) {
       console.log(`Referred by: ${refCode}`);
       // Here you can store refCode in state or send to backend
@@ -50,6 +62,14 @@ const Home = () => {
 
   return (
     <div className="container">
+      {/* Display login success message */}
+      {showMessage && (
+        <div className="login-success-message">
+          <p>You've successfully logged in!</p>
+          <div className="loading-bar"></div>
+        </div>
+      )}
+
       <section className="ads">Mini Ads</section>
       <h1 className="heading">What services would you like to access</h1>
 
@@ -75,7 +95,6 @@ const Home = () => {
           <img src={fluentemojiflatpackage} alt="Diaspora orders" className="icon icon-pink" />
           <div className="overlay">COMING SOON</div>
         </div>
-
       </div>
 
       {/* Promo Section */}
@@ -91,8 +110,8 @@ const Home = () => {
         </Link>
       </div>
 
-       {/* Profile Section */}
-       <div className="profile-card">
+      {/* Profile Section */}
+      <div className="profile-card">
         <h2 className="pandn">Profile & Notifications</h2>
         <div className="profile-details">
           <div className="profile-left">

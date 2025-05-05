@@ -6,7 +6,6 @@ import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } 
 import RootLayout from './layout/RootLayout';
 import Home from './pages/Home';
 import Products from './pages/Products';
-import About from './pages/About';
 import Contacts from './pages/Contacts';
 import Signup from './pages/Signup';
 import Verify from './pages/Verify';
@@ -82,6 +81,11 @@ import KitchenLinen from './pages/KitchenLinen'
 import HouseEssentials from './pages/HouseEssentials'
 import FlashSales from './pages/FlashSales'
 import Checkout from './pages/Checkout'
+import Admin from './pages/Admin';
+import Dashboard from './pages/Dashboard';
+import StaffManagement from './pages/StaffManagement';
+import InactivityLogout from './pages/InactivityLogout';
+import SuccessMessage from './pages/SuccessMessage';
 
 const App = () => {
   // State for user authentication
@@ -121,7 +125,6 @@ const App = () => {
       <Route path="/" element={<RootLayout cartCount={cart.length} />}> {/* Pass cart count */}
         <Route index element={<Home user={user} />} />
         <Route path="Products" element={<Products />} />
-        <Route path="About" element={<About />} />
         <Route path="Contacts" element={<Contacts />} />
         <Route path="Signup" element={<Signup />} />
         <Route path="Verify" element={<Verify />} />
@@ -198,6 +201,12 @@ const App = () => {
         <Route path="HouseEssentials" element={<HouseEssentials />} />
         <Route path="FlashSales" element={<FlashSales />} />
         <Route path="Checkout" element={<Checkout />} />
+        <Route path="Admin" element={<Admin />} />
+        <Route path="Dashboard" element={<Dashboard />} />
+        <Route path="StaffManagement" element={<StaffManagement />} />
+        <Route path="InactivityLogout" element={<InactivityLogout />} /> {/* Inactivity Logout */}
+        <Route path="SuccessMessage" element={<SuccessMessage />} /> {/* Success Message */}
+        {/* Add more routes as needed */}
       </Route>
     )
   );

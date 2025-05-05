@@ -126,6 +126,8 @@ const MarketRuns = () => {
   }, [selectedLocation]);
 
   const addToCart = (item) => {
+    const finalPrice = item.discountedPrice || item.price;
+  
     setCart((prevCart) => {
       const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
       if (existingItem) {
@@ -135,10 +137,11 @@ const MarketRuns = () => {
             : cartItem
         );
       } else {
-        return [...prevCart, { ...item, quantity: 1 }];
+        return [...prevCart, { ...item, price: finalPrice, quantity: 1 }];
       }
     });
-  };  
+  };
+  
 
   const [popupStep, setPopupStep] = useState("product"); // 'product' or 'description'
 
@@ -266,33 +269,50 @@ const handleCategoryClick = (categoryName) => {
       <h2 className="section-title100">Trending</h2>
       <p className="section-paragraph">Do not miss the current offer until the end of May.</p>
       <div className="trending-grid100">
-      {items.map((item) => (
-          <div key={item.id} className="trending-card100" onClick={() => setSelectedItem(item)}>
-            <img src={item.image} alt={item.name} className="trending-image100" />
-            <div className="trending-info100">
-              <p className="trending-name100">{item.name}</p>
-              <p className="trending-price100 discounted-price">
-                {item.approved ? `₦ ${item.price.toLocaleString()}` : "Pending"}
-              </p>
-              {item.originalPrice > 0 && (
-                <p className="trending-price100 slashed-price">
-                  ₦ {item.originalPrice.toLocaleString()}
-                </p>
-              )}
-              {selectedMarket && (
-                <p className="item-market-location">{selectedMarket}</p>
-              )}
-            </div>
-            
-            <button 
-              className="add-to-cart1" 
-              onClick={(e) => { e.stopPropagation(); addToCart(item); }}
-              disabled={!item.approved}
-            >+ Add
-            </button>
-          </div>
-        ))}
+  {items.map((item) => {
+    // Calculate the discount percentage if originalPrice exists
+    const discountPercentage = item.originalPrice
+      ? ((item.originalPrice - item.price) / item.originalPrice) * 100
+      : 0;
+
+    return (
+      <div key={item.id} className="trending-card100" onClick={() => setSelectedItem(item)}>
+        <img src={item.image} alt={item.name} className="trending-image100" />
+        <div className="trending-info100">
+          <p className="trending-name100">{item.name}</p>
+          <p className="trending-price100 discounted-price">
+            {item.approved ? `₦ ${item.price.toLocaleString()}` : "Pending"}
+          </p>
+          {parseFloat(item.discountedPrice) > 0 && (
+  <>
+
+            <p className="trending-price100 slashed-price">
+          {item.approved ? `₦ ${(item.discountedPrice || item.price).toLocaleString()}` : "Pending"}
+            </p>
+
+                <div className="discount-badge">
+                  -{(((item.price - item.discountedPrice) / item.price) * 100).toFixed(0)}%
+                </div>
+              </>
+            )}
+
+          {selectedMarket && (
+            <p className="item-market-location">{selectedMarket}</p>
+          )}
+        </div>
+        
+        <button 
+          className="add-to-cart1" 
+          onClick={(e) => { e.stopPropagation(); addToCart(item); }}
+          disabled={!item.approved}
+        >
+          + Add
+        </button>
       </div>
+    );
+  })}
+</div>
+
 
       {selectedItem && (
         <div className="popup-overlay" onClick={closePopup}>
