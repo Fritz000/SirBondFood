@@ -222,3 +222,82 @@
 }
 
 }
+
+@media (max-width: 390px) {
+    .order-container {
+        margin-top: 10px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .orders {
+        text-align: center;
+        margin-left: 0;
+        max-width: 100%;
+        padding-left: 0; /* Changed from 20px */
+    }
+
+    .orders p {
+        font-size: 20px; /* Slightly reduced for small screens */
+        font-weight: 600;
+        color: #000;
+    }
+
+    .line2 {
+        margin: 15px 0;
+        width: 100%;
+        display: none;
+        color: #EEEEE4;
+    }
+
+    .order-header {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5px;
+        border-bottom: 2px solid #EEEEEE;
+        margin: 0 auto;
+        width: fit-content; /* Only as wide as its content */
+        max-width: 90%;     /* Prevent overflow */
+        padding-bottom: 10px;
+      }
+      
+    
+
+    .order-tab {
+        padding: 8px 10px; /* Tighter padding */
+        font-size: 12px;
+    }
+
+    .order-content {
+        text-align: center;
+        padding: 10px 20px; /* Reduced side padding */
+        background-color: #ffffff;
+        border-radius: 10px;
+        margin-top: 40px;
+        margin-left: 0;
+    }
+
+    .order-empty {
+        align-items: center;
+    }
+
+    .order-image {
+        width: 200px; /* Smaller image */
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .order-text {
+        font-size: 14px;
+        font-weight: 400; /* Was 20 (invalid) */
+        margin-bottom: 20px;
+    }
+
+    .order-button {
+        padding: 10px 20px;
+        width: 200px;
+        height: 45px;
+        font-size: 14px;
+    }
+}

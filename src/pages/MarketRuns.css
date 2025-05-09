@@ -12,9 +12,11 @@
     padding: 30px;
     width: 1232px;
     height: 150px;
-    text-align: center;
     font-size: 30px;
     font-weight: 600;
+
+    /* Centering */
+    margin: 0 auto;
 }
 
 .discount-badge {
@@ -42,18 +44,19 @@
 }
 
 .dropdowns .dropdown {
-    padding: 10px;
-    width: 48%;
-    height: 70px;
-    font-size: 24px;
-    font-weight: 600;
+    padding: 6px;             /* Reduce padding */
+    width: 50PX;               /* Slightly narrower */
+    height: 50px;             /* Reduce height */
+    font-size: 18px;          /* Smaller text */
+    font-weight: 500;         /* Slightly lighter */
     border: 1px solid #F3F3F3;
     background-color: #F3F3F3;
-    border-radius: 10px;
-    margin-bottom: 30px;
+    border-radius: 8px;       /* Slightly smaller radius */
+    margin-bottom: 20px;      /* Reduce spacing below */
     outline: none;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
+
 
 
 .dropdown.active {
@@ -166,6 +169,40 @@
     transform: scale(1.05);
 }
 
+.full-width-section {
+    width: 100vw; /* full viewport width */
+    background-color: #fff1c2; /* change to your desired background */
+    padding: 10px 0; /* vertical padding */
+    margin-left: calc(-50vw + 49%); /* center content but stretch background */
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.full-width-section1 {
+    width: 100vw; /* full viewport width */
+    background-color: rgba(108, 197, 29, 0.1); /* 10% opacity of #6cc51d */
+    padding: 10px 0; /* vertical padding */
+    margin-left: calc(-50vw + 49%); /* center content but stretch background */
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+  
+  .section-title1001 {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0 10px;
+    text-align: center;
+  }
+
+.section-title100 {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    margin-top: 20px;
+    margin-left: 10px;
+    text-align: center;
+}
+
 
 .trending-image100 {
     width: 285px;
@@ -272,7 +309,6 @@
 body.popup-open {
     overflow: hidden;
 }
-
 
 
 .popup-close {
@@ -426,6 +462,33 @@ body.popup-open {
     color: #000;
     text-align: left;
     margin-bottom: 10px;
+}
+
+.pricingcon{
+    display: flex;
+    gap: 10px;
+}
+
+.popup-original-price{
+    font-size: 20px;
+    font-weight: 500;
+    color: #BFBFBF;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.popup-discount-badge {
+    background-color: #FFF; /* White background */
+    color: #6cc51d;
+    border: 1px solid #6cc51d; /* Green border */
+    width: 65px; /* Set the width */
+    height: 20px; /* Set the height */
+    display: flex;
+    align-items: center; /* Vertically center the text */
+    justify-content: center; /* Horizontally center the text */
+    border-radius: 5px;
+    font-size: 15px; /* Adjust font size to fit the smaller badge */
+    font-weight: 500;
 }
 
 
@@ -2083,6 +2146,7 @@ body.popup-open {
         background-color: #fff1c2; /* change to your desired background */
         padding: 10px 0; /* vertical padding */
         margin-left: calc(-50vw + 50%); /* center content but stretch background */
+        margin-bottom: 10px;
     }
 
     .full-width-section1 {
@@ -2091,6 +2155,7 @@ body.popup-open {
         padding: 10px 0; /* vertical padding */
         margin-left: calc(-50vw + 50%); /* center content but stretch background */
         margin-top: 30px;
+        margin-bottom: 10px;
     }
       
       .section-title1001 {

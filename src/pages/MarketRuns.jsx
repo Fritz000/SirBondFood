@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./MarketRuns.css";
 import singleredapple from "../assets/single-red-apple-with-green-leaf-water-droplets.png";
@@ -19,8 +19,7 @@ import cream from "../assets/cream.svg";
 import tv from "../assets/Tv.svg";
 import dpp from "../assets/dpp.svg";
 import flashsale from "../assets/flashsale.svg";
-import location from "../assets/locationn.png"
-
+import location from "../assets/locationn.png";
 
 const categories = [
   { name: "Flash Sales", image: flashsale },
@@ -72,6 +71,7 @@ const comments = [
 ];
 
 const MarketRuns = () => {
+  const exclusiveOffersRef = useRef(null);
   const [cart, setCart] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState("");
   const [availableMarkets, setAvailableMarkets] = useState([]);
@@ -231,7 +231,8 @@ const handleCategoryClick = (categoryName) => {
           className={`category-card100 ${category.name === "Flash Sales" ? "flash-sales-special" : ""}`}
           onClick={() => {
             if (category.name === "Flash Sales") {
-              navigate("/FlashSales");
+              exclusiveOffersRef.current?.scrollIntoView({ behavior: "smooth" });
+              return;
             }
             if (category.name === "Food & Grocery") {
               navigate("/FoodAndGrocery");
@@ -267,9 +268,10 @@ const handleCategoryClick = (categoryName) => {
         </div>
       ))}
     </div>
-    <div className="full-width-section">
-    <h2 className="section-title1001">Exclusive Offers</h2>
-    </div>
+    <div className="full-width-section" ref={exclusiveOffersRef}>
+  <h2 className="section-title1001">Exclusive Offers</h2>
+</div>
+
 
     <div className="trending-grid100">
   {items.map((item) => {
@@ -286,6 +288,7 @@ const handleCategoryClick = (categoryName) => {
           <p className="trending-price100 discounted-price">
             {item.approved ? `₦ ${item.price.toLocaleString()}` : "Pending"}
           </p>
+
 
           {parseFloat(item.discountedPrice) > 0 && (
             <>
@@ -318,7 +321,6 @@ const handleCategoryClick = (categoryName) => {
   })}
 </div>
 
-
       {selectedItem && (
         <div className="popup-overlay" onClick={closePopup}>
         <div className="popup" onClick={(e) => e.stopPropagation()}>
@@ -328,13 +330,27 @@ const handleCategoryClick = (categoryName) => {
           </div>
           <div className="popup-title-content">
           <h3 className="popup-title">{selectedItem.name}</h3>
-          <p className="popup-price">₦ {selectedItem.price.toLocaleString()}</p>
+          <div className="pricingcon">
+          <p className="popup-price">
+              ₦ {selectedItem.price.toLocaleString()}
+            </p>
+            {selectedItem.originalPrice && selectedItem.originalPrice > selectedItem.price && (
+              <>
+                <p className="popup-original-price">
+                  <del>₦ {selectedItem.originalPrice.toLocaleString()}</del>
+                </p>
+                <div className="popup-discount-badge">
+                  -{(((selectedItem.originalPrice - selectedItem.price) / selectedItem.originalPrice) * 100).toFixed(0)}%
+                </div>
+              </>
+            )}
+          </div>
           </div>
           <div className="chat-icon-button">
           <button className="chat-icon"> <img src={Group} className="groupchat" alt="" /> Chat</button>
           <div className="cart-item-button100">
           <button className="decrement" onClick={() => decrementQuantity(selectedItem.id)}>-</button>
-          <span className="quantity">{getQuantity(selectedItem.id)}</span>
+          <span className="quantity">{getQuantity(selectedItem.id).toLocaleString()}</span>
           <button className="increment" onClick={() => addToCart(selectedItem)}>+</button>
           </div>
           </div>
@@ -392,7 +408,7 @@ const handleCategoryClick = (categoryName) => {
         </div>  
         </div>
     )}
-
+    
     <div className="full-width-section1">
       <h2 className="section-title100">Trending</h2>
       </div>
@@ -453,7 +469,21 @@ const handleCategoryClick = (categoryName) => {
           </div>
           <div className="popup-title-content">
           <h3 className="popup-title">{selectedItem.name}</h3>
-          <p className="popup-price">₦ {selectedItem.price.toLocaleString()}</p>
+          <div className="pricingcon">
+          <p className="popup-price">
+              ₦ {selectedItem.price.toLocaleString()}
+            </p>
+            {selectedItem.originalPrice && selectedItem.originalPrice > selectedItem.price && (
+              <>
+                <p className="popup-original-price">
+                  <del>₦ {selectedItem.originalPrice.toLocaleString()}</del>
+                </p>
+                <div className="popup-discount-badge">
+                  -{(((selectedItem.originalPrice - selectedItem.price) / selectedItem.originalPrice) * 100).toFixed(0)}%
+                </div>
+              </>
+            )}
+          </div>
           </div>
           <div className="chat-icon-button">
           <button className="chat-icon"> <img src={Group} className="groupchat" alt="" /> Chat</button>
