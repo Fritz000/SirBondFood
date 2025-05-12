@@ -449,7 +449,6 @@ const handleCategoryClick = (categoryName) => {
   })}
 </div>
 
-
       {selectedItem && (
         <div className="popup-overlay" onClick={closePopup}>
         <div className="popup" onClick={(e) => e.stopPropagation()}>
@@ -473,7 +472,11 @@ const handleCategoryClick = (categoryName) => {
                 </div>
               </>
             )}
+            
           </div>
+          </div>
+          <div className="star-icon100">  
+            <img src={Star} alt="" />
           </div>
           <div className="chat-icon-button">
           <button className="chat-icon"> <img src={Group} className="groupchat" alt="" /> Chat</button>
@@ -497,6 +500,10 @@ const handleCategoryClick = (categoryName) => {
             <hr className="description-line" />
             
           <p className="popup-description">{selectedItem.description}</p>
+          <div className="seeall10">
+            <h4 className="seeall1">See all</h4>
+            <ChevronRight />
+          </div>
           </div>
           <div className="layout-container2">
           <div className="descriptionrole1">
@@ -528,7 +535,7 @@ const handleCategoryClick = (categoryName) => {
           <div className="comment-rating">
           <div className="star-icon10">  
             <img src={Star} alt="" />
-            </div>
+          </div>
           </div>
           <p className="comment-text">{review.comment}</p>
         </div>

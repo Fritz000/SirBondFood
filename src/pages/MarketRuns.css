@@ -337,14 +337,14 @@ body.popup-open {
 
 .layout-container {
     width: 360px;
-    height: 350px;
+    height: 380px;
     border-radius: 20px;
     background-color: #F3F3F3;
 }
 
 .layout-container1 {
     width: 360px;
-    height: 135px;
+    height: 145px;
     border-radius: 20px;
     background-color: #F3F3F3;
 }
@@ -362,7 +362,7 @@ body.popup-open {
     align-items: center;
     gap: 15px;
     margin-left: 20px;
-    margin-top: 5px;
+    margin-top: 20px;
 }
 
 .chat-icon {
@@ -532,15 +532,15 @@ body.popup-open {
     height: 15px;
     margin-top: 10px;
     margin-right: 10px;
-        margin-left: auto;
-        background: none;
-        border: none;
-        color: #4A4A4A;
-        outline: none;
-        cursor: pointer;
-        padding: 5px;
-        display: flex;
-        align-items: center;
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #4A4A4A;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
 }
 
 .review{
@@ -559,14 +559,28 @@ body.popup-open {
     padding: 5px;
     display: flex;
     align-items: center;
-  }
+}
 
-  .seeall{
+.seeall{
     color: #4a4a4a;
     font-size: 12px;
     font-weight: 400;
-  }
-  
+}
+
+.seeall10 {
+  display: flex;
+  align-items: center;   /* Align items vertically center */
+  gap: 4px;              /* Space between text and icon */
+  padding: 20px;
+  cursor: pointer;       /* Optional: adds hover cursor */
+  transform: translateX(-2%);
+}
+
+.seeall1 {
+  color: #6cc51d;
+  font-size: 18px;
+  font-weight: 500;
+}
 
 .review-text{
     font-size: 17px;
@@ -704,12 +718,18 @@ body.popup-open {
     margin: 5px 0;
   }
 
-  .star-icon10{
+.star-icon10{
     width: 95px;
     height: 15px;
     margin-top: -10px;
     transform: translateX(52%);
     text-align: right;
+}
+
+.star-icon100{
+    width: 95px;
+    height: 15px;
+    transform: translate(20%, 30%);
 }
   
   .comment-text {
