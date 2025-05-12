@@ -327,11 +327,11 @@ body.popup-open {
 }
 
 
-.popup-image {
-    width: 220px;
-    height: 174.78px;
+  .popup-image {
+    width: 344px;
+    height: 190px;
+    margin-top: 10px;
     object-fit: contain;
-    margin-bottom: 15px;
     color: #F3F3F3;
 }
 
@@ -343,7 +343,6 @@ body.popup-open {
 }
 
 .layout-container1 {
-    margin-top: 10px;
     width: 360px;
     height: 135px;
     border-radius: 20px;
@@ -363,14 +362,13 @@ body.popup-open {
     align-items: center;
     gap: 15px;
     margin-left: 20px;
-    margin-top: 30px;
+    margin-top: 5px;
 }
 
-
 .chat-icon {
-    background: #F3F3F3;
+    background: #f3f3f3;
     color: #6cc51d;
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 500;
     border: 2px solid #6cc51d;
     padding: 10px 15px;
@@ -389,10 +387,11 @@ body.popup-open {
     height: 20px;
 }
 
-
 .cart-item-button100 {
     display: flex;
-    background-color: rgba(108, 197, 29, 0.7);
+    background-color: #f4f5f9;
+    color: #000;
+    border: 2px solid #000;
     border-radius: 8px;
     padding: 10px 20px;
     width: 150px;
@@ -401,15 +400,16 @@ body.popup-open {
     justify-content: space-between;
 }
 
+
 .cart-item-button100 button {
-    background: rgba(255, 255, 255, 0.3);
+    background: #407ec7;
     border: none;
     border-radius: 50%;
     width: 25px;
     height: 25px;
     font-size: 15px;
     font-weight: bold;
-    color: white;
+    color: #000;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -419,7 +419,7 @@ body.popup-open {
 .cart-item-button100 .quantity {
     font-size: 20px;
     font-weight: 700;
-    color: white;
+    color: #000;
     text-align: center;
     flex-grow: 1;
 }
@@ -435,16 +435,6 @@ body.popup-open {
 .popup-title-content{
     margin-top: 20px;
     margin-left: 20px;
-}
-
-.layout-container-image10{
-    width: 330px;
-    height: 190px;
-    align-items: center;
-    background-color: #fff;
-    transform: translateY(5%);
-    margin-left: 15px;
-    border-radius: 20px;
 }
 
 

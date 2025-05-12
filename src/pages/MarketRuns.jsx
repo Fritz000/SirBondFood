@@ -269,8 +269,8 @@ const handleCategoryClick = (categoryName) => {
       ))}
     </div>
     <div className="full-width-section" ref={exclusiveOffersRef}>
-  <h2 className="section-title1001">Exclusive Offers</h2>
-</div>
+        <h2 className="section-title1001">Exclusive Offers</h2>
+    </div>
 
 
     <div className="trending-grid100">
@@ -279,7 +279,6 @@ const handleCategoryClick = (categoryName) => {
     const discountPercentage = item.originalPrice
       ? ((item.originalPrice - item.price) / item.originalPrice) * 100
       : 0;
-
     return (
       <div key={item.id} className="trending-card100" onClick={() => setSelectedItem(item)}>
         <img src={item.image} alt={item.name} className="trending-image100" />
@@ -288,8 +287,6 @@ const handleCategoryClick = (categoryName) => {
           <p className="trending-price100 discounted-price">
             {item.approved ? `₦ ${item.price.toLocaleString()}` : "Pending"}
           </p>
-
-
           {parseFloat(item.discountedPrice) > 0 && (
             <>
               <p className="trending-price100 slashed-price">
@@ -300,22 +297,16 @@ const handleCategoryClick = (categoryName) => {
               </div>
             </>
           )}
-
           {/* ✅ Always show selected location if present */}
           {selectedLocation && (
             <p className="item-market-location"> <img src={location} className="loctaionstyle" alt="" /> {selectedLocation}</p>
           )}
-
         </div>
-
-        
         <button 
           className="add-to-cart1" 
           onClick={(e) => { e.stopPropagation(); addToCart(item); }}
           disabled={!item.approved}
-        >
-          + Add
-        </button>
+        >+ Add </button>
       </div>
     );
   })}
@@ -325,9 +316,7 @@ const handleCategoryClick = (categoryName) => {
         <div className="popup-overlay" onClick={closePopup}>
         <div className="popup" onClick={(e) => e.stopPropagation()}>
           <div className="layout-container">
-          <div className="layout-container-image10">
           <img src={selectedItem.image} alt={selectedItem.name} className="popup-image" />
-          </div>
           <div className="popup-title-content">
           <h3 className="popup-title">{selectedItem.name}</h3>
           <div className="pricingcon">
@@ -368,6 +357,7 @@ const handleCategoryClick = (categoryName) => {
             <hr className="description-line" />
             
           <p className="popup-description">{selectedItem.description}</p>
+          <h4 className="seeall">See all</h4><ChevronRight />
           </div>
           <div className="layout-container2">
           <div className="descriptionrole1">
