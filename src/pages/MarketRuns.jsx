@@ -104,7 +104,16 @@ const MarketRuns = () => {
     window.addEventListener("storage", handleStorageChange);
     return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
-  
+
+  const getSimilarProducts = (currentItem) => {
+  if (!currentItem) return [];
+
+  return items.filter(
+    (item) =>
+      item.id !== currentItem.id &&
+      item.name.toLowerCase().includes(currentItem.name.split(" ")[0].toLowerCase())
+  ).slice(0, 4); // Limit to 4 suggestions
+};
 
   useEffect(() => {
     // Load cart from localStorage
@@ -541,8 +550,31 @@ const handleCategoryClick = (categoryName) => {
         </div>
       ))}
     </div>
-        </div>  
+    <div className="similar-products">
+      <div className="full-width-section101">
+  <h4 className="similar-title">Similar Products</h4>
+  </div>
+  <div className="similar-items">
+    {/* Example product cards – replace with your real data */}
+    <div className="similar-card">
+      <img src="product1.jpg" alt="Product 1" className="similar-img" />
+      <p className="similar-name">Product 1</p>
+    </div>
+    <div className="similar-card">
+      <img src="product2.jpg" alt="Product 2" className="similar-img" />
+      <p className="similar-name">Product 2</p>
+    </div>
+    <div className="similar-card">
+      <img src="product3.jpg" alt="Product 3" className="similar-img" />
+      <p className="similar-name">Product 3</p>
+    </div>
+  </div>
+</div>
+
+    
         </div>
+        </div>
+        
     )}
   </div>
   );
