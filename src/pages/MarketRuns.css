@@ -758,12 +758,6 @@ body.popup-open {
     margin-top: 4px;
 }
 
-.similar-products {
-  margin-top: 2rem;
-  padding: 1rem 0;
-  transform: translateY(50%);
-}
-
 .full-width-section101 {
   width: 100%;
   background-color: #6cc51d;
@@ -775,6 +769,12 @@ body.popup-open {
   box-sizing: border-box;
 }
 
+.similar-products {
+  margin-top: 2rem;
+  padding: 1rem 0;
+  transform: translateY(15%);
+}
+
 .similar-title {
     font-size: 20px;
     font-weight: 500;
@@ -783,28 +783,102 @@ body.popup-open {
     color: #fff;
 }
 
-.similar-items {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.similar-card {
-  width: 120px;
+.section-header {
+  background-color: #6CC51D;
+  border-radius: 8px;
+  padding: 10px;
   text-align: center;
 }
 
-.similar-img {
-  width: 100%;
+.product-card {
+  display: flex;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  padding: 12px;
+  margin-top: 15px;
+  width: 360px;
+  height: 120px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.product-image {
+  width: 80px;
+  height: 80px;
   border-radius: 8px;
+  object-fit: cover;
 }
 
-.similar-name {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
+.product-info {
+  flex: 1;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
-  
+.product-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.product-subtitle {
+  font-size: 14px;
+  color: #868889;
+  text-align: left;
+  margin-bottom: 18px;
+  white-space: nowrap;      /* ✅ Prevents wrapping */
+  overflow: hidden;         /* ✅ Hides overflowed text */
+  text-overflow: ellipsis;  /* ✅ Adds "..." when text overflows */
+}
+
+.price-section {
+  display: flex;
+  flex-direction: column; /* ✅ stack prices vertically */
+  text-align: left;
+}
+
+.current-price {
+  font-weight: 500;
+  color: #000;
+  font-size: 15px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #bbb;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.add-button150 {
+  background: none;
+  border: 2px solid #6CC51D;
+  color: #6CC51D;
+  font-size: 30px;
+  font-weight: bold;
+  border-radius: 6px;
+  width: 60px;
+  height: 36px;
+  line-height: 28px;
+  cursor: pointer;
+  transform: translateY(185%);
+}
+
+.add-button151 {
+  background: none;
+  border: 2px solid #6CC51D;
+  color: #6CC51D;
+  font-size: 30px;
+  font-weight: bold;
+  border-radius: 6px;
+  width: 60px;
+  height: 36px;
+  line-height: 28px;
+  cursor: pointer;
+  transform: translateY(185%);
+}
   
 
 @media (max-width: 430px){

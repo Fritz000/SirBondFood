@@ -151,15 +151,25 @@ const MarketRuns = () => {
       }
     });
   };
-  
 
-  const [popupStep, setPopupStep] = useState("product"); // 'product' or 'description'
+const [popupStep, setPopupStep] = useState("product"); // 'product' or 'description'
 
 // Open product popup
 const openPopup = (item) => {
   setSelectedItem(item);
   setPopupStep("product");
 };
+
+const openDescriptionPopup = (item) => {
+  console.log("openDescriptionPopup called", item);
+  setSelectedItem(item);
+  setPopupStep("description");
+
+  setTimeout(() => {
+    document.querySelector(".popup")?.scrollTo({ top: 0, behavior: "smooth" });
+  }, 100);
+};
+
 
 // Close all popups
 const closePopup = () => {
@@ -280,16 +290,14 @@ const handleCategoryClick = (categoryName) => {
     <div className="full-width-section" ref={exclusiveOffersRef}>
         <h2 className="section-title1001">Exclusive Offers</h2>
     </div>
-
-
     <div className="trending-grid100">
-  {items.map((item) => {
-    // Calculate the discount percentage if originalPrice exists
-    const discountPercentage = item.originalPrice
-      ? ((item.originalPrice - item.price) / item.originalPrice) * 100
-      : 0;
-    return (
-      <div key={item.id} className="trending-card100" onClick={() => setSelectedItem(item)}>
+      {items.map((item) => {
+        // Calculate the discount percentage if originalPrice exists
+        const discountPercentage = item.originalPrice
+          ? ((item.originalPrice - item.price) / item.originalPrice) * 100
+          : 0;
+        return (
+      <div key={item.id} className="trending-card100" onClick={() => openPopup(item)}>
         <img src={item.image} alt={item.name} className="trending-image100" />
         <div className="trending-info100">
           <p className="trending-name100">{item.name}</p>
@@ -305,55 +313,59 @@ const handleCategoryClick = (categoryName) => {
                 -{(((item.price - item.discountedPrice) / item.price) * 100).toFixed(0)}%
               </div>
             </>
-          )}
-          {/* ✅ Always show selected location if present */}
-          {selectedLocation && (
-            <p className="item-market-location"> <img src={location} className="loctaionstyle" alt="" /> {selectedLocation}</p>
-          )}
-        </div>
-        <button 
-          className="add-to-cart1" 
-          onClick={(e) => { e.stopPropagation(); addToCart(item); }}
-          disabled={!item.approved}
-        >+ Add </button>
+                )}
+                {/* ✅ Always show selected location if present */}
+                {selectedLocation && (
+                  <p className="item-market-location"> <img src={location} className="loctaionstyle" alt="" /> {selectedLocation}</p>
+                )}
+              </div>
+              <button 
+                className="add-to-cart1" 
+                onClick={(e) => { e.stopPropagation(); addToCart(item); }}
+                disabled={!item.approved}
+              >+ Add </button>
+            </div>
+          );
+        })}
       </div>
-    );
-  })}
-</div>
 
       {selectedItem && (
-        <div className="popup-overlay" onClick={closePopup}>
-        <div className="popup" onClick={(e) => e.stopPropagation()}>
+  <div className="popup-overlay" onClick={closePopup}>
+    <div className="popup" onClick={(e) => e.stopPropagation()}>
+      {popupStep === "product" ? (
+        <>
+          {/* Product Content */}
           <div className="layout-container">
-          <img src={selectedItem.image} alt={selectedItem.name} className="popup-image" />
-          <div className="popup-title-content">
-          <h3 className="popup-title">{selectedItem.name}</h3>
-          <div className="pricingcon">
-          <p className="popup-price">
-              ₦ {selectedItem.price.toLocaleString()}
-            </p>
-            {selectedItem.originalPrice && selectedItem.originalPrice > selectedItem.price && (
-              <>
-                <p className="popup-original-price">
-                  <del>₦ {selectedItem.originalPrice.toLocaleString()}</del>
-                </p>
-                <div className="popup-discount-badge">
-                  -{(((selectedItem.originalPrice - selectedItem.price) / selectedItem.originalPrice) * 100).toFixed(0)}%
-                </div>
-              </>
-            )}
+            <img src={selectedItem.image} alt={selectedItem.name} className="popup-image" />
+            <div className="popup-title-content">
+              <h3 className="popup-title">{selectedItem.name}</h3>
+              <div className="pricingcon">
+                <p className="popup-price">₦ {selectedItem.price.toLocaleString()}</p>
+                {selectedItem.originalPrice && selectedItem.originalPrice > selectedItem.price && (
+                  <>
+                    <p className="popup-original-price">
+                      <del>₦ {selectedItem.originalPrice.toLocaleString()}</del>
+                    </p>
+                    <div className="popup-discount-badge">
+                      -{(((selectedItem.originalPrice - selectedItem.price) / selectedItem.originalPrice) * 100).toFixed(0)}%
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+            <div className="chat-icon-button">
+              <button className="chat-icon">
+                <img src={Group} className="groupchat" alt="" /> Chat
+              </button>
+              <div className="cart-item-button100">
+                <button className="decrement" onClick={() => decrementQuantity(selectedItem.id)}>-</button>
+                <span className="quantity">{getQuantity(selectedItem.id).toLocaleString()}</span>
+                <button className="increment" onClick={() => addToCart(selectedItem)}>+</button>
+              </div>
+            </div>
           </div>
-          </div>
-          <div className="chat-icon-button">
-          <button className="chat-icon"> <img src={Group} className="groupchat" alt="" /> Chat</button>
-          <div className="cart-item-button100">
-          <button className="decrement" onClick={() => decrementQuantity(selectedItem.id)}>-</button>
-          <span className="quantity">{getQuantity(selectedItem.id).toLocaleString()}</span>
-          <button className="increment" onClick={() => addToCart(selectedItem)}>+</button>
-          </div>
-          </div>
-          </div>
-          {/* Button to open Description */}
+
+          {/* Description Snippet */}
           <div className="layout-container1">
             <div className="descriptionrole">
               <p className="descriptionof">Description</p>
@@ -364,18 +376,48 @@ const handleCategoryClick = (categoryName) => {
               </div>
             </div>
             <hr className="description-line" />
-            
-          <p className="popup-description">{selectedItem.description}</p>
-          <h4 className="seeall">See all</h4><ChevronRight />
+            <p className="popup-description">{selectedItem.description}</p>
+            <button className="seeall-btn" onClick={() => alert("Clicked See all")}>
+  <h4 className="seeall">See all</h4>
+  <ChevronRight />
+</button>
+
           </div>
+
+          {/* Ratings Section */}
           <div className="layout-container2">
-          <div className="descriptionrole1">
-            <p className="descriptionof1">4.8 (742)</p>
-          <div className="star-icon">  
-            <img src={Star} alt="" />
+            <div className="descriptionrole1">
+              <p className="descriptionof1">4.8 (742)</p>
+              <div className="star-icon">
+                <img src={Star} alt="" />
+              </div>
             </div>
+            <hr className="description-line" />
           </div>
-          <hr className="description-line"/>
+        </>
+      ) : (
+        <>
+          {/* Full Description View */}
+          <div className="full-description-container">
+            <button className="back-to-product" onClick={() => setPopupStep("product")}>
+              ← Back
+            </button>
+            <h3 className="popup-title">{selectedItem.name} - Description</h3>
+            <p className="popup-description">{selectedItem.description}</p>
+            {/* You can add more description-related content here */}
+            <div className="additional-details">
+                    <h4 className="details-heading">Product Information</h4>
+                    <ul className="product-specs">
+                      <li>Fresh and high quality</li>
+                      <li>Source: Local farms</li>
+                      <li>Availability: In stock</li>
+                      <li>Weight: Varies by item</li>
+                    </ul>
+                  </div>
+          </div>
+        </>
+      )}
+      <div className="layout-container2">
           <section className="review">
             <h4 className="review-text">Reviews</h4>
             <button className="review-back-btn1" onClick={() => navigate(-1)}>  
@@ -442,10 +484,7 @@ const handleCategoryClick = (categoryName) => {
           {selectedLocation && (
             <p className="item-market-location"> <img src={location} className="loctaionstyle" alt="" /> {selectedLocation}</p>
           )}
-
         </div>
-
-        
         <button 
           className="add-to-cart1" 
           onClick={(e) => { e.stopPropagation(); addToCart(item); }}
@@ -554,24 +593,32 @@ const handleCategoryClick = (categoryName) => {
       <div className="full-width-section101">
   <h4 className="similar-title">Similar Products</h4>
   </div>
-  <div className="similar-items">
-    {/* Example product cards – replace with your real data */}
-    <div className="similar-card">
-      <img src="product1.jpg" alt="Product 1" className="similar-img" />
-      <p className="similar-name">Product 1</p>
+
+  <div class="product-card">
+    <img src="https://via.placeholder.com/100" alt="Fresh Produce 1" class="product-image" />
+    <div class="product-info">
+      <h5 class="product-title">Fresh Produces</h5>
+      <p class="product-subtitle">With strawberries and syrup</p>
+      <div class="price-section">
+        <span class="current-price">₦3,000</span>
+        <span class="old-price">₦5,000</span>
+      </div>
     </div>
-    <div className="similar-card">
-      <img src="product2.jpg" alt="Product 2" className="similar-img" />
-      <p className="similar-name">Product 2</p>
+    <button class="add-button150">+</button>
+  </div>
+
+  <div class="product-card">
+    <img src="https://via.placeholder.com/100" alt="Fresh Produce 2" class="product-image" />
+    <div class="product-info">
+      <h5 class="product-title">Fresh Produces</h5>
+      <p class="product-subtitle">With strawberries and syrup</p>
+      <div class="price-section">
+        <span class="current-price">₦5,000</span>
+      </div>
     </div>
-    <div className="similar-card">
-      <img src="product3.jpg" alt="Product 3" className="similar-img" />
-      <p className="similar-name">Product 3</p>
-    </div>
+    <button class="add-button151">+</button>
   </div>
 </div>
-
-    
         </div>
         </div>
         
